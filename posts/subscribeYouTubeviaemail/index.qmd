@@ -1,0 +1,33 @@
+---
+title: "Subscribe to a YouTube channel via email"
+
+author: "Tony D"
+date: "2025-03-11"
+categories: [tool]
+image: "image.png"
+---
+
+If you want to Subscribe to a YouTube channel but do not want to follow them.The trick is figuring out how to subscribe to a YouTube channel via email
+
+
+# Step 1: open youtube page of the channel want to subscribe
+
+for example:https://www.youtube.com/@thecoatlessprofessor7674/videos
+
+# Step 2: view page source
+
+![](images/clipboard-8192806.png)
+
+# Step 3: find 'videos.xml' in page source
+
+for example: https://www.youtube.com/feeds/videos.xml?channel_id=UColncDCZ8SmTAHYr92QFclQ
+
+# Step 4: Use an RSS-to-Email Tool to Subscribe
+
+using https://feedrabbit.com/ and enter your email address to subscribe.When there is a new video you will get a email.
+
+![](images/clipboard-1247030546.png)
+
+# Reference
+
+https://greggblanchard.com/how-to-subscribe-to-a-youtube-channel-via-email/

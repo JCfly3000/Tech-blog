@@ -1,0 +1,37 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this blog"
+  },
+  {
+    "objectID": "posts/welcome/index.html",
+    "href": "posts/welcome/index.html",
+    "title": "Welcome To My Blog",
+    "section": "",
+    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+  },
+  {
+    "objectID": "posts/post-with-code/index.html",
+    "href": "posts/post-with-code/index.html",
+    "title": "Post With Code",
+    "section": "",
+    "text": "This is a post with executable code.\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Tech blog",
+    "section": "",
+    "text": "Post With Code\n\n\n\nnews\n\ncode\n\nanalysis\n\n\n\n\n\n\n\n\n\nMar 11, 2025\n\n\nHarlow Malloc\n\n\n\n\n\n\n\n\n\n\n\n\nSubscribe to a YouTube channel via email\n\n\n\ntool\n\n\n\n\n\n\n\n\n\nMar 11, 2025\n\n\nTony D\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nMar 8, 2025\n\n\nTony D\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/subscribeYouTubeviaemail/index.html",
+    "href": "posts/subscribeYouTubeviaemail/index.html",
+    "title": "Subscribe to a YouTube channel via email",
+    "section": "",
+    "text": "If you want to Subscribe to a YouTube channel but do not want to follow them.The trick is figuring out how to subscribe to a YouTube channel via email\n\nStep 1: open youtube page of the channel want to subscribe\nfor example:https://www.youtube.com/@thecoatlessprofessor7674/videos\n\n\nStep 2: view page source\n\n\n\nStep 3: find ‘videos.xml’ in page source\nfor example: https://www.youtube.com/feeds/videos.xml?channel_id=UColncDCZ8SmTAHYr92QFclQ\n\n\nStep 4: Use an RSS-to-Email Tool to Subscribe\nusing https://feedrabbit.com/ and enter your email address to subscribe.When there is a new video you will get a email.\n\n\n\nReference\nhttps://greggblanchard.com/how-to-subscribe-to-a-youtube-channel-via-email/"
+  }
+]

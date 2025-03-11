@@ -1,0 +1,15 @@
+{
+  "hash": "ba6596172216a2da9252d9202d6f54d9",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"How to subscribe to a YouTube channel via email\"\nauthor: \"Tony D\"\ndate: \"2025-03-11\"\ncategories: [tool]\nimage: \"image.png\"\n---\n\nThis is a post with executable code.\n\n::: {.cell}\n\n```{.r .cell-code}\n1 + 1\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] 2\n```\n\n\n:::\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
