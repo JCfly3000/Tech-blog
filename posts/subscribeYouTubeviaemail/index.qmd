@@ -24,9 +24,15 @@ for example: https://www.youtube.com/feeds/videos.xml?channel_id=UColncDCZ8SmTAH
 
 # Step 4: Use an RSS-to-Email Tool to Subscribe
 
-using https://feedrabbit.com/ and enter your email address to subscribe.When there is a new video you will get a email.
-
+using free RSS tool https://feedrabbit.com/ and enter your email address to subscribe.
 ![](images/clipboard-1247030546.png)
+
+# Step 5: open email and activate feedrabbit from a email from feedrabbit
+
+When there is a new video you will get a email.
+
+you can also view all subscribe at https://feedrabbit.com/subscriptions
+
 
 # Reference
 

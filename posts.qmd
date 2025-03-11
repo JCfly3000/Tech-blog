@@ -1,0 +1,10 @@
+---
+title: "Posts"
+listing:
+  contents: posts
+  type: table
+  sort: "date desc"
+  max-items: 30000
+  page-size: 500
+  #categories: true
+---

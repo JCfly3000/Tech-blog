@@ -15,6 +15,7 @@ website:
     right: "This website is built with ❤️ and [Quarto](https://quarto.org/)."
 
 
+
 format:
   html:
     theme:
@@ -23,3 +24,5 @@ format:
     css: styles.css
 
 
+filters:
+  - foldableCodeBlcok.lua

@@ -1,0 +1,35 @@
+---
+title: "Useful resource"
+author: "Tony D"
+date: "2025-03-01"
+categories: [news, resource]
+image: "images.png"
+---
+
+Some useful resource
+
+# Youtube
+
+-   [RProgramming101](https://www.youtube.com/@RProgramming101/videos)
+
+    ![](images/clipboard-1799673454.png){width="600"}
+    
+
+-   [PositPBC](https://www.youtube.com/@PositPBC/videos)
+
+    ![](images/clipboard-2637147882.png){width="600"}
+    
+
+-   [JuliaSilge](https://www.youtube.com/@JuliaSilge/videos)
+
+![](images/clipboard-3006535828.png){width="600"}
+
+
+-   [thecoatlessprofessor](https://www.youtube.com/@thecoatlessprofessor7674/videos)
+
+![](images/clipboard-2175489072.png){width="600"}
+
+
+-   [EquitableEquations](https://www.youtube.com/@EquitableEquations/videos)
+
+![](images/clipboard-2081592089.png){width="600"}

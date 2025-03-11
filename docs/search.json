@@ -11,14 +11,14 @@
     "href": "index.html",
     "title": "Tech blog",
     "section": "",
-    "text": "Post With Code\n\n\n\nnews\n\ncode\n\nanalysis\n\n\n\n\n\n\n\n\n\nMar 11, 2025\n\n\nHarlow Malloc\n\n\n\n\n\n\n\n\n\n\n\n\nSubscribe to a YouTube channel via email\n\n\n\nTool\n\n\n\n\n\n\n\n\n\nMar 11, 2025\n\n\nTony D\n\n\n\n\n\n\n\n\n\n\n\n\nVersion control with renv\n\n\n\nTool\n\nR\n\nPython\n\n\n\n\n\n\n\n\n\nMar 11, 2025\n\n\nTony D\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nMar 8, 2025\n\n\nTony D\n\n\n\n\n\nNo matching items"
+    "text": "Classification Metrics\n\n\n\nMachine learning\n\nR\n\nPython\n\n\n\n\n\n\n\n\n\nMar 12, 2025\n\n\nTony D\n\n\n\n\n\n\n\n\n\n\n\n\nWeb scraping in R with rvest\n\n\n\nTool\n\nWebscrap\n\nR\n\n\n\n\n\n\n\n\n\nMar 12, 2025\n\n\nTony D\n\n\n\n\n\n\n\n\n\n\n\n\nSubscribe to a YouTube channel via email\n\n\n\nTool\n\n\n\n\n\n\n\n\n\nMar 11, 2025\n\n\nTony D\n\n\n\n\n\n\n\n\n\n\n\n\nVersion control with renv\n\n\n\nTool\n\nR\n\nPython\n\n\n\n\n\n\n\n\n\nMar 11, 2025\n\n\nTony D\n\n\n\n\n\n\n\n\n\n\n\n\nUseful resource\n\n\n\nnews\n\nresource\n\n\n\n\n\n\n\n\n\nMar 1, 2025\n\n\nTony D\n\n\n\n\n\n\n\n\n\n\n\n\nPost With Code\n\n\n\nnews\n\ncode\n\nanalysis\n\n\n\n\n\n\n\n\n\nMar 11, 2000\n\n\nHarlow Malloc\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nMar 8, 2000\n\n\nTony D\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/subscribeYouTubeviaemail/index.html",
     "href": "posts/subscribeYouTubeviaemail/index.html",
     "title": "Subscribe to a YouTube channel via email",
     "section": "",
-    "text": "If you want to Subscribe to a YouTube channel but do not want to follow them.The trick is figuring out how to subscribe to a YouTube channel via email\n\nStep 1: open youtube page of the channel want to subscribe\nfor example:https://www.youtube.com/@thecoatlessprofessor7674/videos\n\n\nStep 2: view page source\n\n\n\nStep 3: find ‘videos.xml’ in page source\nfor example: https://www.youtube.com/feeds/videos.xml?channel_id=UColncDCZ8SmTAHYr92QFclQ\n\n\nStep 4: Use an RSS-to-Email Tool to Subscribe\nusing https://feedrabbit.com/ and enter your email address to subscribe.When there is a new video you will get a email.\n\n\n\nReference\nhttps://greggblanchard.com/how-to-subscribe-to-a-youtube-channel-via-email/"
+    "text": "If you want to Subscribe to a YouTube channel but do not want to follow them.The trick is figuring out how to subscribe to a YouTube channel via email\n\nStep 1: open youtube page of the channel want to subscribe\nfor example:https://www.youtube.com/@thecoatlessprofessor7674/videos\n\n\nStep 2: view page source\n\n\n\nStep 3: find ‘videos.xml’ in page source\nfor example: https://www.youtube.com/feeds/videos.xml?channel_id=UColncDCZ8SmTAHYr92QFclQ\n\n\nStep 4: Use an RSS-to-Email Tool to Subscribe\nusing free RSS tool https://feedrabbit.com/ and enter your email address to subscribe. \n\n\nStep 5: open email and activate feedrabbit from a email from feedrabbit\nWhen there is a new video you will get a email.\n\n\nReference\nhttps://greggblanchard.com/how-to-subscribe-to-a-youtube-channel-via-email/"
   },
   {
     "objectID": "posts/post-with-code/index.html",
@@ -39,7 +39,7 @@
     "href": "posts/versioncontrol/index.html",
     "title": "Version control with renv",
     "section": "",
-    "text": "The renv package helps you create reproducible environments for your R projects\n# renv for R"
+    "text": "The renv package helps you create reproducible environments for your R projects\nIt section also update into R handbook\n# renv for R"
   },
   {
     "objectID": "posts/versioncontrol/index.html#inital-renv-and-create-renv.lock-with-current-loaded-pacakge",
@@ -194,5 +194,47 @@
     "title": "Version control with renv",
     "section": "update lock file",
     "text": "update lock file\n\nrenv::snapshot()"
+  },
+  {
+    "objectID": "posts/versioncontrol/index.html#need-to-install-new-package-with-renvinstall",
+    "href": "posts/versioncontrol/index.html#need-to-install-new-package-with-renvinstall",
+    "title": "Version control with renv",
+    "section": "need to install new package with renv::install",
+    "text": "need to install new package with renv::install\n\nrenv::install('lubridate')\n\n\nlibrary(lubridate)"
+  },
+  {
+    "objectID": "posts/web_scraping_in_R_with_rvest/index.html",
+    "href": "posts/web_scraping_in_R_with_rvest/index.html",
+    "title": "Web scraping in R with rvest",
+    "section": "",
+    "text": "Basic Web scraping in R with rvest.\nAlso update to R handbook"
+  },
+  {
+    "objectID": "posts/web_scraping_in_R_with_rvest/index.html#get-3rd-table",
+    "href": "posts/web_scraping_in_R_with_rvest/index.html#get-3rd-table",
+    "title": "Web scraping in R with rvest",
+    "section": "get 3rd table",
+    "text": "get 3rd table\nfind table xpath\n\ntable=page %&gt;%html_element(xpath = '//*[@id=\"mw-content-text\"]/div[1]/table[3]') |&gt; html_table()\ntable |&gt; head()\n\n# A tibble: 6 × 11\n  `Driver name`     Nationality    `Seasons competed` `Drivers' Championships`\n  &lt;chr&gt;             &lt;chr&gt;          &lt;chr&gt;              &lt;chr&gt;                   \n1 Carlo Abate       Italy          1962–1963          0                       \n2 George Abecassis  United Kingdom 1951–1952          0                       \n3 Kenny Acheson     United Kingdom 1983, 1985         0                       \n4 Andrea de Adamich Italy          1968, 1970–1973    0                       \n5 Philippe Adams    Belgium        1994               0                       \n6 Walt Ader         United States  1950               0                       \n# ℹ 7 more variables: `Race entries` &lt;chr&gt;, `Race starts` &lt;chr&gt;,\n#   `Pole positions` &lt;chr&gt;, `Race wins` &lt;chr&gt;, Podiums &lt;chr&gt;,\n#   `Fastest laps` &lt;chr&gt;, `Points[a]` &lt;chr&gt;"
+  },
+  {
+    "objectID": "posts/web_scraping_in_R_with_rvest/index.html#get-4th-table",
+    "href": "posts/web_scraping_in_R_with_rvest/index.html#get-4th-table",
+    "title": "Web scraping in R with rvest",
+    "section": "get 4th table",
+    "text": "get 4th table\nfind table xpath\n\ntable=page %&gt;%html_element(xpath = '//*[@id=\"mw-content-text\"]/div[1]/table[4]') |&gt; html_table()\ntable |&gt; head()\n\n# A tibble: 6 × 7\n  Country     Totaldrivers Champions Championships `Race wins` `First driver(s)`\n  &lt;chr&gt;       &lt;chr&gt;        &lt;chr&gt;     &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt;            \n1 Argentinad… 26           1(Fangio… 5(1951, 1954… \"38\\n(Fang… Juan Manuel Fang…\n2 Australiad… 18           2(Brabha… 4(1959, 1960… \"45\\n(Brab… Tony Gaze(1952 B…\n3 Austriadet… 16           2(Rindt,… 4(1970, 1975… \"41\\n(Rind… Jochen Rindt(196…\n4 Belgiumdet… 25           0         0             \"11\\n(Ickx… Johnny Claes(195…\n5 Brazildeta… 32           3(Fittip… 8(1972, 1974… \"101\\n(Fit… Chico Landi(1951…\n6 Canadadeta… 15           1(J. Vil… 1(1997)       \"17\\n(G. V… Peter Ryan(1961 …\n# ℹ 1 more variable: `Most recent driver(s)/Current driver(s)` &lt;chr&gt;"
+  },
+  {
+    "objectID": "posts/Classification Metrics/index.html",
+    "href": "posts/Classification Metrics/index.html",
+    "title": "Classification Metrics",
+    "section": "",
+    "text": "Classification Metrics Explained | Sensitivity, Precision, AUROC, & More\n\ninstall pacakge\n\npip install -U scikit-learn\npip install -U kaggle\npip install -U kagglehub\n\n\n\nload pacakge\n\nimport matplotlib.pyplot as plt\nimport numpy as np\nimport os\nimport pandas as pd\nimport seaborn as sns\n\n#from kaggle.api.kaggle_api_extended import KaggleApi\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.linear_model import LogisticRegression\nfrom sklearn.metrics import (\n    precision_score, recall_score, roc_curve,\n    accuracy_score, f1_score, roc_auc_score,\n    average_precision_score, confusion_matrix,\n    precision_recall_curve\n)\n\n\n\ndownload data from kaggle\n\nimport kagglehub\n# Download latest version\nkagglehub.dataset_download(\"uciml/pima-indians-diabetes-database\")\npath = kagglehub.dataset_download(\"uciml/pima-indians-diabetes-database\")\nprint(\"Path to dataset files:\", path)\n\nPath to dataset files: /Users/jinchaoduan/.cache/kagglehub/datasets/uciml/pima-indians-diabetes-database/versions/1\n\n\nshow data file under download folder\n\nimport os\nos.listdir(path)\n\n['diabetes.csv']\n\n\n\n\nread data\n\ndf = pd.read_csv(path+'/'+os.listdir(path)[0])\ndf.head()\n\n\n\n\n\n\n\n\nPregnancies\nGlucose\nBloodPressure\nSkinThickness\nInsulin\nBMI\nDiabetesPedigreeFunction\nAge\nOutcome\n\n\n\n\n0\n6\n148\n72\n35\n0\n33.6\n0.627\n50\n1\n\n\n1\n1\n85\n66\n29\n0\n26.6\n0.351\n31\n0\n\n\n2\n8\n183\n64\n0\n0\n23.3\n0.672\n32\n1\n\n\n3\n1\n89\n66\n23\n94\n28.1\n0.167\n21\n0\n\n\n4\n0\n137\n40\n35\n168\n43.1\n2.288\n33\n1\n\n\n\n\n\n\n\n\ndf.Outcome.value_counts()\n\nOutcome\n0    500\n1    268\nName: count, dtype: int64\n\n\n\n# separate features from response\nX = df.drop('Outcome', axis=1)\ny = df['Outcome']\n\n\n# split data into test and training sets\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)\n\n\n# initialize and train logistic regression model\nmodel = LogisticRegression(max_iter=1000)\nmodel.fit(X_train, y_train)\n\nLogisticRegression(max_iter=1000)In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.LogisticRegression?Documentation for LogisticRegressioniFittedLogisticRegression(max_iter=1000) \n\n\n\n# predict on the test set and get the probas\ny_pred = model.predict(X_test)\ny_pred_proba = model.predict_proba(X_test)[:, 1] \n\n\n# quickly look at the distribution of the probas\npercentiles = np.percentile(y_pred_proba, [5, 25, 50, 75, 95])\npercentiles\n\narray([0.03455652, 0.11989883, 0.29954411, 0.64776581, 0.87083353])\n\n\n\n\nconfusion matrix\n\n# generate confusion matrix\ncm = confusion_matrix(y_test, y_pred)\n\nplt.figure(figsize=(8, 6))\nsns.heatmap(cm, annot=True, fmt='d', cmap='Blues', cbar=False)\nplt.title('Confusion Matrix')\nplt.xlabel('Predicted Labels')\nplt.ylabel('True Labels')\nplt.xticks([0.5, 1.5], ['No Diabetes', 'Diabetes'])\nplt.yticks([0.5, 1.5], ['No Diabetes', 'Diabetes'], va='center')\nplt.show()\n\n\n\n\n\n\n\n\n\n# recall / sensitivity\nrecall = recall_score(y_test, y_pred)\nrecall\n\n0.6727272727272727\n\n\n\n# precision / positive predictive value\nprecision = precision_score(y_test, y_pred)\nprecision\n\n0.6379310344827587\n\n\n\n# specificity\ntn, fp, fn, tp = confusion_matrix(y_test, y_pred).ravel()\nspecificity = tn / (tn + fp)\nspecificity\n\nnp.float64(0.7878787878787878)\n\n\n\n# accuracy\naccuracy = accuracy_score(y_test, y_pred)\naccuracy\n\n0.7467532467532467\n\n\n\n# f1\nf1 = f1_score(y_test, y_pred)\nf1\n\n0.6548672566371682\n\n\n\n# get ROC curve values\nfpr, tpr, thresholds_roc = roc_curve(y_test, y_pred_proba)\n\n# get PR curve values\nprecision, recall, thresholds_pr = precision_recall_curve(y_test, y_pred_proba)\n\n# get areas under the curves\nauroc = roc_auc_score(y_test, y_pred_proba)\npr_auc = average_precision_score(y_test, y_pred_proba)\n\n\n# plot both curves\nfig, (ax1, ax2) = plt.subplots(1, 2, figsize=(16, 6))\nax1.plot(fpr, tpr, color='darkorange', lw=2, label=f'AUC = {auroc:.2f}')\nax1.plot([0, 1], [0, 1], color='navy', lw=2, linestyle='--')\nax1.set_xlabel('False Positive Rate')\nax1.set_ylabel('True Positive Rate')\nax1.set_title('Receiver Operating Characteristic (ROC) Curve')\nax1.legend(loc=\"lower right\")\n\n# Plot Precision-Recall Curve\nax2.plot(recall, precision, color='purple', lw=2, label=f'PR-AUC = {pr_auc:.2f}')\nax2.set_xlabel('Recall')\nax2.set_ylabel('Precision')\nax2.set_title('Precision-Recall Curve')\nax2.legend(loc=\"lower left\")\n\nplt.show()\n\n\n\n\n\n\n\n\n\ny_test.value_counts()\n\nOutcome\n0    99\n1    55\nName: count, dtype: int64\n\n\n\n\nReference\nhttps://www.youtube.com/watch?v=KdUrfY1yM0w\nhttps://github.com/RichardOnData/YouTube/blob/main/Python%20Notebooks/classification_metrics.ipynb"
+  },
+  {
+    "objectID": "posts/usefullresource/index.html",
+    "href": "posts/usefullresource/index.html",
+    "title": "Useful resource",
+    "section": "",
+    "text": "Some useful resource\n\nYoutube\n\nRProgramming101\n\nPositPBC\n\nJuliaSilge\n\n\n\nthecoatlessprofessor\n\n\n\nEquitableEquations"
   }
 ]

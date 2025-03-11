@@ -18,6 +18,8 @@ image: "images.png"
 
 The renv package helps you create reproducible environments for your R projects
 
+It section also update into [R handbook](https://jcfly3000.github.io/Into-R/intro/1%20basic%20R.html#version-control)
+
 ![](https://rstudio.github.io/renv/articles/renv.png)
 # renv for R
 
@@ -56,7 +58,7 @@ installed_pacakge |> filter(Package %in% (.packages()))
 # library(lubridate)
 ```
 
-## install new package with renv::install
+## need to install new package with renv::install
 
 ```{r}
 renv::install('lubridate')

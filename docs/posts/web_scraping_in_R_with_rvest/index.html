@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Tony D">
+<meta name="dcterms.date" content="2025-03-12">
 
-<title>Tech blog</title>
+<title>Web scraping in R with rvest – Tech blog</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,28 +22,60 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-494121dfa8658343c03537e94414993d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-6bd9cfa162949bde0a231f530c97869d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-494121dfa8658343c03537e94414993d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-6bd9cfa162949bde0a231f530c97869d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,77 +103,19 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Tech blog</span>
     </a>
   </div>
@@ -150,7 +126,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
@@ -168,270 +144,209 @@ window.Quarto = {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">Tech blog</h1>
-                      </div>
+    <div class="quarto-title column-body">
+      <h1 class="title">Web scraping in R with rvest</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Tool</div>
+                <div class="quarto-category">Webscrap</div>
+                <div class="quarto-category">R</div>
+              </div>
+                  </div>
   </div>
     
   
-  <div class="quarto-title-meta column-page-left">
+  <div class="quarto-title-meta">
 
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Tony D </p>
+            </div>
+    </div>
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">March 12, 2025</p>
+      </div>
+    </div>
     
       
     </div>
     
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(7)</span></div><div class="category" data-category="TWFjaGluZSUyMGxlYXJuaW5n">Machine learning <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UHl0aG9u">Python <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Ug==">R <span class="quarto-category-count">(3)</span></div><div class="category" data-category="VG9vbA==">Tool <span class="quarto-category-count">(3)</span></div><div class="category" data-category="V2Vic2NyYXA=">Webscrap <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YW5hbHlzaXM=">analysis <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y29kZQ==">code <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bmV3cw==">news <span class="quarto-category-count">(3)</span></div><div class="category" data-category="cmVzb3VyY2U=">resource <span class="quarto-category-count">(1)</span></div></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
 
-
-
-
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="TWFjaGluZSUyMGxlYXJuaW5nJTJDUiUyQ1B5dGhvbg==" data-listing-date-sort="1741708800000" data-listing-file-modified-sort="1741719116311" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="288">
-<div class="thumbnail"><a href="./posts/Classification Metrics/index.html" class="no-external">
-
-<img loading="lazy" src="./posts/Classification Metrics/image_14_4f4fc2cf7d.png" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/Classification Metrics/index.html" class="no-external">Classification Metrics</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('TWFjaGluZSUyMGxlYXJuaW5n'); return false;">Machine learning</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UHl0aG9u'); return false;">Python</div>
-
+<p>Basic Web scraping in R with rvest.</p>
+<p>Also update to <a href="https://jcfly3000.github.io/Into-R/other/2%20web%20scrap/1%20web%20scrap%20with%20rvest.html">R handbook</a></p>
+<section id="loal-pacakge" class="level1">
+<h1>loal pacakge</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rvest)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="delink listing-description"><a href="./posts/Classification Metrics/index.html" class="no-external">
-Classification Metrics Explained | Sensitivity, Precision, AUROC, &amp; More
-</a></div>
+</section>
+<section id="read-html" class="level1">
+<h1>read html</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>url<span class="ot">=</span><span class="st">'https://www.r-project.org/'</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>page<span class="ot">=</span><span class="fu">read_html</span>(url)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="metadata">
-<a href="./posts/Classification Metrics/index.html" class="no-external">
-<div class="listing-date">
-Mar 12, 2025
-</div>
-<div class="listing-author">
-Tony D
-</div>
-</a>
+</section>
+<section id="get-html-text" class="level1">
+<h1>get HTML text</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>page <span class="sc">%&gt;%</span><span class="fu">html_element</span>(<span class="at">css =</span> <span class="st">"h1"</span>) <span class="sc">|&gt;</span> <span class="fu">html_text</span>(<span class="at">trim =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "The R Project for Statistical Computing"</code></pre>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="VG9vbCUyQ1dlYnNjcmFwJTJDUg==" data-listing-date-sort="1741708800000" data-listing-file-modified-sort="1741716387955" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="86">
-<div class="thumbnail"><a href="./posts/web_scraping_in_R_with_rvest/index.html" class="no-external">
+</section>
+<section id="get-html-link" class="level1">
+<h1>get HTML link</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>page <span class="sc">%&gt;%</span><span class="fu">html_element</span>(<span class="at">css =</span> <span class="st">"strong a"</span>) <span class="sc">|&gt;</span> <span class="fu">html_text</span>(<span class="at">trim =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "download R"</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>page <span class="sc">%&gt;%</span><span class="fu">html_element</span>(<span class="at">css =</span> <span class="st">"strong a"</span>) <span class="sc">|&gt;</span> <span class="fu">html_attr</span>(<span class="st">"href"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "https://cran.r-project.org/mirrors.html"</code></pre>
+</div>
+</div>
+</section>
+<section id="get-table" class="level1">
+<h1>get table</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>url<span class="ot">=</span><span class="st">'https://en.wikipedia.org/wiki/List_of_Formula_One_drivers'</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>page<span class="ot">=</span><span class="fu">read_html</span>(url)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="get-3rd-table" class="level2">
+<h2 class="anchored" data-anchor-id="get-3rd-table">get 3rd table</h2>
+<p>find table xpath</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>table<span class="ot">=</span>page <span class="sc">%&gt;%</span><span class="fu">html_element</span>(<span class="at">xpath =</span> <span class="st">'//*[@id="mw-content-text"]/div[1]/table[3]'</span>) <span class="sc">|&gt;</span> <span class="fu">html_table</span>()</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>table <span class="sc">|&gt;</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 11
+  `Driver name`     Nationality    `Seasons competed` `Drivers' Championships`
+  &lt;chr&gt;             &lt;chr&gt;          &lt;chr&gt;              &lt;chr&gt;                   
+1 Carlo Abate       Italy          1962–1963          0                       
+2 George Abecassis  United Kingdom 1951–1952          0                       
+3 Kenny Acheson     United Kingdom 1983, 1985         0                       
+4 Andrea de Adamich Italy          1968, 1970–1973    0                       
+5 Philippe Adams    Belgium        1994               0                       
+6 Walt Ader         United States  1950               0                       
+# ℹ 7 more variables: `Race entries` &lt;chr&gt;, `Race starts` &lt;chr&gt;,
+#   `Pole positions` &lt;chr&gt;, `Race wins` &lt;chr&gt;, Podiums &lt;chr&gt;,
+#   `Fastest laps` &lt;chr&gt;, `Points[a]` &lt;chr&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="get-4th-table" class="level2">
+<h2 class="anchored" data-anchor-id="get-4th-table">get 4th table</h2>
+<p>find table xpath</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>table<span class="ot">=</span>page <span class="sc">%&gt;%</span><span class="fu">html_element</span>(<span class="at">xpath =</span> <span class="st">'//*[@id="mw-content-text"]/div[1]/table[4]'</span>) <span class="sc">|&gt;</span> <span class="fu">html_table</span>()</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>table <span class="sc">|&gt;</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 7
+  Country     Totaldrivers Champions Championships `Race wins` `First driver(s)`
+  &lt;chr&gt;       &lt;chr&gt;        &lt;chr&gt;     &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt;            
+1 Argentinad… 26           1(Fangio… 5(1951, 1954… "38\n(Fang… Juan Manuel Fang…
+2 Australiad… 18           2(Brabha… 4(1959, 1960… "45\n(Brab… Tony Gaze(1952 B…
+3 Austriadet… 16           2(Rindt,… 4(1970, 1975… "41\n(Rind… Jochen Rindt(196…
+4 Belgiumdet… 25           0         0             "11\n(Ickx… Johnny Claes(195…
+5 Brazildeta… 32           3(Fittip… 8(1972, 1974… "101\n(Fit… Chico Landi(1951…
+6 Canadadeta… 15           1(J. Vil… 1(1997)       "17\n(G. V… Peter Ryan(1961 …
+# ℹ 1 more variable: `Most recent driver(s)/Current driver(s)` &lt;chr&gt;</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="using-read_html_live-with-more-advance-web-scraping" class="level1">
+<h1>using read_html_live() with more advance web scraping</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rvest)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>url<span class="ot">=</span><span class="st">"https://www.whiskybase.com/whiskies/"</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>web <span class="ot">&lt;-</span> <span class="fu">read_html_live</span>(url)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>web<span class="sc">$</span><span class="fu">view</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>web <span class="sc">%&gt;%</span> <span class="fu">html_elements</span>(<span class="st">".widget-article-content"</span>) <span class="sc">|&gt;</span> <span class="fu">html_text</span>(<span class="at">trim =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Welcome to WHISKYBASEIn the last 10 years whiskybase has been building into the platform that we are right now. It started as a small project by Menno but has become the main resource for whiskies. In this anniversary year we have been changing a lot within Whiskybase. This new release with a complete new design is the biggest release so far.There are lot's of new functionalities to be discovered. We are proud of the result but also have big plans for the coming years. And the past months have inspired us to build out Whiskybase even moreWe hope you will be with us for a long time and welcome new members to Whiskybase."</code></pre>
+</div>
+</div>
+<p><br><br><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<details><summary>sessionInfo()</summary>
+<pre class="details" data-summary="sessionInfo()"><code>R version 4.4.1 (2024-06-14)
+Platform: aarch64-apple-darwin20
+Running under: macOS 15.3.1
 
-<img loading="lazy" src="./posts/web_scraping_in_R_with_rvest/logo.png" class="thumbnail-image">
+Matrix products: default
+BLAS:   /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRblas.0.dylib 
+LAPACK: /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.0
 
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/web_scraping_in_R_with_rvest/index.html" class="no-external">Web scraping in R with rvest</a>
-</h3>
-<div class="listing-categories">
+locale:
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
 
-<div class="listing-category" onclick="window.quartoListingCategory('VG9vbA=='); return false;">Tool</div>
+time zone: Asia/Shanghai
+tzcode source: internal
 
-<div class="listing-category" onclick="window.quartoListingCategory('V2Vic2NyYXA='); return false;">Webscrap</div>
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
 
-<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
+other attached packages:
+ [1] lubridate_1.9.4 forcats_1.0.0   stringr_1.5.1   dplyr_1.1.4    
+ [5] purrr_1.0.4     readr_2.1.5     tidyr_1.3.1     tibble_3.2.1   
+ [9] ggplot2_3.5.1   tidyverse_2.0.0 rvest_1.0.4    
 
+loaded via a namespace (and not attached):
+ [1] utf8_1.2.4        generics_0.1.3    xml2_1.3.7        stringi_1.8.4    
+ [5] hms_1.1.3         digest_0.6.37     magrittr_2.0.3    evaluate_1.0.3   
+ [9] grid_4.4.1        timechange_0.3.0  fastmap_1.2.0     jsonlite_1.9.1   
+[13] processx_3.8.6    chromote_0.4.0    ps_1.9.0          promises_1.3.2   
+[17] httr_1.4.7        selectr_0.4-2     scales_1.3.0      cli_3.6.4        
+[21] rlang_1.1.5       munsell_0.5.1     withr_3.0.2       yaml_2.3.10      
+[25] tools_4.4.1       tzdb_0.4.0        colorspace_2.1-1  curl_6.2.1       
+[29] vctrs_0.6.5       R6_2.6.1          lifecycle_1.0.4   htmlwidgets_1.6.4
+[33] pkgconfig_2.0.3   pillar_1.10.1     later_1.4.1       gtable_0.3.6     
+[37] glue_1.8.0        Rcpp_1.0.14       xfun_0.51         tidyselect_1.2.1 
+[41] rstudioapi_0.17.1 knitr_1.49        htmltools_0.5.8.1 websocket_1.4.2  
+[45] rmarkdown_2.29    compiler_4.4.1   </code></pre>
+</details>
 </div>
-<div class="delink listing-description"><a href="./posts/web_scraping_in_R_with_rvest/index.html" class="no-external">
-Basic Web scraping in R with rvest.
-</a></div>
 </div>
-<div class="metadata">
-<a href="./posts/web_scraping_in_R_with_rvest/index.html" class="no-external">
-<div class="listing-date">
-Mar 12, 2025
-</div>
-<div class="listing-author">
-Tony D
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="VG9vbA==" data-listing-date-sort="1741622400000" data-listing-file-modified-sort="1741686074405" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="93">
-<div class="thumbnail"><a href="./posts/subscribeYouTubeviaemail/index.html" class="no-external">
+</section>
+<section id="reference" class="level1">
+<h1>Reference</h1>
+<p>https://r4ds.hadley.nz/webscraping.html</p>
+<p>https://rvest.tidyverse.org/reference/read_html_live.html</p>
 
-<img loading="lazy" src="./posts/subscribeYouTubeviaemail/image.png" class="thumbnail-image">
 
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/subscribeYouTubeviaemail/index.html" class="no-external">Subscribe to a YouTube channel via email</a>
-</h3>
-<div class="listing-categories">
+</section>
 
-<div class="listing-category" onclick="window.quartoListingCategory('VG9vbA=='); return false;">Tool</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/subscribeYouTubeviaemail/index.html" class="no-external">
-If you want to Subscribe to a YouTube channel but do not want to follow them.The trick is figuring out how to subscribe to a YouTube channel via email
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/subscribeYouTubeviaemail/index.html" class="no-external">
-<div class="listing-date">
-Mar 11, 2025
-</div>
-<div class="listing-author">
-Tony D
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="VG9vbCUyQ1IlMkNQeXRob24=" data-listing-date-sort="1741622400000" data-listing-file-modified-sort="1741693072071" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="194">
-<div class="thumbnail"><a href="./posts/versioncontrol/index.html" class="no-external">
-
-<img loading="lazy" src="./posts/versioncontrol/images.png" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/versioncontrol/index.html" class="no-external">Version control with renv</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('VG9vbA=='); return false;">Tool</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UHl0aG9u'); return false;">Python</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/versioncontrol/index.html" class="no-external">
-The renv package helps you create reproducible environments for your R projects
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/versioncontrol/index.html" class="no-external">
-<div class="listing-date">
-Mar 11, 2025
-</div>
-<div class="listing-author">
-Tony D
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-categories="bmV3cyUyQ3Jlc291cmNl" data-listing-date-sort="1740758400000" data-listing-file-modified-sort="1741717270745" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="34">
-<div class="thumbnail"><a href="./posts/usefullresource/index.html" class="no-external">
-
-<img loading="lazy" src="./posts/usefullresource/images.png" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/usefullresource/index.html" class="no-external">Useful resource</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('bmV3cw=='); return false;">news</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cmVzb3VyY2U='); return false;">resource</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/usefullresource/index.html" class="no-external">
-Some useful resource
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/usefullresource/index.html" class="no-external">
-<div class="listing-date">
-Mar 1, 2025
-</div>
-<div class="listing-author">
-Tony D
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-categories="bmV3cyUyQ2NvZGUlMkNhbmFseXNpcw==" data-listing-date-sort="952704000000" data-listing-file-modified-sort="1741716774434" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="9">
-<div class="thumbnail"><a href="./posts/post-with-code/index.html" class="no-external">
-
-<img loading="lazy" src="./posts/post-with-code/image.jpg" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/post-with-code/index.html" class="no-external">Post With Code</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('bmV3cw=='); return false;">news</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Y29kZQ=='); return false;">code</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('YW5hbHlzaXM='); return false;">analysis</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/post-with-code/index.html" class="no-external">
-This is a post with executable code.
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/post-with-code/index.html" class="no-external">
-<div class="listing-date">
-Mar 11, 2000
-</div>
-<div class="listing-author">
-Harlow Malloc
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="6" data-categories="bmV3cw==" data-listing-date-sort="952444800000" data-listing-file-modified-sort="1741716775847" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="32">
-<div class="thumbnail"><a href="./posts/welcome/index.html" class="no-external">
-
-<p class="card-img-top"><img src="posts/welcome/thumbnail.jpg"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/welcome/index.html" class="no-external">Welcome To My Blog</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('bmV3cw=='); return false;">news</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/welcome/index.html" class="no-external">
-This is the first post in a Quarto blog. Welcome!
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/welcome/index.html" class="no-external">
-<div class="listing-date">
-Mar 8, 2000
-</div>
-<div class="listing-author">
-Tony D
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
