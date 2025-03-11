@@ -1,5 +1,6 @@
 project:
   type: website
+  output-dir: docs
 
 website:
   title: "Tech blog"
@@ -19,3 +20,5 @@ format:
 
 
 
+  page-footer:
+    right: "This website is built with ❤️ and [Quarto](https://quarto.org/)."
