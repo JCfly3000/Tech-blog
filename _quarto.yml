@@ -8,9 +8,13 @@ website:
     right:
       - about.qmd
       - icon: github
-        href: https://github.com/
-      - icon: twitter
-        href: https://twitter.com
+        href: https://github.com/JCfly3000
+
+
+  page-footer:
+    right: "This website is built with ❤️ and [Quarto](https://quarto.org/)."
+
+
 format:
   html:
     theme:
@@ -19,6 +23,3 @@ format:
     css: styles.css
 
 
-
-  page-footer:
-    right: "This website is built with ❤️ and [Quarto](https://quarto.org/)."
