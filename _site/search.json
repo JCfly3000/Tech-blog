@@ -25,7 +25,7 @@
     "href": "index.html",
     "title": "Tech blog",
     "section": "",
-    "text": "Post With Code\n\n\n\nnews\n\ncode\n\nanalysis\n\n\n\n\n\n\n\n\n\nMar 11, 2025\n\n\nHarlow Malloc\n\n\n\n\n\n\n\n\n\n\n\n\nSubscribe to a YouTube channel via email\n\n\n\ntool\n\n\n\n\n\n\n\n\n\nMar 11, 2025\n\n\nTony D\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nMar 8, 2025\n\n\nTony D\n\n\n\n\n\nNo matching items"
+    "text": "Post With Code\n\n\n\nnews\n\ncode\n\nanalysis\n\n\n\n\n\n\n\n\n\nMar 11, 2025\n\n\nHarlow Malloc\n\n\n\n\n\n\n\n\n\n\n\n\nSubscribe to a YouTube channel via email\n\n\n\nTool\n\n\n\n\n\n\n\n\n\nMar 11, 2025\n\n\nTony D\n\n\n\n\n\n\n\n\n\n\n\n\nVersion control with renv\n\n\n\nTool\n\nR\n\nPython\n\n\n\n\n\n\n\n\n\nMar 11, 2025\n\n\nTony D\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nMar 8, 2025\n\n\nTony D\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/subscribeYouTubeviaemail/index.html",
@@ -33,5 +33,166 @@
     "title": "Subscribe to a YouTube channel via email",
     "section": "",
     "text": "If you want to Subscribe to a YouTube channel but do not want to follow them.The trick is figuring out how to subscribe to a YouTube channel via email\n\nStep 1: open youtube page of the channel want to subscribe\nfor example:https://www.youtube.com/@thecoatlessprofessor7674/videos\n\n\nStep 2: view page source\n\n\n\nStep 3: find ‘videos.xml’ in page source\nfor example: https://www.youtube.com/feeds/videos.xml?channel_id=UColncDCZ8SmTAHYr92QFclQ\n\n\nStep 4: Use an RSS-to-Email Tool to Subscribe\nusing https://feedrabbit.com/ and enter your email address to subscribe.When there is a new video you will get a email.\n\n\n\nReference\nhttps://greggblanchard.com/how-to-subscribe-to-a-youtube-channel-via-email/"
+  },
+  {
+    "objectID": "posts/versioncontrol/index.html",
+    "href": "posts/versioncontrol/index.html",
+    "title": "Version control with renv",
+    "section": "",
+    "text": "The renv package helps you create reproducible environments for your R projects\n# renv for R"
+  },
+  {
+    "objectID": "posts/versioncontrol/index.html#inital-renv-and-create-renv.lock-with-current-loaded-pacakge",
+    "href": "posts/versioncontrol/index.html#inital-renv-and-create-renv.lock-with-current-loaded-pacakge",
+    "title": "Version control with renv",
+    "section": "inital renv and create renv.lock with current loaded pacakge",
+    "text": "inital renv and create renv.lock with current loaded pacakge\n\nrenv::init()"
+  },
+  {
+    "objectID": "posts/versioncontrol/index.html#show-all-installed-pacakge",
+    "href": "posts/versioncontrol/index.html#show-all-installed-pacakge",
+    "title": "Version control with renv",
+    "section": "show all installed pacakge",
+    "text": "show all installed pacakge\n\ninstalled_pacakge = as.data.frame(installed.packages()[,c(1,3:4)])\ninstalled_pacakge = installed_pacakge[is.na(installed_pacakge$Priority),1:2,drop=FALSE]\ninstalled_pacakge"
+  },
+  {
+    "objectID": "posts/versioncontrol/index.html#show-all-installed-pacakge-and-uploaded-pacakge",
+    "href": "posts/versioncontrol/index.html#show-all-installed-pacakge-and-uploaded-pacakge",
+    "title": "Version control with renv",
+    "section": "show all installed pacakge and uploaded pacakge",
+    "text": "show all installed pacakge and uploaded pacakge\n\nlibrary(dplyr)\ninstalled_pacakge = as.data.frame(installed.packages()[,c(1,3:4)])\ninstalled_pacakge = installed_pacakge[is.na(installed_pacakge$Priority),1:2,drop=FALSE]\ninstalled_pacakge |&gt; filter(Package %in% (.packages()))"
+  },
+  {
+    "objectID": "posts/versioncontrol/index.html#when-using-renv-and-install-new-pakcage",
+    "href": "posts/versioncontrol/index.html#when-using-renv-and-install-new-pakcage",
+    "title": "Version control with renv",
+    "section": "when using renv and install new pakcage",
+    "text": "when using renv and install new pakcage\n\n# it will not work\n# library(lubridate)"
+  },
+  {
+    "objectID": "posts/versioncontrol/index.html#install-new-package-with-renvinstall",
+    "href": "posts/versioncontrol/index.html#install-new-package-with-renvinstall",
+    "title": "Version control with renv",
+    "section": "install new package with renv::install",
+    "text": "install new package with renv::install\n\nrenv::install('lubridate')\n\n\nlibrary(lubridate)"
+  },
+  {
+    "objectID": "posts/versioncontrol/index.html#check-current-package-and-renv-package",
+    "href": "posts/versioncontrol/index.html#check-current-package-and-renv-package",
+    "title": "Version control with renv",
+    "section": "check current package and renv package",
+    "text": "check current package and renv package\n\nrenv::status()"
+  },
+  {
+    "objectID": "posts/versioncontrol/index.html#update-lock-file",
+    "href": "posts/versioncontrol/index.html#update-lock-file",
+    "title": "Version control with renv",
+    "section": "update lock file",
+    "text": "update lock file\n\nrenv::snapshot()"
+  },
+  {
+    "objectID": "posts/versioncontrol/index.html#check-status-again",
+    "href": "posts/versioncontrol/index.html#check-status-again",
+    "title": "Version control with renv",
+    "section": "check status again",
+    "text": "check status again\n\nrenv::status()"
+  },
+  {
+    "objectID": "posts/versioncontrol/index.html#make-all-current-pakcage-version-back-to-renv-list",
+    "href": "posts/versioncontrol/index.html#make-all-current-pakcage-version-back-to-renv-list",
+    "title": "Version control with renv",
+    "section": "make all current pakcage version back to renv list",
+    "text": "make all current pakcage version back to renv list\n\nrenv::restore()"
+  },
+  {
+    "objectID": "posts/versioncontrol/index.html#update-all-pakcage-in-renv.-recommand-do-it-once-a-year-to-keep-package-updated.",
+    "href": "posts/versioncontrol/index.html#update-all-pakcage-in-renv.-recommand-do-it-once-a-year-to-keep-package-updated.",
+    "title": "Version control with renv",
+    "section": "update all pakcage in renv. recommand do it once a year to keep package updated.",
+    "text": "update all pakcage in renv. recommand do it once a year to keep package updated.\n\nrenv::update()"
+  },
+  {
+    "objectID": "posts/versioncontrol/index.html#update-renv-itself-only",
+    "href": "posts/versioncontrol/index.html#update-renv-itself-only",
+    "title": "Version control with renv",
+    "section": "update renv itself only",
+    "text": "update renv itself only\n\nrenv::upgrade()"
+  },
+  {
+    "objectID": "posts/versioncontrol/index.html#close-renv-in-a-project",
+    "href": "posts/versioncontrol/index.html#close-renv-in-a-project",
+    "title": "Version control with renv",
+    "section": "close renv in a project",
+    "text": "close renv in a project\n\nrenv::deactivate()"
+  },
+  {
+    "objectID": "posts/versioncontrol/index.html#re-enable-renv-in-a-project",
+    "href": "posts/versioncontrol/index.html#re-enable-renv-in-a-project",
+    "title": "Version control with renv",
+    "section": "re enable renv in a project",
+    "text": "re enable renv in a project\n\nrenv::activate()"
+  },
+  {
+    "objectID": "posts/versioncontrol/index.html#set-python-version",
+    "href": "posts/versioncontrol/index.html#set-python-version",
+    "title": "Version control with renv",
+    "section": "set python version",
+    "text": "set python version\n\nrenv::use_python()"
+  },
+  {
+    "objectID": "posts/versioncontrol/index.html#check-python-version-in-renv",
+    "href": "posts/versioncontrol/index.html#check-python-version-in-renv",
+    "title": "Version control with renv",
+    "section": "check python version in renv",
+    "text": "check python version in renv\n\nfrom sys import version as python_formatted_version\nprint(python_formatted_version)"
+  },
+  {
+    "objectID": "posts/versioncontrol/index.html#list-all-installed-pacakge-in-python",
+    "href": "posts/versioncontrol/index.html#list-all-installed-pacakge-in-python",
+    "title": "Version control with renv",
+    "section": "list all installed pacakge in python",
+    "text": "list all installed pacakge in python\n\nimport os\nprint(os.system('pip freeze'))"
+  },
+  {
+    "objectID": "posts/versioncontrol/index.html#install-package",
+    "href": "posts/versioncontrol/index.html#install-package",
+    "title": "Version control with renv",
+    "section": "install package",
+    "text": "install package\n\nimport os\nos.system('python3.10 -m pip install siuba')"
+  },
+  {
+    "objectID": "posts/versioncontrol/index.html#update-lock-file-1",
+    "href": "posts/versioncontrol/index.html#update-lock-file-1",
+    "title": "Version control with renv",
+    "section": "update lock file",
+    "text": "update lock file\n\nrenv::snapshot()"
+  },
+  {
+    "objectID": "posts/versioncontrol/index.html#uninstall-package",
+    "href": "posts/versioncontrol/index.html#uninstall-package",
+    "title": "Version control with renv",
+    "section": "uninstall package",
+    "text": "uninstall package\n\nimport os\nos.system('yes | python3.10 -m pip uninstall siuba')"
+  },
+  {
+    "objectID": "posts/versioncontrol/index.html#make-all-current-pakcage-version-back-to-renv-list-1",
+    "href": "posts/versioncontrol/index.html#make-all-current-pakcage-version-back-to-renv-list-1",
+    "title": "Version control with renv",
+    "section": "make all current pakcage version back to renv list",
+    "text": "make all current pakcage version back to renv list\n\nrenv::restore()"
+  },
+  {
+    "objectID": "posts/versioncontrol/index.html#install-package-1",
+    "href": "posts/versioncontrol/index.html#install-package-1",
+    "title": "Version control with renv",
+    "section": "install package",
+    "text": "install package\n\nimport os\nos.system('python3.10 -m pip install requests')"
+  },
+  {
+    "objectID": "posts/versioncontrol/index.html#update-lock-file-2",
+    "href": "posts/versioncontrol/index.html#update-lock-file-2",
+    "title": "Version control with renv",
+    "section": "update lock file",
+    "text": "update lock file\n\nrenv::snapshot()"
   }
 ]

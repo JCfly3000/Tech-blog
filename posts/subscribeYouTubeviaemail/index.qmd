@@ -3,7 +3,7 @@ title: "Subscribe to a YouTube channel via email"
 
 author: "Tony D"
 date: "2025-03-11"
-categories: [tool]
+categories: [Tool]
 image: "image.png"
 ---
 
