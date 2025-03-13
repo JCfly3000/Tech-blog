@@ -1,0 +1,65 @@
+---
+title: "CPU and GPU"
+
+author: "Tony D"
+date: "2025-03-12"
+
+categories: 
+  - Tool
+  - R
+  - Python
+  
+image: "images/images.png"
+---
+
+CPU & GPU Performance
+
+# local computer CPU and GPU info
+
+::: panel-tabset
+## CPU
+
+```{=html}
+<iframe width="900" height="500" src="CPU.html" title="CPU"></iframe>
+```
+
+## GPU OpenCL Performance
+
+```{=html}
+<iframe width="900" height="500" src="OpenCL.html" title="GPU OpenCL"></iframe>
+```
+
+## GPU Metal Performance
+
+```{=html}
+<iframe width="900" height="500" src="Metal.html" title="GPU Metal"></iframe>
+```
+:::
+
+# World computer CPU and GPU info
+
+::: panel-tabset
+## CPU
+
+https://browser.geekbench.com/v6/cpu/multicore
+
+![](images/clipboard-2087560548.png){width="600"}
+
+## GPU OpenCL Performance!
+
+https://browser.geekbench.com/opencl-benchmarks
+
+![](images/clipboard-2359405003.png)
+
+## GPU Metal Performance
+
+https://browser.geekbench.com/metal-benchmarks
+
+![](images/clipboard-2321701176.png){width="600"}
+:::
+
+# Reference
+
+https://www.geekbench.com/
+
+https://github.com/ProjectPhysX/OpenCL-Benchmark
