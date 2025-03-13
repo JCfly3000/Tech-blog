@@ -2,8 +2,10 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/CPUGPU/index.html",
       "/posts/Classification Metrics/index.html",
       "/posts/web_scraping_in_R_with_rvest/index.html",
+      "/posts/run_ai_local/index.html",
       "/posts/subscribeYouTubeviaemail/index.html",
       "/posts/versioncontrol/index.html",
       "/posts/usefullresource/index.html",

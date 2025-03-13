@@ -1,0 +1,195 @@
+---
+title: "Run AI model on local machine"
+
+author: "Tony D"
+date: "2025-03-12"
+
+categories: 
+  - AI
+  - R
+  - Python
+image: "images/images.png"
+
+execute:
+  warning: false
+  error: false
+  eval: false
+---
+
+
+
+
+# Set up Python:Using python 3.11 instead of 3.13
+```{r}
+Sys.setenv(RETICULATE_PYTHON = "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11")
+library(reticulate)
+use_python("/Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11")
+```
+
+```{r}
+repl_python()
+```
+
+
+```{python}
+from platform import python_version
+print(python_version())
+```
+
+
+```{python}
+import sys
+import platform
+print(f"Python Platform: {platform.platform()}")
+print()
+print(f"Python {sys.version}")
+```
+
+# install all pacakge
+
+```{bash}
+#| eval: false
+pip3.11 install -U pip
+pip3.11 install huggingface_hub
+pip3.11 install sentencepiece
+pip3.11 install transformers
+pip3.11 install protobuf
+pip3.11 install bitsandbytes 
+pip3.11 install accelerate
+
+```
+
+# install torch for Mac
+
+```{bash}
+#| eval: false
+pip3.11 install pytorch torchvision torchaudio -c pytorch-nightly
+```
+
+
+# install tensorflow for Mac
+
+```{bash}
+#| eval: false
+pip3.11 install tensorflow tensorflow-macos tensorflow-metal
+```
+
+# install jax-metal for Mac
+
+```{bash}
+#| eval: false
+pip3.11 install jax-metal ml_dtypes jax jaxlib
+```
+
+
+# Test Installs
+
+```{python}
+#| eval: false
+import torch, tensorflow as tf
+# Should be true
+print(torch.backends.mps.is_available())
+print(torch.backends.mps.is_built())
+
+# Should recognize 1 GPU
+print("Num GPUs Available: ", len(tf.config.experimental.list_physical_devices('GPU')))
+```
+
+
+# start hugging face with python
+
+```{python}
+import os
+os.environ["PYTORCH_ENABLE_MPS_FALLBACK"] = "1"
+os.environ["PYTORCH_MPS_HIGH_WATERMARK_RATIO"] = "0.0"
+if "GRADIO_SERVER_PORT" not in os.environ:
+    os.environ["GRADIO_SERVER_PORT"] = "7865"
+```
+
+```{python}
+from huggingface_hub import hf_hub_download
+```
+
+set hugging face key
+
+```{python}
+HUGGING_FACE_API_KEY = ''
+```
+
+
+
+```{python}
+model_id = "lmsys/fastchat-t5-3b-v1.0"
+filenames = [
+        "pytorch_model.bin", "added_tokens.json", "config.json", "generation_config.json", 
+        "special_tokens_map.json", "spiece.model", "tokenizer_config.json"
+]
+```
+
+
+
+```{python}
+for filename in filenames:
+        print("start download file:"+filename)
+        downloaded_model_path = hf_hub_download(
+                    repo_id=model_id,
+                    filename=filename,
+                    token=HUGGING_FACE_API_KEY
+        )
+        
+        print(downloaded_model_path)
+```
+
+
+
+```{python}
+# offline
+HF_HUB_OFFLINE=1 
+from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline, AutoModelForSeq2SeqLM
+tokenizer = AutoTokenizer.from_pretrained(model_id, legacy=False)
+```
+
+
+
+```{python}
+
+model = AutoModelForSeq2SeqLM.from_pretrained(model_id,local_files_only=True)
+
+
+# using apple mps(GPU)
+# mps_device = "mps"
+#pipeline = pipeline("text2text-generation", model=model, device = mps_device,tokenizer=tokenizer, max_length=100)
+
+
+# using apple CPU
+pipeline = pipeline("text2text-generation", model=model, device=-1, tokenizer=tokenizer, max_length=1000)
+```
+
+```{python}
+answer=pipeline("What are competitors to Apache Kafka?")
+answer
+```
+
+
+```{python}
+answer=pipeline("""My name is Mark.
+I have brothers called David and John and my best friend is Michael.
+Using only the context above. Do you know if I have a sister?    
+""")
+answer
+
+```
+
+
+
+
+
+# Reference
+
+https://www.youtube.com/watch?v=Ay5K4tog5NQ
+
+https://huggingface.co/docs/transformers/main/en/installation
+
+https://medium.com/@faizififita1/huggingface-installation-on-apple-silicon-2022-m1-pro-max-ultra-m2-9c449b9b4c14
+
+https://www.youtube.com/watch?v=cGEIEnekmRM
