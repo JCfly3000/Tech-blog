@@ -1,0 +1,309 @@
+---
+title: "R pacakge download and managment tool"
+
+author: "Tony D"
+execute:
+  warning: false
+  error: false
+  eval: false
+
+  
+date: "2025-03-14"
+categories: 
+  - Tool
+  - R
+  
+image: "my screenshots.png"
+
+---
+
+
+pak installs R packages from CRAN, Bioconductor, GitHub, URLs, git repositories, local files and directories. It is an alternative to install.packages() and devtools::install_github(). pak is fast, safe and convenient.
+
+# R packages download and managment tool
+
+## install pak
+
+```{r}
+install.packages("pak")
+```
+
+## load pak
+
+```{r}
+library(pak)
+```
+
+## check pak version
+```{r}
+pak_sitrep() 
+```
+
+## install pacakge from cran
+
+```{r}
+pkg_install("tibble")
+```
+
+# install pacakge  from github
+
+```{r}
+pkg_install("tidyverse/tibble")
+```
+
+## install pacakge file tar.gz from website
+
+```{r}
+pkg_install(
+  "url::https://cran.r-project.org/src/contrib/Archive/tibble/tibble_3.1.7.tar.gz"
+)
+```
+
+
+
+## uninstall package
+
+```{r}
+pkg_remove("tibble")
+```
+
+
+
+## check package
+
+```{r}
+pkg_deps_tree("tibble")
+```
+## show all Dependencies
+```{r}
+pkg_deps("tibble")
+```
+
+
+## Explain dependencies
+
+```{r}
+pkg_deps_explain("tibble", "rlang")
+```
+
+## check pacakge history on cran
+
+```{r}
+pkg_history("tibble")
+```
+
+
+## update package
+
+```{r}
+pkg_install("tibble")
+```
+
+Update all dependencies of a package
+
+
+```{r}
+pkg_install("tibble", upgrade = TRUE)
+```
+
+
+# Check R pacakge info on Cran
+
+```{r}
+library(pak)
+pkg_install("cranlogs")
+```
+
+## total pacakge download from last week
+
+```{r}
+library(cranlogs)
+cran_downloads(when = "last-week")
+```
+
+
+
+## total pacakge download from 2014
+
+```{r}
+data=cran_downloads(from = "2014-01-01", to = "2024-12-31")
+library(plotly)
+plot_ly(data, x = ~date, y = ~count, mode = "lines")
+```
+
+
+## top pacakge download from last week
+
+```{r}
+cran_top_downloads("last-week")
+```
+
+## one pacakge download from last week
+
+```{r}
+pacakge_name="tibble"
+lastweek=cran_downloads(when = "last-week", package = pacakge_name)
+lastweek
+```
+
+
+```{r}
+print(paste(pacakge_name,"last week been downloaded",sum(lastweek$count),"times"))
+```
+
+# check pacakge github info
+
+there is another R package for this `gh`
+
+```{r}
+library(tidyverse)
+library(httr)
+library(cranlogs)
+library(ggrepel)
+library(scales)
+library(lubridate)
+library(knitr)
+library(stringr)
+```
+
+```{r}
+
+# authenticate to github -------------------------------------------------------
+# use Hadley's key and secret
+myapp <- oauth_app("github",
+                   key = "Ov23lizHQuHjLsuQlgXc",
+                   secret = "44ee97da2b3fc85c02bf46b236d1f23739945c8e")
+github_token <- oauth2.0_token(oauth_endpoints("github"), myapp)
+gtoken <- config(token = github_token)
+
+
+date_without_zeros <- function(x){
+  gsub("0(\\d)", "\\1", format(x, "%m/%d/%y"))
+}
+
+gh_from_url <- function(x){
+  x <- gsub("http://", "https://", tolower(x))
+  x <- gsub("www\\.github\\.com", "github.com", x)
+  x <- gsub("^github.com", "https://github.com", x)
+  x <- gsub("/issues", "", x)
+  x <- gsub("\\.git", "", x)
+  x <- gsub("For source code, development versions and issue tracker see", "", x, ignore.case=TRUE)
+  x <- trimws(x)
+  x <- gsub("development versions and issue tracker see ", "", x, ignore.case=TRUE)
+  x <- trimws(x)
+  x <- gsub("^<(.*)>$", "\\1", x)
+  if(grepl(',', x)){
+    x <- strsplit(x, ",")[[1]]
+    x <- trimws(x[min(which(grepl('http://github.com|https://github.com|http://www.github.com', x)))])
+  }
+  if(grepl(' ', x)){  
+    x <- strsplit(x, " ")[[1]]
+    x <- trimws(x[min(which(grepl('http://github.com|https://github.com|http://www.github.com', x)))])    
+  }
+  x <- gsub("^(.*)/(.*)#\\([a-zA-z]+\\)\\b", "\\1/\\2", x)
+  x <- gsub("^(.*)/(.*)[[:space:]]+\\([a-zA-z]+\\)\\b", "\\1/\\2", x)
+  x <- gsub("^(.*) http(.*)$", "http\\2", x)
+  x <- trimws(x)
+  x <- gsub("/$", "", x)
+  x <- trimws(x)
+  return(x)
+}
+
+aut_maintainer_from_details <- function(x){
+  x <- gsub("'|\"", "", x)
+  if(grepl(',', x)){
+    x <- strsplit(x, "\\],")[[1]]
+    aut_cre_ind <- grepl(pattern='\\[aut, cre|\\[cre, aut|\\[cre', x, ignore.case=TRUE)
+    if(any(aut_cre_ind)){
+      x <- x[min(which(aut_cre_ind))]
+      x <- gsub("\\[aut, cre|\\[cre, aut|\\[cre", "", x)
+    }
+    x <- strsplit(x, ",")[[1]][1]
+    x <- trimws(gsub("\\]", "", x))
+    x <- trimws(gsub(" \\[aut", "", x))
+  }
+  x <- trimws(gsub(" \\(.*\\)$", "", x))
+  x <- trimws(gsub(" <.*>$", "", x))
+  return(x)
+}
+
+gh_star_count <- function(url){
+  Sys.sleep(0.5)
+  stars  <- tryCatch({
+    this_url <- gsub("https://github.com/", "https://api.github.com/repos/", url)
+    req <- GET(this_url, gtoken)
+    stop_for_status(req)
+    cont <- content(req)
+    cont$stargazers_count  
+  }, error = function(e){
+    return(NA_integer_)
+  })
+  return(stars)
+}
+
+gh_forks_count <- function(url){
+  Sys.sleep(0.5)
+  stars  <- tryCatch({
+    this_url <- gsub("https://github.com/", "https://api.github.com/repos/", url)
+    req <- GET(this_url, gtoken)
+    stop_for_status(req)
+    cont <- content(req)
+    cont$forks  
+  }, error = function(e){
+    return(NA_integer_)
+  })
+  return(stars)
+}
+
+
+
+
+gh_last_commit_date <- function(url){
+  last_commit <- tryCatch({
+    this_url <- gsub("https://github.com/", "https://api.github.com/repos/", url)
+    req <- GET(paste0(this_url, "/commits?page=1&per_page=1"), gtoken)
+    stop_for_status(req)
+    cont <- content(req)
+    cont[[1]]$commit$committer$date
+  }, error = function(e){
+    return(NA_character_)
+  })
+  return(last_commit)
+}
+```
+
+
+```{r}
+github_url="https://github.com/r-lib/styler"
+```
+
+
+```{r}
+gh_star_count(github_url)
+```
+
+```{r}
+gh_last_commit_date(github_url)
+```
+
+```{r}
+gh_last_commit_date(github_url)
+```
+
+```{r}
+gh_watches_count(github_url)
+```
+
+
+
+
+
+# Tool for build a R pacakge
+
+devtools/roxygen2/usethis/testthat/pkgdown
+
+
+
+# reference:
+
+https://github.com/r-lib/pak

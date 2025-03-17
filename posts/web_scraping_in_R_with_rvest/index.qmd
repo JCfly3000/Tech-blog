@@ -100,6 +100,16 @@ web <- read_html_live(url)
 ```
 
 
+
+```{r}
+url_rating='https://www.whiskybase.com/profile/georges'
+content <- read_html_live(url_rating) 
+info_title=content %>% html_elements('.title') %>% html_text(trim = TRUE)
+info_value=content %>% html_elements('.value') %>% html_text(trim = TRUE)
+info_data=data.frame(info_title,info_value)
+
+```
+
 ```{r}
 #| eval: false
 web$view()
@@ -117,9 +127,6 @@ web %>% html_elements(".widget-article-content") |> html_text(trim = TRUE)
 ```{r, attr.output='.details summary="sessionInfo()"'}
 sessionInfo()
 ```
-
-
-
 
 
 # Reference

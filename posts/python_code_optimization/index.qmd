@@ -1,0 +1,129 @@
+---
+title: "Python code optimization with ruff"
+author: "Tony D"
+execute:
+  warning: false
+  error: false
+
+  
+date: "2025-03-14"
+categories: 
+  - Tool
+  - Python
+  
+image: "images.png"
+jupyter: python3
+---
+
+-   ⚡️ 10-100x faster than existing linters (like Flake8) and formatters (like Black)
+
+-   🐍 Installable via `pip`
+
+-   🛠️ `pyproject.toml` support
+
+![](images/clipboard-548506117.png)
+
+# install ruff
+
+``` {.python filename="playing.py"}
+#| eval: false
+pip install ruff
+```
+
+# check code
+
+before correct python file
+
+``` {.python filename="playing.py"}
+
+
+
+
+
+import pandas
+
+from importlib.metadata import version
+
+print('test.py is running')
+print('version is :')
+print(version('rich'))
+
+a=3+1
+
+
+a
+
+```
+
+```{python}
+#| filename : Terminal
+!ruff check playing.py
+```
+
+# fix code
+
+```{python}
+#| filename : Terminal
+#| eval: false
+!ruff check playing.py --fix
+```
+
+after fix
+
+```{python}
+#| filename : Terminal
+#| eval: false
+{{< include playing.py >}}
+
+```
+
+# format code
+
+```{python}
+#| filename : Terminal
+#| eval: false
+!ruff format playing.py
+```
+
+after format
+
+```{python}
+#| filename : Terminal
+#| eval: false
+{{< include playing.py >}}
+
+```
+
+# add ruff as extension in positron
+
+![](images/my screenshots 1.png)
+
+# using ruff on .qmd file
+
+ruff only work on .py file, So if want to use ruff to check .qmd file then it need to convert to .py first.
+
+## convert .qmd to .py
+
+```{python}
+#| filename : Terminal
+#| eval: false
+quarto convert index.qmd    # → index.ipynb
+```
+
+```{python}
+#| filename : Terminal
+#| eval: false
+!jupyter nbconvert --to python index.ipynb    # → index.py
+```
+
+## check .py with ruff
+
+```{python}
+#| filename : Terminal
+#| eval: false
+!ruff check index.py
+```
+
+# reference:
+
+https://github.com/astral-sh/ruff

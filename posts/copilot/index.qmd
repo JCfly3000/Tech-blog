@@ -1,0 +1,124 @@
+---
+title: "AI Code assistant"
+
+author: "Tony D"
+execute:
+  warning: false
+  error: false
+  eval: false
+
+date: "2025-03-15"
+categories: 
+  - Tool
+  - R
+  - Python
+  
+image: "What-is-GitHub-Copilot.jpg"
+---
+
+AI tool for writing code
+
+# 1. Github copilot for Rstuido
+
+## Step 1 enble on Rstudio
+
+![](images/clipboard-3378378405.png){width="500"}
+
+## Step 2 configure on github
+
+free account is limit per month
+
+![](images/clipboard-961740813.png){width="500"}
+
+# 2.chattr LLM pacakge f R
+
+## Step 1 Install package
+
+```{r}
+#remotes::install_github("mlverse/chattr")
+```
+
+```{r}
+library(chattr)
+```
+
+# Step 2 set key
+
+-   Login at https://platform.openai.com/
+
+-   Goto Settings (gear icon on top right)
+
+-   Find API Keys from menu on left
+
+-   Follow the process to Create new secret key
+
+-   Copy your secret key (it will only show once so make sure you copy it)
+
+```{r}
+Sys.setenv(OpenAI_API_KEY="sk-xxxxxxxx")
+```
+
+## Step 3 run ChatGPT as background job
+
+### select model
+```{r}
+#copilot do not need OpenAI_API_KEY
+chattr_use("copilot")
+```
+
+### add prompt
+```{r}
+chattr_defaults(prompt = "{readLines(system.file('prompt/base.txt', package = 'chattr'))}")
+
+```
+
+### run ChatGPT
+```{r}
+# run 
+chattr_app(as_job = TRUE)
+```
+
+![](images/clipboard-495301195.png)
+
+Done!
+
+![](https://blogs.rstudio.com/ai/posts/2024-04-04-chat-with-llms-using-chattr/images/buttons.png)
+
+
+## Or setup auto open Chat GPT when Rstudio start
+
+### Step 1 find Rprofile file
+
+```{r}
+#install.packages("usethis")  # Install if not already installed
+usethis::edit_r_profile()
+```
+
+### Step 2 edit Rprofile file as below
+
+```{r filename='.RProfile'}
+#|eval: false
+# Load chattr app after RStudio is fully loaded
+setHook("rstudio.sessionInit", function(newSession) {
+  if (newSession) {
+    Sys.sleep(2)  # Wait 2 seconds before starting chattr to ensure RStudio is ready
+    tryCatch({
+      library(chattr)
+      chattr_use("copilot")
+      #Sys.setenv("OPENAI_API_KEY" = "your-api-key-here")
+      chattr_defaults(prompt = "{readLines(system.file('prompt/base.txt', package = 'chattr'))}")
+
+      chattr_app(as_job = TRUE)
+    }, error = function(e)
+      message("Error starting chattr: ", e$message))
+  }
+}, action = "append")
+```
+
+# 3. Other tool:codeium copilot for positron
+
+# reference
+
+https://www.youtube.com/watch?v=t7NrkAeosog
+
+https://github.com/mlverse/chattr

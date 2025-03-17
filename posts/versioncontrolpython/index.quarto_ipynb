@@ -1,0 +1,331 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"Version control for Python with uv\"\n",
+        "\n",
+        "author: \"Tony D\"\n",
+        "execute:\n",
+        "  warning: false\n",
+        "  error: false\n",
+        "\n",
+        "  \n",
+        "date: \"2025-03-14\"\n",
+        "categories: \n",
+        "  - Tool\n",
+        "  - Python\n",
+        "  \n",
+        "image: \"images.png\"\n",
+        "\n",
+        "jupyter: python3\n",
+        "---\n",
+        "\n",
+        "-   🚀 A single tool to replace `pip`, `pip-tools`, `pipx`, `poetry`, `pyenv`, `twine`, `virtualenv`, and more.\n",
+        "\n",
+        "-   ⚡️ [10-100x faster](https://github.com/astral-sh/uv/blob/main/BENCHMARKS.md) than `pip`.\n",
+        "\n",
+        "-   🗂️ Provides [comprehensive project management](https://github.com/astral-sh/uv?tab=readme-ov-file#projects), with a [universal lockfile](https://docs.astral.sh/uv/concepts/projects/layout#the-lockfile).\n",
+        "\n",
+        "![](images/clipboard-203636132.png)\n",
+        "\n",
+        "# install"
+      ],
+      "id": "1905fdf0"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| eval: false\n",
+        "!pip install uv"
+      ],
+      "id": "c74add9f",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# create project in current folder"
+      ],
+      "id": "09573979"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| eval: false\n",
+        "!uv init"
+      ],
+      "id": "604b4e62",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# show python version"
+      ],
+      "id": "0bad92eb"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "!uv python list --only-installed"
+      ],
+      "id": "563fc58b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# chose python version"
+      ],
+      "id": "67d589fd"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| eval: false\n",
+        "!uv python pin 3.13"
+      ],
+      "id": "8419b14f",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# install pacakge"
+      ],
+      "id": "6dd299a5"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| eval: false\n",
+        "!uv add siuba"
+      ],
+      "id": "2ca9680f",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# show pacakge"
+      ],
+      "id": "576b1a38"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| eval: false\n",
+        "!uv tree"
+      ],
+      "id": "0b837fdf",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# delete pacakge"
+      ],
+      "id": "1a0e38c5"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| eval: false\n",
+        "!uv remove rich"
+      ],
+      "id": "2cd6f1ab",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# update lock file"
+      ],
+      "id": "7a22e5e2"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| eval: false\n",
+        "!uv lock --upgrade"
+      ],
+      "id": "63f8b219",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# Locking requirements"
+      ],
+      "id": "be69e21e"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| eval: false\n",
+        "uv pip compile pyproject.toml -o requirements.txt"
+      ],
+      "id": "0813cf2b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# check lock file and current environment"
+      ],
+      "id": "d176a39d"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| eval: false\n",
+        "!uv lock --check"
+      ],
+      "id": "a84b9467",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# Sync the project's dependencies with the environment"
+      ],
+      "id": "5598de93"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| eval: false\n",
+        "!uv sync"
+      ],
+      "id": "ed147423",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# using uv with script header\n",
+        "\n",
+        "## there is no rich package in python"
+      ],
+      "id": "78ef2edb"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| eval: false\n",
+        "try:\n",
+        "    import rich\n",
+        "    print('pacakge installed')\n",
+        "except ImportError as e:\n",
+        "    print('pacakge not installed')\n",
+        "    pass  # module doesn't exist, deal with it."
+      ],
+      "id": "bf288c85",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## but can add rich package in script\n",
+        "\n",
+        "```{.python file.name='test.py'}\n",
+        "#| eval: false\n",
+        "\n",
+        "# /// script\n",
+        "# requires-python = \">=3.12\"\n",
+        "# dependencies = [\n",
+        "#   \"requests<3\",\n",
+        "#   \"rich\",\n",
+        "# ]\n",
+        "# ///\n",
+        "\n",
+        "import requests\n",
+        "import rich\n",
+        "from rich.pretty import pprint\n",
+        "\n",
+        "\n",
+        "import rich\n",
+        "from importlib.metadata import version\n",
+        "\n",
+        "print('test.py is running')\n",
+        "print('version is :')\n",
+        "print(version('rich'))\n",
+        "\n",
+        "\n",
+        "```\n",
+        "\n",
+        "## run .py with uv"
+      ],
+      "id": "f8a5abea"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "!uv run test.py"
+      ],
+      "id": "6c5ea005",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# reference:\n",
+        "\n",
+        "https://github.com/astral-sh/uv"
+      ],
+      "id": "1bdfdaa3"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/Library/Frameworks/Python.framework/Versions/3.13/share/jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

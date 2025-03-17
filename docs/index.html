@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -41,7 +75,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-494121dfa8658343c03537e94414993d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-6bd9cfa162949bde0a231f530c97869d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-d29ea5ee5a70017e53bdfffa962c84fb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -169,7 +203,7 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-page-left">
-      <h1 class="title">Tech blog</h1>
+      <div class="quarto-title-block"><div><h1 class="title">Tech blog</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
                       </div>
   </div>
     
@@ -187,7 +221,7 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(9)</span></div><div class="category" data-category="QUk=">AI <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TWFjaGluZSUyMGxlYXJuaW5n">Machine learning <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UHl0aG9u">Python <span class="quarto-category-count">(4)</span></div><div class="category" data-category="Ug==">R <span class="quarto-category-count">(5)</span></div><div class="category" data-category="VG9vbA==">Tool <span class="quarto-category-count">(4)</span></div><div class="category" data-category="V2Vic2NyYXA=">Webscrap <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YW5hbHlzaXM=">analysis <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y29kZQ==">code <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bmV3cw==">news <span class="quarto-category-count">(3)</span></div><div class="category" data-category="cmVzb3VyY2U=">resource <span class="quarto-category-count">(1)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(14)</span></div><div class="category" data-category="QUk=">AI <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TWFjaGluZSUyMGxlYXJuaW5n">Machine learning <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UHl0aG9u">Python <span class="quarto-category-count">(7)</span></div><div class="category" data-category="Ug==">R <span class="quarto-category-count">(8)</span></div><div class="category" data-category="VG9vbA==">Tool <span class="quarto-category-count">(9)</span></div><div class="category" data-category="V2Vic2NyYXA=">Webscrap <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YW5hbHlzaXM=">analysis <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y29kZQ==">code <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bmV3cw==">news <span class="quarto-category-count">(3)</span></div><div class="category" data-category="cmVzb3VyY2U=">resource <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
 
@@ -198,10 +232,174 @@ window.Quarto = {
 
 
 
+<!-- -->
+
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="VG9vbCUyQ1IlMkNQeXRob24=" data-listing-date-sort="1741708800000" data-listing-file-modified-sort="1741855904984" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="41">
+<div class="quarto-post image-right" data-index="0" data-categories="VG9vbCUyQ1I=" data-listing-date-sort="1741968000000" data-listing-file-modified-sort="1742069322083" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="133">
+<div class="thumbnail"><a href="./posts/r_code_optimization/index.html" class="no-external">
+
+<img loading="lazy" src="./posts/r_code_optimization/images/my screenshots 2.png" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/r_code_optimization/index.html" class="no-external">R code optimization with lintr and styler</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('VG9vbA=='); return false;">Tool</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/r_code_optimization/index.html" class="no-external">
+pacakge for R code optimization
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/r_code_optimization/index.html" class="no-external">
+<div class="listing-date">
+Mar 15, 2025
+</div>
+<div class="listing-author">
+Tony D
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-categories="VG9vbCUyQ1IlMkNQeXRob24=" data-listing-date-sort="1741968000000" data-listing-file-modified-sort="1742038233443" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="242">
+<div class="thumbnail"><a href="./posts/copilot/index.html" class="no-external">
+
+<img loading="lazy" src="./posts/copilot/What-is-GitHub-Copilot.jpg" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/copilot/index.html" class="no-external">AI Code assistant</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('VG9vbA=='); return false;">Tool</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('UHl0aG9u'); return false;">Python</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/copilot/index.html" class="no-external">
+AI tool for writing code
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/copilot/index.html" class="no-external">
+<div class="listing-date">
+Mar 15, 2025
+</div>
+<div class="listing-author">
+Tony D
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="2" data-categories="VG9vbCUyQ1B5dGhvbg==" data-listing-date-sort="1741881600000" data-listing-file-modified-sort="1741987660227" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="169">
+<div class="thumbnail"><a href="./posts/python_code_optimization/index.html" class="no-external">
+
+<img loading="lazy" src="./posts/python_code_optimization/images.png" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/python_code_optimization/index.html" class="no-external">Python code optimization with ruff</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('VG9vbA=='); return false;">Tool</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('UHl0aG9u'); return false;">Python</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/python_code_optimization/index.html" class="no-external">
+⚡️ 10-100x faster than existing linters (like Flake8) and formatters (like Black)
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/python_code_optimization/index.html" class="no-external">
+<div class="listing-date">
+Mar 14, 2025
+</div>
+<div class="listing-author">
+Tony D
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="3" data-categories="VG9vbCUyQ1B5dGhvbg==" data-listing-date-sort="1741881600000" data-listing-file-modified-sort="1741995562598" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="180">
+<div class="thumbnail"><a href="./posts/versioncontrolpython/index.html" class="no-external">
+
+<img loading="lazy" src="./posts/versioncontrolpython/images.png" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/versioncontrolpython/index.html" class="no-external">Version control for Python with uv</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('VG9vbA=='); return false;">Tool</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('UHl0aG9u'); return false;">Python</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/versioncontrolpython/index.html" class="no-external">
+🚀 A single tool to replace <code>pip</code>, <code>pip-tools</code>, <code>pipx</code>, <code>poetry</code>, <code>pyenv</code>, <code>twine</code>, <code>virtualenv</code>, and more.
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/versioncontrolpython/index.html" class="no-external">
+<div class="listing-date">
+Mar 14, 2025
+</div>
+<div class="listing-author">
+Tony D
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="4" data-categories="VG9vbCUyQ1I=" data-listing-date-sort="1741881600000" data-listing-file-modified-sort="1742067253645" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="625">
+<div class="thumbnail"><a href="./posts/Rpackage/index.html" class="no-external">
+
+<img loading="lazy" src="./posts/Rpackage/my screenshots.png" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/Rpackage/index.html" class="no-external">R pacakge download and managment tool</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('VG9vbA=='); return false;">Tool</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/Rpackage/index.html" class="no-external">
+pak installs R packages from CRAN, Bioconductor, GitHub, URLs, git repositories, local files and directories. It is an alternative to install.packages() and…
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/Rpackage/index.html" class="no-external">
+<div class="listing-date">
+Mar 14, 2025
+</div>
+<div class="listing-author">
+Tony D
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="5" data-categories="VG9vbCUyQ1IlMkNQeXRob24=" data-listing-date-sort="1741708800000" data-listing-file-modified-sort="1741855904984" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="41">
 <div class="thumbnail"><a href="./posts/CPUGPU/index.html" class="no-external">
 
 <img loading="lazy" src="./posts/CPUGPU/images/images.png" class="thumbnail-image">
@@ -235,7 +433,7 @@ Tony D
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="TWFjaGluZSUyMGxlYXJuaW5nJTJDUiUyQ1B5dGhvbg==" data-listing-date-sort="1741708800000" data-listing-file-modified-sort="1741892409958" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="288">
+<div class="quarto-post image-right" data-index="6" data-categories="TWFjaGluZSUyMGxlYXJuaW5nJTJDUiUyQ1B5dGhvbg==" data-listing-date-sort="1741708800000" data-listing-file-modified-sort="1741892409958" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="288">
 <div class="thumbnail"><a href="./posts/Classification Metrics/index.html" class="no-external">
 
 <img loading="lazy" src="./posts/Classification Metrics/image_14_4f4fc2cf7d.png" class="thumbnail-image">
@@ -269,7 +467,7 @@ Tony D
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="VG9vbCUyQ1dlYnNjcmFwJTJDUg==" data-listing-date-sort="1741708800000" data-listing-file-modified-sort="1741892409971" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="86">
+<div class="quarto-post image-right" data-index="7" data-categories="VG9vbCUyQ1dlYnNjcmFwJTJDUg==" data-listing-date-sort="1741708800000" data-listing-file-modified-sort="1742081169380" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="101">
 <div class="thumbnail"><a href="./posts/web_scraping_in_R_with_rvest/index.html" class="no-external">
 
 <img loading="lazy" src="./posts/web_scraping_in_R_with_rvest/logo.png" class="thumbnail-image">
@@ -303,7 +501,7 @@ Tony D
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="3" data-categories="QUklMkNSJTJDUHl0aG9u" data-listing-date-sort="1741708800000" data-listing-file-modified-sort="1741892553404" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="317">
+<div class="quarto-post image-right" data-index="8" data-categories="QUklMkNSJTJDUHl0aG9u" data-listing-date-sort="1741708800000" data-listing-file-modified-sort="1741943402065" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="317">
 <div class="thumbnail"><a href="./posts/run_ai_local/index.html" class="no-external">
 
 <img loading="lazy" src="./posts/run_ai_local/images/images.png" class="thumbnail-image">
@@ -337,7 +535,7 @@ Tony D
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="4" data-categories="VG9vbA==" data-listing-date-sort="1741622400000" data-listing-file-modified-sort="1741892409958" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="93">
+<div class="quarto-post image-right" data-index="9" data-categories="VG9vbA==" data-listing-date-sort="1741622400000" data-listing-file-modified-sort="1741892409958" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="93">
 <div class="thumbnail"><a href="./posts/subscribeYouTubeviaemail/index.html" class="no-external">
 
 <img loading="lazy" src="./posts/subscribeYouTubeviaemail/image.png" class="thumbnail-image">
@@ -367,7 +565,7 @@ Tony D
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="5" data-categories="VG9vbCUyQ1IlMkNQeXRob24=" data-listing-date-sort="1741622400000" data-listing-file-modified-sort="1741892409969" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="194">
+<div class="quarto-post image-right" data-index="10" data-categories="VG9vbCUyQ1IlMkNQeXRob24=" data-listing-date-sort="1741622400000" data-listing-file-modified-sort="1741892409969" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="194">
 <div class="thumbnail"><a href="./posts/versioncontrol/index.html" class="no-external">
 
 <img loading="lazy" src="./posts/versioncontrol/images.png" class="thumbnail-image">
@@ -401,7 +599,7 @@ Tony D
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="6" data-categories="bmV3cyUyQ3Jlc291cmNl" data-listing-date-sort="1740758400000" data-listing-file-modified-sort="1741892409969" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="34">
+<div class="quarto-post image-right" data-index="11" data-categories="bmV3cyUyQ3Jlc291cmNl" data-listing-date-sort="1740758400000" data-listing-file-modified-sort="1741892409969" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="34">
 <div class="thumbnail"><a href="./posts/usefullresource/index.html" class="no-external">
 
 <img loading="lazy" src="./posts/usefullresource/images.png" class="thumbnail-image">
@@ -433,7 +631,7 @@ Tony D
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="7" data-categories="bmV3cyUyQ2NvZGUlMkNhbmFseXNpcw==" data-listing-date-sort="952704000000" data-listing-file-modified-sort="1741892409958" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="9">
+<div class="quarto-post image-right" data-index="12" data-categories="bmV3cyUyQ2NvZGUlMkNhbmFseXNpcw==" data-listing-date-sort="952704000000" data-listing-file-modified-sort="1741892409958" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="9">
 <div class="thumbnail"><a href="./posts/post-with-code/index.html" class="no-external">
 
 <img loading="lazy" src="./posts/post-with-code/image.jpg" class="thumbnail-image">
@@ -467,7 +665,7 @@ Harlow Malloc
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="8" data-categories="bmV3cw==" data-listing-date-sort="952444800000" data-listing-file-modified-sort="1741892409971" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="32">
+<div class="quarto-post image-right" data-index="13" data-categories="bmV3cw==" data-listing-date-sort="952444800000" data-listing-file-modified-sort="1741892409971" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="32">
 <div class="thumbnail"><a href="./posts/welcome/index.html" class="no-external">
 
 <p class="card-img-top"><img src="posts/welcome/thumbnail.jpg"  class="thumbnail-image card-img"/></p>
@@ -587,6 +785,57 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       container: window.document.getElementById('quarto-embedded-source-code-modal')
     });
     clipboardModal.on('success', onCopySuccess);
+  }
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
@@ -916,7 +1165,21 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
+</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Tech blog"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">listing:</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">  contents: posts</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">  sort: "date desc"</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">  type: default</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">  categories: true</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">  sort-ui: false</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">  filter-ui: false</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="an">page-layout:</span><span class="co"> full</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="an">title-block-banner:</span><span class="co"> true</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

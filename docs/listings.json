@@ -2,6 +2,30 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/r_code_optimization/index.html",
+      "/posts/copilot/index.html",
+      "/posts/python_code_optimization/index.html",
+      "/posts/versioncontrolpython/index.html",
+      "/posts/Rpackage/index.html",
+      "/posts/CPUGPU/index.html",
+      "/posts/Classification Metrics/index.html",
+      "/posts/web_scraping_in_R_with_rvest/index.html",
+      "/posts/run_ai_local/index.html",
+      "/posts/subscribeYouTubeviaemail/index.html",
+      "/posts/versioncontrol/index.html",
+      "/posts/usefullresource/index.html",
+      "/posts/post-with-code/index.html",
+      "/posts/welcome/index.html"
+    ]
+  },
+  {
+    "listing": "/posts.html",
+    "items": [
+      "/posts/r_code_optimization/index.html",
+      "/posts/copilot/index.html",
+      "/posts/python_code_optimization/index.html",
+      "/posts/versioncontrolpython/index.html",
+      "/posts/Rpackage/index.html",
       "/posts/CPUGPU/index.html",
       "/posts/Classification Metrics/index.html",
       "/posts/web_scraping_in_R_with_rvest/index.html",

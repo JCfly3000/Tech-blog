@@ -1,0 +1,141 @@
+---
+title: "Version control for Python with uv"
+
+author: "Tony D"
+execute:
+  warning: false
+  error: false
+
+  
+date: "2025-03-14"
+categories: 
+  - Tool
+  - Python
+  
+image: "images.png"
+
+jupyter: python3
+---
+
+-   🚀 A single tool to replace `pip`, `pip-tools`, `pipx`, `poetry`, `pyenv`, `twine`, `virtualenv`, and more.
+
+-   ⚡️ [10-100x faster](https://github.com/astral-sh/uv/blob/main/BENCHMARKS.md) than `pip`.
+
+-   🗂️ Provides [comprehensive project management](https://github.com/astral-sh/uv?tab=readme-ov-file#projects), with a [universal lockfile](https://docs.astral.sh/uv/concepts/projects/layout#the-lockfile).
+
+![](images/clipboard-203636132.png)
+
+# install
+
+```{python}
+#| eval: false
+!pip install uv
+```
+
+# create project in current folder
+
+```{python}
+#| eval: false
+!uv init
+```
+
+# show python version
+
+```{python}
+!uv python list --only-installed
+```
+
+# chose python version
+
+```{python}
+#| eval: false
+!uv python pin 3.13
+```
+
+# install pacakge
+
+```{python}
+#| eval: false
+!uv add siuba
+```
+
+# show pacakge
+
+```{python}
+#| eval: false
+!uv tree
+```
+
+# delete pacakge
+
+```{python}
+#| eval: false
+!uv remove rich
+```
+
+
+# update lock file
+
+```{python}
+#| eval: false
+!uv lock --upgrade
+```
+
+
+# Locking requirements
+
+```{python}
+#| eval: false
+uv pip compile pyproject.toml -o requirements.txt
+```
+
+
+# check lock file and current environment
+```{python}
+#| eval: false
+!uv lock --check
+```
+
+
+
+
+# Sync the project's dependencies with the environment
+
+```{python}
+#| eval: false
+!uv sync
+```
+
+
+# using uv with script header
+
+## there is no rich package in python
+
+```{python}
+#| eval: false
+try:
+    import rich
+    print('pacakge installed')
+except ImportError as e:
+    print('pacakge not installed')
+    pass  # module doesn't exist, deal with it.
+```
+
+## but can add rich package in script
+
+```{.python file.name='test.py'}
+#| eval: false
+
+{{< include test.py >}}
+
+```
+
+## run .py with uv
+
+```{python}
+!uv run test.py
+```
+
+# reference:
+
+https://github.com/astral-sh/uv

@@ -1,0 +1,119 @@
+---
+title: "R code optimization with lintr and styler"
+author: "Tony D"
+execute:
+  warning: false
+  error: false
+
+date: "2025-03-15"
+categories: 
+  - Tool
+  - R
+  
+image: "images/my screenshots 2.png"
+
+---
+
+pacakge for R code optimization
+
+# lintr
+
+{lintr} provides static code analysis for R. It checks for adherence to a given style, identifying syntax errors and possible semantic issues, then reports them to you so you can take action. Watch lintr in action in the following animation:
+
+
+https://github.com/r-lib/lintr
+
+
+```{r}
+pak::pkg_install("lintr")
+```
+
+```{r}
+library(lintr)
+```
+
+
+```{r}
+lint("
+a = 123
+    c=5
+")
+```
+
+```{r}
+lint("test.R")
+```
+
+
+
+# styler
+
+
+styler formats your code according to the tidyverse style guide (or your custom style guide) so you can direct your attention to the content of your code. It helps to keep the coding style consistent across projects and facilitate collaboration. You can access styler through
+
+https://github.com/r-lib/styler
+
+
+
+```{r}
+pak::pkg_install("styler")
+```
+
+
+```{r}
+library(styler)
+```
+
+```{r}
+style_text("
+
+a = 3
+
+small_Car='Toyota'
+Big=330
+
+
+")
+```
+
+## Before
+
+
+```{r}
+#| eval: false
+library("dplyr")
+
+   Good <- 1
+applePie <- Good + 1
+    Peter <- d + 1
+
+```
+
+
+
+## Auto formating
+
+```{r filename="test.R"}
+style_file("test.R")
+```
+After
+
+```{r}
+#| eval: false
+library("dplyr")
+
+Good <- 1
+applePie <- Good + 1
+Peter <- d + 1
+
+```
+
+
+
+
+
+# reference
+
+
+
+

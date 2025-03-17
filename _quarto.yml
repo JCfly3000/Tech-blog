@@ -18,6 +18,15 @@ website:
 
 format:
   html:
+    toc: true
+    toc-title: 'On this page'
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+    code-copy: true
+    
     theme:
       - cosmo
       - brand
