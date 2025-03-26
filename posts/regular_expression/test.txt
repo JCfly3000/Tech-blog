@@ -1,0 +1,61 @@
+---
+title: "正则表达式代码"
+subtitle: "regular expression"
+author: "Tony D"
+date: "2025-03-25"
+
+categories: 
+  - Tool
+  - R
+  - Python
+  
+image: "images/Regular-Expression.jpg"
+
+execute:
+  warning: false
+  error: false
+  eval: false
+---
+
+Top useful Linux command regular expression
+
+# R
+
+## view
+
+
+```{r}
+library(stringr)
+```
+
+
+```{r}
+library(stringr)
+pattern='cat'
+str_view_all("The cat sat on the mat with another cat.", pattern)
+
+```
+
+
+## Extract all numbers from a string:
+
+
+```{r}
+pattern="\\d+"
+str_view("I bought 3 apples, 12 bananas, and 5 oranges.",pattern)
+```
+
+
+```{r}
+str_extract_all("I bought 3 apples, 12 bananas, and 5 oranges.", pattern) |> unlist()
+
+```
+
+
+
+
+
+# Python
+
+
+

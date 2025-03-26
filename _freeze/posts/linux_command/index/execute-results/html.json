@@ -1,0 +1,12 @@
+{
+  "hash": "1daef8fe1d40632f25d18adaddaeca6b",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: \"Linux系统操作代码\"\nsubtitle: \"Linux command\"\nauthor: \"Tony D\"\ndate: \"2025-03-24\"\n\ncategories: \n  - Tool\n\n  \nimage: \"images/download.jpg\"\n\nexecute:\n  warning: false\n  error: false\n  eval: false\n---\n\nTop useful Linux command\n\n\n# Print word\n\n```{bash}\necho \"Hello world\"\n```\n\n\n# Display the manual of any command\n\n```{bash}\nman pwd\n```\n\n\n# show current working location\n\n```{bash}\npwd\n```\n\n\n# show current working location files\n\n```{bash}\nls -l -h\n```\n\n\n# show current working location files include hidden files\n\n```{bash}\nls -al -h\n```\n\n\n# go to find\n\n```{bash}\ncd Documents \n```\n\n# go back one level up \n\n```{bash}\ncd ../\n```\n\n\n# go back to home\n\n```{bash}\ncd ..\n```\n\n\n# delete file\n\n```{bash}\nrm xxx.txt\n```\n\n\n# delete folder\n\n\n```{bash}\nrm -r  -f LlamaGPTJ-chat\n```\n\n# create folder\n\n```{bash}\nmkdir text_folder\n```\n\n\n# download file from internet\n\n```{bash}\nwget\n```\n\n\n# Change file permissions\n\n```{bash}\nchmod 777 LlamaGPTJ-chat\n```\n\n# show folder size\n\n```{bash}\ndu -sh LlamaGPTJ-chat\n```\n\n\n# install software in mac using brew \n\n```{bash}\n/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\"\n```\n\n\n```{bash}\nbrew --version\n```\n\n# install software in linux\n\n```{bash}\nsudo apt install xxx\n```\n\n\n\n\n\n\n# install software with brew\n\n```{bash}\nbrew install nano\n```\n\n\n\n\n# using nano\n\n## create txt file\n```{bash}\nnano\n```\n\n## edit current txt file\n```{bash}\nnano test.txt\n```\n\n# show file content\n\n```{bash}\ncat test.txt\n```\n\n\n# clear window\n\n```{bash}\nclear\n```\n\n# show username\n\n```{bash}\nwhoami\n```\n\n# download file from internert\n\n```{bash}\nwget xxx\n```\n\nor \n\n```{bash}\ncurl xxx\n```\n\n# find file by name\n\n```{bash}\nsudo find / -name \"python3.9*\"\n```\n\n\n# IP address\n\nFor mac\n\n```{bash}\nipconfig getifaddr en0\n```\n\n\nFor linux\n\n```{bash}\nip address | grep  eth0| grep inet |awk '{print $2}'\n```\n\n# show calendar\n\n```{bash}\ncal\n```\n\n# show running program\n\n```{bash}\ntop\n```\n\n\n\n# kill process\n\nwith id\n\n```{bash}\nkill 1341\n```\n\n\nwith name\n\n```{bash}\npkill - f xxx\n```\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

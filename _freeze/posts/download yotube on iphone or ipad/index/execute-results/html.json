@@ -1,0 +1,15 @@
+{
+  "hash": "eee541d1cb0d4eacefc7224bf8339eab",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"使用iphone或ipad下载youtube\"\n\nauthor: \"Tony D\"\ndate: \"2025-03-12\"\ncategories: \n  - Tool\n\nexecute:\n  warning: false\n  error: false\n  eval: false\n  \n\nimage: \"my screenshots.png\"\n\n---\n\n首先需要确认你的iphone或ipad是可以连接youtube的。\n\n## 1. 用iphone或ipad下载 a-Shell mini app\n\n![](images/paste-7AC33FB9.png)\n\nhttps://apps.apple.com/us/app/a-shell-mini/id1543537943\n\n## 2. 打开a-shell mini运行以下代码安装youtube-dl\n\n::: {.cell}\n\n```{.r .cell-code}\npip install youtube-dl\n```\n:::\n\n如果想要下载高清视频再运行以下代码（可选）：\n\n::: {.cell}\n\n```{.r .cell-code}\npip install gallery-dl\nmkdir bin\ncd bin\ncurl -L https://github.com/holzschu/a-Shell-commands/releases/download/0.1/ffmpeg.wasm -o ffmpeg.wasm\n```\n:::\n\n## 3. 在a-shell mini中用youtube-dl下载youtube视频\n\n找到你想要下载的youtube视频网站地址，在a-shell mini里运行以下代码\n\n::: {.cell}\n\n```{.r .cell-code}\nyoutube-dl https://www.youtube.com/watch?v=FT3ODSg1GFE\n```\n:::\n\n## 4. 使用shortcut app里的SW-DLT自动下载(可选)\n\n如果你觉得每次都要在a-shell mini里打那么长的代码。也可以使用shortcut app。\n\n用iphone或ipad扫描下面二维码下载SW-DLT\n\n![](images/paste-E0173CFB.png){width=\"182\"}\n\n使用方法：\n\n1.复制要下载的youtube视频连接\n\n2.打开shrotcut app点击SW-DLT就会开始自动下载了\n\n打开shrotcut app：\n\n![](images/paste-1755C521.png){width=\"358\"}\n\n点击SW-DLT：\n\n![](images/paste-AB902083.png){width=\"225\"}\n\n## Reference\n\n3 Ways to Run youtube-dl on iOS :https://chrunos.com/youtube-dl-ios/\n\nSW-DLT:https://routinehub.co/shortcut/7284/\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

@@ -1,0 +1,10 @@
+file: thumbnail.jpg
+file_size: 4871
+pin_hash: 36ca7bc477695d6c
+type: file
+title: 'new.thumbnail.jpg: a pinned .jpg file'
+description: ~
+tags: ~
+urls: ~
+created: 20250320T074913Z
+api_version: 1

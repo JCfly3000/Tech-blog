@@ -1,0 +1,15 @@
+{
+  "hash": "3e3edee6ea350c3a34e3e160d7c10054",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"正则表达式代码\"\nsubtitle: \"regular expression\"\nauthor: \"Tony D\"\ndate: \"2025-03-25\"\n\ncategories: \n  - Tool\n  - R\n  - Python\n  \nimage: \"images/Regular-Expression.jpg\"\n\nexecute:\n  warning: false\n  error: false\n  eval: false\n---\n\nTop useful Linux command regular expression\n\n# R\n\n## view\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(stringr)\n```\n:::\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(stringr)\npattern='cat'\nstr_view_all(\"The cat sat on the mat with another cat.\", pattern)\n```\n:::\n\n\n## Extract all numbers from a string:\n\n\n::: {.cell}\n\n```{.r .cell-code}\npattern=\"\\\\d+\"\nstr_view(\"I bought 3 apples, 12 bananas, and 5 oranges.\",pattern)\n```\n:::\n\n\n::: {.cell}\n\n```{.r .cell-code}\nstr_extract_all(\"I bought 3 apples, 12 bananas, and 5 oranges.\", pattern) |> unlist()\n```\n:::\n\n## Extract string between two string:\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\na <- \"STR1 11111 STR2 STR1 22222 STR2,\"\nres <- str_extract_all(a, \"STR1\\\\s*(.*?)\\\\s*STR2\")\nres\n\na=res |> unlist()\n\nprint(paste0(\"first match: \",a[1]))\n      \nprint(paste0(\"second match: \",a[2]))\n```\n:::\n# get 4 length number and 2 length string\n\n- \\\\b: Asserts a word boundary position, ensuring that the match is at the beginning or end of a word.\n\n- \\\\d{4}: Matches exactly four digits.\n\n- [a-zA-Z]{2}: Matches exactly two letters (uppercase or lowercase).\n\n- \\\\b: Asserts another word boundary to ensure the ends at a word boundary.\n\n\n::: {.cell}\n\n```{.r .cell-code}\npattern=\"\\\\b\\\\d{4}[a-zA-Z]{2}\\\\b\"\nstr_view_all(\"The 1234cat sat on the 1245ma with another 4444ee cat.\", pattern)\n```\n:::\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\npattern=\"\\\\b\\\\d{4}[a-zA-Z]{2}\\\\b\"\nmatches <- str_extract_all(\"The 1234cat sat on the 1245ma with another 4444ee cat.\",pattern)\nmatches\n```\n:::\n\n## match sperical \n\nregular expression for getting string between '/' and '$' on \"The /1234cat$ sat on the 1245ma with another 4444ee cat.\"\n\n::: {.cell}\n\n```{.r .cell-code}\npattern= \"/(.*?)\\\\$\"\nstr_view_all(\"The /1234cat$ sat on the 1245ma with another 4444ee cat.\", pattern)\n```\n:::\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\npattern= \"/(.*?)\\\\$\"\nmatches <- str_extract_all(\"The /1234cat$ sat on the 1245ma with another 4444ee cat.\",pattern)\nmatches\n```\n:::\n\n\n\n# Python\n\n\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

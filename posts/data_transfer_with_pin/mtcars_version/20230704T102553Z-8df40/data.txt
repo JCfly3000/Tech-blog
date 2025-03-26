@@ -1,0 +1,9 @@
+file: mtcars_version.rds
+file_size: 425
+pin_hash: 8df403c9bfd86c78
+type: rds
+title: 'mtcars_version: a pinned 6 x 11 data frame'
+description: ~
+tags: ~
+created: 20230704T102553Z
+api_version: 1

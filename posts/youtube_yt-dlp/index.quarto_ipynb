@@ -1,0 +1,188 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"Youtube下载工具：yt-dlp\"\n",
+        "subtitle: \"Youtube download tool:yt-dlp\"\n",
+        "author: \"Tony Duan\"\n",
+        "\n",
+        "date: \"2025-03-11\"\n",
+        "\n",
+        "categories: \n",
+        "  - Tool\n",
+        "  - R\n",
+        "  - Python\n",
+        "  \n",
+        "\n",
+        "  \n",
+        "execute:\n",
+        "  warning: false\n",
+        "  error: false\n",
+        "  eval: false\n",
+        "\n",
+        "image: 'images/download.jpg'\n",
+        "---\n",
+        "\n",
+        "yt-dlp is a feature-rich command-line audio/video downloader with support for [thousands of sites](https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md). The project is a fork of [youtube-dl](https://github.com/ytdl-org/youtube-dl) based on the now inactive [youtube-dlc](https://github.com/blackjack4494/yt-dlc).\n",
+        "\n",
+        "https://github.com/yt-dlp/yt-dlp\n",
+        "\n",
+        "# Download yt-dlp\n"
+      ],
+      "id": "6ca2b737"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "!pip install -U \"yt-dlp[default]\""
+      ],
+      "id": "65448807",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# update yt-dlp"
+      ],
+      "id": "639ae7d3"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "!pip install yt-dlp --upgrade"
+      ],
+      "id": "6ff1b309",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# check version"
+      ],
+      "id": "032a1fee"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "!yt-dlp --version"
+      ],
+      "id": "0dd1c1d7",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Start download youtube\n",
+        "\n",
+        "::: panel-tabset\n",
+        "\n",
+        "\n",
+        "# Command line\n",
+        "\n",
+        "\n",
+        "## download video"
+      ],
+      "id": "eeef2c91"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "!yt-dlp --cookies-from-browser chrome 'https://www.youtube.com/watch?v=ULRVwRmfCmM'"
+      ],
+      "id": "0be05980",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## download video to mp3 format"
+      ],
+      "id": "b4eeba93"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "!yt-dlp --cookies-from-browser chrome -x --audio-format mp3 --audio-quality 0 'https://www.youtube.com/watch?v=FkOpwodhROI'"
+      ],
+      "id": "5df7225f",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## download video with timestamp\n"
+      ],
+      "id": "fb0465b2"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "!yt-dlp --cookies-from-browser chrome --download-sections '*00:02-03:00' 'https://www.youtube.com/watch?v=FkOpwodhROI'"
+      ],
+      "id": "50239f76",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## download video to mp4 with timestamp\n"
+      ],
+      "id": "759befec"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "!yt-dlp -f mp4 --cookies-from-browser chrome  --download-sections '*00:02-03:00'  'https://www.youtube.com/watch?v=FkOpwodhROI'"
+      ],
+      "id": "d2179345",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# R\n",
+        "\n",
+        "# Python\n",
+        "\n",
+        ":::\n",
+        "\n",
+        "=\n"
+      ],
+      "id": "6c8dc317"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/Library/Frameworks/Python.framework/Versions/3.13/share/jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

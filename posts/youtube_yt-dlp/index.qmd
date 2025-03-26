@@ -1,0 +1,92 @@
+---
+title: "Youtube下载工具：yt-dlp"
+subtitle: "Youtube download tool:yt-dlp"
+author: "Tony Duan"
+
+date: "2025-03-11"
+
+categories: 
+  - Tool
+  - R
+  - Python
+  
+
+  
+execute:
+  warning: false
+  error: false
+  eval: false
+
+image: 'images/download.jpg'
+---
+
+yt-dlp is a feature-rich command-line audio/video downloader with support for [thousands of sites](https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md). The project is a fork of [youtube-dl](https://github.com/ytdl-org/youtube-dl) based on the now inactive [youtube-dlc](https://github.com/blackjack4494/yt-dlc).
+
+https://github.com/yt-dlp/yt-dlp
+
+# Download yt-dlp
+
+
+```{python}
+!pip install -U "yt-dlp[default]"
+```
+
+# update yt-dlp
+
+```{python}
+!pip install yt-dlp --upgrade
+```
+
+# check version
+
+```{python}
+!yt-dlp --version
+```
+
+
+## Start download youtube
+
+::: panel-tabset
+
+
+# Command line
+
+
+## download video
+
+```{python}
+!yt-dlp --cookies-from-browser chrome 'https://www.youtube.com/watch?v=ULRVwRmfCmM'
+```
+
+## download video to mp3 format
+
+```{python}
+!yt-dlp --cookies-from-browser chrome -x --audio-format mp3 --audio-quality 0 'https://www.youtube.com/watch?v=FkOpwodhROI'
+```
+
+## download video with timestamp
+
+
+```{python}
+!yt-dlp --cookies-from-browser chrome --download-sections '*00:02-03:00' 'https://www.youtube.com/watch?v=FkOpwodhROI'
+```
+
+
+## download video to mp4 with timestamp
+
+
+```{python}
+!yt-dlp -f mp4 --cookies-from-browser chrome  --download-sections '*00:02-03:00'  'https://www.youtube.com/watch?v=FkOpwodhROI'
+```
+
+
+
+# R
+
+# Python
+
+:::
+
+=
+
+

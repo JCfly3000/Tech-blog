@@ -100,6 +100,21 @@ web <- read_html_live(url)
 ```
 
 
+```{r}
+web$view()
+```
+
+
+```{r}
+web$get_scroll_position()
+```
+
+```{r}
+web$scroll_into_view(css='.bs5__col-lg-3:nth-child(1) li:nth-child(5) a')
+```
+
+
+
 
 ```{r}
 url_rating='https://www.whiskybase.com/profile/georges'

@@ -1,0 +1,99 @@
+---
+title: "使用git代码版本管理"
+subtitle: "Using git for version control"
+author: "Tony Duan"
+
+date: "2025-03-25"
+
+categories: 
+  - Tool
+  - R
+  - Python
+
+  
+execute:
+  warning: false
+  error: false
+  eval: false
+
+image: 'images/1_mtsk3fQ_BRemFidhkel3dA.png'
+---
+
+
+# download github desktop
+
+https://desktop.github.com/download/
+
+
+# set up github account
+
+https://github.com/
+
+
+# Clone a repository into a new directory
+git clone <repository_url>
+
+# Initialize a new Git repository
+git init
+
+# Add to the staging area
+git add <file_name>
+git add .
+
+# Commit changes to the repository
+git commit -m "commit message"
+
+
+# View the commit history
+git log
+
+# Check the status of changes
+git status
+
+# Show the changes in the working directory
+git diff
+
+# Create a new branch
+git branch <branch_name>
+
+# List all branches
+git branch
+
+# Switch to a different branch
+git checkout <branch_name>
+
+# Create and switch to a new branch
+git checkout -b <branch_name>
+
+# Merge a branch into the current branch
+git merge <branch_name>
+
+# changes from a remote repository
+git pull
+
+# Push changes to a remote repository
+git push
+
+# Delete a branch
+git branch -d <branch_name>
+git push origin --delete <branch_name>
+
+# Stash changes
+git stash
+
+# Apply stashed changes
+git stash apply
+
+# Show stashed changes
+git stash list
+
+# Remove a file from the staging area
+git reset <file_name>
+
+# delete the last commit with commit id
+git reset --soft HEAD~1
+git reset --hard HEAD~1
+
+
+
+

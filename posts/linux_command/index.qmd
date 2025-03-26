@@ -1,0 +1,251 @@
+---
+title: "Linux系统操作代码"
+subtitle: "Linux command"
+author: "Tony D"
+date: "2025-03-24"
+
+categories: 
+  - Tool
+
+  
+image: "images/download.jpg"
+
+execute:
+  warning: false
+  error: false
+  eval: false
+---
+
+Top useful Linux command
+
+
+# Print word
+
+```{bash}
+echo "Hello world"
+```
+
+
+# Display the manual of any command
+
+```{bash}
+man pwd
+```
+
+
+# show current working location
+
+```{bash}
+pwd
+```
+
+
+# show current working location files
+
+```{bash}
+ls -l -h
+```
+
+
+# show current working location files include hidden files
+
+```{bash}
+ls -al -h
+```
+
+
+# go to find
+
+```{bash}
+cd Documents 
+```
+
+# go back one level up 
+
+```{bash}
+cd ../
+```
+
+
+# go back to home
+
+```{bash}
+cd ..
+```
+
+
+# delete file
+
+```{bash}
+rm xxx.txt
+```
+
+
+# delete folder
+
+
+```{bash}
+rm -r  -f LlamaGPTJ-chat
+```
+
+# create folder
+
+```{bash}
+mkdir text_folder
+```
+
+
+# download file from internet
+
+```{bash}
+wget
+```
+
+
+# Change file permissions
+
+```{bash}
+chmod 777 LlamaGPTJ-chat
+```
+
+# show folder size
+
+```{bash}
+du -sh LlamaGPTJ-chat
+```
+
+
+# install software in mac using brew 
+
+```{bash}
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+
+```{bash}
+brew --version
+```
+
+# install software in linux
+
+```{bash}
+sudo apt install xxx
+```
+
+
+
+
+
+
+# install software with brew
+
+```{bash}
+brew install nano
+```
+
+
+
+
+# using nano
+
+## create txt file
+```{bash}
+nano
+```
+
+## edit current txt file
+```{bash}
+nano test.txt
+```
+
+# show file content
+
+```{bash}
+cat test.txt
+```
+
+
+# clear window
+
+```{bash}
+clear
+```
+
+# show username
+
+```{bash}
+whoami
+```
+
+# download file from internert
+
+```{bash}
+wget xxx
+```
+
+or 
+
+```{bash}
+curl xxx
+```
+
+# find file by name
+
+```{bash}
+sudo find / -name "python3.9*"
+```
+
+
+# IP address
+
+For mac
+
+```{bash}
+ipconfig getifaddr en0
+```
+
+
+For linux
+
+```{bash}
+ip address | grep  eth0| grep inet |awk '{print $2}'
+```
+
+# show calendar
+
+```{bash}
+cal
+```
+
+# show running program
+
+```{bash}
+top
+```
+
+
+
+# kill process
+
+with id
+
+```{bash}
+kill 1341
+```
+
+
+with name
+
+```{bash}
+pkill - f xxx
+```
+
+
+
+
+
+
+
+
+
+

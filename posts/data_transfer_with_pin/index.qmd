@@ -1,0 +1,149 @@
+---
+title: "使用R pin数据传输"
+subtitle: "For data transfer between local and cloud"
+author: "Tony Duan"
+
+date: "2025-03-15"
+
+categories: 
+  - Tool
+  - R
+
+  
+execute:
+  warning: false
+  error: false
+  eval: false
+  
+---
+
+Package Pins for Upload and download data/model to online drive.
+
+![](images/Screenshot 2023-07-04 at 6.25.10 PM.png)
+
+```{r}
+#| eval: false
+pak::pkg_install("pins")
+```
+
+```{r}
+library(pins)
+library(tidyverse)
+```
+
+
+# local board
+
+## use local location as a board
+
+```{r}
+board=board_folder(getwd())
+```
+
+
+```{r}
+board %>% pin_list()
+```
+
+
+## upload to local board
+
+```{r}
+board %>% pin_write(head(mtcars), "mtcars")
+```
+
+## download from local board
+
+```{r}
+a=board %>% pin_read("mtcars")
+a
+```
+
+## upload file to board
+
+```{r}
+board %>% pin_upload('thumbnail.jpg','new.thumbnail.jpg')
+```
+
+## list file in the board
+
+```{r}
+board %>% pin_list()
+```
+
+
+## download file from board
+
+```{r}
+board %>% pin_download('new.thumbnail.jpg')
+```
+
+
+
+# online one drive board 
+
+
+##  one drive as as a board
+```{r}
+od <- Microsoft365R::get_personal_onedrive()
+board365 <- board_ms365(od, "myboard")
+```
+
+
+## upload to one drive board
+
+```{r}
+board365 %>% pin_write(tail(mtcars), "mtcars")
+```
+
+## download from one drive board
+
+```{r}
+board365 %>% pin_read("mtcars")
+```
+
+## list file in the board
+
+```{r}
+board %>% pin_list()
+```
+
+
+
+
+# using version
+
+upload two data to mtcars with version control
+
+```{r}
+board %>% pin_write(tail(mtcars), "mtcars_version",versioned = TRUE)
+board %>% pin_write(head(mtcars), "mtcars_version",versioned = TRUE)
+```
+
+## there will be two version
+
+```{r}
+board %>% pin_versions("mtcars_version")
+```
+
+## download version file from board
+
+```{r}
+# board %>% pin_read("mtcars_version",version = '20230704T095208Z-8df40')
+board %>% pin_read("mtcars_version",version = .Last.value$version[[1]])
+```
+
+
+
+# Reference
+
+RStudio's {pins} package: what it is, how it works, and what it can do for you! \|\| RStudio https://www.youtube.com/watch?v=3Yk6U_XqxNo
+
+Javier Luraschi \| Datasets in Reproducible Research with 'pins' \| RStudio (2020) https://www.youtube.com/watch?v=xwItECnphRU
+
+pins doc:
+https://pins.rstudio.com/
+
+Ep 5: Keeping data up-to-date with 6 pins workflows | Posit Team:
+https://www.youtube.com/watch?v=t8A-ysXinpE
+

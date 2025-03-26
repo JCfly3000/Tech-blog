@@ -1,0 +1,15 @@
+{
+  "hash": "bc53bb006acbe09acb2ad55c38febc12",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"密码管理\"\nsubtitle: \"Password management\"\nauthor: \"Tony D\"\ndate: \"2025-03-25\"\n\ncategories: \n  - Tool\n  - R\n  - Python\n\n  \nimage: \"images/password-management.png\"\n\nexecute:\n  warning: false\n  error: false\n\n---\n\nPassword management in R and Python\n\n# in R\n\n## Option 1 using source\n\n\n### create pass.r and keep it yourself\n\n::: {.cell filename='pass.r'}\n\n```{.r .cell-code}\npass1='123'\n```\n:::\n\n\n### source the pass.r in the main code\n\n::: {.cell}\n\n```{.r .cell-code}\nsource('pass.r')\npass1\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] \"123\"\n```\n\n\n:::\n:::\n\n\n\n## Option 2 Use Environment variables\n\n### open /home/.Renviron\n\n::: {.cell}\n\n```{.r .cell-code}\nusethis::edit_r_environ()\n```\n:::\n\n\n### save following password in .Renviron\n::: {.cell}\n\n```{.r .cell-code}\nfake_userid = \"username\"\nfake_pwd = \"password\"   \n```\n:::\n\n### get it back\n\n::: {.cell}\n\n```{.r .cell-code}\nSys.getenv(\"fake_userid\")\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] \"username\"\n```\n\n\n:::\n\n```{.r .cell-code}\nSys.getenv(\"fake_pwd\")\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] \"password\"\n```\n\n\n:::\n:::\n\n## Option 3 using keyringr package\n\n::: {.cell}\n\n```{.r .cell-code}\npak::pak(\"keyring\")\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(keyring)\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\n# Interactively save a secret. This avoids typing the value of the secret\n# into the console as this could be recorded in your `.Rhistory`\nkey_set(\"account_fake_001\")\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\n# Later retrieve that secret\nkey_get(\"account_fake_001\")\n```\n:::\n\n\n# in Python\n\n## Option 1 using import\n\n### create pass_file.py and keep it yourself\n\n::: {.cell filename='pass_file.py'}\n\n```{.r .cell-code}\npass1='123'\n```\n:::\n\n\n### call pass_file.py with import\n\n::: {.cell}\n\n```{.python .cell-code}\nfrom pass_file import *\n#from pass_file import acct\npass_w\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n'123'\n```\n\n\n:::\n\n```{.python .cell-code}\nacct_w\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n'222'\n```\n\n\n:::\n:::\n\n\n\n\n\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

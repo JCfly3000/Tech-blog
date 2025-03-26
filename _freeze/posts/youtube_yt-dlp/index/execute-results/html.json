@@ -1,0 +1,12 @@
+{
+  "hash": "3b6ecdc40c38240057785017faeb5630",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: \"Youtube下载工具：yt-dlp\"\nsubtitle: \"Youtube download tool:yt-dlp\"\nauthor: \"Tony Duan\"\n\ndate: \"2025-03-11\"\n\ncategories: \n  - Tool\n  - R\n  - Python\n  \n\n  \nexecute:\n  warning: false\n  error: false\n  eval: false\n\nimage: 'images/download.jpg'\n---\n\nyt-dlp is a feature-rich command-line audio/video downloader with support for [thousands of sites](https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md). The project is a fork of [youtube-dl](https://github.com/ytdl-org/youtube-dl) based on the now inactive [youtube-dlc](https://github.com/blackjack4494/yt-dlc).\n\nhttps://github.com/yt-dlp/yt-dlp\n\n# Download yt-dlp\n\n::: {#1333e2b0 .cell execution_count=1}\n``` {.python .cell-code}\n!pip install -U \"yt-dlp[default]\"\n```\n:::\n\n\n# update yt-dlp\n\n::: {#990d7c37 .cell execution_count=2}\n``` {.python .cell-code}\n!pip install yt-dlp --upgrade\n```\n:::\n\n\n# check version\n\n::: {#871a1920 .cell execution_count=3}\n``` {.python .cell-code}\n!yt-dlp --version\n```\n:::\n\n\n## Start download youtube\n\n::: panel-tabset\n\n\n# Command line\n\n\n## download video\n\n::: {#a0b61fe1 .cell execution_count=4}\n``` {.python .cell-code}\n!yt-dlp --cookies-from-browser chrome 'https://www.youtube.com/watch?v=ULRVwRmfCmM'\n```\n:::\n\n\n## download video to mp3 format\n\n::: {#b9830ed7 .cell execution_count=5}\n``` {.python .cell-code}\n!yt-dlp --cookies-from-browser chrome -x --audio-format mp3 --audio-quality 0 'https://www.youtube.com/watch?v=FkOpwodhROI'\n```\n:::\n\n\n## download video with timestamp\n\n::: {#6b6fbb88 .cell execution_count=6}\n``` {.python .cell-code}\n!yt-dlp --cookies-from-browser chrome --download-sections '*00:02-03:00' 'https://www.youtube.com/watch?v=FkOpwodhROI'\n```\n:::\n\n\n## download video to mp4 with timestamp\n\n::: {#be3be02a .cell execution_count=7}\n``` {.python .cell-code}\n!yt-dlp -f mp4 --cookies-from-browser chrome  --download-sections '*00:02-03:00'  'https://www.youtube.com/watch?v=FkOpwodhROI'\n```\n:::\n\n\n# R\n\n# Python\n\n:::\n\n=\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

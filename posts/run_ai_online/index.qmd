@@ -1,0 +1,223 @@
+---
+title: "Run AI model online"
+
+author: "Tony D"
+date: "2025-03-18"
+
+categories: 
+  - AI
+  - R
+  - Python
+  
+image: "images/S__6840322.jpg"
+
+execute:
+  warning: false
+  error: false
+  eval: false
+---
+
+run LLM model online with ellmer or chatter
+
+# ellmer for R
+
+```{r}
+pak::pkg_install('ellmer')
+library(ellmer)
+```
+## google gemini
+
+get text from pdf
+
+```{r}
+library(tidyverse)
+read_lines('story.txt')[1:5] |> 
+  stringr::str_wrap(width = 50) |> 
+  paste(collapse = '\n') |> 
+  paste('...') |> 
+  cat()
+```
+
+```{r}
+library(ellmer)
+chat <- chat_openai(
+  system_prompt = "
+  You are an information extractor AI.
+  The user will give you a story and you will 
+  provide the following information in the response:
+  
+  Name of main character: <Insert name here>
+  
+  Names of supporting characters: <Insert comma-
+    separated list of names here>
+  
+  One-Sentence Summary: <Insert summary here. 
+    Use one sentence only>
+  
+  Lesson learned: <Summarize what the hero 
+    learned in two sentences>
+  "
+)
+## Using model = "gpt-4o".
+```
+
+
+
+
+
+
+
+
+## ollama on local
+
+### set up ollama local
+
+```{r}
+library(ollamar)
+ollamar::pull("llama3.1")
+```
+
+```{r}
+ollamar::list_models()
+```
+
+### difine model
+
+```{r}
+chat=chat_ollama(
+  system_prompt = NULL,
+  turns = NULL,
+  base_url = "http://localhost:11434",
+  model="llama3.1",
+  seed = NULL,
+  api_args = list(),
+  echo = NULL
+)
+
+chat$get_model()
+```
+
+
+### run LLM
+
+```{r}
+chat$chat("Tell me three jokes about statisticians")
+```
+
+### run on console
+
+```{r}
+live_console(chat)
+```
+
+![](images/clipboard-52512780.png){width="700"}
+
+### check token usage
+
+```{r}
+token_usage()
+```
+
+
+
+
+# chattr LLM pacakge for R
+
+## Step 1 Install package
+
+```{r}
+#remotes::install_github("mlverse/chattr")
+```
+
+```{r}
+library(chattr)
+```
+
+# Step 2 set key
+
+-   Login at https://platform.openai.com/
+
+-   Goto Settings (gear icon on top right)
+
+-   Find API Keys from menu on left
+
+-   Follow the process to Create new secret key
+
+-   Copy your secret key (it will only show once so make sure you copy it)
+
+```{r}
+Sys.setenv(OpenAI_API_KEY="sk-xxxxxxxx")
+```
+
+## Step 3 run ChatGPT as background job
+
+### select model
+
+```{r}
+#copilot do not need OpenAI_API_KEY
+chattr_use("copilot")
+```
+
+### add prompt
+
+```{r}
+chattr_defaults(prompt = "{readLines(system.file('prompt/base.txt', package = 'chattr'))}")
+```
+
+### run ChatGPT as background jobs
+
+Do not use Copilot (GitHub) model for chattr(). Github will block this behavior.
+
+```{r}
+# run 
+chattr_app(as_job = TRUE)
+```
+
+![](images/clipboard-495301195.png)
+
+Done!
+
+![](https://blogs.rstudio.com/ai/posts/2024-04-04-chat-with-llms-using-chattr/images/buttons.png)
+
+## Or setup auto open Chat GPT when Rstudio start
+
+### Step 1 find Rprofile file
+
+```{r}
+#install.packages("usethis")  # Install if not already installed
+usethis::edit_r_profile()
+```
+
+### Step 2 edit Rprofile file as below
+
+```{r filename='.RProfile'}
+#|eval: false
+# Load chattr app after RStudio is fully loaded
+setHook("rstudio.sessionInit", function(newSession) {
+  if (newSession) {
+    Sys.sleep(2)  # Wait 2 seconds before starting chattr to ensure RStudio is ready
+    tryCatch({
+      library(chattr)
+      chattr_use("copilot")
+      #Sys.setenv("OPENAI_API_KEY" = "your-api-key-here")
+      chattr_defaults(prompt = "{readLines(system.file('prompt/base.txt', package = 'chattr'))}")
+
+      chattr_app(as_job = TRUE)
+    }, error = function(e)
+      message("Error starting chattr: ", e$message))
+  }
+}, action = "append")
+```
+
+
+# chatlas for python
+
+
+https://github.com/posit-dev/chatlas
+
+
+
+
+
+
+

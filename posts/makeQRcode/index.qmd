@@ -1,0 +1,72 @@
+---
+title: "Make QR code"
+
+author: "Tony D"
+date: "2025-03-16"
+categories: 
+  - Tool
+  - R
+  - Python
+  
+image: "some_file.png"
+---
+
+Making QR code with R and Python
+
+
+# R
+
+```{r}
+pak::pkg_install('qrcode')
+```
+
+
+
+```{r}
+library(qrcode)
+code=qr_code("https://rfor.us/posit2024slides") 
+```
+
+
+Save the QR code as a SVG file
+
+```{r}
+generate_svg(code, filename = "qr.svg")
+```
+
+
+```{r}
+plot(code)
+```
+
+
+
+
+
+# Python
+
+```{python}
+#| eval: false
+!pip install qrcode scikit-image
+```
+
+
+
+```{python}
+import qrcode
+img = qrcode.make("https://rfor.us/posit2024slides")
+type(img)  # qrcode.image.pil.PilImage
+```
+
+save the QR code as a PNG file
+
+```{python}
+img.save("some_file.png")
+```
+
+```{python}
+from skimage import io
+img = io.imread("some_file.png")
+io.imshow(img)
+```
+

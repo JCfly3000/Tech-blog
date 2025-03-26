@@ -1,0 +1,115 @@
+---
+title: "密码管理"
+subtitle: "Password management"
+author: "Tony D"
+date: "2025-03-25"
+
+categories: 
+  - Tool
+  - R
+  - Python
+
+  
+image: "images/password-management.png"
+
+execute:
+  warning: false
+  error: false
+
+---
+
+Password management in R and Python
+
+# in R
+
+## Option 1 using source
+
+
+### create pass.r and keep it yourself
+
+```{r filename='pass.r'}
+pass1='123'
+```
+
+
+### source the pass.r in the main code
+
+```{r}
+source('pass.r')
+pass1
+```
+
+
+
+## Option 2 Use Environment variables
+
+### open /home/.Renviron
+
+```{r}
+usethis::edit_r_environ()
+```
+
+
+### save following password in .Renviron
+```{r}
+fake_userid = "username"
+fake_pwd = "password"   
+```
+
+### get it back
+
+```{r}
+Sys.getenv("fake_userid")
+Sys.getenv("fake_pwd")
+```
+
+## Option 3 using keyringr package
+
+```{r}
+#| eval: false
+pak::pak("keyring")
+```
+
+```{r}
+library(keyring)
+```
+
+```{r}
+#| eval: false
+# Interactively save a secret. This avoids typing the value of the secret
+# into the console as this could be recorded in your `.Rhistory`
+key_set("account_fake_001")
+```
+
+```{r}
+#| eval: false
+# Later retrieve that secret
+key_get("account_fake_001")
+```
+
+
+# in Python
+
+## Option 1 using import
+
+### create pass_file.py and keep it yourself
+
+```{r filename='pass_file.py'}
+pass1='123'
+```
+
+
+### call pass_file.py with import
+
+```{python}
+from pass_file import *
+#from pass_file import acct
+pass_w
+acct_w
+```
+
+
+
+
+
+

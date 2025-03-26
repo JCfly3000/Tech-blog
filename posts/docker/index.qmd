@@ -1,0 +1,222 @@
+---
+title: "Docker使用介绍"
+subtitle: "Docker intro"
+author: "Tony D"
+date: "2025-03-24"
+
+categories: 
+  - Tool
+
+  
+image: "images/1_2QYim4bJ9LyO1pziQNJXMA.jpg"
+
+execute:
+  warning: false
+  error: false
+  eval: false
+---
+
+Docker intro
+
+![](images/my screenshots 1.png)
+
+# Download docker
+
+https://www.docker.com/
+
+# Login docker hub
+
+https://hub.docker.com/
+
+# check docker version
+
+```{bash}
+docker --version
+```
+
+# open docker app and check docker info
+
+```{bash}
+docker info
+```
+
+# dowload docker image from docker hub
+
+```{bash}
+docker pull alpine
+```
+
+# list all download docker image
+
+```{bash}
+docker images
+```
+
+
+# run docker from image
+
+```{bash}
+docker run alpine
+```
+
+
+# list all running docker containers 
+
+```{bash}
+docker ps
+```
+
+
+
+# list all docker containers which running or run before
+
+```{bash}
+docker ps -a --size
+```
+
+
+# run docker alpine linux terminal in mac
+
+
+```{bash}
+docker run -it --rm alpine /bin/ash
+```
+
+
+
+
+# Docker file
+
+
+A Dockerfile is a text file with instructions to build a Docker Image
+
+When we run a Dockerfile, Docker image is created
+
+When we run the docker image, containers are created
+
+There is a example to bulid a Rstudio Docker with tidyverse
+
+## create Docker file
+
+
+```{r filename='tidyverse_4.3.3.Dockerfile'}
+FROM docker.io/library/ubuntu:jammy
+
+ENV R_VERSION="4.3.3"
+ENV R_HOME="/usr/local/lib/R"
+ENV TZ="Etc/UTC"
+
+COPY scripts/install_R_source.sh /rocker_scripts/install_R_source.sh
+RUN /rocker_scripts/install_R_source.sh
+
+ENV CRAN="https://p3m.dev/cran/__linux__/jammy/2024-04-23"
+ENV LANG=en_US.UTF-8
+
+COPY scripts/bin/ /rocker_scripts/bin/
+COPY scripts/setup_R.sh /rocker_scripts/setup_R.sh
+RUN /rocker_scripts/setup_R.sh
+
+COPY scripts/install_tidyverse.sh /rocker_scripts/install_tidyverse.sh
+RUN /rocker_scripts/install_tidyverse.sh
+
+ENV S6_VERSION="v2.1.0.2"
+ENV RSTUDIO_VERSION="2023.12.1+402"
+ENV DEFAULT_USER="rstudio"
+
+COPY scripts/install_rstudio.sh /rocker_scripts/install_rstudio.sh
+COPY scripts/install_s6init.sh /rocker_scripts/install_s6init.sh
+COPY scripts/default_user.sh /rocker_scripts/default_user.sh
+COPY scripts/init_set_env.sh /rocker_scripts/init_set_env.sh
+COPY scripts/init_userconf.sh /rocker_scripts/init_userconf.sh
+COPY scripts/pam-helper.sh /rocker_scripts/pam-helper.sh
+RUN /rocker_scripts/install_rstudio.sh
+
+EXPOSE 8787
+CMD ["/init"]
+
+COPY scripts/install_pandoc.sh /rocker_scripts/install_pandoc.sh
+RUN /rocker_scripts/install_pandoc.sh
+
+COPY scripts/install_quarto.sh /rocker_scripts/install_quarto.sh
+RUN /rocker_scripts/install_quarto.sh
+
+COPY scripts /rocker_scripts
+```
+
+
+
+
+## bulid Docker image from dockerfile
+```{bash}
+docker build -f tidyverse_4.3.3.Dockerfile -t proj:myapp .
+```
+
+
+
+
+## run Docker image
+
+
+```{bash}
+docker run -p 8787:8787 proj:myapp
+```
+
+
+
+run at backend
+
+```{bash}
+docker run -d proj:myapp
+```
+
+Rstuido server is open at: http://localhost:8787/
+
+user name is rstudio
+
+password is show on terminal
+
+## go inside docker containers with containers id
+
+
+```{bash}
+docker exec -it b28a1b8eeeb6 sh
+```
+
+exit docker linux
+
+```{bash}
+exit
+```
+
+## stop container with container id
+
+```{bash}
+docker stop b28a1b8eeeb6 
+```
+
+
+## restart container with container id
+
+```{bash}
+docker start b28a1b8eeeb6
+```
+
+## delete a stop container
+```{bash}
+docker rm -f b28a1b8eeeb6
+```
+
+## delete image with image id
+
+```{bash}
+docker rmi -f 7e1a4e2d11e2
+```
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,115 @@
+---
+title: "正则表达式代码"
+subtitle: "regular expression"
+author: "Tony D"
+date: "2025-03-25"
+
+categories: 
+  - Tool
+  - R
+  - Python
+  
+image: "images/Regular-Expression.jpg"
+
+execute:
+  warning: false
+  error: false
+  eval: false
+---
+
+Top useful Linux command regular expression
+
+# R
+
+## view
+
+
+```{r}
+library(stringr)
+```
+
+
+```{r}
+library(stringr)
+pattern='cat'
+str_view_all("The cat sat on the mat with another cat.", pattern)
+```
+
+
+## Extract all numbers from a string:
+
+
+```{r}
+pattern="\\d+"
+str_view("I bought 3 apples, 12 bananas, and 5 oranges.",pattern)
+```
+
+
+```{r}
+str_extract_all("I bought 3 apples, 12 bananas, and 5 oranges.", pattern) |> unlist()
+
+```
+
+## Extract string between two string:
+
+
+
+
+```{r}
+a <- "STR1 11111 STR2 STR1 22222 STR2,"
+res <- str_extract_all(a, "STR1\\s*(.*?)\\s*STR2")
+res
+
+a=res |> unlist()
+
+print(paste0("first match: ",a[1]))
+      
+print(paste0("second match: ",a[2]))
+```
+# get 4 length number and 2 length string
+
+- \\b: Asserts a word boundary position, ensuring that the match is at the beginning or end of a word.
+
+- \\d{4}: Matches exactly four digits.
+
+- [a-zA-Z]{2}: Matches exactly two letters (uppercase or lowercase).
+
+- \\b: Asserts another word boundary to ensure the ends at a word boundary.
+
+
+```{r}
+pattern="\\b\\d{4}[a-zA-Z]{2}\\b"
+str_view_all("The 1234cat sat on the 1245ma with another 4444ee cat.", pattern)
+```
+
+
+
+```{r}
+pattern="\\b\\d{4}[a-zA-Z]{2}\\b"
+matches <- str_extract_all("The 1234cat sat on the 1245ma with another 4444ee cat.",pattern)
+matches
+```
+
+## match sperical 
+
+regular expression for getting string between '/' and '$' on "The /1234cat$ sat on the 1245ma with another 4444ee cat."
+
+```{r}
+pattern= "/(.*?)\\$"
+str_view_all("The /1234cat$ sat on the 1245ma with another 4444ee cat.", pattern)
+```
+
+
+
+```{r}
+pattern= "/(.*?)\\$"
+matches <- str_extract_all("The /1234cat$ sat on the 1245ma with another 4444ee cat.",pattern)
+matches
+```
+
+
+
+# Python
+
+
+

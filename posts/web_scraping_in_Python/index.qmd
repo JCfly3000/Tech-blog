@@ -1,0 +1,34 @@
+---
+title: "Web scraping in Python"
+
+author: "Tony D"
+date: "2025-03-12"
+categories: 
+  - Tool
+  - Webscrap
+  - Python
+  
+execute:
+  warning: false
+  error: false
+  eval: false
+  
+image: "preview.B-gzjIrP.png"
+---
+
+# python web scraping with requests and BeautifulSoup
+
+```{python}
+import requests
+from bs4 import BeautifulSoup
+from io import StringIO
+import re
+import pandas as pd
+```
+
+# Reference
+
+
+
+
+

@@ -1,0 +1,15 @@
+{
+  "hash": "f53fde8c0be0411ba3e4fd7c31909539",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Run AI model on local machine with Ollama\"\n\nauthor: \"Tony D\"\ndate: \"2025-03-18\"\n\ncategories: \n  - AI\n  - R\n  - Python\nimage: \"images/1719563355.png\"\n\nexecute:\n  warning: false\n  error: false\n  eval: false\n---\n\nRunning LLM model on local machine with Ollama\n\n![](images/clipboard-1677176147.png)\n\n# Download and install the Ollama app\n\nhttps://ollama.com/download\n\nand open the app on computer\n\n# Run LLM model on Ollama\n\n::: panel-tabset\n## Run in R\n\n### download pacakge check connection\n\n::: {.cell}\n\n```{.r .cell-code}\ninstall.packages(\"ollamar\")\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(ollamar)\ntest_connection() \n```\n:::\n\n### download model\n\n::: {.cell}\n\n```{.r .cell-code}\nollamar::pull(\"llama3.1\")\n```\n:::\n\n### list downloaded model\n\n::: {.cell}\n\n```{.r .cell-code}\nlist_models()\n```\n:::\n\n### show model detail\n\n::: {.cell}\n\n```{.r .cell-code}\n#ollamar::show(\"llama3.1\")\n```\n:::\n\n### run model\n\n::: {.cell}\n\n```{.r .cell-code}\nresp <- generate(\"llama3.1\", \"tell me a 5-word story\")\nresp\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\n# get just the text from the response object\nresp_process(resp, \"text\")\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\n# get the text as a tibble dataframe\nresp_process(resp, \"df\")\n```\n:::\n\n## Run in terminal\n\n\n### download model\n\n::: {.cell}\n\n```{.python .cell-code}\n!ollama pull llama3.1\n```\n:::\n\n\n### run model\n\n::: {.cell}\n\n```{.python .cell-code}\n!ollama run llama3.1 \"tell me a 5-word story\"\n```\n:::\n\n\n\n## Run in Python\n\n::: {.cell}\n\n```{.python .cell-code}\n!pip install ollama\n```\n:::\n\n\n::: {.cell}\n\n```{.python .cell-code}\nfrom ollama import chat\nfrom ollama import ChatResponse\n```\n:::\n\n::: {.cell}\n\n```{.python .cell-code}\nimport ollama\n```\n:::\n\n\n### download model\n\n::: {.cell}\n\n```{.r .cell-code}\nollama.pull(\"llama3.1\")\n```\n:::\n\n\n### show downloaded model\n::: {.cell}\n\n```{.python .cell-code}\nollama.list()\n```\n:::\n\n### Run model\n::: {.cell}\n\n```{.python .cell-code}\nollama.chat(model='llama3.1', messages=[{'role': 'user', 'content': 'who are you?'}])\n```\n:::\n### create a model with prompt\n\n::: {.cell}\n\n```{.python .cell-code}\nollama.create(model='Mario', from_='llama3.1', system=\"You are Mario from Super Mario Bros.\")\n```\n:::\n\n\n\n::: {.cell}\n\n```{.python .cell-code}\nollama.chat(model='Mario', messages=[{'role': 'user', 'content': 'who are you?'}])\n```\n:::\n### delete model\n\n::: {.cell}\n\n```{.python .cell-code}\nstatus = ollama.delete('example')\nstatus\n```\n:::\n\n\n\n:::\n\n\n\n# mall pacakge \n\n\nhttps://mlverse.github.io/mall/\n\n\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

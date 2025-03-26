@@ -1,0 +1,82 @@
+---
+title: "（LLM）大语言模型"
+subtitle: "(LLM)Large language model"
+author: "Tony Duan"
+
+date: "2025-03-18"
+
+categories: 
+  - Tool
+  - R
+  - Python 
+
+  
+execute:
+  warning: false
+  error: false
+  eval: false
+
+image: '1734616066-llm-security.webp'
+---
+
+
+(LLM)Large language model
+
+```{r}
+library(tidyverse)
+library(openxlsx)
+library(readxl)
+```
+
+```{r}
+data001=read_excel('AI model.xlsx')
+head(data001)
+```
+
+# LLM model performance
+
+## math
+
+### AIME
+
+https://en.wikipedia.org/wiki/American_Invitational_Mathematics_Examination
+
+### MATH-500
+
+## Code
+
+## Codeforces
+
+## LiveCodeBench
+
+## English
+
+### MMLU
+
+Measuring Massive Multitask Language Understanding (MMLU)
+
+https://en.wikipedia.org/wiki/MMLU
+
+## Science
+
+### GPQA-Diamond
+
+Graduate-Level Google-Proof Q&A
+
+Description: GPQA consists of 448 multiple-choice questions meticulously crafted by domain experts in biology, physics, and chemistry. These questions are intentionally designed to be high-quality and extremely difficult.
+
+Expert Accuracy: Even experts who hold or are pursuing PhDs in the corresponding domains achieve only 65% accuracy on these questions (or 74% when excluding clear mistakes identified in retrospect).
+
+Google-Proof: The questions are "Google-proof," meaning that even with unrestricted access to the web, highly skilled non-expert validators only reach an accuracy of 34% despite spending over 30 minutes searching for answers.
+
+AI Systems Difficulty: State-of-the-art AI systems, including our strongest GPT-4 based baseline, achieve only 39% accuracy on this challenging dataset.
+
+# SimpleBench
+
+https://simple-bench.com/
+
+![](images/clipboard-1311795434.png)
+# Compare online
+
+
+https://lmarena.ai/

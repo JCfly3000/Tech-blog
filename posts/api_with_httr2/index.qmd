@@ -1,0 +1,200 @@
+---
+title: "使用R httr2 调用API"
+subtitle: "Using R httr2 to call API"
+author: "Tony Duan"
+
+date: "2025-03-15"
+
+categories: 
+  - Tool
+  - R
+
+  
+execute:
+  warning: false
+  error: false
+  eval: false
+
+image: 'logo.png'
+  
+---
+
+Package httr2 for pipeable API for working with web APIs
+
+
+# Example 1: call US weather API
+
+```{r}
+pak::pkg_install('httr2')
+```
+
+https://api.weather.gov/points/38.8894,-77.0352
+
+```{r}
+library(httr2)
+library(tidyverse)
+```
+
+
+## API link
+```{r}
+NWS_base_url <- 'https://api.weather.gov'
+
+NWS_response_link <- request(NWS_base_url) |> 
+  req_url_path_append(
+    'points',
+    '38.8894,-77.0352'
+  ) 
+
+NWS_response_link
+
+```
+
+## create response and check connection
+```{r}
+NWS_response=NWS_response_link|> req_perform()
+NWS_response
+```
+
+## get forecast hourly url  from response
+
+```{r}
+NWS_response |> 
+  resp_body_json() |> 
+  glimpse()
+```
+
+```{r}
+forecast_url <- NWS_response |> 
+  resp_body_json() |> 
+  pluck('properties', 'forecastHourly')
+
+forecast_url
+```
+
+## make forecast hourly  response
+
+```{r}
+forecast_response <- request(forecast_url) |> 
+  req_perform()
+
+forecast_response |> 
+  resp_body_json() |> 
+  glimpse()
+```
+
+## get forecast hourly data
+
+```{r}
+extracted_data <- forecast_response |> 
+  resp_body_json() |> 
+  pluck('properties', 'periods') |> 
+  map_dfr( # iterates over each list and binds rows to a tibble
+    \(x) {
+      tibble(
+        time = x |> pluck('startTime'),
+        temp_F = x |> pluck('temperature'),
+        rain_prob = x |> pluck('probabilityOfPrecipitation', 'value'),
+        forecast = x |> pluck('shortForecast')
+      )
+    }
+  )
+
+extracted_data
+```
+
+
+
+# Example 2 :openweathermap
+
+
+https://home.openweathermap.org/
+
+
+```{r}
+pak::pkg_install('httr2')
+```
+
+
+```{r}
+library(httr2)
+```
+
+## create response
+
+
+```{r}
+library(keyring)
+openweathermap_base_url <- 'https://api.openweathermap.org/data/2.5'
+
+openweathermap_api_key=key_get("openweathermap_api_key")
+
+city='Bangkok'
+
+openweathermap_response_link <- request(openweathermap_base_url) |> 
+  req_url_path_append(
+    paste0('weather?q=',city,'&appid=',openweathermap_api_key,'&units=metric')
+  ) 
+
+openweathermap_response_link
+```
+
+```{r}
+openweathermap_response=openweathermap_response_link|> req_perform()
+openweathermap_response
+```
+
+## get data from response
+
+```{r}
+openweathermap_response |> 
+  resp_body_json() |> 
+  glimpse()
+```
+
+
+
+```{r}
+openweathermap_response |> 
+  resp_body_json() |> 
+  pluck('main', 'temp') 
+
+a=openweathermap_response |> 
+  resp_body_json() |> 
+  pluck('weather') 
+
+(a[[1]])$main
+
+openweathermap_response |> 
+  resp_body_json() |> 
+  pluck('name') 
+
+openweathermap_response |> 
+  resp_body_json() |> 
+  pluck('coord', 'lon') 
+
+openweathermap_response |> 
+  resp_body_json() |> 
+  pluck('coord', 'lat') 
+
+```
+
+
+London air_pollution:
+
+http://api.openweathermap.org/data/2.5/air_pollution?lat=51.5085&lon=-0.1257&appid=625ae405e4f11b5b957af484b77fbd62
+
+
+
+
+
+# Reference
+
+https://httr2.r-lib.org/
+
+https://www.youtube.com/watch?v=8tilyqp4bZY
+
+https://www.youtube.com/watch?v=hmtE4QGIOuk
+
+https://openweathermap.org/current
+
