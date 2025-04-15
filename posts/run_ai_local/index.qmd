@@ -38,7 +38,8 @@ and open the app on computer
 #### download pacakge check connection
 
 ```{r}
-install.packages("ollamar")
+pak::pak("ollamar")
+pak::pkg_deps_tree("ollamar")
 ```
 
 ```{r}
@@ -61,13 +62,13 @@ list_models()
 show model detail
 
 ```{r}
-#ollamar::show("llama3.1")
+ollamar::show("gemma3")
 ```
 
 run model
 
 ```{r}
-resp <- generate("llama3.1", "tell me a 5-word story")
+resp <- generate("gemma3", "tell me a 5-word story")
 resp
 ```
 
@@ -79,6 +80,41 @@ resp_process(resp, "text")
 ```{r}
 # get the text as a tibble dataframe
 resp_process(resp, "df")
+```
+
+using multiple models
+
+```{r}
+(list_models())$name
+```
+
+```{r}
+models_name=(list_models())$name[-1]
+models_name
+```
+
+
+```{r}
+input_prompt="tell me a 5-word story"
+```
+
+
+
+```{r}
+all_model=c()
+
+for (i in models_name){
+  resp <- generate(i, input_prompt)
+  #print(paste0("Model: ", i))
+  print(resp_process(resp, "text"))
+  #resp_process(resp, "df")
+  all_model=rbind(all_model, resp_process(resp, "df"))
+}
+```
+
+
+```{r}
+all_model
 ```
 
 
@@ -296,7 +332,7 @@ command
 
 ## run in Python code
 
-```{oython}
+```{python}
 import os
 
 command

@@ -72,10 +72,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-494121dfa8658343c03537e94414993d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dc92d55a7a6523d8c5d04b5341384b7e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-d29ea5ee5a70017e53bdfffa962c84fb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-b171e5a48f1724c60a27d4332cb362b7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -125,6 +125,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Posts</span></a>
+  </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
@@ -984,47 +988,64 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb22-112"><a href="#cb22-112" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb22-113"><a href="#cb22-113" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-114"><a href="#cb22-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-117"><a href="#cb22-117" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb22-118"><a href="#cb22-118" aria-hidden="true" tabindex="-1"></a>url<span class="ot">=</span><span class="st">"https://www.whiskybase.com/whiskies/"</span></span>
-<span id="cb22-119"><a href="#cb22-119" aria-hidden="true" tabindex="-1"></a>web <span class="ot">&lt;-</span> <span class="fu">read_html_live</span>(url)</span>
-<span id="cb22-120"><a href="#cb22-120" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb22-121"><a href="#cb22-121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-122"><a href="#cb22-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-115"><a href="#cb22-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-116"><a href="#cb22-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-119"><a href="#cb22-119" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-120"><a href="#cb22-120" aria-hidden="true" tabindex="-1"></a>url<span class="ot">=</span><span class="st">"https://www.whiskybase.com/whiskies/"</span></span>
+<span id="cb22-121"><a href="#cb22-121" aria-hidden="true" tabindex="-1"></a>web <span class="ot">&lt;-</span> <span class="fu">read_html_live</span>(url)</span>
+<span id="cb22-122"><a href="#cb22-122" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb22-123"><a href="#cb22-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-126"><a href="#cb22-126" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb22-127"><a href="#cb22-127" aria-hidden="true" tabindex="-1"></a>url_rating<span class="ot">=</span><span class="st">'https://www.whiskybase.com/profile/georges'</span></span>
-<span id="cb22-128"><a href="#cb22-128" aria-hidden="true" tabindex="-1"></a>content <span class="ot">&lt;-</span> <span class="fu">read_html_live</span>(url_rating) </span>
-<span id="cb22-129"><a href="#cb22-129" aria-hidden="true" tabindex="-1"></a>info_title<span class="ot">=</span>content <span class="sc">%&gt;%</span> <span class="fu">html_elements</span>(<span class="st">'.title'</span>) <span class="sc">%&gt;%</span> <span class="fu">html_text</span>(<span class="at">trim =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb22-130"><a href="#cb22-130" aria-hidden="true" tabindex="-1"></a>info_value<span class="ot">=</span>content <span class="sc">%&gt;%</span> <span class="fu">html_elements</span>(<span class="st">'.value'</span>) <span class="sc">%&gt;%</span> <span class="fu">html_text</span>(<span class="at">trim =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb22-131"><a href="#cb22-131" aria-hidden="true" tabindex="-1"></a>info_data<span class="ot">=</span><span class="fu">data.frame</span>(info_title,info_value)</span>
-<span id="cb22-132"><a href="#cb22-132" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-133"><a href="#cb22-133" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb22-134"><a href="#cb22-134" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-137"><a href="#cb22-137" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb22-138"><a href="#cb22-138" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb22-139"><a href="#cb22-139" aria-hidden="true" tabindex="-1"></a>web<span class="sc">$</span><span class="fu">view</span>()</span>
-<span id="cb22-140"><a href="#cb22-140" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb22-141"><a href="#cb22-141" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-142"><a href="#cb22-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-124"><a href="#cb22-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-127"><a href="#cb22-127" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-128"><a href="#cb22-128" aria-hidden="true" tabindex="-1"></a>web<span class="sc">$</span><span class="fu">view</span>()</span>
+<span id="cb22-129"><a href="#cb22-129" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-130"><a href="#cb22-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-131"><a href="#cb22-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-134"><a href="#cb22-134" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-135"><a href="#cb22-135" aria-hidden="true" tabindex="-1"></a>web<span class="sc">$</span><span class="fu">get_scroll_position</span>()</span>
+<span id="cb22-136"><a href="#cb22-136" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-137"><a href="#cb22-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-140"><a href="#cb22-140" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-141"><a href="#cb22-141" aria-hidden="true" tabindex="-1"></a>web<span class="sc">$</span><span class="fu">scroll_into_view</span>(<span class="at">css=</span><span class="st">'.bs5__col-lg-3:nth-child(1) li:nth-child(5) a'</span>)</span>
+<span id="cb22-142"><a href="#cb22-142" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb22-143"><a href="#cb22-143" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-146"><a href="#cb22-146" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb22-147"><a href="#cb22-147" aria-hidden="true" tabindex="-1"></a>web <span class="sc">%&gt;%</span> <span class="fu">html_elements</span>(<span class="st">".widget-article-content"</span>) <span class="sc">|&gt;</span> <span class="fu">html_text</span>(<span class="at">trim =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb22-148"><a href="#cb22-148" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb22-149"><a href="#cb22-149" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-150"><a href="#cb22-150" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-151"><a href="#cb22-151" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;&lt;</span><span class="kw">br</span><span class="dt">&gt;&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
-<span id="cb22-152"><a href="#cb22-152" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-153"><a href="#cb22-153" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, attr.output='.details summary="sessionInfo()"'}</span></span>
-<span id="cb22-154"><a href="#cb22-154" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span>
-<span id="cb22-155"><a href="#cb22-155" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb22-156"><a href="#cb22-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-144"><a href="#cb22-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-145"><a href="#cb22-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-146"><a href="#cb22-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-149"><a href="#cb22-149" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-150"><a href="#cb22-150" aria-hidden="true" tabindex="-1"></a>url_rating<span class="ot">=</span><span class="st">'https://www.whiskybase.com/profile/georges'</span></span>
+<span id="cb22-151"><a href="#cb22-151" aria-hidden="true" tabindex="-1"></a>content <span class="ot">&lt;-</span> <span class="fu">read_html_live</span>(url_rating) </span>
+<span id="cb22-152"><a href="#cb22-152" aria-hidden="true" tabindex="-1"></a>info_title<span class="ot">=</span>content <span class="sc">%&gt;%</span> <span class="fu">html_elements</span>(<span class="st">'.title'</span>) <span class="sc">%&gt;%</span> <span class="fu">html_text</span>(<span class="at">trim =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb22-153"><a href="#cb22-153" aria-hidden="true" tabindex="-1"></a>info_value<span class="ot">=</span>content <span class="sc">%&gt;%</span> <span class="fu">html_elements</span>(<span class="st">'.value'</span>) <span class="sc">%&gt;%</span> <span class="fu">html_text</span>(<span class="at">trim =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb22-154"><a href="#cb22-154" aria-hidden="true" tabindex="-1"></a>info_data<span class="ot">=</span><span class="fu">data.frame</span>(info_title,info_value)</span>
+<span id="cb22-155"><a href="#cb22-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-156"><a href="#cb22-156" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb22-157"><a href="#cb22-157" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-158"><a href="#cb22-158" aria-hidden="true" tabindex="-1"></a><span class="fu"># Reference</span></span>
-<span id="cb22-159"><a href="#cb22-159" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-160"><a href="#cb22-160" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-161"><a href="#cb22-161" aria-hidden="true" tabindex="-1"></a>https://r4ds.hadley.nz/webscraping.html</span>
-<span id="cb22-162"><a href="#cb22-162" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-163"><a href="#cb22-163" aria-hidden="true" tabindex="-1"></a>https://rvest.tidyverse.org/reference/read_html_live.html</span>
+<span id="cb22-160"><a href="#cb22-160" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-161"><a href="#cb22-161" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb22-162"><a href="#cb22-162" aria-hidden="true" tabindex="-1"></a>web<span class="sc">$</span><span class="fu">view</span>()</span>
+<span id="cb22-163"><a href="#cb22-163" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-164"><a href="#cb22-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-165"><a href="#cb22-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-166"><a href="#cb22-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-169"><a href="#cb22-169" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-170"><a href="#cb22-170" aria-hidden="true" tabindex="-1"></a>web <span class="sc">%&gt;%</span> <span class="fu">html_elements</span>(<span class="st">".widget-article-content"</span>) <span class="sc">|&gt;</span> <span class="fu">html_text</span>(<span class="at">trim =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb22-171"><a href="#cb22-171" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-172"><a href="#cb22-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-173"><a href="#cb22-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-174"><a href="#cb22-174" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;&lt;</span><span class="kw">br</span><span class="dt">&gt;&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
+<span id="cb22-175"><a href="#cb22-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-176"><a href="#cb22-176" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, attr.output='.details summary="sessionInfo()"'}</span></span>
+<span id="cb22-177"><a href="#cb22-177" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span>
+<span id="cb22-178"><a href="#cb22-178" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-179"><a href="#cb22-179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-180"><a href="#cb22-180" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-181"><a href="#cb22-181" aria-hidden="true" tabindex="-1"></a><span class="fu"># Reference</span></span>
+<span id="cb22-182"><a href="#cb22-182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-183"><a href="#cb22-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-184"><a href="#cb22-184" aria-hidden="true" tabindex="-1"></a>https://r4ds.hadley.nz/webscraping.html</span>
+<span id="cb22-185"><a href="#cb22-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-186"><a href="#cb22-186" aria-hidden="true" tabindex="-1"></a>https://rvest.tidyverse.org/reference/read_html_live.html</span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

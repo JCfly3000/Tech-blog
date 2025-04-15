@@ -1,0 +1,105 @@
+---
+title: "查看IP地址"
+subtitle: "Check IP address"
+
+author: "Tony D"
+date: "2025-04-01"
+
+categories: 
+  - Tool
+  - R
+  - Python
+  
+image: "images/images.png"
+
+draft: true
+
+execute:
+  warning: false
+  error: false
+  eval: false
+---
+
+
+查看当前IP地址
+
+# Using R
+
+```{r}
+library(tidyverse)
+```
+
+
+## check IP address
+
+
+```{r}
+#pak::pkg_install('ip2location')
+library(rjson)
+fromJSON(readLines("http://api.hostip.info/get_json.php", warn=F))$ip
+```
+
+
+```{r}
+#pak::pkg_install("r.proxy")
+r.proxy::check_ip()
+```
+
+## set up
+
+#> Please complete below configrations:)
+#> Default setting can be accessed by Enter with nothing
+#> [socks5 proxy] {Default as 127.0.0.1:7890} (address:port): 192.168.3.15:7890
+#> [https proxy] {Default as 127.0.0.1:7890} (address:port): 
+#> [http proxy] {Default as 127.0.0.1:7890} (address:port): 
+
+
+```{r}
+r.proxy::proxy()
+```
+## stop proxy
+
+```{r}
+r.proxy::noproxy()
+```
+
+## reset 
+
+```{r}
+r.proxy::init_proxy()
+```
+
+
+## check internet speed
+
+```{r}
+#remotes::install_github("hrbrmstr/speedtest")
+library(speedtest)
+speedtest::spd_test()
+```
+```{r}
+config <- spd_config()
+
+servers <- spd_servers(config=config)
+closest_servers <- spd_closest_servers(servers, config=config)
+only_the_best_severs <- spd_best_servers(closest_servers, config)
+```
+
+## download speed
+```{r}
+glimpse(spd_download_test(closest_servers[1,], config=config))
+```
+
+
+## upload speed
+
+```{r}
+glimpse(spd_upload_test(only_the_best_severs[1,], config=config))
+```
+
+
+```{r}
+library(httr)
+GET("http://had.co.nz", use_proxy("64.251.21.73", 8080), verbose())
+```
+

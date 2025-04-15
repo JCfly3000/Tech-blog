@@ -1,0 +1,81 @@
+---
+title: "AI生成代码"
+subtitle: "AI Generated Code"
+author: "Tony D"
+date: "2025-04-05"
+
+categories: 
+  - AI
+  - R
+  - Python
+
+  
+execute:
+  warning: false
+  error: false
+  eval: false
+
+image: 'images/download.jpg'
+---
+
+# Using shinyapps assistant
+
+
+https://gallery.shinyapps.io/assistant/
+
+## create prompt
+
+create a shinyapp using R with single file app.R which can use python package yt-dlp to download youtube video.
+
+1.yt-dlp command need to have --cookies-from-browser chrome.
+
+2 User input:
+a.youtube video url
+b.using  cookies options:--cookies-from-browser chrome or  --cookies-from-browser firefox
+c.download file as mp4 format or mp3 format in a subfolder called "download" in the same directory as the shinyapp
+
+3.please display the final system command at the left side of the shinyapp after Play Downloaded File.
+
+4.add a a real time progress bar to show the download progress by add a progress indicator is to put withProgress() inside of the reactive(), observer(), or renderXx() function
+
+5.add a video player or mp3 player into the shinyapp when finish download,auto load the new downloaded mp4 or mp3 in shinyapp so we can play the downloaded file in shinyapp,also include a options for user to select the previous downloaded file(video or mp3) to play
+
+
+# Using Roo code and gemini-2.5-pro-exp-03-25 to generate Code
+
+
+## create prompt
+
+create a shinyapp using R with single file app.R which can use python package yt-dlp to download youtube video.
+
+1.yt-dlp command need to have --cookies-from-browser chrome.
+
+2 User input:
+a.youtube video url
+b.using  cookies options:--cookies-from-browser chrome or  --cookies-from-browser firefox
+c.download file as mp4 format or mp3 format in a subfolder called "download" in the same directory as the shinyapp
+
+3.please display the final system command at the left side of the shinyapp after Play Downloaded File.
+
+4.add a real time progress bar to show the download progress
+
+5.add a video player or mp3 player into the shinyapp when finish download,auto load the new downloaded mp4 or mp3 in shinyapp so we can play the downloaded file in shinyapp,also include a options for user to select the previous downloaded file(video or mp3) to play
+
+
+# change 
+
+
+1. add system command
+
+app.R is a shinyapp using R with single file app.R which can use python package yt-dlp to download youtube video.
+
+please display the final system command at the left side of the shinyapp after Play Downloaded File.
+
+
+2. add progress bar
+
+add a a real time progress bar to show the download progress by add a progress indicator is to put withProgress() inside of the reactive(), observer(), or renderXx() function
+
+https://www.youtube.com/watch?v=yBl8UdSav5Y
+
+

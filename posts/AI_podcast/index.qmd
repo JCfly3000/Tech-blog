@@ -1,0 +1,438 @@
+---
+title: "使用AI给播客语音转文字并作摘要"
+subtitle: "Using AI to create Summary for podcast"
+author: "Tony D"
+date: "2025-03-28"
+
+categories: 
+  - AI
+  - R
+  - Python
+
+  
+execute:
+  warning: false
+  error: false
+  eval: false
+
+image: 'images/my screenshots.png'
+---
+
+
+
+Article abstract for podcast like firstory/poddtoppen/小宇宙FM using mlx_whisper to Transcribe and gemini 2.0 flash to summarize 
+
+
+```{r}
+#pak::pkg_install('tuneR')
+library(ellmer)
+library(tidyverse)
+library(srt)
+library(openxlsx)
+library(readxl)
+library(lares)
+library(tuneR)
+library(stringr)
+library(rvest)
+library(av)
+```
+
+
+
+
+# Step 1:  download mp3 
+
+::: panel-tabset
+
+## from firstory 
+
+### get all mp3 link from episodes_link
+
+```{r}
+i="https://open.firstory.me/story/cm8mfryux2mj001socwiefcw4"
+page_content <- read_html(i) 
+
+html_list=html_elements(page_content, css = "script") |> 
+    html_text() |> paste(collapse = " ")
+```
+
+```{r}
+a=html_list |> str_extract_all( 'audioUrl(.+?).mp3')
+input_link=a |> unlist()|> str_extract_all( 'https:(.+?).mp3') |> unlist()
+```
+
+```{r}
+output='output.mp3'
+download.file(url = input_link, destfile = output)
+```
+
+```{r}
+list.files()
+```
+
+
+### check mp3 duration
+
+```{r}
+# Load the MP3 file
+mp3_file <- readMP3("output.mp3" )
+
+# Get the duration in seconds
+duration_mins <- (length(mp3_file@left) / mp3_file@samp.rate)/60
+duration_mins
+```
+
+### trim mp3 if needed
+
+```{r}
+
+trim_mp3(
+  'output.mp3',
+  start_time = 1,
+  end_time = 600,
+  overwrite = FALSE,
+  ext = "mp3",
+  quiet = FALSE
+)
+
+# # output file:output_trim.mp3
+```
+
+```{r}
+# Load the MP3 file
+mp3_file <- readMP3("output_trimmed.mp3" ) 
+# Get the duration in seconds
+(length(mp3_file@left) / mp3_file@samp.rate)/60
+```
+
+## from poddtoppen
+
+### get  mp3 link from episodes_link
+
+```{r}
+i="https://poddtoppen.se/podcast/1670019206/%E6%A5%AD%E5%8B%99%E7%94%A8%E5%A8%81%E5%A3%AB%E5%BF%8C%E6%8C%87%E5%8D%97/ep69%E8%AA%B0%E4%B8%8D%E6%84%9B%E9%A4%BE%E9%85%92"
+page_content <- read_html(i) 
+```
+
+```{r}
+html_list=html_elements(page_content, css = "div.episodes__list__item") |> 
+    html_attr("data-audio")
+
+html_list
+```
+
+```{r}
+#a=html_list |> str_extract_all( 'data-audio=(.+?).mp3')
+#input_link=a |> unlist()|> str_extract_all( 'https:(.+?).mp3') |> unlist()
+input_link=html_list
+```
+
+```{r}
+output='output.mp3'
+download.file(url = input_link, destfile = output)
+```
+
+```{r}
+list.files()
+```
+
+
+### check mp3 duration
+
+```{r}
+# Load the MP3 file
+mp3_file <- readMP3("output.mp3" )
+
+# Get the duration in seconds
+duration_mins <- (length(mp3_file@left) / mp3_file@samp.rate)/60
+duration_mins
+```
+
+### trim mp3 if needed
+
+```{r}
+# trim_mp3(
+#   'output.mp3',
+#   start_time = 1,
+#   end_time = 600,
+#   overwrite = FALSE,
+#   ext = "mp3",
+#   quiet = FALSE
+# )
+
+# # output file:output_trim.mp3
+```
+
+```{r}
+# Load the MP3 file
+mp3_file <- readMP3("output_trimmed.mp3" ) 
+# Get the duration in seconds
+(length(mp3_file@left) / mp3_file@samp.rate)/60
+```
+
+
+
+
+
+## from xiaoyuzhou 小宇宙FM
+
+### get  mp3 link from episodes_link
+
+https://www.xiaohongshu.com/user/profile/64034a70000000001001d5e7?xsec_token=ABhaT1fRn3eiAgLpQycyyc-rKPx7wiVd43VWTkC9cznbM=&xsec_source=pc_search
+
+https://www.xiaohongshu.com/user/profile/5cd7cac4000000001000da74?xsec_token=ABZS9k_q_Yve0bqEqs8EOUgYOp0yLuRdlXTecaQlHcTt4=&xsec_source=pc_search
+
+https://www.xiaohongshu.com/user/profile/63bfc800000000002502cbdc?xsec_token=ABY8GKfUekMVr5qho4f8G9Dr6MgOMgQ5B6H-lOvb_usAA=&xsec_source=pc_note
+
+
+
+```{r}
+i='https://www.xiaoyuzhoufm.com/podcast/670e1e6477e599f60e29dacf'
+page <- read_html(i) 
+```
+
+```{r}
+# 定位所有class="jsx-7bbe0f84186f1998"的li元素
+li_elements <- page %>%
+  html_nodes("li.jsx-7bbe0f84186f1998")
+
+# 提取每个li元素中的class="jsx-744662fb2f5b91b6 card"的a元素的href值
+href_links <- li_elements %>%
+  html_nodes("a.jsx-744662fb2f5b91b6.card") %>%
+  html_attr("href")
+
+# 添加前缀，构成完整的音频文件URL
+full_links <- paste0("https://www.xiaoyuzhoufm.com", href_links)
+
+```
+
+
+
+
+```{r}
+# download the lastest one
+new_url=full_links[1]
+new_url
+# 访问新的URL并解析
+audio_page <- read_html(new_url)
+    
+# 提取音频标题，property="og:title"的meta元素的content值
+title <- audio_page %>%
+html_nodes('meta[property="og:title"]') %>%
+html_attr("content")
+    
+# 处理标题中的特殊字符
+safe_title <- str_replace_all(title, "[\\/:,*?\"<>|]", "_")
+safe_title <- str_replace_all(safe_title, "[\\s]", "_")
+    
+# 提取音频下载链接，property="og:audio"的meta元素的content值
+audio_url <- audio_page %>%
+html_nodes('meta[property="og:audio"]') %>%
+html_attr("content")
+```
+
+
+```{r}
+safe_title
+audio_url
+```
+
+
+```{r}
+# Convert m4a to WAV
+av_audio_convert("your_audio.m4a", "your_audio.wav")
+```
+
+
+```{r}
+#output_file_name=paste0(safe_title ,'output.mp3')
+output_file_name='output.m4a'
+download.file(url = audio_url, destfile = output_file_name)
+```
+### convert m4a to mp3
+
+```{r}
+av_audio_convert('output.m4a', 'output.mp3')
+```
+
+```{r}
+list.files()
+```
+
+
+### check mp3 duration
+
+```{r}
+# Load the MP3 file
+mp3_file <- readMP3('output.mp3')
+
+# Get the duration in seconds
+duration_mins <- (length(mp3_file@left) / mp3_file@samp.rate)/60
+duration_mins
+```
+
+### trim mp3 if needed
+
+```{r}
+# trim_mp3(
+#   'output.mp3',
+#   start_time = 1,
+#   end_time = 600,
+#   overwrite = FALSE,
+#   ext = "mp3",
+#   quiet = FALSE
+# )
+
+# # output file:output_trim.mp3
+```
+
+```{r}
+# # Load the MP3 file
+# mp3_file <- readMP3("output_trimmed.mp3" ) 
+# # Get the duration in seconds
+# (length(mp3_file@left) / mp3_file@samp.rate)/60
+```
+
+
+::: 
+
+# Step 2: using mlx_whisper model to get text from audio(mp3,m4a)
+
+
+run audio_txt.py 
+
+```python
+{{< include audio_txt.py >}}
+```
+
+```{python}
+import os 
+os.system("python3.11 audio_txt.py")
+```
+
+output is text.txt and text.srt
+
+# Step 3: Using gemini model to summary
+
+model gemini-2.5-pro-exp-03-25 or gemini-2.0-flash
+
+## define model
+
+```{r}
+chat_gemini_model<- chat_gemini(
+  system_prompt = "你是一个中文，英文，威士忌专家",
+  turns = NULL,
+  # base_url = "https://generativelanguage.googleapis.com/v1beta",
+  api_key = keyring::key_get("google_ai_api_key"),
+  model = "gemini-2.0-flash",
+  #api_args = list(),
+  #echo = NULL
+)
+chat_gemini_model
+```
+
+
+```{r}
+#testing model connection
+chat_result=chat_gemini_model$chat("hello")
+chat_result
+```
+
+```{r}
+chat_gemini_model$get_turns(include_system_prompt = TRUE)
+```
+
+## Run model
+
+```{r}
+srt_txt0=read_srt('text.srt')
+srt_txt2=srt_txt0$subtitle|> as.character()
+```
+
+```{r}
+length(srt_txt2)
+```
+
+
+```{r}
+prompt_text=paste0('请给以下文字作500字内摘要：',srt_txt2)
+summary_text=chat_gemini_model$chat(prompt_text)
+```
+
+
+
+```{r}
+summary_text |> tibble() |> write_delim('summary.txt')
+```
+
+
+# Step 4: correct summary
+
+## define model
+
+```{r}
+chat_gemini_model<- chat_gemini(
+  system_prompt = "你是一个中文和英文的威士忌专家",
+  turns = NULL,
+  # base_url = "https://generativelanguage.googleapis.com/v1beta",
+  api_key = keyring::key_get("google_ai_api_key"),
+  model = "gemini-2.0-flash",
+  #api_args = list(),
+  #echo = NULL
+)
+chat_gemini_model
+```
+
+
+## Run model
+
+
+```{r}
+prompt_text=paste0('请更正以下文字的错别字，并且改正胡云为壶云，希游记为嬉游忌,Wish Jokey为WhisJockey,不要空白行',summary_text)
+correct_summary_text=chat_gemini_model$chat(prompt_text)
+```
+
+```{r}
+correct_summary_text |> str_replace_all('\n\n','\n')|> tibble() |> write_delim('correct_summary2.txt')
+```
+
+
+# Step 5:  summary str text
+
+## define model
+
+```{r}
+chat_gemini_model<- chat_gemini(
+  system_prompt = "你是一个中文和英文的威士忌专家",
+  turns = NULL,
+  # base_url = "https://generativelanguage.googleapis.com/v1beta",
+  api_key = keyring::key_get("google_ai_api_key"),
+  model = "gemini-2.0-flash",
+  #model = "gemini-2.5-pro-exp-03-25",
+  #api_args = list(),
+  #echo = NULL
+)
+chat_gemini_model
+```
+
+
+## Run model
+
+```{r}
+srt_txt_format=read.delim('text.srt')
+```
+
+
+
+```{r}
+prompt_text=paste0('下面的内容是srt文档。请按每5分钟做一个摘要，再更正以下文字，胡云为壶云，希游记为嬉游忌,Wish Jokey为WhisJockey',srt_txt_format)
+correct_summary_text=chat_gemini_model$chat(prompt_text)
+```
+
+
+```{r}
+correct_summary_text|> tibble() |> write_delim('correct_srt_summary.txt')
+```
+
+
+

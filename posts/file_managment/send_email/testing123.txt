@@ -1,0 +1,62 @@
+---
+title: "使用代码进行文件管理"
+subtitle: "Using code to manage file"
+author: "Tony Duan"
+date: "2025-03-30"
+
+categories: 
+  - Tool
+  - R
+  - Python
+
+  
+execute:
+  warning: false
+  error: false
+  eval: false
+
+image: 'images/6647806b77ae8db1c0477d40_How to set up a file management system-1.png'
+---
+
+
+Using R or Python to manage file
+
+# Using R
+
+```{r}
+library(fs)
+```
+
+
+## check current file 
+
+```{r}
+dir_ls()
+```
+
+
+
+## check wheather exists
+
+```{r}
+dir_exists('send_email')
+```
+
+## check folder info
+
+```{r}
+dir_info('send_email')
+```
+
+
+```{r}
+dir_tree('send_email')
+```
+
+
+
+
+# Using Python
+
+
+# Using bash

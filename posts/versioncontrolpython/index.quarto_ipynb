@@ -33,7 +33,7 @@
         "\n",
         "# install"
       ],
-      "id": "fba85b9c"
+      "id": "f344ab36"
     },
     {
       "cell_type": "code",
@@ -42,7 +42,7 @@
         "#| eval: false\n",
         "!pip install uv"
       ],
-      "id": "a550434b",
+      "id": "a1bfc9f8",
       "execution_count": null,
       "outputs": []
     },
@@ -52,7 +52,7 @@
       "source": [
         "# create project in current folder"
       ],
-      "id": "796ebaed"
+      "id": "1136e244"
     },
     {
       "cell_type": "code",
@@ -61,7 +61,7 @@
         "#| eval: false\n",
         "!uv init"
       ],
-      "id": "3c1b3067",
+      "id": "87324d86",
       "execution_count": null,
       "outputs": []
     },
@@ -71,7 +71,7 @@
       "source": [
         "# show python version"
       ],
-      "id": "c42b3c4d"
+      "id": "230df8d1"
     },
     {
       "cell_type": "code",
@@ -79,7 +79,7 @@
       "source": [
         "!uv python list --only-installed"
       ],
-      "id": "52e632e1",
+      "id": "456aa063",
       "execution_count": null,
       "outputs": []
     },
@@ -89,7 +89,7 @@
       "source": [
         "# chose python version"
       ],
-      "id": "d7068f25"
+      "id": "f5ca3fb2"
     },
     {
       "cell_type": "code",
@@ -98,7 +98,7 @@
         "#| eval: false\n",
         "!uv python pin 3.13"
       ],
-      "id": "f674977b",
+      "id": "90b46725",
       "execution_count": null,
       "outputs": []
     },
@@ -108,7 +108,7 @@
       "source": [
         "# install pacakge"
       ],
-      "id": "2bdcef90"
+      "id": "baa8fd17"
     },
     {
       "cell_type": "code",
@@ -117,7 +117,7 @@
         "#| eval: false\n",
         "!uv add siuba"
       ],
-      "id": "43748925",
+      "id": "03553d4f",
       "execution_count": null,
       "outputs": []
     },
@@ -127,7 +127,7 @@
       "source": [
         "# show pacakge"
       ],
-      "id": "6bb4d096"
+      "id": "29a446f6"
     },
     {
       "cell_type": "code",
@@ -136,7 +136,7 @@
         "#| eval: false\n",
         "!uv tree"
       ],
-      "id": "f30fe215",
+      "id": "8141c329",
       "execution_count": null,
       "outputs": []
     },
@@ -146,7 +146,7 @@
       "source": [
         "# delete pacakge"
       ],
-      "id": "c309514b"
+      "id": "b93950fb"
     },
     {
       "cell_type": "code",
@@ -155,7 +155,7 @@
         "#| eval: false\n",
         "!uv remove rich"
       ],
-      "id": "7041a921",
+      "id": "51e8c57b",
       "execution_count": null,
       "outputs": []
     },
@@ -165,7 +165,7 @@
       "source": [
         "# update lock file"
       ],
-      "id": "7c8b12f7"
+      "id": "0e4c5609"
     },
     {
       "cell_type": "code",
@@ -174,7 +174,7 @@
         "#| eval: false\n",
         "!uv lock --upgrade"
       ],
-      "id": "240de784",
+      "id": "52da4113",
       "execution_count": null,
       "outputs": []
     },
@@ -184,7 +184,7 @@
       "source": [
         "# Locking requirements"
       ],
-      "id": "d6fc6bbb"
+      "id": "072b8fc6"
     },
     {
       "cell_type": "code",
@@ -193,7 +193,7 @@
         "#| eval: false\n",
         "uv pip compile pyproject.toml -o requirements.txt"
       ],
-      "id": "404d8c25",
+      "id": "557c5dde",
       "execution_count": null,
       "outputs": []
     },
@@ -203,7 +203,7 @@
       "source": [
         "# check lock file and current environment"
       ],
-      "id": "678234cd"
+      "id": "f4e2075a"
     },
     {
       "cell_type": "code",
@@ -212,7 +212,7 @@
         "#| eval: false\n",
         "!uv lock --check"
       ],
-      "id": "d2e2af9a",
+      "id": "0ae92848",
       "execution_count": null,
       "outputs": []
     },
@@ -222,7 +222,7 @@
       "source": [
         "# Sync the project's dependencies with the environment"
       ],
-      "id": "546a6876"
+      "id": "86d58ee8"
     },
     {
       "cell_type": "code",
@@ -231,7 +231,7 @@
         "#| eval: false\n",
         "!uv sync"
       ],
-      "id": "3b40a996",
+      "id": "4c3981ee",
       "execution_count": null,
       "outputs": []
     },
@@ -243,7 +243,7 @@
         "\n",
         "## there is no rich package in python"
       ],
-      "id": "b95e6d15"
+      "id": "e34ec1cc"
     },
     {
       "cell_type": "code",
@@ -257,7 +257,7 @@
         "    print('pacakge not installed')\n",
         "    pass  # module doesn't exist, deal with it."
       ],
-      "id": "c90b8c00",
+      "id": "24495b9a",
       "execution_count": null,
       "outputs": []
     },
@@ -295,7 +295,7 @@
         "\n",
         "## run .py with uv"
       ],
-      "id": "ca1d8f41"
+      "id": "050b4c4e"
     },
     {
       "cell_type": "code",
@@ -303,7 +303,7 @@
       "source": [
         "!uv run test.py"
       ],
-      "id": "5cd946bc",
+      "id": "39227bfd",
       "execution_count": null,
       "outputs": []
     },
@@ -315,7 +315,7 @@
         "\n",
         "https://github.com/astral-sh/uv"
       ],
-      "id": "932145a8"
+      "id": "bbe48cbe"
     }
   ],
   "metadata": {

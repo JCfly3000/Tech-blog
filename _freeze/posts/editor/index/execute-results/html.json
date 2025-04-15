@@ -1,0 +1,12 @@
+{
+  "hash": "8cff17cd81c5e8f0749b41aaffbaecac",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: \"查看IP地址\"\nsubtitle: \"Check IP address\"\n\nauthor: \"Tony D\"\ndate: \"2025-04-02\"\n\ncategories: \n  - Tool\n  - R\n  - Python\n  \nimage: \"images/images.png\"\n\ndraft: true\n\nexecute:\n  warning: false\n  error: false\n  eval: false\n---\n\n# neovim\n\n```{bash}\nbrew install neovim\n```\n\n```{bash}\nnvim --version\n```\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

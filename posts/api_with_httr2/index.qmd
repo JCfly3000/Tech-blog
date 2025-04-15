@@ -1,7 +1,7 @@
 ---
 title: "使用R httr2 调用API"
 subtitle: "Using R httr2 to call API"
-author: "Tony Duan"
+author: "Tony D"
 
 date: "2025-03-15"
 

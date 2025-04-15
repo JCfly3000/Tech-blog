@@ -1,0 +1,33 @@
+---
+title: "查看IP地址"
+subtitle: "Check IP address"
+
+author: "Tony D"
+date: "2025-04-02"
+
+categories: 
+  - Tool
+  - R
+  - Python
+  
+image: "images/images.png"
+
+draft: true
+
+execute:
+  warning: false
+  error: false
+  eval: false
+---
+
+# neovim
+
+```{bash}
+brew install neovim
+```
+
+```{bash}
+nvim --version
+```
+
+

@@ -1,0 +1,12 @@
+{
+  "hash": "e0e9a417c6149b4d988a7ec53fabba60",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: \"Web scraping in Python\"\n\nauthor: \"Tony D\"\ndate: \"2025-03-12\"\ncategories: \n  - Tool\n  - Webscrap\n  - Python\n  \nexecute:\n  warning: false\n  error: false\n  eval: false\n  \nimage: \"preview.B-gzjIrP.png\"\n---\n\n# python web scraping with requests and BeautifulSoup\n\n::: {#544fec2d .cell execution_count=1}\n``` {.python .cell-code}\nimport requests\nfrom bs4 import BeautifulSoup\nfrom io import StringIO\nimport re\nimport pandas as pd\n```\n:::\n\n\n# Reference\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

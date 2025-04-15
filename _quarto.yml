@@ -1,11 +1,13 @@
 project:
   type: website
   output-dir: docs
+  post-render: encrypt.r
 
 website:
   title: "Tech blog"
   navbar:
     right:
+      - posts.qmd
       - about.qmd
       - icon: github
         href: https://github.com/JCfly3000
@@ -24,7 +26,7 @@ format:
     code-fold: show
     code-tools: true
     code-block-bg: true
-    code-block-border-left: "#31BAE9"
+    #code-block-border-left: "#31BAE9"
     code-copy: true
     
     theme:
@@ -35,3 +37,6 @@ format:
 
 filters:
   - foldableCodeBlcok.lua
+
+
+brand: brand/_google_brand.yml

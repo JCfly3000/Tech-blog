@@ -1,7 +1,7 @@
 ---
 title: "Youtube下载工具：yt-dlp"
 subtitle: "Youtube download tool:yt-dlp"
-author: "Tony Duan"
+author: "Tony D"
 
 date: "2025-03-11"
 
@@ -27,20 +27,20 @@ https://github.com/yt-dlp/yt-dlp
 # Download yt-dlp
 
 
-```{python}
-!pip install -U "yt-dlp[default]"
+```{bash}
+pip install -U "yt-dlp[default]"
 ```
 
 # update yt-dlp
 
-```{python}
-!pip install yt-dlp --upgrade
+```{bash}
+pip install yt-dlp --upgrade
 ```
 
 # check version
 
-```{python}
-!yt-dlp --version
+```{bash}
+yt-dlp --version
 ```
 
 
@@ -52,31 +52,56 @@ https://github.com/yt-dlp/yt-dlp
 # Command line
 
 
-## download video
+## download video with chrome cookies
 
-```{python}
-!yt-dlp --cookies-from-browser chrome 'https://www.youtube.com/watch?v=ULRVwRmfCmM'
+```{bash}
+yt-dlp --cookies-from-browser chrome 'https://www.youtube.com/watch?v=yBl8UdSav5Y'
 ```
+
+
+
+
+## download video with firefox cookies
+ 
+You may also use a conforming browser extension for exporting cookies, such as Get cookies.txt LOCALLY for Chrome
+ 
+```{bash}
+yt-dlp --cookies-from-browser firefox 'https://www.youtube.com/watch?v=yBl8UdSav5Y'
+```
+
+
+
+## download video with export cookies
+ 
+You may also use a conforming browser extension for exporting cookies, such as Get cookies.txt LOCALLY for Chrome
+
+
+## get video titles
+
+```{bash}
+yt-dlp --cookies-from-browser firefox --get-title 'https://www.youtube.com/watch?v=yBl8UdSav5Y'
+```
+
 
 ## download video to mp3 format
 
-```{python}
-!yt-dlp --cookies-from-browser chrome -x --audio-format mp3 --audio-quality 0 'https://www.youtube.com/watch?v=FkOpwodhROI'
+```{bash}
+yt-dlp --cookies-from-browser chrome -x --audio-format mp3 --audio-quality 0 'https://www.youtube.com/watch?v=FkOpwodhROI'
 ```
 
 ## download video with timestamp
 
 
-```{python}
-!yt-dlp --cookies-from-browser chrome --download-sections '*00:02-03:00' 'https://www.youtube.com/watch?v=FkOpwodhROI'
+```{bash}
+yt-dlp --cookies-from-browser chrome --download-sections '*00:02-03:00' 'https://www.youtube.com/watch?v=FkOpwodhROI'
 ```
 
 
 ## download video to mp4 with timestamp
 
 
-```{python}
-!yt-dlp -f mp4 --cookies-from-browser chrome  --download-sections '*00:02-03:00'  'https://www.youtube.com/watch?v=FkOpwodhROI'
+```{bash}
+yt-dlp -f mp4 --cookies-from-browser chrome  --download-sections '*00:02-03:00'  'https://www.youtube.com/watch?v=FkOpwodhROI'
 ```
 
 

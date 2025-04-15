@@ -1,5 +1,6 @@
 ---
-title: "Run AI model online"
+title: "调用网络端AI模型"
+subtitle: "Run AI model online"
 
 author: "Tony D"
 date: "2025-03-18"
@@ -22,49 +23,33 @@ run LLM model online with ellmer or chatter
 # ellmer for R
 
 ```{r}
-pak::pkg_install('ellmer')
+#pak::pkg_install('ellmer')
 library(ellmer)
+library(keyring)
 ```
 ## google gemini
 
-get text from pdf
 
+### gemini-2.0-flash
 ```{r}
-library(tidyverse)
-read_lines('story.txt')[1:5] |> 
-  stringr::str_wrap(width = 50) |> 
-  paste(collapse = '\n') |> 
-  paste('...') |> 
-  cat()
-```
-
-```{r}
-library(ellmer)
-chat <- chat_openai(
-  system_prompt = "
-  You are an information extractor AI.
-  The user will give you a story and you will 
-  provide the following information in the response:
-  
-  Name of main character: <Insert name here>
-  
-  Names of supporting characters: <Insert comma-
-    separated list of names here>
-  
-  One-Sentence Summary: <Insert summary here. 
-    Use one sentence only>
-  
-  Lesson learned: <Summarize what the hero 
-    learned in two sentences>
-  "
+chat_gemini_model=chat_gemini(
+  system_prompt = NULL,
+  turns = NULL,
+  base_url = "https://generativelanguage.googleapis.com/v1beta/",
+  api_key = key_get("google_ai_api_key"),
+  model = "gemini-2.0-flash",
+  api_args = list(),
+  echo = NULL
 )
-## Using model = "gpt-4o".
+
+chat_gemini_model
 ```
 
 
 
-
-
+```{r}
+chat_gemini_model$chat("Tell me three jokes about statisticians")
+```
 
 
 
@@ -173,7 +158,6 @@ Do not use Copilot (GitHub) model for chattr(). Github will block this behavior.
 chattr_app(as_job = TRUE)
 ```
 
-![](images/clipboard-495301195.png)
 
 Done!
 
@@ -210,14 +194,84 @@ setHook("rstudio.sessionInit", function(newSession) {
 ```
 
 
-# chatlas for python
 
+# google python API
+```{bash}
+pip install -q -U google-genai
+```
+
+```{python}
+from google import genai
+
+client = genai.Client(api_key=google_ai_key_py)
+
+response = client.models.generate_content(
+    model="gemini-2.0-flash", contents="Explain how AI works in a few words"
+)
+print(response.text)
+```
+
+
+
+# chatlas for python
 
 https://github.com/posit-dev/chatlas
 
 
+```{bash}
+pip install -U chatlas
+```
 
 
 
+```{python}
+from chatlas import ChatGoogle
+from chatlas import ChatOllama
+from chatlas import token_usage
+import keyring
+```
 
 
+## gemini model
+```{python}
+from chatlas import ChatGoogle
+
+chat_google_model = ChatGoogle(
+  model = "gemini-2.0-flash",
+  api_key=keyring.get_password("system", "google_ai_api_key"),
+  system_prompt = "You are a whisky expert",
+)
+
+chat_google_model
+```
+
+
+```{python}
+chat_google_model.chat("translate following whisky tasting note to English:微酸，脏麦芽。菲特肯还是要找1988")
+```
+
+
+
+## local Ollama model
+```{python}
+from chatlas import ChatOllama
+
+chat_llama_model = ChatOllama(
+  model="llama3.2",
+  #api_key=keyring.get_password("system", "google_ai_api_key"),
+  system_prompt = "You are a whisky expert",
+)
+
+chat_llama_model
+```
+
+
+
+```{python}
+chat_llama_model.chat("translate following whisky tasting note to English:微酸，脏麦芽。菲特肯还是要找1988")
+```
+
+
+```{python}
+token_usage()
+```

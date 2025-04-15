@@ -1,0 +1,138 @@
+# Brand.yml file for a hypothetical Google Tech Blog
+# Based on publicly known Google branding elements and the brand.yml specification.
+# NOTE: Google's official brand assets (logos, specific fonts like Google Sans)
+# are proprietary. This file uses placeholders and publicly available alternatives (Roboto).
+# You MUST acquire and license official assets separately if needed.
+
+meta:
+  name:
+    short: Google Tech Blog # Or e.g., Google Developers Blog
+    full: Google Official Technology Blog # Example full name
+  link:
+    home: https://developers.googleblog.com/ # Example: Google Developers Blog URL
+    # Add other relevant official Google social/dev links if applicable
+    # Omit links for platforms where no specific official presence exists for this blog
+    github: https://github.com/google # Main Google GitHub org
+    linkedin: https://www.linkedin.com/company/google/ # Main Google LinkedIn
+    facebook: https://www.facebook.com/GoogleDevelopers # Google Developers Facebook
+    twitter: https://twitter.com/googledevs # Google Developers X/Twitter
+
+logo:
+  images:
+    # Placeholder for proprietary Google logos.
+    # Instructions: Download the official Google logos and place them in a 'logos' subdirectory.
+    # Ensure you have the correct license to use these assets.
+    logo-color: logos/google-logo-color.svg # Placeholder path for standard color logo
+    logo-white: logos/google-logo-white.svg # Placeholder path for white logo (for dark backgrounds)
+    icon-color: logos/google-icon-color.png # Placeholder path for favicon-sized logo/icon
+
+
+color:
+  palette:
+    # Google's primary brand colors
+    blue: "#4285F4"
+    red: "#EA4335"
+    yellow: "#FBBC05"
+    green: "#34A853"
+    # Standard grays often used in Google UIs
+    white: "#FFFFFF"
+    grey-100: "#F8F9FA" # Light background/hover gray
+    grey-300: "#DADCE0" # Border gray
+    grey-500: "#80868B" # Lighter text gray
+    grey-700: "#5F6368" # Medium icon/text gray
+    grey-900: "#202124" # Dark text/element gray (near black)
+    black: "#000000"
+  # Semantic color mapping using palette names
+  foreground: grey-900
+  background: white
+  primary: blue
+  secondary: grey-700
+  tertiary: grey-100 # Often used for subtle backgrounds (e.g., code blocks)
+  success: green
+  info: blue # Often uses primary color
+  warning: yellow
+  danger: red
+  light: white # High contrast on dark elements
+  dark: grey-900 # High contrast on light elements
+
+typography:
+  fonts:
+    # Placeholder for Google Sans (Proprietary)
+    # Instructions: If using Google Sans, download/license it and place font files
+    # in a 'fonts/google-sans' subdirectory. Otherwise, rely on the Roboto fallback.
+    - family: Google Sans
+      source: file
+      files:
+        # Example placeholders - list actual files needed
+        - path: fonts/google-sans/GoogleSans-Regular.ttf # Proprietary: Requires license. Use Roboto as alternative.
+          weight: 400
+        - path: fonts/google-sans/GoogleSans-Medium.ttf # Proprietary
+          weight: 500
+        - path: fonts/google-sans/GoogleSans-Bold.ttf # Proprietary
+          weight: 700
+        - path: fonts/google-sans/GoogleSans-Italic.ttf # Proprietary
+          style: italic
+          weight: 400
+    # Roboto: Google's standard open-source font, widely available via Google Fonts
+    - family: Roboto
+      source: google
+      weight: [300, 400, 500, 700] # Common weights used
+      style: [normal, italic]
+    # Roboto Mono: Google's standard open-source monospace font
+    - family: Roboto Mono
+      source: google
+      weight: [400, 500] # Regular and Medium
+      style: [normal, italic]
+
+  # Base typography settings - using Roboto as the primary accessible font
+  base:
+    family: Roboto
+    weight: 400
+    size: 16px
+    line-height: 1.6
+
+  # Headings - Ideally Google Sans, falling back to Roboto
+  headings:
+    family: Google Sans # Fallback specified implicitly by Roboto's presence, or explicitly by build tools
+    weight: 500 # Medium weight often used for headings
+    line-height: 1.3
+    color: grey-900 # Use defined dark grey from palette
+
+  # Monospace settings - using Roboto Mono
+  monospace:
+    family: Roboto Mono
+    weight: 400
+    size: 0.9em # Slightly smaller than base font typical for code
+  monospace-inline:
+    # Inherits from monospace, overrides color/background
+    color: red # Use a distinct color from the palette for inline code
+    background-color: grey-100 # Subtle background
+  monospace-block:
+    # Inherits from monospace, overrides color/background/line-height
+    color: foreground # Use standard text color
+    background-color: grey-100 # Subtle background for code blocks
+    line-height: 1.4
+
+  # Link styling
+  link:
+    weight: 500 # Slightly bolder links
+    color: primary # Use the primary blue color
+    # decoration: none # Google UIs often have no underline by default, relying on color. Add underline on hover via CSS.
+
+# Defaults section - Keep empty unless specific Bootstrap/Quarto/Shiny overrides are essential
+# Avoid adding framework-specific rules here if possible to maintain portability.
+# defaults:
+#   bootstrap:
+#     rules: |
+#       // Example: SCSS rules for Bootstrap context
+#       // a { text-decoration: none; }
+#       // a:hover { text-decoration: underline; }
+#   quarto:
+#     format:
+#       # html: ... # Quarto specific format options
+#   shiny:
+#     theme:
+#       # defaults:
+#       #   navbar-bg: $brand-blue # Example using Sass variable derived from palette
+#       # rules: |
+#       #   // SCSS rules specific to Shiny context

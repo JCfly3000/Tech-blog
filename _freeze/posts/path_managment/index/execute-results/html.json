@@ -1,0 +1,15 @@
+{
+  "hash": "6c1adf65886fb52313c9abdec2192ebb",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"路径管理\"\nsubtitle: \"Path management\"\nauthor: \"Tony D\"\ndate: \"2025-03-27\"\n\ncategories: \n  - Tool\n  - R\n  - Python\n\n  \nexecute:\n  warning: false\n  error: false\n  eval: false\n\nimage: 'images/here.png'\n---\n\nSince windows and mac have different file path, we use package to manage the file path.\n\n::: panel-tabset\n\n\n# R\n\n## fs pacakge\n\n::: {.cell}\n\n```{.r .cell-code}\n#pak::pkg_install('here')\n#pak::pkg_install('fs')\nlibrary(fs)\n```\n:::\n\n\n::: {.cell}\n\n```{.r .cell-code}\ngetwd()\n```\n:::\n\n### list file in the current directory\n\n::: {.cell}\n\n```{.r .cell-code}\ndir_ls()\n```\n:::\n\n\n### create a new directory\n\n::: {.cell}\n\n```{.r .cell-code}\n# create a new directory\ntmp <- dir_create(file_temp())\ntmp\n```\n:::\n\n### create new files in that directory\n\n::: {.cell}\n\n```{.r .cell-code}\n# create new files in that directory\nfile_create(path(tmp, \"my-file.txt\"))\ndir_ls(tmp)\n```\n:::\n\n### remove files from the directory\n\n::: {.cell}\n\n```{.r .cell-code}\n# remove files from the directory\nfile_delete(path(tmp, \"my-file.txt\"))\ndir_ls(tmp)\n```\n:::\n\n\n### remove the directory\n\n::: {.cell}\n\n```{.r .cell-code}\n# remove the directory\ndir_delete(tmp)\n```\n:::\n\n\n## here package\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(here)\n```\n:::\n\n\n\n### show project directory\n::: {.cell}\n\n```{.r .cell-code}\nhere()\n```\n:::\n\n### show all file in the project directory\n::: {.cell}\n\n```{.r .cell-code}\nlist.files(here())\n```\n:::\n\n\n### show one file path\n\nhere.png in images folder\n\n::: {.cell}\n\n```{.r .cell-code}\nimage_path=here('posts/path_managment/images','here.png')\nimage_path\n```\n:::\n\n# Python\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

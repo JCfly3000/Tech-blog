@@ -1,0 +1,245 @@
+---
+title: "数据星期二"
+subtitle: "TidyTuesday"
+author: "Tony D"
+date: "2025-04-10"
+
+categories: 
+  - Tool
+  - R
+  - Python
+
+  
+execute:
+  warning: false
+  error: false
+
+image: 'images/tt_logo.png'
+
+filters:
+  - shinylive
+---
+
+
+
+TidyTuesday data project.[github](https://github.com/rfordatascience/tidytuesday)
+
+# getting the data
+
+
+
+::: panel-tabset
+
+
+
+## R
+
+
+```{r}
+#pak::pak('tidytuesdayR')
+```
+
+```{r}
+library(tidytuesdayR)
+library(tidyverse)
+```
+
+
+### download the data
+
+all available data
+
+```{r}
+#tt_available() 
+```
+
+
+```{r}
+tuesdata <- tidytuesdayR::tt_load('2025-04-01')
+```
+
+
+
+```{r}
+tuesdata
+```
+
+### read data
+
+```{r}
+data=tuesdata$pokemon_df
+#glimpse(data)
+```
+
+or read directly from the url
+
+```{r}
+data<- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2025/2025-04-01/pokemon_df.csv')
+```
+
+
+### using shinyapps assistant to create shinyapp
+
+https://gallery.shinyapps.io/assistant
+
+go to project folder and install quarto-ext/shinylive
+
+```{bash}
+#| eval: false
+quarto add quarto-ext/shinylive
+```
+
+
+#### Prompt 1:
+create a shinyapp with this data from github:https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2025/2025-04-01/pokemon_df.csv.
+left side:
+selector type_1
+number of pokemon
+right side:
+histogram of height, color by type_2
+histogram of weight, color by type_2
+histogram of attack, color by type_2
+histogram of defense color by type_2
+barplot of color_1
+
+there is no weight_kg,height_m.please use correct name.
+
+
+
+```{shinylive-r}
+#| standalone: true
+#| viewerHeight: 600
+library(shiny)
+library(bslib)
+library(tidyverse)
+library(ggplot2)
+
+# Load the Pokemon data
+pokemon_data <- read.csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2025/2025-04-01/pokemon_df.csv")
+
+ui <- page_sidebar(
+  title = "Pokemon Data Explorer",
+  sidebar = sidebar(
+    selectInput("type1", "Select Type 1:", 
+                choices = sort(unique(pokemon_data$type_1)),
+                selected = "water"),
+    hr(),
+    textOutput("pokemon_count")
+  ),
+  
+  layout_columns(
+    card(
+      card_header("Height Distribution by Type 2"),
+      plotOutput("height_hist")
+    ),
+    card(
+      card_header("Weight Distribution by Type 2"),
+      plotOutput("weight_hist")
+    )
+  ),
+  
+  layout_columns(
+    card(
+      card_header("Attack Distribution by Type 2"),
+      plotOutput("attack_hist")
+    ),
+    card(
+      card_header("Defense Distribution by Type 2"),
+      plotOutput("defense_hist")
+    )
+  ),
+  
+  card(
+    card_header("Pokemon Color Distribution"),
+    plotOutput("color_barplot")
+  )
+)
+
+server <- function(input, output, session) {
+  
+  # Filtered data based on the selected type_1
+  filtered_data <- reactive({
+    pokemon_data %>%
+      filter(type_1 == input$type1)
+  })
+  
+  # Display number of Pokemon
+  output$pokemon_count <- renderText({
+    count <- nrow(filtered_data())
+    paste("Number of Pokemon with Type 1 '", input$type1, "': ", count)
+  })
+  
+  # Height histogram colored by type_2
+  output$height_hist <- renderPlot({
+    ggplot(filtered_data(), aes(x = height, fill = type_2)) +
+      geom_histogram(alpha = 0.7, bins = 20, position = "identity") +
+      scale_fill_viridis_d() +
+      theme_minimal() +
+      labs(x = "Height", y = "Count", fill = "Type 2")
+  })
+  
+  # Weight histogram colored by type_2
+  output$weight_hist <- renderPlot({
+    ggplot(filtered_data(), aes(x = weight, fill = type_2)) +
+      geom_histogram(alpha = 0.7, bins = 20, position = "identity") +
+      scale_fill_viridis_d() +
+      theme_minimal() +
+      labs(x = "Weight", y = "Count", fill = "Type 2")
+  })
+  
+  # Attack histogram colored by type_2
+  output$attack_hist <- renderPlot({
+    ggplot(filtered_data(), aes(x = attack, fill = type_2)) +
+      geom_histogram(alpha = 0.7, bins = 20, position = "identity") +
+      scale_fill_viridis_d() +
+      theme_minimal() +
+      labs(x = "Attack", y = "Count", fill = "Type 2")
+  })
+  
+  # Defense histogram colored by type_2
+  output$defense_hist <- renderPlot({
+    ggplot(filtered_data(), aes(x = defense, fill = type_2)) +
+      geom_histogram(alpha = 0.7, bins = 20, position = "identity") +
+      scale_fill_viridis_d() +
+      theme_minimal() +
+      labs(x = "Defense", y = "Count", fill = "Type 2")
+  })
+  
+  # Barplot of color_1
+  output$color_barplot <- renderPlot({
+    color_counts <- filtered_data() %>%
+      count(color_1) %>%
+      arrange(desc(n))
+    
+    ggplot(color_counts, aes(x = reorder(color_1, n), y = n, fill = color_1)) +
+      geom_col() +
+      coord_flip() +
+      scale_fill_brewer(palette = "Set3") +
+      theme_minimal() +
+      labs(x = "Color", y = "Count", fill = "Color") +
+      theme(legend.position = "none")
+  })
+}
+
+shinyApp(ui, server)
+
+```
+
+
+
+## Python
+
+
+:::
+
+
+
+# Reference:
+
+https://github.com/rfordatascience/tidytuesday
+
+https://github.com/posit-dev/python-tidytuesday
+
+
+
+

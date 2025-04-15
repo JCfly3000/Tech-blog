@@ -7,7 +7,7 @@
         "---\n",
         "title: \"Youtube下载工具：yt-dlp\"\n",
         "subtitle: \"Youtube download tool:yt-dlp\"\n",
-        "author: \"Tony Duan\"\n",
+        "author: \"Tony D\"\n",
         "\n",
         "date: \"2025-03-11\"\n",
         "\n",
@@ -30,60 +30,26 @@
         "\n",
         "https://github.com/yt-dlp/yt-dlp\n",
         "\n",
-        "# Download yt-dlp\n"
-      ],
-      "id": "6ca2b737"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "!pip install -U \"yt-dlp[default]\""
-      ],
-      "id": "65448807",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "# update yt-dlp"
-      ],
-      "id": "639ae7d3"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "!pip install yt-dlp --upgrade"
-      ],
-      "id": "6ff1b309",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "# check version"
-      ],
-      "id": "032a1fee"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "!yt-dlp --version"
-      ],
-      "id": "0dd1c1d7",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
+        "# Download yt-dlp\n",
+        "\n",
+        "\n",
+        "```{bash}\n",
+        "pip install -U \"yt-dlp[default]\"\n",
+        "```\n",
+        "\n",
+        "# update yt-dlp\n",
+        "\n",
+        "```{bash}\n",
+        "pip install yt-dlp --upgrade\n",
+        "```\n",
+        "\n",
+        "# check version\n",
+        "\n",
+        "```{bash}\n",
+        "yt-dlp --version\n",
+        "```\n",
+        "\n",
+        "\n",
         "## Start download youtube\n",
         "\n",
         "::: panel-tabset\n",
@@ -92,78 +58,60 @@
         "# Command line\n",
         "\n",
         "\n",
-        "## download video"
-      ],
-      "id": "eeef2c91"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "!yt-dlp --cookies-from-browser chrome 'https://www.youtube.com/watch?v=ULRVwRmfCmM'"
-      ],
-      "id": "0be05980",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "## download video to mp3 format"
-      ],
-      "id": "b4eeba93"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "!yt-dlp --cookies-from-browser chrome -x --audio-format mp3 --audio-quality 0 'https://www.youtube.com/watch?v=FkOpwodhROI'"
-      ],
-      "id": "5df7225f",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "## download video with timestamp\n"
-      ],
-      "id": "fb0465b2"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "!yt-dlp --cookies-from-browser chrome --download-sections '*00:02-03:00' 'https://www.youtube.com/watch?v=FkOpwodhROI'"
-      ],
-      "id": "50239f76",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
-        "## download video to mp4 with timestamp\n"
-      ],
-      "id": "759befec"
-    },
-    {
-      "cell_type": "code",
-      "metadata": {},
-      "source": [
-        "!yt-dlp -f mp4 --cookies-from-browser chrome  --download-sections '*00:02-03:00'  'https://www.youtube.com/watch?v=FkOpwodhROI'"
-      ],
-      "id": "d2179345",
-      "execution_count": null,
-      "outputs": []
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {},
-      "source": [
+        "## download video with chrome cookies\n",
+        "\n",
+        "```{bash}\n",
+        "yt-dlp --cookies-from-browser chrome 'https://www.youtube.com/watch?v=yBl8UdSav5Y'\n",
+        "```\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "## download video with firefox cookies\n",
+        " \n",
+        "You may also use a conforming browser extension for exporting cookies, such as Get cookies.txt LOCALLY for Chrome\n",
+        " \n",
+        "```{bash}\n",
+        "yt-dlp --cookies-from-browser firefox 'https://www.youtube.com/watch?v=yBl8UdSav5Y'\n",
+        "```\n",
+        "\n",
+        "\n",
+        "\n",
+        "## download video with export cookies\n",
+        " \n",
+        "You may also use a conforming browser extension for exporting cookies, such as Get cookies.txt LOCALLY for Chrome\n",
+        "\n",
+        "\n",
+        "## get video titles\n",
+        "\n",
+        "```{bash}\n",
+        "yt-dlp --cookies-from-browser firefox --get-title 'https://www.youtube.com/watch?v=yBl8UdSav5Y'\n",
+        "```\n",
+        "\n",
+        "\n",
+        "## download video to mp3 format\n",
+        "\n",
+        "```{bash}\n",
+        "yt-dlp --cookies-from-browser chrome -x --audio-format mp3 --audio-quality 0 'https://www.youtube.com/watch?v=FkOpwodhROI'\n",
+        "```\n",
+        "\n",
+        "## download video with timestamp\n",
+        "\n",
+        "\n",
+        "```{bash}\n",
+        "yt-dlp --cookies-from-browser chrome --download-sections '*00:02-03:00' 'https://www.youtube.com/watch?v=FkOpwodhROI'\n",
+        "```\n",
+        "\n",
+        "\n",
+        "## download video to mp4 with timestamp\n",
+        "\n",
+        "\n",
+        "```{bash}\n",
+        "yt-dlp -f mp4 --cookies-from-browser chrome  --download-sections '*00:02-03:00'  'https://www.youtube.com/watch?v=FkOpwodhROI'\n",
+        "```\n",
+        "\n",
+        "\n",
+        "\n",
         "# R\n",
         "\n",
         "# Python\n",
@@ -172,7 +120,7 @@
         "\n",
         "=\n"
       ],
-      "id": "6c8dc317"
+      "id": "04d7f325"
     }
   ],
   "metadata": {

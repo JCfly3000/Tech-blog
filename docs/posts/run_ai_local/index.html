@@ -72,10 +72,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-494121dfa8658343c03537e94414993d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dc92d55a7a6523d8c5d04b5341384b7e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-d29ea5ee5a70017e53bdfffa962c84fb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-b171e5a48f1724c60a27d4332cb362b7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -125,6 +125,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Posts</span></a>
+  </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
@@ -184,13 +188,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#ollama" id="toc-ollama" class="nav-link active" data-scroll-target="#ollama">Ollama</a>
+  <li><a href="#ollama" id="toc-ollama" class="nav-link active" data-scroll-target="#ollama">1.Ollama</a>
   <ul class="collapse">
   <li><a href="#download-and-install-the-ollama-app" id="toc-download-and-install-the-ollama-app" class="nav-link" data-scroll-target="#download-and-install-the-ollama-app">Download and install the Ollama app</a></li>
   <li><a href="#run-llm-model-on-ollama" id="toc-run-llm-model-on-ollama" class="nav-link" data-scroll-target="#run-llm-model-on-ollama">Run LLM model on Ollama</a></li>
   </ul></li>
-  <li><a href="#hugging-face" id="toc-hugging-face" class="nav-link" data-scroll-target="#hugging-face">hugging face</a></li>
+  <li><a href="#hugging-face" id="toc-hugging-face" class="nav-link" data-scroll-target="#hugging-face">2.hugging face</a></li>
   <li><a href="#terminal" id="toc-terminal" class="nav-link" data-scroll-target="#terminal">Terminal</a></li>
+  <li><a href="#vllm" id="toc-vllm" class="nav-link" data-scroll-target="#vllm">vLLM</a></li>
   <li><a href="#mall-pacakge" id="toc-mall-pacakge" class="nav-link" data-scroll-target="#mall-pacakge">mall pacakge</a></li>
   </ul>
 </nav>
@@ -202,10 +207,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<p>Running LLM model on local machine with Ollama,huggingface and more</p>
+<p>Running AI model on local machine with Ollama, huggingface and more</p>
 <section id="ollama" class="level1">
-<h1>Ollama</h1>
-<p><img src="images/clipboard-1677176147.png" class="img-fluid"></p>
+<h1>1.Ollama</h1>
+<p><img src="images/clipboard-3590619259.png" class="img-fluid"></p>
 <section id="download-and-install-the-ollama-app" class="level2">
 <h2 class="anchored" data-anchor-id="download-and-install-the-ollama-app">Download and install the Ollama app</h2>
 <p>https://ollama.com/download</p>
@@ -222,7 +227,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"ollamar"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pak<span class="sc">::</span><span class="fu">pak</span>(<span class="st">"ollamar"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>pak<span class="sc">::</span><span class="fu">pkg_deps_tree</span>(<span class="st">"ollamar"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
@@ -232,40 +238,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">test_connection</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-</section>
-<section id="download-model" class="level4">
-<h4 class="anchored" data-anchor-id="download-model">download model</h4>
+<p>download model</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>ollamar<span class="sc">::</span><span class="fu">pull</span>(<span class="st">"llama3.1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-</section>
-<section id="list-downloaded-model" class="level4">
-<h4 class="anchored" data-anchor-id="list-downloaded-model">list downloaded model</h4>
+<p>list downloaded model</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list_models</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-</section>
-<section id="show-model-detail" class="level4">
-<h4 class="anchored" data-anchor-id="show-model-detail">show model detail</h4>
+<p>show model detail</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#ollamar::show("llama3.1")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>ollamar<span class="sc">::</span><span class="fu">show</span>(<span class="st">"gemma3"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-</section>
-<section id="run-model" class="level4">
-<h4 class="anchored" data-anchor-id="run-model">run model</h4>
+<p>run model</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>resp <span class="ot">&lt;-</span> <span class="fu">generate</span>(<span class="st">"llama3.1"</span>, <span class="st">"tell me a 5-word story"</span>)</span>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>resp <span class="ot">&lt;-</span> <span class="fu">generate</span>(<span class="st">"gemma3"</span>, <span class="st">"tell me a 5-word story"</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>resp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
@@ -283,101 +281,188 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">resp_process</span>(resp, <span class="st">"df"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
+<p>using multiple models</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">list_models</span>())<span class="sc">$</span>name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>models_name<span class="ot">=</span>(<span class="fu">list_models</span>())<span class="sc">$</span>name[<span class="sc">-</span><span class="dv">1</span>]</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>models_name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>input_prompt<span class="ot">=</span><span class="st">"tell me a 5-word story"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>all_model<span class="ot">=</span><span class="fu">c</span>()</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> models_name){</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  resp <span class="ot">&lt;-</span> <span class="fu">generate</span>(i, input_prompt)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">#print(paste0("Model: ", i))</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">resp_process</span>(resp, <span class="st">"text"</span>))</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="co">#resp_process(resp, "df")</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  all_model<span class="ot">=</span><span class="fu">rbind</span>(all_model, <span class="fu">resp_process</span>(resp, <span class="st">"df"</span>))</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>all_model</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 </section>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 
 </div>
 <div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
-<section id="download-model-1" class="level4">
-<h4 class="anchored" data-anchor-id="download-model-1">download model</h4>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>ollama pull llama3<span class="fl">.1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>ollama pull llama3<span class="fl">.1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-</section>
-<section id="run-model-1" class="level4">
-<h4 class="anchored" data-anchor-id="run-model-1">run model</h4>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>ollama run llama3<span class="fl">.1</span> <span class="st">"tell me a 5-word story"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>ollama run llama3<span class="fl">.1</span> <span class="st">"tell me a 5-word story"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-</section>
 <section id="run-in-python" class="level4">
 <h4 class="anchored" data-anchor-id="run-in-python">Run in Python</h4>
+<p>install package</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install ollama</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install ollama</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>local pacakge</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pandas <span class="im">import</span> json_normalize</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ollama <span class="im">import</span> chat</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ollama <span class="im">import</span> ChatResponse</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ollama</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>download model</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#ollama.pull('llama3.2:1b')</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>list all download model</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>ollama_model<span class="op">=</span>ollama.<span class="bu">list</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ollama <span class="im">import</span> chat</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ollama <span class="im">import</span> ChatResponse</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extracting data from the ListResponse</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> []</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> model <span class="kw">in</span> ollama_model.models:</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    model_data <span class="op">=</span> {</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">'model'</span>: model.model,</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">'modified_at'</span>: model.modified_at,</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">'digest'</span>: model.digest,</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">'size'</span>: (model.size<span class="op">/</span><span class="dv">1000000000</span>),</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">'parent_model'</span>: model.details.parent_model,</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>        <span class="st">'format'</span>: model.details.<span class="bu">format</span>,</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">'family'</span>: model.details.family,</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>        <span class="st">'families'</span>: model.details.families,</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>        <span class="st">'parameter_size'</span>: model.details.parameter_size,</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>        <span class="st">'quantization_level'</span>: model.details.quantization_level</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>    data.append(model_data)</span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert the list of dictionaries into a pandas DataFrame</span></span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>ollama_model_df <span class="op">=</span> pd.DataFrame(data)</span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the DataFrame</span></span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ollama_model_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>slow model detail</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>ollama.show(<span class="st">'deepseek-r1:7b-qwen-distill-q4_K_M'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>delete model</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#ollama.delete('llama3.2:1b')</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>run model</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>response: ChatResponse<span class="op">=</span>ollama.chat(model<span class="op">=</span><span class="st">'deepseek-r1:7b-qwen-distill-q4_K_M'</span>, messages<span class="op">=</span>[</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  {<span class="st">'role'</span>: <span class="st">'system'</span>, </span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">'content'</span>: <span class="st">'你是一个诗人，你只能输出中文'</span>},</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  {<span class="st">'role'</span>: <span class="st">'assistant'</span>, </span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">'content'</span>: <span class="st">''</span>},</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  {<span class="st">'role'</span>: <span class="st">'user'</span>, </span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">'content'</span>: <span class="st">'give me a 3 lines story'</span>}</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>  ])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ollama</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-</section>
-<section id="download-model-2" class="level4">
-<h4 class="anchored" data-anchor-id="download-model-2">download model</h4>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ollama.pull</span>(<span class="st">"llama3.1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-</section>
-<section id="show-downloaded-model" class="level4">
-<h4 class="anchored" data-anchor-id="show-downloaded-model">show downloaded model</h4>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>ollama.<span class="bu">list</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-</section>
-<section id="run-model-2" class="level4">
-<h4 class="anchored" data-anchor-id="run-model-2">Run model</h4>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>ollama.chat(model<span class="op">=</span><span class="st">'llama3.1'</span>, messages<span class="op">=</span>[{<span class="st">'role'</span>: <span class="st">'user'</span>, <span class="st">'content'</span>: <span class="st">'who are you?'</span>}])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-</section>
-<section id="create-a-model-with-prompt" class="level4">
-<h4 class="anchored" data-anchor-id="create-a-model-with-prompt">create a model with prompt</h4>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>ollama.create(model<span class="op">=</span><span class="st">'Mario'</span>, from_<span class="op">=</span><span class="st">'llama3.1'</span>, system<span class="op">=</span><span class="st">"You are Mario from Super Mario Bros."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.message.content)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>ollama.chat(model<span class="op">=</span><span class="st">'Mario'</span>, messages<span class="op">=</span>[{<span class="st">'role'</span>: <span class="st">'user'</span>, <span class="st">'content'</span>: <span class="st">'who are you?'</span>}])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>response: ChatResponse <span class="op">=</span>ollama.chat(model<span class="op">=</span><span class="st">'gemma3'</span>, messages<span class="op">=</span>[{<span class="st">'role'</span>: <span class="st">'user'</span>, <span class="st">'content'</span>: <span class="st">'Why is the sky blue?'</span>}])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-</section>
-<section id="delete-model" class="level4">
-<h4 class="anchored" data-anchor-id="delete-model">delete model</h4>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>status <span class="op">=</span> ollama.delete(<span class="st">'example'</span>)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.message.content)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>create model</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>ollama.create(model<span class="op">=</span><span class="st">'example_model'</span>, from_<span class="op">=</span><span class="st">'llama3.2'</span>, system<span class="op">=</span><span class="st">"You are Mario from Super Mario Bros."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>push model to ollama</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>ollama.push(<span class="st">'user/example_model'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -387,53 +472,53 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </section>
 <section id="hugging-face" class="level1">
-<h1>hugging face</h1>
+<h1>2.hugging face</h1>
+<p><img src="images/clipboard-1081827289.png" class="img-fluid"></p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Run in Python with hugging face</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Run in Python with hugging face transformer</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
-<p>Using mlx DeepSeek-R1-4bit as example :https://huggingface.co/mlx-community/DeepSeek-R1-4bit</p>
-<p>Using python 3.11</p>
+<p>DeepSeek-R1-Distill-Qwen-1.5B as example:</p>
+<p>https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B</p>
+<section id="using-pipeline" class="level3">
+<h3 class="anchored" data-anchor-id="using-pipeline">using pipeline</h3>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setenv</span>(<span class="at">RETICULATE_PYTHON =</span> <span class="st">"/Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11"</span>)</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">use_python</span>(<span class="st">"/Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use a pipeline as a high-level helper</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> transformers <span class="im">import</span> pipeline</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>pipe <span class="op">=</span> pipeline(<span class="st">"text-generation"</span>, model<span class="op">=</span><span class="st">"deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"</span>)</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>messages <span class="op">=</span> [</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: <span class="st">"Who are you?"</span>},</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>pipe(messages)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
+</section>
+<section id="load-model-directly" class="level3">
+<h3 class="anchored" data-anchor-id="load-model-directly">Load model directly</h3>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> platform <span class="im">import</span> python_version</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(python_version())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load model directly</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> transformers <span class="im">import</span> AutoTokenizer, AutoModelForCausalLM</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>tokenizer <span class="op">=</span> AutoTokenizer.from_pretrained(<span class="st">"deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"</span>)</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> AutoModelForCausalLM.from_pretrained(<span class="st">"deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"</span>)</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>dir_peline <span class="op">=</span> pipeline(<span class="st">"text-generation"</span>, model<span class="op">=</span>model, tokenizer<span class="op">=</span>tokenizer)</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> <span class="st">"my text for named entity recognition here."</span></span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>dir_peline(text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip3<span class="fl">.11</span> install mlx<span class="op">-</span>lm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mlx_lm <span class="im">import</span> load, generate</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>model, tokenizer <span class="op">=</span> load(<span class="st">"mlx-community/DeepSeek-R1-4bit"</span>)</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>prompt <span class="op">=</span> <span class="st">"hello"</span></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> tokenizer.chat_template <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>    messages <span class="op">=</span> [{<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: prompt}]</span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>    prompt <span class="op">=</span> tokenizer.apply_chat_template(</span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>        messages, add_generation_prompt<span class="op">=</span><span class="va">True</span></span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> generate(model, tokenizer, prompt<span class="op">=</span>prompt, verbose<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>response</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
+</section>
 </div>
 </div>
 </div>
@@ -444,30 +529,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">run in Terminal</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">run in R code</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false">run in Python code</a></li></ul>
 <div class="tab-content">
 <div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
-<p>runing mlx_whisper as example</p>
-<p>Download model</p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>brew install ffmpeg</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install mlx<span class="op">-</span>whisper</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>mlx_whisper xxxx.mp3 <span class="op">--</span>model mlx<span class="op">-</span>community<span class="op">/</span>whisper<span class="op">-</span>turbo <span class="op">--</span>language <span class="st">'Chinese'</span> <span class="op">--</span>initial<span class="op">-</span>prompt <span class="st">'以下是普通話的句子,請以繁體輸出'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<p>mlx_whisper xxxx.mp3 –model mlx-community/whisper-turbo –language ‘Chinese’ –initial-prompt ‘以下是普通話的句子,請以繁體輸出’</p>
+<p>https://github.com/allenai/olmocr</p>
+<p>https://github.com/gradio-app/gradio</p>
+<p>https://www.youtube.com/watch?v=XF3Q_ZjwfaI</p>
 </div>
 <div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<p>runing mlx_whisper as example</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>command<span class="ot">=</span><span class="fu">paste0</span>(<span class="st">"mlx_whisper '"</span>,file_name,<span class="st">"' --model mlx-community/whisper-turbo --language 'Chinese' --initial-prompt '以下是普通話的句子,請以繁體輸出'"</span>)</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>command</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>command<span class="ot">=</span><span class="fu">paste0</span>(<span class="st">"mlx_whisper '"</span>,file_name,<span class="st">"' --model mlx-community/whisper-turbo --language 'Chinese' --initial-prompt '以下是普通話的句子,請以繁體輸出'"</span>)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>command</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </div>
@@ -475,15 +548,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>import os</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>command</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="fu">os.system</span>(command)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>command</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>os.system(command)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </div>
 </div>
 </div>
+</section>
+<section id="vllm" class="level1">
+<h1>vLLM</h1>
 </section>
 <section id="mall-pacakge" class="level1">
 <h1>mall pacakge</h1>
@@ -963,271 +1039,353 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb28" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "本地运行AI模型"</span></span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "Run AI model on local machine"</span></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Tony D"</span></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2025-03-18"</span></span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> </span></span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="co">  - AI</span></span>
-<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="co">  - R</span></span>
-<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="co">  - Python</span></span>
-<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a><span class="co">  </span></span>
-<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a><span class="an">image:</span><span class="co"> "images/1719563355.png"</span></span>
-<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
-<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
-<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a><span class="co">  error: false</span></span>
-<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a><span class="co">  eval: false</span></span>
-<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a>Running LLM model on local machine with Ollama,huggingface and more</span>
-<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-22"><a href="#cb28-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-23"><a href="#cb28-23" aria-hidden="true" tabindex="-1"></a><span class="fu"># Ollama</span></span>
-<span id="cb28-24"><a href="#cb28-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-25"><a href="#cb28-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-26"><a href="#cb28-26" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/clipboard-1677176147.png)</span></span>
-<span id="cb28-27"><a href="#cb28-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-28"><a href="#cb28-28" aria-hidden="true" tabindex="-1"></a><span class="fu">## Download and install the Ollama app</span></span>
-<span id="cb28-29"><a href="#cb28-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-30"><a href="#cb28-30" aria-hidden="true" tabindex="-1"></a>https://ollama.com/download</span>
-<span id="cb28-31"><a href="#cb28-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-32"><a href="#cb28-32" aria-hidden="true" tabindex="-1"></a>and open the app on computer</span>
-<span id="cb28-33"><a href="#cb28-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-34"><a href="#cb28-34" aria-hidden="true" tabindex="-1"></a><span class="fu">## Run LLM model on Ollama</span></span>
-<span id="cb28-35"><a href="#cb28-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-36"><a href="#cb28-36" aria-hidden="true" tabindex="-1"></a>::: panel-tabset</span>
-<span id="cb28-37"><a href="#cb28-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-38"><a href="#cb28-38" aria-hidden="true" tabindex="-1"></a><span class="fu">### Run in R with ollamar pacakge</span></span>
-<span id="cb28-39"><a href="#cb28-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-40"><a href="#cb28-40" aria-hidden="true" tabindex="-1"></a><span class="fu">#### download pacakge check connection</span></span>
-<span id="cb28-41"><a href="#cb28-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-44"><a href="#cb28-44" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb28-45"><a href="#cb28-45" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"ollamar"</span>)</span>
-<span id="cb28-46"><a href="#cb28-46" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb28-47"><a href="#cb28-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-50"><a href="#cb28-50" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb28-51"><a href="#cb28-51" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ollamar)</span>
-<span id="cb28-52"><a href="#cb28-52" aria-hidden="true" tabindex="-1"></a><span class="fu">test_connection</span>() </span>
-<span id="cb28-53"><a href="#cb28-53" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb28-54"><a href="#cb28-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-55"><a href="#cb28-55" aria-hidden="true" tabindex="-1"></a><span class="fu">#### download model</span></span>
-<span id="cb28-56"><a href="#cb28-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-59"><a href="#cb28-59" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb28-60"><a href="#cb28-60" aria-hidden="true" tabindex="-1"></a>ollamar<span class="sc">::</span><span class="fu">pull</span>(<span class="st">"llama3.1"</span>)</span>
-<span id="cb28-61"><a href="#cb28-61" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb28-62"><a href="#cb28-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-63"><a href="#cb28-63" aria-hidden="true" tabindex="-1"></a><span class="fu">#### list downloaded model</span></span>
-<span id="cb28-64"><a href="#cb28-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-67"><a href="#cb28-67" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb28-68"><a href="#cb28-68" aria-hidden="true" tabindex="-1"></a><span class="fu">list_models</span>()</span>
-<span id="cb28-69"><a href="#cb28-69" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb28-70"><a href="#cb28-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-71"><a href="#cb28-71" aria-hidden="true" tabindex="-1"></a><span class="fu">#### show model detail</span></span>
-<span id="cb28-72"><a href="#cb28-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-75"><a href="#cb28-75" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb28-76"><a href="#cb28-76" aria-hidden="true" tabindex="-1"></a><span class="co">#ollamar::show("llama3.1")</span></span>
-<span id="cb28-77"><a href="#cb28-77" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb28-78"><a href="#cb28-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-79"><a href="#cb28-79" aria-hidden="true" tabindex="-1"></a><span class="fu">#### run model</span></span>
-<span id="cb28-80"><a href="#cb28-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-83"><a href="#cb28-83" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb28-84"><a href="#cb28-84" aria-hidden="true" tabindex="-1"></a>resp <span class="ot">&lt;-</span> <span class="fu">generate</span>(<span class="st">"llama3.1"</span>, <span class="st">"tell me a 5-word story"</span>)</span>
-<span id="cb28-85"><a href="#cb28-85" aria-hidden="true" tabindex="-1"></a>resp</span>
-<span id="cb28-86"><a href="#cb28-86" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb28-87"><a href="#cb28-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-90"><a href="#cb28-90" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb28-91"><a href="#cb28-91" aria-hidden="true" tabindex="-1"></a><span class="co"># get just the text from the response object</span></span>
-<span id="cb28-92"><a href="#cb28-92" aria-hidden="true" tabindex="-1"></a><span class="fu">resp_process</span>(resp, <span class="st">"text"</span>)</span>
-<span id="cb28-93"><a href="#cb28-93" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb28-94"><a href="#cb28-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-97"><a href="#cb28-97" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb28-98"><a href="#cb28-98" aria-hidden="true" tabindex="-1"></a><span class="co"># get the text as a tibble dataframe</span></span>
-<span id="cb28-99"><a href="#cb28-99" aria-hidden="true" tabindex="-1"></a><span class="fu">resp_process</span>(resp, <span class="st">"df"</span>)</span>
-<span id="cb28-100"><a href="#cb28-100" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb28-101"><a href="#cb28-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-102"><a href="#cb28-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-103"><a href="#cb28-103" aria-hidden="true" tabindex="-1"></a><span class="fu">### Run in R with ellmer package</span></span>
-<span id="cb28-104"><a href="#cb28-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-105"><a href="#cb28-105" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-106"><a href="#cb28-106" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-107"><a href="#cb28-107" aria-hidden="true" tabindex="-1"></a><span class="fu">### Run in terminal</span></span>
-<span id="cb28-108"><a href="#cb28-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-109"><a href="#cb28-109" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-110"><a href="#cb28-110" aria-hidden="true" tabindex="-1"></a><span class="fu">#### download model</span></span>
-<span id="cb28-111"><a href="#cb28-111" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-114"><a href="#cb28-114" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb28-115"><a href="#cb28-115" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>ollama pull llama3<span class="fl">.1</span></span>
-<span id="cb28-116"><a href="#cb28-116" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb28-117"><a href="#cb28-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-118"><a href="#cb28-118" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-119"><a href="#cb28-119" aria-hidden="true" tabindex="-1"></a><span class="fu">#### run model</span></span>
-<span id="cb28-120"><a href="#cb28-120" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-123"><a href="#cb28-123" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb28-124"><a href="#cb28-124" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>ollama run llama3<span class="fl">.1</span> <span class="st">"tell me a 5-word story"</span></span>
-<span id="cb28-125"><a href="#cb28-125" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb28-126"><a href="#cb28-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-127"><a href="#cb28-127" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-128"><a href="#cb28-128" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-129"><a href="#cb28-129" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Run in Python</span></span>
-<span id="cb28-130"><a href="#cb28-130" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-133"><a href="#cb28-133" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb28-134"><a href="#cb28-134" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install ollama</span>
-<span id="cb28-135"><a href="#cb28-135" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb28-136"><a href="#cb28-136" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-137"><a href="#cb28-137" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-140"><a href="#cb28-140" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb28-141"><a href="#cb28-141" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ollama <span class="im">import</span> chat</span>
-<span id="cb28-142"><a href="#cb28-142" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ollama <span class="im">import</span> ChatResponse</span>
-<span id="cb28-143"><a href="#cb28-143" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb28-144"><a href="#cb28-144" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-147"><a href="#cb28-147" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb28-148"><a href="#cb28-148" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ollama</span>
-<span id="cb28-149"><a href="#cb28-149" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb28-150"><a href="#cb28-150" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-151"><a href="#cb28-151" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-152"><a href="#cb28-152" aria-hidden="true" tabindex="-1"></a><span class="fu">#### download model</span></span>
-<span id="cb28-153"><a href="#cb28-153" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-156"><a href="#cb28-156" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb28-157"><a href="#cb28-157" aria-hidden="true" tabindex="-1"></a><span class="fu">ollama.pull</span>(<span class="st">"llama3.1"</span>)</span>
-<span id="cb28-158"><a href="#cb28-158" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb28-159"><a href="#cb28-159" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-160"><a href="#cb28-160" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-161"><a href="#cb28-161" aria-hidden="true" tabindex="-1"></a><span class="fu">#### show downloaded model</span></span>
-<span id="cb28-164"><a href="#cb28-164" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb28-165"><a href="#cb28-165" aria-hidden="true" tabindex="-1"></a>ollama.<span class="bu">list</span>()</span>
-<span id="cb28-166"><a href="#cb28-166" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb28-167"><a href="#cb28-167" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-168"><a href="#cb28-168" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Run model</span></span>
-<span id="cb28-171"><a href="#cb28-171" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb28-172"><a href="#cb28-172" aria-hidden="true" tabindex="-1"></a>ollama.chat(model<span class="op">=</span><span class="st">'llama3.1'</span>, messages<span class="op">=</span>[{<span class="st">'role'</span>: <span class="st">'user'</span>, <span class="st">'content'</span>: <span class="st">'who are you?'</span>}])</span>
-<span id="cb28-173"><a href="#cb28-173" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb28-174"><a href="#cb28-174" aria-hidden="true" tabindex="-1"></a><span class="fu">#### create a model with prompt</span></span>
-<span id="cb28-175"><a href="#cb28-175" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-178"><a href="#cb28-178" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb28-179"><a href="#cb28-179" aria-hidden="true" tabindex="-1"></a>ollama.create(model<span class="op">=</span><span class="st">'Mario'</span>, from_<span class="op">=</span><span class="st">'llama3.1'</span>, system<span class="op">=</span><span class="st">"You are Mario from Super Mario Bros."</span>)</span>
-<span id="cb28-180"><a href="#cb28-180" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb28-181"><a href="#cb28-181" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-182"><a href="#cb28-182" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-183"><a href="#cb28-183" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-186"><a href="#cb28-186" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb28-187"><a href="#cb28-187" aria-hidden="true" tabindex="-1"></a>ollama.chat(model<span class="op">=</span><span class="st">'Mario'</span>, messages<span class="op">=</span>[{<span class="st">'role'</span>: <span class="st">'user'</span>, <span class="st">'content'</span>: <span class="st">'who are you?'</span>}])</span>
-<span id="cb28-188"><a href="#cb28-188" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb28-189"><a href="#cb28-189" aria-hidden="true" tabindex="-1"></a><span class="fu">#### delete model</span></span>
-<span id="cb28-190"><a href="#cb28-190" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-193"><a href="#cb28-193" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb28-194"><a href="#cb28-194" aria-hidden="true" tabindex="-1"></a>status <span class="op">=</span> ollama.delete(<span class="st">'example'</span>)</span>
-<span id="cb28-195"><a href="#cb28-195" aria-hidden="true" tabindex="-1"></a>status</span>
-<span id="cb28-196"><a href="#cb28-196" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb28-197"><a href="#cb28-197" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-198"><a href="#cb28-198" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-199"><a href="#cb28-199" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb28-200"><a href="#cb28-200" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-201"><a href="#cb28-201" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-202"><a href="#cb28-202" aria-hidden="true" tabindex="-1"></a><span class="fu"># hugging face</span></span>
-<span id="cb28-203"><a href="#cb28-203" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-204"><a href="#cb28-204" aria-hidden="true" tabindex="-1"></a>::: panel-tabset</span>
-<span id="cb28-205"><a href="#cb28-205" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-206"><a href="#cb28-206" aria-hidden="true" tabindex="-1"></a><span class="fu">## Run in Python with hugging face</span></span>
-<span id="cb28-207"><a href="#cb28-207" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-208"><a href="#cb28-208" aria-hidden="true" tabindex="-1"></a>Using mlx DeepSeek-R1-4bit as example <span class="sc">:https:</span>//huggingface.co/mlx-community/DeepSeek-R1-4bit</span>
-<span id="cb28-209"><a href="#cb28-209" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-210"><a href="#cb28-210" aria-hidden="true" tabindex="-1"></a>Using python 3.11 </span>
-<span id="cb28-211"><a href="#cb28-211" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-214"><a href="#cb28-214" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb28-215"><a href="#cb28-215" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setenv</span>(<span class="at">RETICULATE_PYTHON =</span> <span class="st">"/Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11"</span>)</span>
-<span id="cb28-216"><a href="#cb28-216" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span>
-<span id="cb28-217"><a href="#cb28-217" aria-hidden="true" tabindex="-1"></a><span class="fu">use_python</span>(<span class="st">"/Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11"</span>)</span>
-<span id="cb28-218"><a href="#cb28-218" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb28-219"><a href="#cb28-219" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-222"><a href="#cb28-222" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb28-223"><a href="#cb28-223" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> platform <span class="im">import</span> python_version</span>
-<span id="cb28-224"><a href="#cb28-224" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(python_version())</span>
-<span id="cb28-225"><a href="#cb28-225" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb28-226"><a href="#cb28-226" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-227"><a href="#cb28-227" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-230"><a href="#cb28-230" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb28-231"><a href="#cb28-231" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip3<span class="fl">.11</span> install mlx<span class="op">-</span>lm</span>
-<span id="cb28-232"><a href="#cb28-232" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb28-233"><a href="#cb28-233" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-234"><a href="#cb28-234" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-235"><a href="#cb28-235" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-238"><a href="#cb28-238" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb28-239"><a href="#cb28-239" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mlx_lm <span class="im">import</span> load, generate</span>
-<span id="cb28-240"><a href="#cb28-240" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-241"><a href="#cb28-241" aria-hidden="true" tabindex="-1"></a>model, tokenizer <span class="op">=</span> load(<span class="st">"mlx-community/DeepSeek-R1-4bit"</span>)</span>
-<span id="cb28-242"><a href="#cb28-242" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-243"><a href="#cb28-243" aria-hidden="true" tabindex="-1"></a>prompt <span class="op">=</span> <span class="st">"hello"</span></span>
-<span id="cb28-244"><a href="#cb28-244" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-245"><a href="#cb28-245" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> tokenizer.chat_template <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
-<span id="cb28-246"><a href="#cb28-246" aria-hidden="true" tabindex="-1"></a>    messages <span class="op">=</span> [{<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: prompt}]</span>
-<span id="cb28-247"><a href="#cb28-247" aria-hidden="true" tabindex="-1"></a>    prompt <span class="op">=</span> tokenizer.apply_chat_template(</span>
-<span id="cb28-248"><a href="#cb28-248" aria-hidden="true" tabindex="-1"></a>        messages, add_generation_prompt<span class="op">=</span><span class="va">True</span></span>
-<span id="cb28-249"><a href="#cb28-249" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb28-250"><a href="#cb28-250" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-251"><a href="#cb28-251" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> generate(model, tokenizer, prompt<span class="op">=</span>prompt, verbose<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb28-252"><a href="#cb28-252" aria-hidden="true" tabindex="-1"></a>response</span>
-<span id="cb28-253"><a href="#cb28-253" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb28-254"><a href="#cb28-254" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-255"><a href="#cb28-255" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb28-256"><a href="#cb28-256" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-257"><a href="#cb28-257" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-258"><a href="#cb28-258" aria-hidden="true" tabindex="-1"></a><span class="fu"># Terminal </span></span>
-<span id="cb28-259"><a href="#cb28-259" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-260"><a href="#cb28-260" aria-hidden="true" tabindex="-1"></a>::: panel-tabset</span>
-<span id="cb28-261"><a href="#cb28-261" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-262"><a href="#cb28-262" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-263"><a href="#cb28-263" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-264"><a href="#cb28-264" aria-hidden="true" tabindex="-1"></a><span class="fu">## run in Terminal</span></span>
-<span id="cb28-265"><a href="#cb28-265" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-266"><a href="#cb28-266" aria-hidden="true" tabindex="-1"></a>runing mlx_whisper as example</span>
-<span id="cb28-267"><a href="#cb28-267" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-268"><a href="#cb28-268" aria-hidden="true" tabindex="-1"></a>Download model</span>
-<span id="cb28-269"><a href="#cb28-269" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-272"><a href="#cb28-272" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb28-273"><a href="#cb28-273" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>brew install ffmpeg</span>
-<span id="cb28-274"><a href="#cb28-274" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install mlx<span class="op">-</span>whisper</span>
-<span id="cb28-275"><a href="#cb28-275" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb28-276"><a href="#cb28-276" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-277"><a href="#cb28-277" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-280"><a href="#cb28-280" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb28-281"><a href="#cb28-281" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>mlx_whisper xxxx.mp3 <span class="op">--</span>model mlx<span class="op">-</span>community<span class="op">/</span>whisper<span class="op">-</span>turbo <span class="op">--</span>language <span class="st">'Chinese'</span> <span class="op">--</span>initial<span class="op">-</span>prompt <span class="st">'以下是普通話的句子,請以繁體輸出'</span></span>
-<span id="cb28-282"><a href="#cb28-282" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb28-283"><a href="#cb28-283" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-284"><a href="#cb28-284" aria-hidden="true" tabindex="-1"></a>mlx_whisper xxxx.mp3 --model mlx-community/whisper-turbo --language 'Chinese' --initial-prompt '以下是普通話的句子,請以繁體輸出'</span>
-<span id="cb28-285"><a href="#cb28-285" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-286"><a href="#cb28-286" aria-hidden="true" tabindex="-1"></a><span class="fu">## run in R code</span></span>
-<span id="cb28-287"><a href="#cb28-287" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-290"><a href="#cb28-290" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb28-291"><a href="#cb28-291" aria-hidden="true" tabindex="-1"></a>command<span class="ot">=</span><span class="fu">paste0</span>(<span class="st">"mlx_whisper '"</span>,file_name,<span class="st">"' --model mlx-community/whisper-turbo --language 'Chinese' --initial-prompt '以下是普通話的句子,請以繁體輸出'"</span>)</span>
-<span id="cb28-292"><a href="#cb28-292" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-293"><a href="#cb28-293" aria-hidden="true" tabindex="-1"></a>command</span>
-<span id="cb28-294"><a href="#cb28-294" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb28-295"><a href="#cb28-295" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-296"><a href="#cb28-296" aria-hidden="true" tabindex="-1"></a><span class="fu">## run in Python code </span></span>
-<span id="cb28-297"><a href="#cb28-297" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-300"><a href="#cb28-300" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb28-301"><a href="#cb28-301" aria-hidden="true" tabindex="-1"></a>import os</span>
-<span id="cb28-302"><a href="#cb28-302" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-303"><a href="#cb28-303" aria-hidden="true" tabindex="-1"></a>command</span>
-<span id="cb28-304"><a href="#cb28-304" aria-hidden="true" tabindex="-1"></a><span class="fu">os.system</span>(command)</span>
-<span id="cb28-305"><a href="#cb28-305" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb28-306"><a href="#cb28-306" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-307"><a href="#cb28-307" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-308"><a href="#cb28-308" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-309"><a href="#cb28-309" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb28-310"><a href="#cb28-310" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-311"><a href="#cb28-311" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-312"><a href="#cb28-312" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-313"><a href="#cb28-313" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-314"><a href="#cb28-314" aria-hidden="true" tabindex="-1"></a><span class="fu"># mall pacakge </span></span>
-<span id="cb28-315"><a href="#cb28-315" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-316"><a href="#cb28-316" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-317"><a href="#cb28-317" aria-hidden="true" tabindex="-1"></a>https://mlverse.github.io/mall/</span>
-<span id="cb28-318"><a href="#cb28-318" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-319"><a href="#cb28-319" aria-hidden="true" tabindex="-1"></a></span>
+<div class="sourceCode" id="cb33" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "本地运行AI模型"</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "Run AI model on local machine"</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Tony D"</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2025-03-18"</span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> </span></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="co">  - AI</span></span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="co">  - R</span></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a><span class="co">  - Python</span></span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a><span class="co">  </span></span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a><span class="an">image:</span><span class="co"> "images/1719563355.png"</span></span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a><span class="co">  error: false</span></span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a><span class="co">  eval: false</span></span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a>Running AI model on local machine with Ollama, huggingface and more</span>
+<span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a><span class="fu"># 1.Ollama</span></span>
+<span id="cb33-23"><a href="#cb33-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-24"><a href="#cb33-24" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/clipboard-3590619259.png)</span></span>
+<span id="cb33-25"><a href="#cb33-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-26"><a href="#cb33-26" aria-hidden="true" tabindex="-1"></a><span class="fu">## Download and install the Ollama app</span></span>
+<span id="cb33-27"><a href="#cb33-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-28"><a href="#cb33-28" aria-hidden="true" tabindex="-1"></a>https://ollama.com/download</span>
+<span id="cb33-29"><a href="#cb33-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-30"><a href="#cb33-30" aria-hidden="true" tabindex="-1"></a>and open the app on computer</span>
+<span id="cb33-31"><a href="#cb33-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-32"><a href="#cb33-32" aria-hidden="true" tabindex="-1"></a><span class="fu">## Run LLM model on Ollama</span></span>
+<span id="cb33-33"><a href="#cb33-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-34"><a href="#cb33-34" aria-hidden="true" tabindex="-1"></a>::: panel-tabset</span>
+<span id="cb33-35"><a href="#cb33-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-36"><a href="#cb33-36" aria-hidden="true" tabindex="-1"></a><span class="fu">### Run in R with ollamar pacakge</span></span>
+<span id="cb33-37"><a href="#cb33-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-38"><a href="#cb33-38" aria-hidden="true" tabindex="-1"></a><span class="fu">#### download pacakge check connection</span></span>
+<span id="cb33-39"><a href="#cb33-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-42"><a href="#cb33-42" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb33-43"><a href="#cb33-43" aria-hidden="true" tabindex="-1"></a>pak<span class="sc">::</span><span class="fu">pak</span>(<span class="st">"ollamar"</span>)</span>
+<span id="cb33-44"><a href="#cb33-44" aria-hidden="true" tabindex="-1"></a>pak<span class="sc">::</span><span class="fu">pkg_deps_tree</span>(<span class="st">"ollamar"</span>)</span>
+<span id="cb33-45"><a href="#cb33-45" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-46"><a href="#cb33-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-49"><a href="#cb33-49" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb33-50"><a href="#cb33-50" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ollamar)</span>
+<span id="cb33-51"><a href="#cb33-51" aria-hidden="true" tabindex="-1"></a><span class="fu">test_connection</span>() </span>
+<span id="cb33-52"><a href="#cb33-52" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-53"><a href="#cb33-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-54"><a href="#cb33-54" aria-hidden="true" tabindex="-1"></a>download model</span>
+<span id="cb33-55"><a href="#cb33-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-58"><a href="#cb33-58" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb33-59"><a href="#cb33-59" aria-hidden="true" tabindex="-1"></a>ollamar<span class="sc">::</span><span class="fu">pull</span>(<span class="st">"llama3.1"</span>)</span>
+<span id="cb33-60"><a href="#cb33-60" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-61"><a href="#cb33-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-62"><a href="#cb33-62" aria-hidden="true" tabindex="-1"></a>list downloaded model</span>
+<span id="cb33-63"><a href="#cb33-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-66"><a href="#cb33-66" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb33-67"><a href="#cb33-67" aria-hidden="true" tabindex="-1"></a><span class="fu">list_models</span>()</span>
+<span id="cb33-68"><a href="#cb33-68" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-69"><a href="#cb33-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-70"><a href="#cb33-70" aria-hidden="true" tabindex="-1"></a>show model detail</span>
+<span id="cb33-71"><a href="#cb33-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-74"><a href="#cb33-74" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb33-75"><a href="#cb33-75" aria-hidden="true" tabindex="-1"></a>ollamar<span class="sc">::</span><span class="fu">show</span>(<span class="st">"gemma3"</span>)</span>
+<span id="cb33-76"><a href="#cb33-76" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-77"><a href="#cb33-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-78"><a href="#cb33-78" aria-hidden="true" tabindex="-1"></a>run model</span>
+<span id="cb33-79"><a href="#cb33-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-82"><a href="#cb33-82" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb33-83"><a href="#cb33-83" aria-hidden="true" tabindex="-1"></a>resp <span class="ot">&lt;-</span> <span class="fu">generate</span>(<span class="st">"gemma3"</span>, <span class="st">"tell me a 5-word story"</span>)</span>
+<span id="cb33-84"><a href="#cb33-84" aria-hidden="true" tabindex="-1"></a>resp</span>
+<span id="cb33-85"><a href="#cb33-85" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-86"><a href="#cb33-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-89"><a href="#cb33-89" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb33-90"><a href="#cb33-90" aria-hidden="true" tabindex="-1"></a><span class="co"># get just the text from the response object</span></span>
+<span id="cb33-91"><a href="#cb33-91" aria-hidden="true" tabindex="-1"></a><span class="fu">resp_process</span>(resp, <span class="st">"text"</span>)</span>
+<span id="cb33-92"><a href="#cb33-92" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-93"><a href="#cb33-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-96"><a href="#cb33-96" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb33-97"><a href="#cb33-97" aria-hidden="true" tabindex="-1"></a><span class="co"># get the text as a tibble dataframe</span></span>
+<span id="cb33-98"><a href="#cb33-98" aria-hidden="true" tabindex="-1"></a><span class="fu">resp_process</span>(resp, <span class="st">"df"</span>)</span>
+<span id="cb33-99"><a href="#cb33-99" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-100"><a href="#cb33-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-101"><a href="#cb33-101" aria-hidden="true" tabindex="-1"></a>using multiple models</span>
+<span id="cb33-102"><a href="#cb33-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-105"><a href="#cb33-105" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb33-106"><a href="#cb33-106" aria-hidden="true" tabindex="-1"></a>(<span class="fu">list_models</span>())<span class="sc">$</span>name</span>
+<span id="cb33-107"><a href="#cb33-107" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-108"><a href="#cb33-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-111"><a href="#cb33-111" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb33-112"><a href="#cb33-112" aria-hidden="true" tabindex="-1"></a>models_name<span class="ot">=</span>(<span class="fu">list_models</span>())<span class="sc">$</span>name[<span class="sc">-</span><span class="dv">1</span>]</span>
+<span id="cb33-113"><a href="#cb33-113" aria-hidden="true" tabindex="-1"></a>models_name</span>
+<span id="cb33-114"><a href="#cb33-114" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-115"><a href="#cb33-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-116"><a href="#cb33-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-119"><a href="#cb33-119" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb33-120"><a href="#cb33-120" aria-hidden="true" tabindex="-1"></a>input_prompt<span class="ot">=</span><span class="st">"tell me a 5-word story"</span></span>
+<span id="cb33-121"><a href="#cb33-121" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-122"><a href="#cb33-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-123"><a href="#cb33-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-124"><a href="#cb33-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-127"><a href="#cb33-127" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb33-128"><a href="#cb33-128" aria-hidden="true" tabindex="-1"></a>all_model<span class="ot">=</span><span class="fu">c</span>()</span>
+<span id="cb33-129"><a href="#cb33-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-130"><a href="#cb33-130" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> models_name){</span>
+<span id="cb33-131"><a href="#cb33-131" aria-hidden="true" tabindex="-1"></a>  resp <span class="ot">&lt;-</span> <span class="fu">generate</span>(i, input_prompt)</span>
+<span id="cb33-132"><a href="#cb33-132" aria-hidden="true" tabindex="-1"></a>  <span class="co">#print(paste0("Model: ", i))</span></span>
+<span id="cb33-133"><a href="#cb33-133" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">resp_process</span>(resp, <span class="st">"text"</span>))</span>
+<span id="cb33-134"><a href="#cb33-134" aria-hidden="true" tabindex="-1"></a>  <span class="co">#resp_process(resp, "df")</span></span>
+<span id="cb33-135"><a href="#cb33-135" aria-hidden="true" tabindex="-1"></a>  all_model<span class="ot">=</span><span class="fu">rbind</span>(all_model, <span class="fu">resp_process</span>(resp, <span class="st">"df"</span>))</span>
+<span id="cb33-136"><a href="#cb33-136" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb33-137"><a href="#cb33-137" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-138"><a href="#cb33-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-139"><a href="#cb33-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-142"><a href="#cb33-142" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb33-143"><a href="#cb33-143" aria-hidden="true" tabindex="-1"></a>all_model</span>
+<span id="cb33-144"><a href="#cb33-144" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-145"><a href="#cb33-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-146"><a href="#cb33-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-147"><a href="#cb33-147" aria-hidden="true" tabindex="-1"></a><span class="fu">### Run in R with ellmer package</span></span>
+<span id="cb33-148"><a href="#cb33-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-149"><a href="#cb33-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-150"><a href="#cb33-150" aria-hidden="true" tabindex="-1"></a><span class="fu">### Run in terminal</span></span>
+<span id="cb33-151"><a href="#cb33-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-152"><a href="#cb33-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-155"><a href="#cb33-155" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb33-156"><a href="#cb33-156" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>ollama pull llama3<span class="fl">.1</span></span>
+<span id="cb33-157"><a href="#cb33-157" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-158"><a href="#cb33-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-159"><a href="#cb33-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-160"><a href="#cb33-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-163"><a href="#cb33-163" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb33-164"><a href="#cb33-164" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>ollama run llama3<span class="fl">.1</span> <span class="st">"tell me a 5-word story"</span></span>
+<span id="cb33-165"><a href="#cb33-165" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-166"><a href="#cb33-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-167"><a href="#cb33-167" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Run in Python</span></span>
+<span id="cb33-168"><a href="#cb33-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-169"><a href="#cb33-169" aria-hidden="true" tabindex="-1"></a>install package</span>
+<span id="cb33-170"><a href="#cb33-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-173"><a href="#cb33-173" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb33-174"><a href="#cb33-174" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install ollama</span>
+<span id="cb33-175"><a href="#cb33-175" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-176"><a href="#cb33-176" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-177"><a href="#cb33-177" aria-hidden="true" tabindex="-1"></a>local pacakge</span>
+<span id="cb33-178"><a href="#cb33-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-181"><a href="#cb33-181" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb33-182"><a href="#cb33-182" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb33-183"><a href="#cb33-183" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb33-184"><a href="#cb33-184" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pandas <span class="im">import</span> json_normalize</span>
+<span id="cb33-185"><a href="#cb33-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-186"><a href="#cb33-186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-187"><a href="#cb33-187" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ollama <span class="im">import</span> chat</span>
+<span id="cb33-188"><a href="#cb33-188" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ollama <span class="im">import</span> ChatResponse</span>
+<span id="cb33-189"><a href="#cb33-189" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ollama</span>
+<span id="cb33-190"><a href="#cb33-190" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-191"><a href="#cb33-191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-192"><a href="#cb33-192" aria-hidden="true" tabindex="-1"></a>download model</span>
+<span id="cb33-193"><a href="#cb33-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-196"><a href="#cb33-196" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb33-197"><a href="#cb33-197" aria-hidden="true" tabindex="-1"></a><span class="co">#ollama.pull('llama3.2:1b')</span></span>
+<span id="cb33-198"><a href="#cb33-198" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-199"><a href="#cb33-199" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-200"><a href="#cb33-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-201"><a href="#cb33-201" aria-hidden="true" tabindex="-1"></a>list all download model</span>
+<span id="cb33-202"><a href="#cb33-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-205"><a href="#cb33-205" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb33-206"><a href="#cb33-206" aria-hidden="true" tabindex="-1"></a>ollama_model<span class="op">=</span>ollama.<span class="bu">list</span>()</span>
+<span id="cb33-207"><a href="#cb33-207" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-208"><a href="#cb33-208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-209"><a href="#cb33-209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-212"><a href="#cb33-212" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb33-213"><a href="#cb33-213" aria-hidden="true" tabindex="-1"></a><span class="co"># Extracting data from the ListResponse</span></span>
+<span id="cb33-214"><a href="#cb33-214" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> []</span>
+<span id="cb33-215"><a href="#cb33-215" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> model <span class="kw">in</span> ollama_model.models:</span>
+<span id="cb33-216"><a href="#cb33-216" aria-hidden="true" tabindex="-1"></a>    model_data <span class="op">=</span> {</span>
+<span id="cb33-217"><a href="#cb33-217" aria-hidden="true" tabindex="-1"></a>        <span class="st">'model'</span>: model.model,</span>
+<span id="cb33-218"><a href="#cb33-218" aria-hidden="true" tabindex="-1"></a>        <span class="st">'modified_at'</span>: model.modified_at,</span>
+<span id="cb33-219"><a href="#cb33-219" aria-hidden="true" tabindex="-1"></a>        <span class="st">'digest'</span>: model.digest,</span>
+<span id="cb33-220"><a href="#cb33-220" aria-hidden="true" tabindex="-1"></a>        <span class="st">'size'</span>: (model.size<span class="op">/</span><span class="dv">1000000000</span>),</span>
+<span id="cb33-221"><a href="#cb33-221" aria-hidden="true" tabindex="-1"></a>        <span class="st">'parent_model'</span>: model.details.parent_model,</span>
+<span id="cb33-222"><a href="#cb33-222" aria-hidden="true" tabindex="-1"></a>        <span class="st">'format'</span>: model.details.<span class="bu">format</span>,</span>
+<span id="cb33-223"><a href="#cb33-223" aria-hidden="true" tabindex="-1"></a>        <span class="st">'family'</span>: model.details.family,</span>
+<span id="cb33-224"><a href="#cb33-224" aria-hidden="true" tabindex="-1"></a>        <span class="st">'families'</span>: model.details.families,</span>
+<span id="cb33-225"><a href="#cb33-225" aria-hidden="true" tabindex="-1"></a>        <span class="st">'parameter_size'</span>: model.details.parameter_size,</span>
+<span id="cb33-226"><a href="#cb33-226" aria-hidden="true" tabindex="-1"></a>        <span class="st">'quantization_level'</span>: model.details.quantization_level</span>
+<span id="cb33-227"><a href="#cb33-227" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb33-228"><a href="#cb33-228" aria-hidden="true" tabindex="-1"></a>    data.append(model_data)</span>
+<span id="cb33-229"><a href="#cb33-229" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-230"><a href="#cb33-230" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert the list of dictionaries into a pandas DataFrame</span></span>
+<span id="cb33-231"><a href="#cb33-231" aria-hidden="true" tabindex="-1"></a>ollama_model_df <span class="op">=</span> pd.DataFrame(data)</span>
+<span id="cb33-232"><a href="#cb33-232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-233"><a href="#cb33-233" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the DataFrame</span></span>
+<span id="cb33-234"><a href="#cb33-234" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ollama_model_df)</span>
+<span id="cb33-235"><a href="#cb33-235" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-236"><a href="#cb33-236" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-237"><a href="#cb33-237" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-238"><a href="#cb33-238" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-239"><a href="#cb33-239" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-240"><a href="#cb33-240" aria-hidden="true" tabindex="-1"></a>slow model detail </span>
+<span id="cb33-241"><a href="#cb33-241" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-244"><a href="#cb33-244" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb33-245"><a href="#cb33-245" aria-hidden="true" tabindex="-1"></a>ollama.show(<span class="st">'deepseek-r1:7b-qwen-distill-q4_K_M'</span>)</span>
+<span id="cb33-246"><a href="#cb33-246" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-247"><a href="#cb33-247" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-248"><a href="#cb33-248" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-249"><a href="#cb33-249" aria-hidden="true" tabindex="-1"></a>delete model</span>
+<span id="cb33-250"><a href="#cb33-250" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-253"><a href="#cb33-253" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb33-254"><a href="#cb33-254" aria-hidden="true" tabindex="-1"></a><span class="co">#ollama.delete('llama3.2:1b')</span></span>
+<span id="cb33-255"><a href="#cb33-255" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-256"><a href="#cb33-256" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-257"><a href="#cb33-257" aria-hidden="true" tabindex="-1"></a>run model</span>
+<span id="cb33-258"><a href="#cb33-258" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-261"><a href="#cb33-261" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb33-262"><a href="#cb33-262" aria-hidden="true" tabindex="-1"></a>response: ChatResponse<span class="op">=</span>ollama.chat(model<span class="op">=</span><span class="st">'deepseek-r1:7b-qwen-distill-q4_K_M'</span>, messages<span class="op">=</span>[</span>
+<span id="cb33-263"><a href="#cb33-263" aria-hidden="true" tabindex="-1"></a>  {<span class="st">'role'</span>: <span class="st">'system'</span>, </span>
+<span id="cb33-264"><a href="#cb33-264" aria-hidden="true" tabindex="-1"></a>  <span class="st">'content'</span>: <span class="st">'你是一个诗人，你只能输出中文'</span>},</span>
+<span id="cb33-265"><a href="#cb33-265" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb33-266"><a href="#cb33-266" aria-hidden="true" tabindex="-1"></a>  {<span class="st">'role'</span>: <span class="st">'assistant'</span>, </span>
+<span id="cb33-267"><a href="#cb33-267" aria-hidden="true" tabindex="-1"></a>  <span class="st">'content'</span>: <span class="st">''</span>},</span>
+<span id="cb33-268"><a href="#cb33-268" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb33-269"><a href="#cb33-269" aria-hidden="true" tabindex="-1"></a>  {<span class="st">'role'</span>: <span class="st">'user'</span>, </span>
+<span id="cb33-270"><a href="#cb33-270" aria-hidden="true" tabindex="-1"></a>  <span class="st">'content'</span>: <span class="st">'give me a 3 lines story'</span>}</span>
+<span id="cb33-271"><a href="#cb33-271" aria-hidden="true" tabindex="-1"></a>  ])</span>
+<span id="cb33-272"><a href="#cb33-272" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-273"><a href="#cb33-273" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-276"><a href="#cb33-276" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb33-277"><a href="#cb33-277" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.message.content)</span>
+<span id="cb33-278"><a href="#cb33-278" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-279"><a href="#cb33-279" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-280"><a href="#cb33-280" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-283"><a href="#cb33-283" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb33-284"><a href="#cb33-284" aria-hidden="true" tabindex="-1"></a>response: ChatResponse <span class="op">=</span>ollama.chat(model<span class="op">=</span><span class="st">'gemma3'</span>, messages<span class="op">=</span>[{<span class="st">'role'</span>: <span class="st">'user'</span>, <span class="st">'content'</span>: <span class="st">'Why is the sky blue?'</span>}])</span>
+<span id="cb33-285"><a href="#cb33-285" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-286"><a href="#cb33-286" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-289"><a href="#cb33-289" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb33-290"><a href="#cb33-290" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.message.content)</span>
+<span id="cb33-291"><a href="#cb33-291" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-292"><a href="#cb33-292" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-293"><a href="#cb33-293" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-294"><a href="#cb33-294" aria-hidden="true" tabindex="-1"></a>create model </span>
+<span id="cb33-295"><a href="#cb33-295" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-296"><a href="#cb33-296" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-299"><a href="#cb33-299" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb33-300"><a href="#cb33-300" aria-hidden="true" tabindex="-1"></a>ollama.create(model<span class="op">=</span><span class="st">'example_model'</span>, from_<span class="op">=</span><span class="st">'llama3.2'</span>, system<span class="op">=</span><span class="st">"You are Mario from Super Mario Bros."</span>)</span>
+<span id="cb33-301"><a href="#cb33-301" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-302"><a href="#cb33-302" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-303"><a href="#cb33-303" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-304"><a href="#cb33-304" aria-hidden="true" tabindex="-1"></a>push model to ollama</span>
+<span id="cb33-305"><a href="#cb33-305" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-306"><a href="#cb33-306" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-309"><a href="#cb33-309" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb33-310"><a href="#cb33-310" aria-hidden="true" tabindex="-1"></a>ollama.push(<span class="st">'user/example_model'</span>)</span>
+<span id="cb33-311"><a href="#cb33-311" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-312"><a href="#cb33-312" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb33-313"><a href="#cb33-313" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-314"><a href="#cb33-314" aria-hidden="true" tabindex="-1"></a><span class="fu"># 2.hugging face</span></span>
+<span id="cb33-315"><a href="#cb33-315" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-316"><a href="#cb33-316" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/clipboard-1081827289.png)</span></span>
+<span id="cb33-317"><a href="#cb33-317" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-318"><a href="#cb33-318" aria-hidden="true" tabindex="-1"></a>::: panel-tabset</span>
+<span id="cb33-319"><a href="#cb33-319" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-320"><a href="#cb33-320" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-321"><a href="#cb33-321" aria-hidden="true" tabindex="-1"></a><span class="fu">## Run in Python with hugging face transformer</span></span>
+<span id="cb33-322"><a href="#cb33-322" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-323"><a href="#cb33-323" aria-hidden="true" tabindex="-1"></a>DeepSeek-R1-Distill-Qwen-1.5B as example:</span>
+<span id="cb33-324"><a href="#cb33-324" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-325"><a href="#cb33-325" aria-hidden="true" tabindex="-1"></a>https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B</span>
+<span id="cb33-326"><a href="#cb33-326" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-327"><a href="#cb33-327" aria-hidden="true" tabindex="-1"></a><span class="fu">### using pipeline </span></span>
+<span id="cb33-330"><a href="#cb33-330" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb33-331"><a href="#cb33-331" aria-hidden="true" tabindex="-1"></a><span class="co"># Use a pipeline as a high-level helper</span></span>
+<span id="cb33-332"><a href="#cb33-332" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> transformers <span class="im">import</span> pipeline</span>
+<span id="cb33-333"><a href="#cb33-333" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-334"><a href="#cb33-334" aria-hidden="true" tabindex="-1"></a>pipe <span class="op">=</span> pipeline(<span class="st">"text-generation"</span>, model<span class="op">=</span><span class="st">"deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"</span>)</span>
+<span id="cb33-335"><a href="#cb33-335" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-336"><a href="#cb33-336" aria-hidden="true" tabindex="-1"></a>messages <span class="op">=</span> [</span>
+<span id="cb33-337"><a href="#cb33-337" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: <span class="st">"Who are you?"</span>},</span>
+<span id="cb33-338"><a href="#cb33-338" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb33-339"><a href="#cb33-339" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-340"><a href="#cb33-340" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-341"><a href="#cb33-341" aria-hidden="true" tabindex="-1"></a>pipe(messages)</span>
+<span id="cb33-342"><a href="#cb33-342" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-343"><a href="#cb33-343" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-344"><a href="#cb33-344" aria-hidden="true" tabindex="-1"></a><span class="fu">### Load model directly</span></span>
+<span id="cb33-345"><a href="#cb33-345" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-348"><a href="#cb33-348" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb33-349"><a href="#cb33-349" aria-hidden="true" tabindex="-1"></a><span class="co"># Load model directly</span></span>
+<span id="cb33-350"><a href="#cb33-350" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> transformers <span class="im">import</span> AutoTokenizer, AutoModelForCausalLM</span>
+<span id="cb33-351"><a href="#cb33-351" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-352"><a href="#cb33-352" aria-hidden="true" tabindex="-1"></a>tokenizer <span class="op">=</span> AutoTokenizer.from_pretrained(<span class="st">"deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"</span>)</span>
+<span id="cb33-353"><a href="#cb33-353" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-354"><a href="#cb33-354" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> AutoModelForCausalLM.from_pretrained(<span class="st">"deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"</span>)</span>
+<span id="cb33-355"><a href="#cb33-355" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-356"><a href="#cb33-356" aria-hidden="true" tabindex="-1"></a>dir_peline <span class="op">=</span> pipeline(<span class="st">"text-generation"</span>, model<span class="op">=</span>model, tokenizer<span class="op">=</span>tokenizer)</span>
+<span id="cb33-357"><a href="#cb33-357" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-358"><a href="#cb33-358" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> <span class="st">"my text for named entity recognition here."</span></span>
+<span id="cb33-359"><a href="#cb33-359" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-360"><a href="#cb33-360" aria-hidden="true" tabindex="-1"></a>dir_peline(text)</span>
+<span id="cb33-361"><a href="#cb33-361" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-362"><a href="#cb33-362" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-363"><a href="#cb33-363" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-364"><a href="#cb33-364" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb33-365"><a href="#cb33-365" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-366"><a href="#cb33-366" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-367"><a href="#cb33-367" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-368"><a href="#cb33-368" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-369"><a href="#cb33-369" aria-hidden="true" tabindex="-1"></a><span class="fu"># Terminal</span></span>
+<span id="cb33-370"><a href="#cb33-370" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-371"><a href="#cb33-371" aria-hidden="true" tabindex="-1"></a>::: panel-tabset</span>
+<span id="cb33-372"><a href="#cb33-372" aria-hidden="true" tabindex="-1"></a><span class="fu">## run in Terminal</span></span>
+<span id="cb33-373"><a href="#cb33-373" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-374"><a href="#cb33-374" aria-hidden="true" tabindex="-1"></a>https://github.com/allenai/olmocr</span>
+<span id="cb33-375"><a href="#cb33-375" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-376"><a href="#cb33-376" aria-hidden="true" tabindex="-1"></a>https://github.com/gradio-app/gradio</span>
+<span id="cb33-377"><a href="#cb33-377" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-378"><a href="#cb33-378" aria-hidden="true" tabindex="-1"></a>https://www.youtube.com/watch?v=XF3Q_ZjwfaI</span>
+<span id="cb33-379"><a href="#cb33-379" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-380"><a href="#cb33-380" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-381"><a href="#cb33-381" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-382"><a href="#cb33-382" aria-hidden="true" tabindex="-1"></a><span class="fu">## run in R code</span></span>
+<span id="cb33-383"><a href="#cb33-383" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-384"><a href="#cb33-384" aria-hidden="true" tabindex="-1"></a>runing mlx_whisper as example</span>
+<span id="cb33-385"><a href="#cb33-385" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-386"><a href="#cb33-386" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-389"><a href="#cb33-389" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb33-390"><a href="#cb33-390" aria-hidden="true" tabindex="-1"></a>command<span class="ot">=</span><span class="fu">paste0</span>(<span class="st">"mlx_whisper '"</span>,file_name,<span class="st">"' --model mlx-community/whisper-turbo --language 'Chinese' --initial-prompt '以下是普通話的句子,請以繁體輸出'"</span>)</span>
+<span id="cb33-391"><a href="#cb33-391" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-392"><a href="#cb33-392" aria-hidden="true" tabindex="-1"></a>command</span>
+<span id="cb33-393"><a href="#cb33-393" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-394"><a href="#cb33-394" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-395"><a href="#cb33-395" aria-hidden="true" tabindex="-1"></a><span class="fu">## run in Python code</span></span>
+<span id="cb33-396"><a href="#cb33-396" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-399"><a href="#cb33-399" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb33-400"><a href="#cb33-400" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb33-401"><a href="#cb33-401" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-402"><a href="#cb33-402" aria-hidden="true" tabindex="-1"></a>command</span>
+<span id="cb33-403"><a href="#cb33-403" aria-hidden="true" tabindex="-1"></a>os.system(command)</span>
+<span id="cb33-404"><a href="#cb33-404" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb33-405"><a href="#cb33-405" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb33-406"><a href="#cb33-406" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-407"><a href="#cb33-407" aria-hidden="true" tabindex="-1"></a><span class="fu"># vLLM</span></span>
+<span id="cb33-408"><a href="#cb33-408" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-409"><a href="#cb33-409" aria-hidden="true" tabindex="-1"></a><span class="fu"># mall pacakge</span></span>
+<span id="cb33-410"><a href="#cb33-410" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-411"><a href="#cb33-411" aria-hidden="true" tabindex="-1"></a>https://mlverse.github.io/mall/</span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

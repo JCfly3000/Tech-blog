@@ -1,0 +1,289 @@
+---
+title: "使用AI给视频自动生成中英文字幕"
+subtitle: "Using AI to create Chinese and English Subtitles"
+author: "Tony D"
+date: "2025-03-27"
+
+categories: 
+  - AI
+  - R
+  - Python
+
+  
+execute:
+  warning: false
+  error: false
+  eval: false
+
+image: 'images/unnamed.png'
+---
+
+Use mlx_whisper for transcribe Audio to Text,and use gemini-2.0-flash for correction
+
+load R package
+
+
+
+```{r}
+#pak::pkg_install('tuneR')
+library(ellmer)
+library(tidyverse)
+library(srt)
+library(openxlsx)
+library(readxl)
+library(lares)
+library(tuneR)
+library(stringr)
+```
+
+
+
+
+# Step 1:  download mp3 from youtube
+
+```{r}
+youtube_url='https://www.youtube.com/watch?v=eZrzJtdUntg'
+
+
+#title=system(paste0("yt-dlp --simulate --print '%(title)s' ",youtube_url),intern = TRUE)
+#title=paste0(title,'.mp3')
+#title
+```
+
+
+
+```{r}
+download_command_mp3=paste0("yt-dlp --cookies-from-browser chrome -x --audio-format mp3 --audio-quality 0 '",youtube_url,"' -o '%(title)s'")
+
+download_command_mp3
+
+download_command_video=paste0("yt-dlp --cookies-from-browser chrome '",youtube_url,"'")
+
+download_command_video
+
+
+```
+
+
+
+```{r}
+system(download_command_mp3)
+```
+
+
+```{r}
+system(download_command_video)
+```
+
+
+```{r}
+list.files()
+```
+
+
+```{r}
+mp3_title=list.files() |> str_subset(pattern = ".mp3")
+mp3_title
+```
+
+
+
+## check mp3 duration
+
+```{r}
+# Load the MP3 file
+# Load the MP3 file
+mp3_file <- readMP3(mp3_title)
+
+# Get the duration in seconds
+duration_mins <- (length(mp3_file@left) / mp3_file@samp.rate)/60
+duration_mins
+```
+
+## trim mp3 if needed
+
+```{r}
+# library(lares)
+# trim_mp3(
+#   mp3_title,
+#   start_time = 1,
+#   end_time = 9999999,
+#   overwrite = FALSE,
+#   ext = "mp3",
+#   quiet = FALSE
+# )
+
+
+# output file:
+#paste0(mp3_title |> str_replace('.mp3,',''),"_trim.mp3")
+```
+
+
+# Step 2: using mlx_whisper model to get text from mp4
+
+
+run audio_txt.py 
+
+```python
+{{< include audio_txt.py >}}
+```
+
+```{python}
+file_name=r.mp3_title
+```
+
+
+```{python}
+import os 
+comand="python3.11 audio_txt.py -n='"+file_name+"'"
+comand
+os.system(comand)
+```
+
+output is text.txt and text.srt
+
+# Step 3: Using gemini model to correct word
+
+model gemini-2.5-pro-exp-03-25 or gemini-2.0-flash
+
+## define model
+
+```{r}
+chat_gemini_model<- chat_gemini(
+  system_prompt = "你是一个中文和英文的语言学家",
+  turns = NULL,
+  # base_url = "https://generativelanguage.googleapis.com/v1beta",
+  api_key = keyring::key_get("google_ai_api_key"),
+  model = "gemini-2.0-flash",
+  #api_args = list(),
+  #echo = NULL
+)
+chat_gemini_model
+```
+
+
+```{r}
+#testing model connection
+chat_result=chat_gemini_model$chat("hello")
+chat_result
+```
+
+## Run model
+
+```{r}
+srt_txt0=read_srt('text.srt')
+srt_txt2=srt_txt0$subtitle|> as.character()
+```
+
+```{r}
+length(srt_txt2)
+```
+
+
+
+```{r}
+prompt_text=paste0('把以下文字是通过语言识别出来的文字。如果有错别字请更正并输出中文。保持更正后的文字与原文的文字长度一样。也保持句子总长度与更正后的句子总长度一致。比如hovah请更正为福建人。没有错则不变。有更正的句子后面加上!!!!。不要多余的反馈。输出格式为:更正前的句子《---》更正后的句子 ',srt_txt2)
+chat_result1=chat_gemini_model$chat(prompt_text)
+```
+
+
+```{r}
+all_result2=unlist(strsplit(chat_result1, "\n"))
+length(all_result2)
+#all_result2= c(all_result2,"")
+```
+
+## add to data
+
+```{r}
+srt_txt=srt_txt0 |> mutate(correct_txt=all_result2 |> str_replace('!!!!','')|> str_extract( "(?<=《---》).*")
+                           ,all_correct_txt=all_result2
+                           
+                           )
+```
+
+
+
+
+# Step 4: Translate to English
+
+## define model
+
+中翻英 using google LLM model gemini-2.0-flash
+
+
+```{r}
+chat_gemini_model_translate<- chat_gemini(
+  system_prompt = "你是一个中文和英文的翻译专家",
+  turns = NULL,
+  # base_url = "https://generativelanguage.googleapis.com/v1beta",
+  api_key = keyring::key_get("google_ai_api_key"),
+  model = "gemini-2.0-flash",
+  #api_args = list(),
+  #echo = NULL
+)
+chat_gemini_model_translate
+```
+
+
+## run model
+```{r}
+correct_txt=srt_txt$correct_txt|> as.character()
+```
+
+```{r}
+prompt_text=paste0('请联系上下文把以下文字翻译成英文。总句子数量不变。不要多余的反馈。输出格式为:原来的文字《---》翻译成英文',correct_txt)
+chat_result1=chat_gemini_model_translate$chat(prompt_text)
+```
+
+
+```{r}
+all_result2=unlist(strsplit(chat_result1, "\n"))
+length(all_result2)
+#all_result2=all_result2[1:422]
+```
+
+
+## add to data
+```{r}
+srt_txt=srt_txt |> mutate(correct_english_txt=all_result2 |> str_extract( "(?<=《---》).*"))
+```
+
+
+
+
+# Step 5:output chinese and english subtites to srt
+```{r}
+cn_correct_srt_txt=srt_txt |> select(n,start,end,subtitle=correct_txt)
+en_correct_srt_txt=srt_txt |> select(n,start,end,subtitle=correct_english_txt)
+
+srt::write_srt(cn_correct_srt_txt,"corrected_cn_srt2.srt",wrap = FALSE)
+srt::write_srt(en_correct_srt_txt,"corrected_en_srt2.srt",wrap = FALSE)
+```
+
+## output srt_txt
+
+```{r}
+write.xlsx(srt_txt,'srt_data.xlsx')
+```
+
+
+# Step 6:embed srt to mp4  using ffmpeg
+
+```{r}
+
+# Specify input and output file paths
+input_video <- "input.mp4"
+subtitle_file <- "corrected_cn_srt2.srt"
+output_video <- "output.mp4"
+
+# Use ffmpeg to add subtitles
+ffmpeg_command <- paste0(
+  "ffmpeg -i \"", input_video, "\"",
+  " -vf \"subtitles=", subtitle_file, ":force_style='Fontsize=20'\"",
+  " -c:a copy -c:v libx264 -crf 23 -preset veryfast \"", output_video, "\""
+)
+# Execute the command
+system(ffmpeg_command)
+```
+

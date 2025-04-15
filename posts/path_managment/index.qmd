@@ -1,0 +1,124 @@
+---
+title: "路径管理"
+subtitle: "Path management"
+author: "Tony D"
+date: "2025-03-27"
+
+categories: 
+  - Tool
+  - R
+  - Python
+
+  
+execute:
+  warning: false
+  error: false
+  eval: false
+
+image: 'images/here.png'
+---
+
+Since windows and mac have different file path, we use package to manage the file path.
+
+::: panel-tabset
+
+
+# R
+
+## fs pacakge
+
+```{r}
+#pak::pkg_install('here')
+#pak::pkg_install('fs')
+library(fs)
+```
+
+
+```{r}
+getwd()
+```
+
+### list file in the current directory
+
+```{r}
+dir_ls()
+```
+
+
+### show the current directory file info
+
+```{r}
+dir_info()
+```
+
+
+### show the current directory file tree
+
+```{r}
+dir_tree()
+```
+
+
+### create a new temp directory
+
+```{r}
+# create a new directory
+tmp <- dir_create(file_temp())
+tmp
+```
+
+### create new files in that directory
+
+```{r}
+# create new files in that directory
+file_create(path(tmp, "my-file.txt"))
+dir_ls(tmp)
+```
+
+### remove files from the directory
+
+```{r}
+# remove files from the directory
+file_delete(path(tmp, "my-file.txt"))
+dir_ls(tmp)
+```
+
+
+### remove the directory
+
+```{r}
+# remove the directory
+dir_delete(tmp)
+```
+
+
+## here package
+
+```{r}
+library(here)
+```
+
+
+
+### show project directory
+```{r}
+here()
+```
+
+### show all file in the project directory
+```{r}
+list.files(here())
+```
+
+
+### show one file path
+
+here.png in images folder
+
+```{r}
+image_path=here('posts/path_managment/images','here.png')
+image_path
+```
+
+# Python
+:::

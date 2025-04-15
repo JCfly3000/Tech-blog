@@ -1,7 +1,7 @@
 ---
 title: "（LLM）大语言模型"
 subtitle: "(LLM)Large language model"
-author: "Tony Duan"
+author: "Tony D"
 
 date: "2025-03-18"
 

@@ -1,0 +1,192 @@
+---
+title: "使用代码发邮件"
+subtitle: "Using code to send email"
+author: "Tony D"
+date: "2025-03-31"
+
+categories: 
+  - Tool
+  - R
+  - Python
+
+  
+execute:
+  warning: false
+  error: false
+  eval: false
+
+image: 'images/is-more-than-password-recovery.webp'
+---
+
+
+Using R or Python to send email
+
+# Using R
+
+Send email with {blastula}.Also update in to [R handbook](https://jcfly3000.github.io/Into-R/Publish/4%20email/email.html)
+
+
+## load library 
+```{r}
+library(blastula)
+library(keyring)
+```
+
+## Step 1 create smtp credentials
+
+### gmail
+```{r}
+create_smtp_creds_key(
+  id = "gmail001_creds",
+  provider = "gmail",
+  user = "verykoala@gmail.com",
+  overwrite = TRUE
+  )
+```
+
+### outlook
+```{r}
+# create_smtp_creds_key(
+#   id = "outlook001_creds",
+#   provider = "outlook",
+#   user = "jcpartner@outlook.com",
+#   overwrite = TRUE
+#   )
+
+create_smtp_creds_file(file = "ggnot_throwaway_creds",
+                       user = "jcpartner@outlook.com",
+                       provider = "outlook")
+
+
+```
+
+```{r}
+#delete_credential_key("gmail001_creds")
+```
+
+```{r}
+view_credential_keys()
+```
+
+## Step 2 email content
+
+```{r}
+library(blastula)
+msg=compose_email(
+  body = md(
+  "Hi there 👋,
+  
+  This is an email to let you now thatrunning job **finished**.
+
+  Best,<br>
+  Tony"
+  )
+)
+
+msg
+```
+
+
+
+
+## Step 3 send email
+
+::: panel-tabset
+
+### send from gmail
+```{r}
+msg %>% 
+  smtp_send(
+    from = 'verykoala@gmail.com',
+    to = "jcflyingco@outlook.com",
+    subject = "Testing the email function",
+    credentials = creds_key(id = "gmail001_creds")
+  )
+
+
+```
+
+
+### send from outlook
+
+```{r}
+library(Microsoft365R)
+outl <- get_personal_outlook()
+```
+
+```{r}
+# list the most recent emails in your Inbox
+#outl$list_emails()
+```
+
+
+```{r}
+em <- outl$create_email(msg, subject="Hello", to="jcflyingco@outlook.com")
+```
+
+```{r}
+em$send()
+```
+
+:::
+
+## Step3 (option B) send email with quarto content
+
+
+
+
+create email Rmd file(.quarto_email.Rmd):
+
+----------------------------------
+
+```{r filename='.quarto_email.Rmd'}
+{{< include .quarto_email.Rmd >}}
+```
+
+----------------------------------
+
+create email 
+
+```{r}
+email_obj=render_email('.quarto_email.Rmd')
+```
+
+
+View the email
+
+```{r}
+email_obj
+```
+
+
+
+::: panel-tabset
+
+
+
+### send from gmail
+
+```{r}
+email_obj%>% 
+  smtp_send(
+    from = 'verykoala@gmail.com',
+    to = "jcflyingco@outlook.com",
+    subject = "Testing the email function",
+    credentials = creds_key(id = "gmail001_creds")
+  )
+
+```
+
+### send from outlook
+
+```{r}
+em <- outl$create_email(email_obj, subject="Hello", to="jcflyingco@outlook.com")
+em$send()
+```
+
+:::
+
+
+
+
+# Using Python
