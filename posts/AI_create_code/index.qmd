@@ -18,6 +18,9 @@ execute:
 image: 'images/download.jpg'
 ---
 
+
+Using AI to create code
+
 # Using shinyapps assistant
 
 

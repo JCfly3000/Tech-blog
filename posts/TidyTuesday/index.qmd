@@ -20,9 +20,10 @@ filters:
   - shinylive
 ---
 
+TidyTuesday data project
 
 
-TidyTuesday data project.[github](https://github.com/rfordatascience/tidytuesday)
+data from [github](https://github.com/rfordatascience/tidytuesday)
 
 # getting the data
 
@@ -64,6 +65,27 @@ tuesdata <- tidytuesdayR::tt_load('2025-04-01')
 tuesdata
 ```
 
+
+## Python
+
+```{python}
+import pandas as pd
+import pydytuesday
+```
+
+```{python}
+pydytuesday.get_date('2025-04-15')
+
+```
+
+:::
+
+# make a shiny
+
+::: panel-tabset
+
+## R
+
 ### read data
 
 ```{r}
@@ -90,7 +112,8 @@ quarto add quarto-ext/shinylive
 ```
 
 
-#### Prompt 1:
+### Prompt:
+
 create a shinyapp with this data from github:https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2025/2025-04-01/pokemon_df.csv.
 left side:
 selector type_1
@@ -104,11 +127,144 @@ barplot of color_1
 
 there is no weight_kg,height_m.please use correct name.
 
+### Shiny R in quarto
+
+if adding shiny in quarto then adding this to yaml header
+
+```yaml
+---
+
+filters:
+  - shinylive
+---
+```
+
+
+```{r}
+#| code-fold: true
+#| standalone: true
+#| viewerHeight: 800
+#| eval: false
+library(shiny)
+library(bslib)
+library(tidyverse)
+library(ggplot2)
+
+# Load the Pokemon data
+pokemon_data <- read.csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2025/2025-04-01/pokemon_df.csv")
+
+ui <- page_sidebar(
+  title = "Pokemon Data Explorer",
+  sidebar = sidebar(
+    selectInput("type1", "Select Type 1:", 
+                choices = sort(unique(pokemon_data$type_1)),
+                selected = "water"),
+    hr(),
+    textOutput("pokemon_count")
+  ),
+  
+  layout_columns(
+    card(
+      card_header("Height Distribution by Type 2"),
+      plotOutput("height_hist")
+    ),
+    card(
+      card_header("Weight Distribution by Type 2"),
+      plotOutput("weight_hist")
+    )
+  ),
+  
+  layout_columns(
+    card(
+      card_header("Attack Distribution by Type 2"),
+      plotOutput("attack_hist")
+    ),
+    card(
+      card_header("Defense Distribution by Type 2"),
+      plotOutput("defense_hist")
+    )
+  ),
+  
+  card(
+    card_header("Pokemon Color Distribution"),
+    plotOutput("color_barplot")
+  )
+)
+
+server <- function(input, output, session) {
+  
+  # Filtered data based on the selected type_1
+  filtered_data <- reactive({
+    pokemon_data %>%
+      filter(type_1 == input$type1)
+  })
+  
+  # Display number of Pokemon
+  output$pokemon_count <- renderText({
+    count <- nrow(filtered_data())
+    paste("Number of Pokemon with Type 1 '", input$type1, "': ", count)
+  })
+  
+  # Height histogram colored by type_2
+  output$height_hist <- renderPlot({
+    ggplot(filtered_data(), aes(x = height, fill = type_2)) +
+      geom_histogram(alpha = 0.7, bins = 20, position = "identity") +
+      scale_fill_viridis_d() +
+      theme_minimal() +
+      labs(x = "Height", y = "Count", fill = "Type 2")
+  })
+  
+  # Weight histogram colored by type_2
+  output$weight_hist <- renderPlot({
+    ggplot(filtered_data(), aes(x = weight, fill = type_2)) +
+      geom_histogram(alpha = 0.7, bins = 20, position = "identity") +
+      scale_fill_viridis_d() +
+      theme_minimal() +
+      labs(x = "Weight", y = "Count", fill = "Type 2")
+  })
+  
+  # Attack histogram colored by type_2
+  output$attack_hist <- renderPlot({
+    ggplot(filtered_data(), aes(x = attack, fill = type_2)) +
+      geom_histogram(alpha = 0.7, bins = 20, position = "identity") +
+      scale_fill_viridis_d() +
+      theme_minimal() +
+      labs(x = "Attack", y = "Count", fill = "Type 2")
+  })
+  
+  # Defense histogram colored by type_2
+  output$defense_hist <- renderPlot({
+    ggplot(filtered_data(), aes(x = defense, fill = type_2)) +
+      geom_histogram(alpha = 0.7, bins = 20, position = "identity") +
+      scale_fill_viridis_d() +
+      theme_minimal() +
+      labs(x = "Defense", y = "Count", fill = "Type 2")
+  })
+  
+  # Barplot of color_1
+  output$color_barplot <- renderPlot({
+    color_counts <- filtered_data() %>%
+      count(color_1) %>%
+      arrange(desc(n))
+    
+    ggplot(color_counts, aes(x = reorder(color_1, n), y = n, fill = color_1)) +
+      geom_col() +
+      coord_flip() +
+      scale_fill_brewer(palette = "Set3") +
+      theme_minimal() +
+      labs(x = "Color", y = "Count", fill = "Color") +
+      theme(legend.position = "none")
+  })
+}
+
+shinyApp(ui, server)
+
+```
 
 
 ```{shinylive-r}
 #| standalone: true
-#| viewerHeight: 600
+#| viewerHeight: 800
 library(shiny)
 library(bslib)
 library(tidyverse)
@@ -229,12 +385,415 @@ shinyApp(ui, server)
 
 ## Python
 
+### install shiny in python
+
+Need to down grade shinylive Python version to  0.7.1 in order to match shinylive R version
+
+```{python}
+#| eval: false
+import os
+os.system("pip install 'shinylive==0.7.1'")
+```
+
+
+### read data
+
+```{python}
+penguins = pd.read_csv('penguins.csv')
+penguins_raw = pd.read_csv('penguins_raw.csv')
+
+```
+
+```{python}
+# Option 2: Read directly from GitHub and assign to an object
+#penguins = pd.read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2025/2025-04-15/penguins.csv')
+#penguins_raw = pd.read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2025/2025-04-15/penguins_raw.csv')
+```
+
+
+### using shinyapps assistant to create shinyapp
+
+https://gallery.shinyapps.io/assistant
+
+install shinylive
+
+```{bash}
+#| eval: false
+pip install shinylive
+```
+
+
+### Prompt:
+
+create a shinyapp with this data from github:https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2025/2025-04-15/penguins_raw.csv.
+
+species choices is not correct,please use correct choices.
+
+
+### Shiny Python in quarto
+
+if adding shiny in quarto then adding this to yaml header
+
+```yaml
+---
+
+filters:
+  - shinylive
+---
+```
+
+```{python}
+#| code-fold: true
+#| eval: false
+#| standalone: true
+#| viewerHeight: 800
+from shiny import App, reactive, render, ui
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import urllib3
+
+app_ui = ui.page_sidebar(
+    ui.sidebar(
+        ui.h3("Penguin Data Explorer"),
+        ui.input_select(
+            "species",
+            "Select Penguin Species",
+            choices=["All Species", "Adelie Penguin (Pygoscelis adeliae)", 
+                     "Gentoo penguin (Pygoscelis papua)", 
+                     "Chinstrap penguin (Pygoscelis antarctica)"]
+        ),
+        ui.input_select(
+            "plot_type",
+            "Select Plot Type",
+            choices=[
+                "Body Mass vs Flipper Length",
+                "Culmen Length vs Depth",
+                "Histogram of Body Mass"
+            ]
+        ),
+        ui.input_checkbox_group(
+            "islands",
+            "Select Islands",
+            choices=["Torgersen", "Biscoe", "Dream"],
+            selected=["Torgersen", "Biscoe", "Dream"]
+        ),
+        ui.hr(),
+        ui.p("Data from Palmer Penguins dataset via TidyTuesday."),
+    ),
+    ui.card(
+        ui.card_header("Penguin Data Visualization"),
+        ui.output_plot("penguin_plot")
+    ),
+    ui.card(
+        ui.card_header("Data Summary"),
+        ui.output_table("summary_table")
+    )
+)
+
+def server(input, output, session):
+    # Load data
+    @reactive.calc
+    def load_data():
+        http = urllib3.PoolManager()
+        url = "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2025/2025-04-15/penguins_raw.csv"
+        
+        try:
+            response = http.request('GET', url)
+            if response.status != 200:
+                # If file not found, use fallback URL
+                fallback_url = "https://raw.githubusercontent.com/allisonhorst/palmerpenguins/main/inst/extdata/penguins_raw.csv"
+                response = http.request('GET', fallback_url)
+                
+            data = pd.read_csv(pd.io.common.StringIO(response.data.decode('utf-8')))
+            return data
+        except Exception as e:
+            print(f"Error loading data: {e}")
+            # Return empty dataframe if there are issues
+            return pd.DataFrame()
+
+    @reactive.calc
+    def filtered_data():
+        data = load_data()
+        if data.empty:
+            return pd.DataFrame()
+        
+        # Clean column names
+        data.columns = [col.strip() for col in data.columns]
+        
+        # Filter data based on inputs
+        filtered = data.copy()
+        
+        # Filter by species
+        if input.species() != "All Species":
+            filtered = filtered[filtered['Species'] == input.species()]
+        
+        # Filter by islands
+        filtered = filtered[filtered['Island'].isin(input.islands())]
+        
+        return filtered
+
+    @output
+    @render.plot
+    def penguin_plot():
+        data = filtered_data()
+        if data.empty:
+            fig, ax = plt.subplots()
+            ax.text(0.5, 0.5, "No data available or error loading data", 
+                    ha='center', va='center')
+            ax.set_xlim(0, 1)
+            ax.set_ylim(0, 1)
+            ax.axis('off')
+            return fig
+        
+        fig, ax = plt.subplots(figsize=(10, 6))
+        
+        plot_type = input.plot_type()
+        
+        if plot_type == "Body Mass vs Flipper Length":
+            sns.scatterplot(
+                data=data, 
+                x='Flipper Length (mm)', 
+                y='Body Mass (g)',
+                hue='Species',
+                style='Sex',
+                ax=ax
+            )
+            ax.set_title("Body Mass vs Flipper Length")
+            
+        elif plot_type == "Culmen Length vs Depth":
+            sns.scatterplot(
+                data=data, 
+                x='Culmen Length (mm)', 
+                y='Culmen Depth (mm)',
+                hue='Species',
+                style='Sex',
+                ax=ax
+            )
+            ax.set_title("Culmen Length vs Depth")
+            
+        elif plot_type == "Histogram of Body Mass":
+            sns.histplot(
+                data=data,
+                x='Body Mass (g)',
+                hue='Species',
+                kde=True,
+                ax=ax
+            )
+            ax.set_title("Distribution of Body Mass")
+            
+        plt.tight_layout()
+        return fig
+
+    @output
+    @render.table
+    def summary_table():
+        data = filtered_data()
+        if data.empty:
+            return pd.DataFrame({'Message': ['No data available or error loading data']})
+        
+        # Create a summary table with counts by species and island
+        summary = data.groupby(['Species', 'Island', 'Sex']).size().reset_index(name='Count')
+        
+        # Add some descriptive statistics
+        stats = data.groupby(['Species']).agg({
+            'Body Mass (g)': ['mean', 'std'],
+            'Flipper Length (mm)': ['mean', 'std'],
+            'Culmen Length (mm)': ['mean', 'std'],
+            'Culmen Depth (mm)': ['mean', 'std']
+        }).round(2)
+        
+        stats.columns = ['_'.join(col).strip() for col in stats.columns.values]
+        stats = stats.reset_index()
+        
+        return summary
+
+app = App(app_ui, server)
+
+
+```
+
+
+
+```{shinylive-python}
+#| standalone: true
+#| viewerHeight: 800
+from shiny import App, reactive, render, ui
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import urllib3
+
+app_ui = ui.page_sidebar(
+    ui.sidebar(
+        ui.h3("Penguin Data Explorer"),
+        ui.input_select(
+            "species",
+            "Select Penguin Species",
+            choices=["All Species", "Adelie Penguin (Pygoscelis adeliae)", 
+                     "Gentoo penguin (Pygoscelis papua)", 
+                     "Chinstrap penguin (Pygoscelis antarctica)"]
+        ),
+        ui.input_select(
+            "plot_type",
+            "Select Plot Type",
+            choices=[
+                "Body Mass vs Flipper Length",
+                "Culmen Length vs Depth",
+                "Histogram of Body Mass"
+            ]
+        ),
+        ui.input_checkbox_group(
+            "islands",
+            "Select Islands",
+            choices=["Torgersen", "Biscoe", "Dream"],
+            selected=["Torgersen", "Biscoe", "Dream"]
+        ),
+        ui.hr(),
+        ui.p("Data from Palmer Penguins dataset via TidyTuesday."),
+    ),
+    ui.card(
+        ui.card_header("Penguin Data Visualization"),
+        ui.output_plot("penguin_plot")
+    ),
+    ui.card(
+        ui.card_header("Data Summary"),
+        ui.output_table("summary_table")
+    )
+)
+
+def server(input, output, session):
+    # Load data
+    @reactive.calc
+    def load_data():
+        http = urllib3.PoolManager()
+        url = "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2025/2025-04-15/penguins_raw.csv"
+        
+        try:
+            response = http.request('GET', url)
+            if response.status != 200:
+                # If file not found, use fallback URL
+                fallback_url = "https://raw.githubusercontent.com/allisonhorst/palmerpenguins/main/inst/extdata/penguins_raw.csv"
+                response = http.request('GET', fallback_url)
+                
+            data = pd.read_csv(pd.io.common.StringIO(response.data.decode('utf-8')))
+            return data
+        except Exception as e:
+            print(f"Error loading data: {e}")
+            # Return empty dataframe if there are issues
+            return pd.DataFrame()
+
+    @reactive.calc
+    def filtered_data():
+        data = load_data()
+        if data.empty:
+            return pd.DataFrame()
+        
+        # Clean column names
+        data.columns = [col.strip() for col in data.columns]
+        
+        # Filter data based on inputs
+        filtered = data.copy()
+        
+        # Filter by species
+        if input.species() != "All Species":
+            filtered = filtered[filtered['Species'] == input.species()]
+        
+        # Filter by islands
+        filtered = filtered[filtered['Island'].isin(input.islands())]
+        
+        return filtered
+
+    @output
+    @render.plot
+    def penguin_plot():
+        data = filtered_data()
+        if data.empty:
+            fig, ax = plt.subplots()
+            ax.text(0.5, 0.5, "No data available or error loading data", 
+                    ha='center', va='center')
+            ax.set_xlim(0, 1)
+            ax.set_ylim(0, 1)
+            ax.axis('off')
+            return fig
+        
+        fig, ax = plt.subplots(figsize=(10, 6))
+        
+        plot_type = input.plot_type()
+        
+        if plot_type == "Body Mass vs Flipper Length":
+            sns.scatterplot(
+                data=data, 
+                x='Flipper Length (mm)', 
+                y='Body Mass (g)',
+                hue='Species',
+                style='Sex',
+                ax=ax
+            )
+            ax.set_title("Body Mass vs Flipper Length")
+            
+        elif plot_type == "Culmen Length vs Depth":
+            sns.scatterplot(
+                data=data, 
+                x='Culmen Length (mm)', 
+                y='Culmen Depth (mm)',
+                hue='Species',
+                style='Sex',
+                ax=ax
+            )
+            ax.set_title("Culmen Length vs Depth")
+            
+        elif plot_type == "Histogram of Body Mass":
+            sns.histplot(
+                data=data,
+                x='Body Mass (g)',
+                hue='Species',
+                kde=True,
+                ax=ax
+            )
+            ax.set_title("Distribution of Body Mass")
+            
+        plt.tight_layout()
+        return fig
+
+    @output
+    @render.table
+    def summary_table():
+        data = filtered_data()
+        if data.empty:
+            return pd.DataFrame({'Message': ['No data available or error loading data']})
+        
+        # Create a summary table with counts by species and island
+        summary = data.groupby(['Species', 'Island', 'Sex']).size().reset_index(name='Count')
+        
+        # Add some descriptive statistics
+        stats = data.groupby(['Species']).agg({
+            'Body Mass (g)': ['mean', 'std'],
+            'Flipper Length (mm)': ['mean', 'std'],
+            'Culmen Length (mm)': ['mean', 'std'],
+            'Culmen Depth (mm)': ['mean', 'std']
+        }).round(2)
+        
+        stats.columns = ['_'.join(col).strip() for col in stats.columns.values]
+        stats = stats.reset_index()
+        
+        return summary
+
+app = App(app_ui, server)
+
+
+```
+
+
+
 
 :::
 
 
+  
+  
 
-# Reference:
+# Reference
 
 https://github.com/rfordatascience/tidytuesday
 

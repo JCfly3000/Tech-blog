@@ -24,7 +24,7 @@
         "\n",
         "# python web scraping with requests and BeautifulSoup"
       ],
-      "id": "3b7afd96"
+      "id": "30e8077a"
     },
     {
       "cell_type": "code",
@@ -36,7 +36,7 @@
         "import re\n",
         "import pandas as pd"
       ],
-      "id": "afd16812",
+      "id": "d5a14c17",
       "execution_count": null,
       "outputs": []
     },
@@ -46,7 +46,7 @@
       "source": [
         "# Reference\n"
       ],
-      "id": "5dfafcc5"
+      "id": "59817e0a"
     }
   ],
   "metadata": {

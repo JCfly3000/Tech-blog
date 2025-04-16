@@ -1,28 +1,27 @@
-title: "posit::conf talks"
+title: "Base R Penguins"
 article:
-  title: "posit::conf(2025) in-person registration is now open!"
-  url: "https://posit.co/blog/positconf2025-in-person-registration-is-now-open/"
+  title: "Preparing the Palmer Penguins Data for the datasets Package in R"
+  url: "https://zenodo.org/records/14902740"
 data_source:
-  title: "posit::conf attendee portals"
-  url: "https://reg.conf.posit.co/flow/posit/positconf23/attendee-portal/page/sessioncatalog, https://reg.conf.posit.co/flow/posit/positconf24/attendee-portal/page/sessioncatalog"
+  title: "The R Datasets Package"
+  url: "https://www.r-project.org/"
 images:
 # Please include at least one image, and up to three images
-- file: "conf2025.png"
+- file: "README-flipper-bill-1.png"
   alt: >
-    The logo of posit conf 2025. A series of paralellograms in light blue,
-    green, dark blue, and yellow, forming step-like cubes. The words posit conf
-    2025 are set off by the wall of cubes, in dark blue text on a light blue
-    background.
-- file: "posit2024_crowd.png"
-  alt: >
-    A crowd of seated attendees watch Hadley Wickham on stage at the opening of
-    posit conf 2024. The crowd is very large and stretches deep into the
-    background of the photo.
+    Scatterplot titled 'Flipper and bill length' showing the relationship
+    between flipper length (x-axis, in mm) and bill length (y-axis, in mm) for
+    three penguin species at Palmer Station LTER. Adelie penguins are
+    represented by orange circles with a slight positive trend line. Chinstrap
+    penguins are shown with purple triangles, clustering higher on the bill
+    length axis and a steeper trend line. Gentoo penguins are shown with dark
+    green squares, positioned farther right along the flipper length axis, with
+    their own upward trend line. A legend at the bottom right indicates the
+    color and shape used for each species. The image is from the palmerpenguins
+    R package.
 credit:
-# We want to thank you for curating this dataset! If you do not want a
-# particular type of credit, please delete the related line.
   post: "Jon Harmon"
-  bluesky: "https://bsky.app/profile/jonthegeek.com"
-  linkedin: "https://www.linkedin.com/in/jonthegeek"
+  github: "@jonthegeek"
+  bluesky: "@jonthegeek.com"
+  linkedin: "@jonthegeek"
   mastodon: "@jonthegeek@fosstodon.org"
-  github: "https://github.com/jonthegeek"
