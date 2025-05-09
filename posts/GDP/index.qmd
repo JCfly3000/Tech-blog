@@ -1,0 +1,187 @@
+---
+title: "世界GDP"
+subtitle: "Global GDP"
+author: "Tony D"
+date: "2025-04-24"
+
+categories: 
+  - AI
+  - R
+  - Python
+
+  
+execute:
+  warning: false
+  error: false
+  eval: false
+  
+
+image: 'images/download.jpg'
+
+
+---
+
+
+# R
+
+write R code to download annual world GDP data , include gdp,gdp per capita,year,sector,country name
+
+
+## wbstats package
+
+```{r}
+#install.packages("wbstats")
+library(wbstats)
+library(ggplot2)
+library(tidyverse)
+```
+
+
+data from World Bank:https://data.worldbank.org/indicator/NY.GDP.MKTP.CD
+
+```{r}
+industry_search_results <- wbsearch(pattern = "% of GDP")
+print(industry_search_results)
+```
+
+
+```{r}
+# Define the indicators you want to download
+# "NY.GDP.MKTP.CD" for GDP (current US$)
+# "NY.GDP.PCAP.CD" for GDP per capita (current US$)
+
+#NV.AGR.TOTL.ZS Agriculture, forestry, and fishing, value added (% of GDP)
+#NV.IND.TOTL.ZS Industry (including construction), value added (% of GDP)
+#NV.SRV.TOTL.ZS Services, value added (% of GDP)
+gdp_indicators <- c("NY.GDP.MKTP.CD", "NY.GDP.PCAP.CD",
+                    "NV.AGR.TOTL.ZS","NV.IND.TOTL.ZS","NV.SRV.TOTL.ZS" )
+
+
+# Download the data
+world_gdp_data <- wb_data(
+  indicator = gdp_indicators,
+  start_date = 2000, # You can change the start and end years as needed
+  end_date = 2023
+)
+
+# Print the first few rows of the data to see the structure
+head(world_gdp_data)
+
+# You can also use summary() to get a quick overview of the data
+summary(world_gdp_data)
+
+# To get the data with country names, you can merge with wb_countries()
+#world_gdp_data_with_names <- merge(world_gdp_data, wb_countries(), by = "country_code", all.x = TRUE)
+
+# Print the first few rows of the merged data
+#head(world_gdp_data_with_names)
+
+# Clean up the column names
+world_gdp_data_with_names <- world_gdp_data %>%
+  rename(
+    GDP = NY.GDP.MKTP.CD,
+    GDP_per_capita = NY.GDP.PCAP.CD,
+    
+    Agriculture_of_GDP=NV.AGR.TOTL.ZS,
+    Industry_of_GDP=NV.IND.TOTL.ZS,
+    Services_of_GDP=NV.SRV.TOTL.ZS,
+    Year = date,
+    Country_Name = country
+  )
+
+# Select only the columns you need
+final_gdp_data <- world_gdp_data_with_names %>%mutate(total=Agriculture_of_GDP+Industry_of_GDP+Services_of_GDP)
+  
+
+# Print the first few rows of the final data
+head(final_gdp_data)
+```
+
+
+```{r}
+# Create the line chart
+
+china_thailand_data=final_gdp_data |> filter(Country_Name %in% c("China", "Thailand","United States","Japan","Korea, Rep.")) |> mutate(Year=as.numeric(Year))
+
+gdp_per_capita_plot <- ggplot(data = china_thailand_data, aes(x = Year, y = Services_of_GDP, color = Country_Name)) +
+  geom_line(size = 1) +
+  labs(
+    title = "Services_of_GDP: China vs Thailand vs US",
+    #subtitle = "Services_of_GDP",
+    x = "Year",
+    y = "Services_of_GDP",
+    color = "Country_Name"
+  ) +
+  theme_minimal() +
+  theme(
+    text = element_text(size = 12),
+    plot.title = element_text(hjust = 0.5, face = "bold"),
+    plot.subtitle = element_text(hjust = 0.5)
+  )
+
+gdp_per_capita_plot
+```
+
+
+```{r}
+
+gdp_per_capita_plot <- ggplot(data = china_thailand_data, aes(x = Year, y = GDP_per_capita, color = Country_Name)) +
+  geom_line(size = 1) +
+  labs(
+    title = "GDP Per Capita: China vs Thailand",
+    subtitle = "Comparison of GDP per Capita (current US$)",
+    x = "Year",
+    y = "GDP Per Capita (USD)",
+    color = "Country_Name"
+  ) +
+  theme_minimal() +
+  theme(
+    text = element_text(size = 12),
+    plot.title = element_text(hjust = 0.5, face = "bold"),
+    plot.subtitle = element_text(hjust = 0.5)
+  )
+
+gdp_per_capita_plot
+```
+
+
+## WDI package
+
+```{r}
+library(WDI)
+library(ggplot2)
+library(tidyverse)
+```
+
+
+```{r}
+# Download GDP data from World Bank
+gdp_data <- WDI(
+  country = "all",
+  indicator = c(
+    gdp = "NY.GDP.MKTP.CD",               # GDP (current US$)
+    gdp_per_capita = "NY.GDP.PCAP.CD",    # GDP per capita (current US$)
+    agriculture = "NV.AGR.TOTL.ZS",       # Agriculture value added (% of GDP)
+    industry = "NV.IND.TOTL.ZS",          # Industry value added (% of GDP)
+    services = "NV.SRV.TOTL.ZS"           # Services value added (% of GDP)
+  ),
+  start = 2000,
+  end = 2023,
+  extra = TRUE
+)
+```
+
+
+
+
+
+# Python
+
+## IMF
+
+
+
+
+
+
+

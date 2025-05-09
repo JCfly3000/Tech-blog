@@ -1,0 +1,62 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"Web scraping in Python\"\n",
+        "\n",
+        "author: \"Tony D\"\n",
+        "date: \"2025-03-12\"\n",
+        "categories: \n",
+        "  - Tool\n",
+        "  - Webscrap\n",
+        "  - Python\n",
+        "  \n",
+        "execute:\n",
+        "  warning: false\n",
+        "  error: false\n",
+        "  eval: false\n",
+        "  \n",
+        "image: \"preview.B-gzjIrP.png\"\n",
+        "---\n",
+        "\n",
+        "# python web scraping with requests and BeautifulSoup"
+      ],
+      "id": "65043984"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import requests\n",
+        "from bs4 import BeautifulSoup\n",
+        "from io import StringIO\n",
+        "import re\n",
+        "import pandas as pd"
+      ],
+      "id": "36c9f3fb",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# Reference\n"
+      ],
+      "id": "05497869"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/Library/Frameworks/Python.framework/Versions/3.13/share/jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

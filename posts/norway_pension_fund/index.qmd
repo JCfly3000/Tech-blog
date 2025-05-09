@@ -1,0 +1,89 @@
+---
+title: "挪威养老基金"
+subtitle: "Norway The Government Pension Fund Global"
+author: "Tony D"
+date: "2025-04-24"
+
+categories: 
+  - AI
+  - R
+  - Python
+
+  
+execute:
+  warning: false
+  error: false
+  eval: false
+  
+
+image: 'images/logo.svg'
+
+#draft: true
+---
+
+
+The Government Pension Fund Global was established after Norway discovered oil in the North Sea. 
+
+The fund was set up to shield the economy from ups and downs in oil revenue. It also serves as a financial reserve and as a long-term savings plan so that both current and future generations of Norway get to benefit from our oil wealth.
+
+
+https://www.nbim.no/en
+
+
+
+```{r}
+library(ellmer)
+library(tidyverse)
+library(srt)
+library(openxlsx)
+library(readxl)
+library(lares)
+library(tuneR)
+library(stringr)
+library(rvest)
+library(av)
+```
+
+# podcast
+
+
+https://shows.acast.com/in-good-company-with-nicolai-tangen
+
+
+```{r}
+one_podcast='https://shows.acast.com/in-good-company-with-nicolai-tangen/episodes/highlights-debra-crew-ceo-of-diageo'
+
+audio_page <- read_html(one_podcast)
+    
+# 提取音频标题，property="og:title"的meta元素的content值
+title <- audio_page %>%
+html_nodes('meta[property="og:title"]') %>%
+html_attr("content")
+
+title  
+
+# 提取音频下载链接，property="og:audio"的meta元素的content值
+audio_url <- audio_page %>%
+  html_nodes('meta[property="og:audio"]') %>%
+  html_attr("content")
+
+audio_url
+```
+
+```{r}
+output_file_name=paste0(title,".mp3")
+download.file(url = audio_url, destfile = output_file_name)
+```
+
+
+# data
+
+
+https://www.nbim.no/en/investments/all-investments/#/
+
+
+# video
+
+https://www.youtube.com/watch?v=mT6mRJehJdw
+
+

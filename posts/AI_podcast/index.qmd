@@ -239,12 +239,6 @@ audio_url
 
 
 ```{r}
-# Convert m4a to WAV
-av_audio_convert("your_audio.m4a", "your_audio.wav")
-```
-
-
-```{r}
 #output_file_name=paste0(safe_title ,'output.mp3')
 output_file_name='output.m4a'
 download.file(url = audio_url, destfile = output_file_name)

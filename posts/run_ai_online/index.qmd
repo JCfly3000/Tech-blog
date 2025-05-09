@@ -20,7 +20,7 @@ execute:
 
 run LLM model online with ellmer or chatter
 
-# ellmer for R
+# 1.ellmer for R
 
 ```{r}
 #pak::pkg_install('ellmer')
@@ -106,7 +106,7 @@ token_usage()
 
 
 
-# chattr LLM pacakge for R
+# 2. chattr LLM pacakge for R
 
 ## Step 1 Install package
 
@@ -118,7 +118,7 @@ token_usage()
 library(chattr)
 ```
 
-# Step 2 set key
+## Step 2 set key
 
 -   Login at https://platform.openai.com/
 
@@ -195,15 +195,17 @@ setHook("rstudio.sessionInit", function(newSession) {
 
 
 
-# google python API
+# 3. google python API
+
 ```{bash}
 pip install -q -U google-genai
 ```
 
 ```{python}
 from google import genai
+import keyring
 
-client = genai.Client(api_key=google_ai_key_py)
+client = genai.Client(api_key=keyring.get_password("system", "google_ai_api_key"))
 
 response = client.models.generate_content(
     model="gemini-2.0-flash", contents="Explain how AI works in a few words"

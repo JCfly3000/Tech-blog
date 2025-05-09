@@ -22,6 +22,9 @@ image: '1734616066-llm-security.webp'
 
 (LLM)Large language model
 
+![](images/my%20screenshots.png){width="800"} 
+
+
 ```{r}
 library(tidyverse)
 library(openxlsx)

@@ -1,0 +1,15 @@
+{
+  "hash": "32daa35a0023a4644da27da097782649",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"挪威养老基金\"\nsubtitle: \"Norway The Government Pension Fund Global\"\nauthor: \"Tony D\"\ndate: \"2025-04-24\"\n\ncategories: \n  - AI\n  - R\n  - Python\n\n  \nexecute:\n  warning: false\n  error: false\n  eval: false\n  \n\nimage: 'images/logo.svg'\n\n#draft: true\n---\n\n\nThe Government Pension Fund Global was established after Norway discovered oil in the North Sea. \n\nThe fund was set up to shield the economy from ups and downs in oil revenue. It also serves as a financial reserve and as a long-term savings plan so that both current and future generations of Norway get to benefit from our oil wealth.\n\n\nhttps://www.nbim.no/en\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(ellmer)\nlibrary(tidyverse)\nlibrary(srt)\nlibrary(openxlsx)\nlibrary(readxl)\nlibrary(lares)\nlibrary(tuneR)\nlibrary(stringr)\nlibrary(rvest)\nlibrary(av)\n```\n:::\n\n# podcast\n\n\nhttps://shows.acast.com/in-good-company-with-nicolai-tangen\n\n\n::: {.cell}\n\n```{.r .cell-code}\none_podcast='https://shows.acast.com/in-good-company-with-nicolai-tangen/episodes/highlights-debra-crew-ceo-of-diageo'\n\naudio_page <- read_html(one_podcast)\n    \n# 提取音频标题，property=\"og:title\"的meta元素的content值\ntitle <- audio_page %>%\nhtml_nodes('meta[property=\"og:title\"]') %>%\nhtml_attr(\"content\")\n\ntitle  \n\n# 提取音频下载链接，property=\"og:audio\"的meta元素的content值\naudio_url <- audio_page %>%\n  html_nodes('meta[property=\"og:audio\"]') %>%\n  html_attr(\"content\")\n\naudio_url\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\noutput_file_name=paste0(title,\".mp3\")\ndownload.file(url = audio_url, destfile = output_file_name)\n```\n:::\n\n\n# data\n\n\nhttps://www.nbim.no/en/investments/all-investments/#/",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

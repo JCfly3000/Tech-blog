@@ -1,0 +1,278 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"Python code optimization with ruff\"\n",
+        "author: \"Tony D\"\n",
+        "execute:\n",
+        "  warning: false\n",
+        "  error: false\n",
+        "\n",
+        "  \n",
+        "date: \"2025-03-14\"\n",
+        "categories: \n",
+        "  - Tool\n",
+        "  - Python\n",
+        "  \n",
+        "image: \"images.png\"\n",
+        "jupyter: python3\n",
+        "---\n",
+        "\n",
+        "-   ⚡️ 10-100x faster than existing linters (like Flake8) and formatters (like Black)\n",
+        "\n",
+        "-   🐍 Installable via `pip`\n",
+        "\n",
+        "-   🛠️ `pyproject.toml` support\n",
+        "\n",
+        "![](images/clipboard-548506117.png)\n",
+        "\n",
+        "# install ruff\n",
+        "\n",
+        "``` {.python filename=\"playing.py\"}\n",
+        "#| eval: false\n",
+        "pip install ruff\n",
+        "```\n",
+        "\n",
+        "# check code\n",
+        "\n",
+        "before correct python file\n",
+        "\n",
+        "``` {.python filename=\"playing.py\"}\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "import pandas\n",
+        "\n",
+        "from importlib.metadata import version\n",
+        "\n",
+        "print('test.py is running')\n",
+        "print('version is :')\n",
+        "print(version('rich'))\n",
+        "\n",
+        "a=3+1\n",
+        "\n",
+        "\n",
+        "a\n",
+        "\n",
+        "```"
+      ],
+      "id": "32d53c9d"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "filename": "Terminal"
+      },
+      "source": [
+        "!ruff check playing.py"
+      ],
+      "id": "58b23d94",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# fix code"
+      ],
+      "id": "b7ef200b"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "filename": "Terminal"
+      },
+      "source": [
+        "#| eval: false\n",
+        "!ruff check playing.py --fix"
+      ],
+      "id": "99c3812b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "after fix"
+      ],
+      "id": "98ce5d75"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "filename": "Terminal"
+      },
+      "source": [
+        "#| eval: false\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "import pandas\n",
+        "\n",
+        "from importlib.metadata import version\n",
+        "\n",
+        "print('test.py is running')\n",
+        "print('version is :')\n",
+        "print(version('rich'))\n",
+        "\n",
+        "a=3+1\n",
+        "\n",
+        "\n",
+        "a\n"
+      ],
+      "id": "83a2bda2",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# format code"
+      ],
+      "id": "d1b9935d"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "filename": "Terminal"
+      },
+      "source": [
+        "#| eval: false\n",
+        "!ruff format playing.py"
+      ],
+      "id": "a576ebdf",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "after format"
+      ],
+      "id": "6a12e83c"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "filename": "Terminal"
+      },
+      "source": [
+        "#| eval: false\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "import pandas\n",
+        "\n",
+        "from importlib.metadata import version\n",
+        "\n",
+        "print('test.py is running')\n",
+        "print('version is :')\n",
+        "print(version('rich'))\n",
+        "\n",
+        "a=3+1\n",
+        "\n",
+        "\n",
+        "a\n"
+      ],
+      "id": "15659c69",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# add ruff as extension in positron\n",
+        "\n",
+        "![](images/my screenshots 1.png)\n",
+        "\n",
+        "# using ruff on .qmd file\n",
+        "\n",
+        "ruff only work on .py file, So if want to use ruff to check .qmd file then it need to convert to .py first.\n",
+        "\n",
+        "## convert .qmd to .py"
+      ],
+      "id": "61a6a9ec"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "filename": "Terminal"
+      },
+      "source": [
+        "#| eval: false\n",
+        "quarto convert index.qmd    # → index.ipynb"
+      ],
+      "id": "50e6b633",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "filename": "Terminal"
+      },
+      "source": [
+        "#| eval: false\n",
+        "!jupyter nbconvert --to python index.ipynb    # → index.py"
+      ],
+      "id": "d3656faa",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## check .py with ruff"
+      ],
+      "id": "5d9535e4"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "filename": "Terminal"
+      },
+      "source": [
+        "#| eval: false\n",
+        "!ruff check index.py"
+      ],
+      "id": "588f19fb",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# reference:\n",
+        "\n",
+        "https://github.com/astral-sh/ruff"
+      ],
+      "id": "ee950bc4"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/Library/Frameworks/Python.framework/Versions/3.13/share/jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

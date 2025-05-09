@@ -2,6 +2,10 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/video/index.html",
+      "/posts/GDP/index.html",
+      "/posts/norway_pension_fund/index.html",
+      "/posts/AI_OCR/index.html",
       "/posts/TidyTuesday/index.html",
       "/posts/display_table/index.html",
       "/posts/AI_create_code/index.html",
@@ -40,6 +44,10 @@
   {
     "listing": "/posts.html",
     "items": [
+      "/posts/video/index.html",
+      "/posts/GDP/index.html",
+      "/posts/norway_pension_fund/index.html",
+      "/posts/AI_OCR/index.html",
       "/posts/TidyTuesday/index.html",
       "/posts/display_table/index.html",
       "/posts/AI_create_code/index.html",
