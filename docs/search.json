@@ -1712,7 +1712,7 @@
     "href": "project.html",
     "title": "Project",
     "section": "",
-    "text": "SQL Handbook\n\n\nR Handboook\n\n\nPython Handbook\n\n\n[Stat Handbook]\n\n\n[AI Handbook]\n\n\n[R model]\n\n\n[Pyhton model]"
+    "text": "SQL Handbook\nThis document provides a comprehensive guide to performing common data manipulation tasks using SQL, R, and Python. It serves as a reference for understanding how to achieve similar outcomes across these three popular data analysis tools.\n\n\nR Handboook\nThis project is a comprehensive guide to the R programming language, built with Quarto. It covers a wide range of topics, from the fundamentals of R to advanced applications in data manipulation, visualization, and publishing.\n\n\nPython Handbook\na comprehensive guide to Python for data science, covering a range of topics from the fundamentals to more advanced applications.\n\n\nStat Handbook\nThis collection of documents serves as a practical guide and a series of case studies in statistical analysis and machine learning. Each section explores a different dataset and a different set of techniques, providing a hands-on approach to learning and applying these methods.\n\n\nAI Handbook\na comprehensive resource for developers and data scientists looking to harness the power of Artificial Intelligence. This Quarto-based website provides a curated collection of tutorials, guides, and practical examples for using a variety of AI tools and models in both R and Python."
   },
   {
     "objectID": "posts/multi language blog/index.html#add-site-url-to-system-environment-before-render",

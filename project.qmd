@@ -17,7 +17,7 @@ This project is a comprehensive guide to the R programming language, built with 
 
 a comprehensive guide to Python for data science, covering a range of topics from the fundamentals to more advanced applications.
 
-# [Stat Handbook]
+# [Stat Handbook](https://jcfly3000.github.io/into_stat/)
 
 This collection of documents serves as a practical guide and a series of case studies in statistical analysis and machine learning. Each section explores a different dataset and a different set of techniques, providing a hands-on approach to learning and applying these methods.
 
