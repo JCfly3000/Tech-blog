@@ -61,7 +61,7 @@
         "\n",
         "```"
       ],
-      "id": "32d53c9d"
+      "id": "db5ec20e"
     },
     {
       "cell_type": "code",
@@ -71,7 +71,7 @@
       "source": [
         "!ruff check playing.py"
       ],
-      "id": "58b23d94",
+      "id": "9192c7a4",
       "execution_count": null,
       "outputs": []
     },
@@ -81,7 +81,7 @@
       "source": [
         "# fix code"
       ],
-      "id": "b7ef200b"
+      "id": "da78e658"
     },
     {
       "cell_type": "code",
@@ -92,7 +92,7 @@
         "#| eval: false\n",
         "!ruff check playing.py --fix"
       ],
-      "id": "99c3812b",
+      "id": "b132b6fe",
       "execution_count": null,
       "outputs": []
     },
@@ -102,7 +102,7 @@
       "source": [
         "after fix"
       ],
-      "id": "98ce5d75"
+      "id": "acdd59f0"
     },
     {
       "cell_type": "code",
@@ -129,7 +129,7 @@
         "\n",
         "a\n"
       ],
-      "id": "83a2bda2",
+      "id": "c772c9b4",
       "execution_count": null,
       "outputs": []
     },
@@ -139,7 +139,7 @@
       "source": [
         "# format code"
       ],
-      "id": "d1b9935d"
+      "id": "c04fc110"
     },
     {
       "cell_type": "code",
@@ -150,7 +150,7 @@
         "#| eval: false\n",
         "!ruff format playing.py"
       ],
-      "id": "a576ebdf",
+      "id": "9b1f5376",
       "execution_count": null,
       "outputs": []
     },
@@ -160,7 +160,7 @@
       "source": [
         "after format"
       ],
-      "id": "6a12e83c"
+      "id": "f0d87090"
     },
     {
       "cell_type": "code",
@@ -187,7 +187,7 @@
         "\n",
         "a\n"
       ],
-      "id": "15659c69",
+      "id": "ffb6a792",
       "execution_count": null,
       "outputs": []
     },
@@ -205,7 +205,7 @@
         "\n",
         "## convert .qmd to .py"
       ],
-      "id": "61a6a9ec"
+      "id": "578db6a7"
     },
     {
       "cell_type": "code",
@@ -216,7 +216,7 @@
         "#| eval: false\n",
         "quarto convert index.qmd    # → index.ipynb"
       ],
-      "id": "50e6b633",
+      "id": "53e2a1dd",
       "execution_count": null,
       "outputs": []
     },
@@ -229,7 +229,7 @@
         "#| eval: false\n",
         "!jupyter nbconvert --to python index.ipynb    # → index.py"
       ],
-      "id": "d3656faa",
+      "id": "3ab9e302",
       "execution_count": null,
       "outputs": []
     },
@@ -239,7 +239,7 @@
       "source": [
         "## check .py with ruff"
       ],
-      "id": "5d9535e4"
+      "id": "8c8ee5c1"
     },
     {
       "cell_type": "code",
@@ -250,7 +250,7 @@
         "#| eval: false\n",
         "!ruff check index.py"
       ],
-      "id": "588f19fb",
+      "id": "1ed9e049",
       "execution_count": null,
       "outputs": []
     },
@@ -262,7 +262,7 @@
         "\n",
         "https://github.com/astral-sh/ruff"
       ],
-      "id": "ee950bc4"
+      "id": "3456a4c3"
     }
   ],
   "metadata": {

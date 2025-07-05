@@ -6,6 +6,7 @@ website:
   title: "Tech blog"
   navbar:
     right:
+      - project.qmd
       - posts.qmd
       - about.qmd
       - icon: github

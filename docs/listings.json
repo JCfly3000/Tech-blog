@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/multi language blog/index.html",
       "/posts/video/index.html",
       "/posts/GDP/index.html",
       "/posts/norway_pension_fund/index.html",
@@ -44,6 +45,7 @@
   {
     "listing": "/posts.html",
     "items": [
+      "/posts/multi language blog/index.html",
       "/posts/video/index.html",
       "/posts/GDP/index.html",
       "/posts/norway_pension_fund/index.html",

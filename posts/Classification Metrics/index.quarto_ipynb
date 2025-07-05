@@ -22,7 +22,7 @@
         "\n",
         "# install pacakge"
       ],
-      "id": "c7b10eda"
+      "id": "8f0466a8"
     },
     {
       "cell_type": "code",
@@ -33,7 +33,7 @@
         "pip install -U kaggle\n",
         "pip install -U kagglehub"
       ],
-      "id": "d3b15019",
+      "id": "b4069084",
       "execution_count": null,
       "outputs": []
     },
@@ -43,7 +43,7 @@
       "source": [
         "# load pacakge"
       ],
-      "id": "9d56f4ad"
+      "id": "28572b6e"
     },
     {
       "cell_type": "code",
@@ -65,7 +65,7 @@
         "    precision_recall_curve\n",
         ")"
       ],
-      "id": "720d8ef2",
+      "id": "6c873770",
       "execution_count": null,
       "outputs": []
     },
@@ -75,7 +75,7 @@
       "source": [
         "# download data from kaggle"
       ],
-      "id": "cb61b912"
+      "id": "077a3f35"
     },
     {
       "cell_type": "code",
@@ -87,7 +87,7 @@
         "path = kagglehub.dataset_download(\"uciml/pima-indians-diabetes-database\")\n",
         "print(\"Path to dataset files:\", path)"
       ],
-      "id": "9127e094",
+      "id": "6875c195",
       "execution_count": null,
       "outputs": []
     },
@@ -97,7 +97,7 @@
       "source": [
         "show data file under download folder"
       ],
-      "id": "21a02768"
+      "id": "80b86e75"
     },
     {
       "cell_type": "code",
@@ -106,7 +106,7 @@
         "import os\n",
         "os.listdir(path)"
       ],
-      "id": "18623e25",
+      "id": "3efda8b0",
       "execution_count": null,
       "outputs": []
     },
@@ -116,7 +116,7 @@
       "source": [
         "# read data\n"
       ],
-      "id": "2924d1a3"
+      "id": "081349e4"
     },
     {
       "cell_type": "code",
@@ -125,7 +125,7 @@
         "df = pd.read_csv(path+'/'+os.listdir(path)[0])\n",
         "df.head()"
       ],
-      "id": "d6fdbd33",
+      "id": "741d0169",
       "execution_count": null,
       "outputs": []
     },
@@ -135,7 +135,7 @@
       "source": [
         "df.Outcome.value_counts()"
       ],
-      "id": "fe9edf6e",
+      "id": "70527849",
       "execution_count": null,
       "outputs": []
     },
@@ -147,7 +147,7 @@
         "X = df.drop('Outcome', axis=1)\n",
         "y = df['Outcome']"
       ],
-      "id": "0ffc7654",
+      "id": "a975823b",
       "execution_count": null,
       "outputs": []
     },
@@ -158,7 +158,7 @@
         "# split data into test and training sets\n",
         "X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)"
       ],
-      "id": "6ad87a8a",
+      "id": "efb4136a",
       "execution_count": null,
       "outputs": []
     },
@@ -170,7 +170,7 @@
         "model = LogisticRegression(max_iter=1000)\n",
         "model.fit(X_train, y_train)"
       ],
-      "id": "014c6d6c",
+      "id": "c035a67c",
       "execution_count": null,
       "outputs": []
     },
@@ -182,7 +182,7 @@
         "y_pred = model.predict(X_test)\n",
         "y_pred_proba = model.predict_proba(X_test)[:, 1] "
       ],
-      "id": "979d25d1",
+      "id": "92aee10d",
       "execution_count": null,
       "outputs": []
     },
@@ -194,7 +194,7 @@
         "percentiles = np.percentile(y_pred_proba, [5, 25, 50, 75, 95])\n",
         "percentiles"
       ],
-      "id": "ebbce67b",
+      "id": "072ef8ea",
       "execution_count": null,
       "outputs": []
     },
@@ -204,7 +204,7 @@
       "source": [
         "# confusion matrix"
       ],
-      "id": "4c24c99c"
+      "id": "0a743ce3"
     },
     {
       "cell_type": "code",
@@ -222,7 +222,7 @@
         "plt.yticks([0.5, 1.5], ['No Diabetes', 'Diabetes'], va='center')\n",
         "plt.show()"
       ],
-      "id": "e5fc3ebf",
+      "id": "e247dce5",
       "execution_count": null,
       "outputs": []
     },
@@ -234,7 +234,7 @@
         "recall = recall_score(y_test, y_pred)\n",
         "recall"
       ],
-      "id": "e4056dc0",
+      "id": "e8614597",
       "execution_count": null,
       "outputs": []
     },
@@ -246,7 +246,7 @@
         "precision = precision_score(y_test, y_pred)\n",
         "precision"
       ],
-      "id": "6ea04cab",
+      "id": "a82a4981",
       "execution_count": null,
       "outputs": []
     },
@@ -259,7 +259,7 @@
         "specificity = tn / (tn + fp)\n",
         "specificity"
       ],
-      "id": "7b163c95",
+      "id": "86833b60",
       "execution_count": null,
       "outputs": []
     },
@@ -271,7 +271,7 @@
         "accuracy = accuracy_score(y_test, y_pred)\n",
         "accuracy"
       ],
-      "id": "f38e8765",
+      "id": "58d8e12b",
       "execution_count": null,
       "outputs": []
     },
@@ -283,7 +283,7 @@
         "f1 = f1_score(y_test, y_pred)\n",
         "f1"
       ],
-      "id": "d077656f",
+      "id": "33527bda",
       "execution_count": null,
       "outputs": []
     },
@@ -301,7 +301,7 @@
         "auroc = roc_auc_score(y_test, y_pred_proba)\n",
         "pr_auc = average_precision_score(y_test, y_pred_proba)"
       ],
-      "id": "859debdf",
+      "id": "d0ec98f2",
       "execution_count": null,
       "outputs": []
     },
@@ -327,7 +327,7 @@
         "\n",
         "plt.show()"
       ],
-      "id": "954d80d0",
+      "id": "25d547de",
       "execution_count": null,
       "outputs": []
     },
@@ -337,7 +337,7 @@
       "source": [
         "y_test.value_counts()"
       ],
-      "id": "8282b8a7",
+      "id": "8449ed24",
       "execution_count": null,
       "outputs": []
     },
@@ -351,7 +351,7 @@
         "\n",
         "https://github.com/RichardOnData/YouTube/blob/main/Python%20Notebooks/classification_metrics.ipynb\n"
       ],
-      "id": "9ce85d02"
+      "id": "5e9c7d01"
     }
   ],
   "metadata": {

@@ -39,11 +39,8 @@ jupyter: python3
 !uv init
 ```
 
-# show python version
+# show download python version
 
-```{python}
-!uv python list --only-installed
-```
 
 # chose python version
 
@@ -51,6 +48,21 @@ jupyter: python3
 #| eval: false
 !uv python pin 3.13
 ```
+
+
+# show all python include non download version 
+```{python}
+!uv python list
+```
+
+
+# download python version if not download
+
+```{python}
+#| eval: false
+!uv python install cpython-3.14.0
+```
+
 
 # install pacakge
 
@@ -99,7 +111,7 @@ uv pip compile pyproject.toml -o requirements.txt
 
 
 
-# Sync the project's dependencies with the environment
+# Sync the project's dependencies with the environment,it will add packages to the environment from toml file.
 
 ```{python}
 #| eval: false
@@ -108,6 +120,7 @@ uv pip compile pyproject.toml -o requirements.txt
 
 
 # using uv with script header
+
 
 ## there is no rich package in python
 

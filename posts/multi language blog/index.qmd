@@ -1,0 +1,131 @@
+---
+title: "多语言 quarto blog "
+subtitle: "babelquarto"
+author: "Tony Duan"
+date: "2025-07-03"
+categories: [quarto]
+execute:
+  warning: false
+  error: false
+  eval: false
+  
+format:
+  html:
+    toc: true
+    code-fold: show
+    code-tools: true
+    number-sections: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+---
+
+![](images/clipboard-2709382732.png){width="600"}
+
+# install package
+
+```{r}
+pak::pak("ropensci-review-tools/babelquarto")
+```
+
+# load package
+
+```{r}
+library(babelquarto)
+library(fs)
+```
+
+# set main language
+
+
+```{r}
+website_dir=getwd()
+```
+
+```{r}
+register_main_language(
+  main_language = "en",
+  project_path = website_dir
+)
+```
+
+# add new language
+
+```{r}
+register_further_languages(c("cn"), website_dir)
+```
+
+
+# change _quarto.yml if needed
+
+
+```{r}
+babelquarto:
+  languagecodes:
+  - name: cn
+    text: "中文"
+  - name: en
+    text: "EN"
+  mainlanguage: 'en'
+  languages: ['cn']
+title-cn: title in cn
+description-cn: description in cn
+author-cn: author in cn
+lang: en
+```
+
+
+
+# add new language qmd
+
+file name example:for example "index.cn.qmd"
+
+using LLM to create new lanuage qmd file
+
+"translate all qmd to chinese and write to new qmd file.file name example index.cn.qmd ellmer.cn.qmd and so on" in gemini
+
+
+
+# render all document
+
+
+## add site url to system environment before render
+
+```{r}
+Sys.setenv(BABELQUARTO_CI_URL="https://jcfly3000.github.io/into_AI/")
+```
+
+```{r}
+Sys.getenv("BABELQUARTO_CI_URL")
+```
+
+##  we use babelquarto::render_website().
+
+we need to render the .qmd files to HTML. If you are used to using Quarto, you may expect to do this with quarto render or quarto preview, but those do not work with babelquarto.
+
+
+```{r}
+babelquarto::render_website()
+```
+
+
+
+# view
+
+Now we’d like to view the rendered website in a browser. Once again, quarto preview cannot be used here. Instead, use servr::httw().
+
+```{r}
+servr::httw(path(website_dir, "docs"))
+```
+
+# Reference
+
+https://github.com/joelnitta/example-babelquarto
+
+https://joelnitta.com/posts/2024-12-06_babelquarto/
+
+https://docs.ropensci.org/babelquarto/
+
+
+
+
+

@@ -126,6 +126,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
+    <a class="nav-link" href="../../project.html"> 
+<span class="menu-text">Project</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../../posts.html"> 
 <span class="menu-text">Posts</span></a>
   </li>  
@@ -1416,202 +1420,196 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb43-278"><a href="#cb43-278" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb43-279"><a href="#cb43-279" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb43-282"><a href="#cb43-282" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb43-283"><a href="#cb43-283" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert m4a to WAV</span></span>
-<span id="cb43-284"><a href="#cb43-284" aria-hidden="true" tabindex="-1"></a><span class="fu">av_audio_convert</span>(<span class="st">"your_audio.m4a"</span>, <span class="st">"your_audio.wav"</span>)</span>
-<span id="cb43-285"><a href="#cb43-285" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-286"><a href="#cb43-286" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-287"><a href="#cb43-287" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-290"><a href="#cb43-290" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb43-291"><a href="#cb43-291" aria-hidden="true" tabindex="-1"></a><span class="co">#output_file_name=paste0(safe_title ,'output.mp3')</span></span>
-<span id="cb43-292"><a href="#cb43-292" aria-hidden="true" tabindex="-1"></a>output_file_name<span class="ot">=</span><span class="st">'output.m4a'</span></span>
-<span id="cb43-293"><a href="#cb43-293" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(<span class="at">url =</span> audio_url, <span class="at">destfile =</span> output_file_name)</span>
-<span id="cb43-294"><a href="#cb43-294" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-295"><a href="#cb43-295" aria-hidden="true" tabindex="-1"></a><span class="fu">### convert m4a to mp3</span></span>
-<span id="cb43-296"><a href="#cb43-296" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-299"><a href="#cb43-299" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb43-300"><a href="#cb43-300" aria-hidden="true" tabindex="-1"></a><span class="fu">av_audio_convert</span>(<span class="st">'output.m4a'</span>, <span class="st">'output.mp3'</span>)</span>
-<span id="cb43-301"><a href="#cb43-301" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-302"><a href="#cb43-302" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-305"><a href="#cb43-305" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb43-306"><a href="#cb43-306" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>()</span>
-<span id="cb43-307"><a href="#cb43-307" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-308"><a href="#cb43-308" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-283"><a href="#cb43-283" aria-hidden="true" tabindex="-1"></a><span class="co">#output_file_name=paste0(safe_title ,'output.mp3')</span></span>
+<span id="cb43-284"><a href="#cb43-284" aria-hidden="true" tabindex="-1"></a>output_file_name<span class="ot">=</span><span class="st">'output.m4a'</span></span>
+<span id="cb43-285"><a href="#cb43-285" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(<span class="at">url =</span> audio_url, <span class="at">destfile =</span> output_file_name)</span>
+<span id="cb43-286"><a href="#cb43-286" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb43-287"><a href="#cb43-287" aria-hidden="true" tabindex="-1"></a><span class="fu">### convert m4a to mp3</span></span>
+<span id="cb43-288"><a href="#cb43-288" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-291"><a href="#cb43-291" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb43-292"><a href="#cb43-292" aria-hidden="true" tabindex="-1"></a><span class="fu">av_audio_convert</span>(<span class="st">'output.m4a'</span>, <span class="st">'output.mp3'</span>)</span>
+<span id="cb43-293"><a href="#cb43-293" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb43-294"><a href="#cb43-294" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-297"><a href="#cb43-297" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb43-298"><a href="#cb43-298" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>()</span>
+<span id="cb43-299"><a href="#cb43-299" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb43-300"><a href="#cb43-300" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-301"><a href="#cb43-301" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-302"><a href="#cb43-302" aria-hidden="true" tabindex="-1"></a><span class="fu">### check mp3 duration</span></span>
+<span id="cb43-303"><a href="#cb43-303" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-306"><a href="#cb43-306" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb43-307"><a href="#cb43-307" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the MP3 file</span></span>
+<span id="cb43-308"><a href="#cb43-308" aria-hidden="true" tabindex="-1"></a>mp3_file <span class="ot">&lt;-</span> <span class="fu">readMP3</span>(<span class="st">'output.mp3'</span>)</span>
 <span id="cb43-309"><a href="#cb43-309" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-310"><a href="#cb43-310" aria-hidden="true" tabindex="-1"></a><span class="fu">### check mp3 duration</span></span>
-<span id="cb43-311"><a href="#cb43-311" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-314"><a href="#cb43-314" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb43-315"><a href="#cb43-315" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the MP3 file</span></span>
-<span id="cb43-316"><a href="#cb43-316" aria-hidden="true" tabindex="-1"></a>mp3_file <span class="ot">&lt;-</span> <span class="fu">readMP3</span>(<span class="st">'output.mp3'</span>)</span>
-<span id="cb43-317"><a href="#cb43-317" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-318"><a href="#cb43-318" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the duration in seconds</span></span>
-<span id="cb43-319"><a href="#cb43-319" aria-hidden="true" tabindex="-1"></a>duration_mins <span class="ot">&lt;-</span> (<span class="fu">length</span>(mp3_file<span class="sc">@</span>left) <span class="sc">/</span> mp3_file<span class="sc">@</span>samp.rate)<span class="sc">/</span><span class="dv">60</span></span>
-<span id="cb43-320"><a href="#cb43-320" aria-hidden="true" tabindex="-1"></a>duration_mins</span>
-<span id="cb43-321"><a href="#cb43-321" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-322"><a href="#cb43-322" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-323"><a href="#cb43-323" aria-hidden="true" tabindex="-1"></a><span class="fu">### trim mp3 if needed</span></span>
-<span id="cb43-324"><a href="#cb43-324" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-327"><a href="#cb43-327" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb43-328"><a href="#cb43-328" aria-hidden="true" tabindex="-1"></a><span class="co"># trim_mp3(</span></span>
-<span id="cb43-329"><a href="#cb43-329" aria-hidden="true" tabindex="-1"></a><span class="co">#   'output.mp3',</span></span>
-<span id="cb43-330"><a href="#cb43-330" aria-hidden="true" tabindex="-1"></a><span class="co">#   start_time = 1,</span></span>
-<span id="cb43-331"><a href="#cb43-331" aria-hidden="true" tabindex="-1"></a><span class="co">#   end_time = 600,</span></span>
-<span id="cb43-332"><a href="#cb43-332" aria-hidden="true" tabindex="-1"></a><span class="co">#   overwrite = FALSE,</span></span>
-<span id="cb43-333"><a href="#cb43-333" aria-hidden="true" tabindex="-1"></a><span class="co">#   ext = "mp3",</span></span>
-<span id="cb43-334"><a href="#cb43-334" aria-hidden="true" tabindex="-1"></a><span class="co">#   quiet = FALSE</span></span>
-<span id="cb43-335"><a href="#cb43-335" aria-hidden="true" tabindex="-1"></a><span class="co"># )</span></span>
-<span id="cb43-336"><a href="#cb43-336" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-337"><a href="#cb43-337" aria-hidden="true" tabindex="-1"></a><span class="co"># # output file:output_trim.mp3</span></span>
-<span id="cb43-338"><a href="#cb43-338" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-339"><a href="#cb43-339" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-342"><a href="#cb43-342" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb43-343"><a href="#cb43-343" aria-hidden="true" tabindex="-1"></a><span class="co"># # Load the MP3 file</span></span>
-<span id="cb43-344"><a href="#cb43-344" aria-hidden="true" tabindex="-1"></a><span class="co"># mp3_file &lt;- readMP3("output_trimmed.mp3" ) </span></span>
-<span id="cb43-345"><a href="#cb43-345" aria-hidden="true" tabindex="-1"></a><span class="co"># # Get the duration in seconds</span></span>
-<span id="cb43-346"><a href="#cb43-346" aria-hidden="true" tabindex="-1"></a><span class="co"># (length(mp3_file@left) / mp3_file@samp.rate)/60</span></span>
-<span id="cb43-347"><a href="#cb43-347" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb43-310"><a href="#cb43-310" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the duration in seconds</span></span>
+<span id="cb43-311"><a href="#cb43-311" aria-hidden="true" tabindex="-1"></a>duration_mins <span class="ot">&lt;-</span> (<span class="fu">length</span>(mp3_file<span class="sc">@</span>left) <span class="sc">/</span> mp3_file<span class="sc">@</span>samp.rate)<span class="sc">/</span><span class="dv">60</span></span>
+<span id="cb43-312"><a href="#cb43-312" aria-hidden="true" tabindex="-1"></a>duration_mins</span>
+<span id="cb43-313"><a href="#cb43-313" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb43-314"><a href="#cb43-314" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-315"><a href="#cb43-315" aria-hidden="true" tabindex="-1"></a><span class="fu">### trim mp3 if needed</span></span>
+<span id="cb43-316"><a href="#cb43-316" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-319"><a href="#cb43-319" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb43-320"><a href="#cb43-320" aria-hidden="true" tabindex="-1"></a><span class="co"># trim_mp3(</span></span>
+<span id="cb43-321"><a href="#cb43-321" aria-hidden="true" tabindex="-1"></a><span class="co">#   'output.mp3',</span></span>
+<span id="cb43-322"><a href="#cb43-322" aria-hidden="true" tabindex="-1"></a><span class="co">#   start_time = 1,</span></span>
+<span id="cb43-323"><a href="#cb43-323" aria-hidden="true" tabindex="-1"></a><span class="co">#   end_time = 600,</span></span>
+<span id="cb43-324"><a href="#cb43-324" aria-hidden="true" tabindex="-1"></a><span class="co">#   overwrite = FALSE,</span></span>
+<span id="cb43-325"><a href="#cb43-325" aria-hidden="true" tabindex="-1"></a><span class="co">#   ext = "mp3",</span></span>
+<span id="cb43-326"><a href="#cb43-326" aria-hidden="true" tabindex="-1"></a><span class="co">#   quiet = FALSE</span></span>
+<span id="cb43-327"><a href="#cb43-327" aria-hidden="true" tabindex="-1"></a><span class="co"># )</span></span>
+<span id="cb43-328"><a href="#cb43-328" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-329"><a href="#cb43-329" aria-hidden="true" tabindex="-1"></a><span class="co"># # output file:output_trim.mp3</span></span>
+<span id="cb43-330"><a href="#cb43-330" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb43-331"><a href="#cb43-331" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-334"><a href="#cb43-334" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb43-335"><a href="#cb43-335" aria-hidden="true" tabindex="-1"></a><span class="co"># # Load the MP3 file</span></span>
+<span id="cb43-336"><a href="#cb43-336" aria-hidden="true" tabindex="-1"></a><span class="co"># mp3_file &lt;- readMP3("output_trimmed.mp3" ) </span></span>
+<span id="cb43-337"><a href="#cb43-337" aria-hidden="true" tabindex="-1"></a><span class="co"># # Get the duration in seconds</span></span>
+<span id="cb43-338"><a href="#cb43-338" aria-hidden="true" tabindex="-1"></a><span class="co"># (length(mp3_file@left) / mp3_file@samp.rate)/60</span></span>
+<span id="cb43-339"><a href="#cb43-339" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb43-340"><a href="#cb43-340" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-341"><a href="#cb43-341" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-342"><a href="#cb43-342" aria-hidden="true" tabindex="-1"></a>::: </span>
+<span id="cb43-343"><a href="#cb43-343" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-344"><a href="#cb43-344" aria-hidden="true" tabindex="-1"></a><span class="fu"># Step 2: using mlx_whisper model to get text from audio(mp3,m4a)</span></span>
+<span id="cb43-345"><a href="#cb43-345" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-346"><a href="#cb43-346" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-347"><a href="#cb43-347" aria-hidden="true" tabindex="-1"></a>run audio_txt.py </span>
 <span id="cb43-348"><a href="#cb43-348" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-349"><a href="#cb43-349" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-350"><a href="#cb43-350" aria-hidden="true" tabindex="-1"></a>::: </span>
-<span id="cb43-351"><a href="#cb43-351" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-352"><a href="#cb43-352" aria-hidden="true" tabindex="-1"></a><span class="fu"># Step 2: using mlx_whisper model to get text from audio(mp3,m4a)</span></span>
-<span id="cb43-353"><a href="#cb43-353" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-354"><a href="#cb43-354" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-355"><a href="#cb43-355" aria-hidden="true" tabindex="-1"></a>run audio_txt.py </span>
-<span id="cb43-356"><a href="#cb43-356" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-357"><a href="#cb43-357" aria-hidden="true" tabindex="-1"></a><span class="in">```python</span></span>
-<span id="cb43-358"><a href="#cb43-358" aria-hidden="true" tabindex="-1"></a>{{<span class="op">&lt;</span> include audio_txt.py <span class="op">&gt;</span>}}</span>
-<span id="cb43-359"><a href="#cb43-359" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-360"><a href="#cb43-360" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-363"><a href="#cb43-363" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb43-364"><a href="#cb43-364" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os </span>
-<span id="cb43-365"><a href="#cb43-365" aria-hidden="true" tabindex="-1"></a>os.system(<span class="st">"python3.11 audio_txt.py"</span>)</span>
-<span id="cb43-366"><a href="#cb43-366" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb43-349"><a href="#cb43-349" aria-hidden="true" tabindex="-1"></a><span class="in">```python</span></span>
+<span id="cb43-350"><a href="#cb43-350" aria-hidden="true" tabindex="-1"></a>{{<span class="op">&lt;</span> include audio_txt.py <span class="op">&gt;</span>}}</span>
+<span id="cb43-351"><a href="#cb43-351" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb43-352"><a href="#cb43-352" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-355"><a href="#cb43-355" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb43-356"><a href="#cb43-356" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os </span>
+<span id="cb43-357"><a href="#cb43-357" aria-hidden="true" tabindex="-1"></a>os.system(<span class="st">"python3.11 audio_txt.py"</span>)</span>
+<span id="cb43-358"><a href="#cb43-358" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb43-359"><a href="#cb43-359" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-360"><a href="#cb43-360" aria-hidden="true" tabindex="-1"></a>output is text.txt and text.srt</span>
+<span id="cb43-361"><a href="#cb43-361" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-362"><a href="#cb43-362" aria-hidden="true" tabindex="-1"></a><span class="fu"># Step 3: Using gemini model to summary</span></span>
+<span id="cb43-363"><a href="#cb43-363" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-364"><a href="#cb43-364" aria-hidden="true" tabindex="-1"></a>model gemini-2.5-pro-exp-03-25 or gemini-2.0-flash</span>
+<span id="cb43-365"><a href="#cb43-365" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-366"><a href="#cb43-366" aria-hidden="true" tabindex="-1"></a><span class="fu">## define model</span></span>
 <span id="cb43-367"><a href="#cb43-367" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-368"><a href="#cb43-368" aria-hidden="true" tabindex="-1"></a>output is text.txt and text.srt</span>
-<span id="cb43-369"><a href="#cb43-369" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-370"><a href="#cb43-370" aria-hidden="true" tabindex="-1"></a><span class="fu"># Step 3: Using gemini model to summary</span></span>
-<span id="cb43-371"><a href="#cb43-371" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-372"><a href="#cb43-372" aria-hidden="true" tabindex="-1"></a>model gemini-2.5-pro-exp-03-25 or gemini-2.0-flash</span>
-<span id="cb43-373"><a href="#cb43-373" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-374"><a href="#cb43-374" aria-hidden="true" tabindex="-1"></a><span class="fu">## define model</span></span>
-<span id="cb43-375"><a href="#cb43-375" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-378"><a href="#cb43-378" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb43-379"><a href="#cb43-379" aria-hidden="true" tabindex="-1"></a>chat_gemini_model<span class="ot">&lt;-</span> <span class="fu">chat_gemini</span>(</span>
-<span id="cb43-380"><a href="#cb43-380" aria-hidden="true" tabindex="-1"></a>  <span class="at">system_prompt =</span> <span class="st">"你是一个中文，英文，威士忌专家"</span>,</span>
-<span id="cb43-381"><a href="#cb43-381" aria-hidden="true" tabindex="-1"></a>  <span class="at">turns =</span> <span class="cn">NULL</span>,</span>
-<span id="cb43-382"><a href="#cb43-382" aria-hidden="true" tabindex="-1"></a>  <span class="co"># base_url = "https://generativelanguage.googleapis.com/v1beta",</span></span>
-<span id="cb43-383"><a href="#cb43-383" aria-hidden="true" tabindex="-1"></a>  <span class="at">api_key =</span> keyring<span class="sc">::</span><span class="fu">key_get</span>(<span class="st">"google_ai_api_key"</span>),</span>
-<span id="cb43-384"><a href="#cb43-384" aria-hidden="true" tabindex="-1"></a>  <span class="at">model =</span> <span class="st">"gemini-2.0-flash"</span>,</span>
-<span id="cb43-385"><a href="#cb43-385" aria-hidden="true" tabindex="-1"></a>  <span class="co">#api_args = list(),</span></span>
-<span id="cb43-386"><a href="#cb43-386" aria-hidden="true" tabindex="-1"></a>  <span class="co">#echo = NULL</span></span>
-<span id="cb43-387"><a href="#cb43-387" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb43-388"><a href="#cb43-388" aria-hidden="true" tabindex="-1"></a>chat_gemini_model</span>
-<span id="cb43-389"><a href="#cb43-389" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-390"><a href="#cb43-390" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-370"><a href="#cb43-370" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb43-371"><a href="#cb43-371" aria-hidden="true" tabindex="-1"></a>chat_gemini_model<span class="ot">&lt;-</span> <span class="fu">chat_gemini</span>(</span>
+<span id="cb43-372"><a href="#cb43-372" aria-hidden="true" tabindex="-1"></a>  <span class="at">system_prompt =</span> <span class="st">"你是一个中文，英文，威士忌专家"</span>,</span>
+<span id="cb43-373"><a href="#cb43-373" aria-hidden="true" tabindex="-1"></a>  <span class="at">turns =</span> <span class="cn">NULL</span>,</span>
+<span id="cb43-374"><a href="#cb43-374" aria-hidden="true" tabindex="-1"></a>  <span class="co"># base_url = "https://generativelanguage.googleapis.com/v1beta",</span></span>
+<span id="cb43-375"><a href="#cb43-375" aria-hidden="true" tabindex="-1"></a>  <span class="at">api_key =</span> keyring<span class="sc">::</span><span class="fu">key_get</span>(<span class="st">"google_ai_api_key"</span>),</span>
+<span id="cb43-376"><a href="#cb43-376" aria-hidden="true" tabindex="-1"></a>  <span class="at">model =</span> <span class="st">"gemini-2.0-flash"</span>,</span>
+<span id="cb43-377"><a href="#cb43-377" aria-hidden="true" tabindex="-1"></a>  <span class="co">#api_args = list(),</span></span>
+<span id="cb43-378"><a href="#cb43-378" aria-hidden="true" tabindex="-1"></a>  <span class="co">#echo = NULL</span></span>
+<span id="cb43-379"><a href="#cb43-379" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb43-380"><a href="#cb43-380" aria-hidden="true" tabindex="-1"></a>chat_gemini_model</span>
+<span id="cb43-381"><a href="#cb43-381" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb43-382"><a href="#cb43-382" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-383"><a href="#cb43-383" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-386"><a href="#cb43-386" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb43-387"><a href="#cb43-387" aria-hidden="true" tabindex="-1"></a><span class="co">#testing model connection</span></span>
+<span id="cb43-388"><a href="#cb43-388" aria-hidden="true" tabindex="-1"></a>chat_result<span class="ot">=</span>chat_gemini_model<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"hello"</span>)</span>
+<span id="cb43-389"><a href="#cb43-389" aria-hidden="true" tabindex="-1"></a>chat_result</span>
+<span id="cb43-390"><a href="#cb43-390" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb43-391"><a href="#cb43-391" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb43-394"><a href="#cb43-394" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb43-395"><a href="#cb43-395" aria-hidden="true" tabindex="-1"></a><span class="co">#testing model connection</span></span>
-<span id="cb43-396"><a href="#cb43-396" aria-hidden="true" tabindex="-1"></a>chat_result<span class="ot">=</span>chat_gemini_model<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"hello"</span>)</span>
-<span id="cb43-397"><a href="#cb43-397" aria-hidden="true" tabindex="-1"></a>chat_result</span>
-<span id="cb43-398"><a href="#cb43-398" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb43-395"><a href="#cb43-395" aria-hidden="true" tabindex="-1"></a>chat_gemini_model<span class="sc">$</span><span class="fu">get_turns</span>(<span class="at">include_system_prompt =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb43-396"><a href="#cb43-396" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb43-397"><a href="#cb43-397" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-398"><a href="#cb43-398" aria-hidden="true" tabindex="-1"></a><span class="fu">## Run model</span></span>
 <span id="cb43-399"><a href="#cb43-399" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb43-402"><a href="#cb43-402" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb43-403"><a href="#cb43-403" aria-hidden="true" tabindex="-1"></a>chat_gemini_model<span class="sc">$</span><span class="fu">get_turns</span>(<span class="at">include_system_prompt =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb43-404"><a href="#cb43-404" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-405"><a href="#cb43-405" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-406"><a href="#cb43-406" aria-hidden="true" tabindex="-1"></a><span class="fu">## Run model</span></span>
-<span id="cb43-407"><a href="#cb43-407" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-410"><a href="#cb43-410" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb43-411"><a href="#cb43-411" aria-hidden="true" tabindex="-1"></a>srt_txt0<span class="ot">=</span><span class="fu">read_srt</span>(<span class="st">'text.srt'</span>)</span>
-<span id="cb43-412"><a href="#cb43-412" aria-hidden="true" tabindex="-1"></a>srt_txt2<span class="ot">=</span>srt_txt0<span class="sc">$</span>subtitle<span class="sc">|&gt;</span> <span class="fu">as.character</span>()</span>
-<span id="cb43-413"><a href="#cb43-413" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-414"><a href="#cb43-414" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-417"><a href="#cb43-417" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb43-418"><a href="#cb43-418" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(srt_txt2)</span>
+<span id="cb43-403"><a href="#cb43-403" aria-hidden="true" tabindex="-1"></a>srt_txt0<span class="ot">=</span><span class="fu">read_srt</span>(<span class="st">'text.srt'</span>)</span>
+<span id="cb43-404"><a href="#cb43-404" aria-hidden="true" tabindex="-1"></a>srt_txt2<span class="ot">=</span>srt_txt0<span class="sc">$</span>subtitle<span class="sc">|&gt;</span> <span class="fu">as.character</span>()</span>
+<span id="cb43-405"><a href="#cb43-405" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb43-406"><a href="#cb43-406" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-409"><a href="#cb43-409" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb43-410"><a href="#cb43-410" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(srt_txt2)</span>
+<span id="cb43-411"><a href="#cb43-411" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb43-412"><a href="#cb43-412" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-413"><a href="#cb43-413" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-416"><a href="#cb43-416" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb43-417"><a href="#cb43-417" aria-hidden="true" tabindex="-1"></a>prompt_text<span class="ot">=</span><span class="fu">paste0</span>(<span class="st">'请给以下文字作500字内摘要：'</span>,srt_txt2)</span>
+<span id="cb43-418"><a href="#cb43-418" aria-hidden="true" tabindex="-1"></a>summary_text<span class="ot">=</span>chat_gemini_model<span class="sc">$</span><span class="fu">chat</span>(prompt_text)</span>
 <span id="cb43-419"><a href="#cb43-419" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb43-420"><a href="#cb43-420" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb43-421"><a href="#cb43-421" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-424"><a href="#cb43-424" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb43-425"><a href="#cb43-425" aria-hidden="true" tabindex="-1"></a>prompt_text<span class="ot">=</span><span class="fu">paste0</span>(<span class="st">'请给以下文字作500字内摘要：'</span>,srt_txt2)</span>
-<span id="cb43-426"><a href="#cb43-426" aria-hidden="true" tabindex="-1"></a>summary_text<span class="ot">=</span>chat_gemini_model<span class="sc">$</span><span class="fu">chat</span>(prompt_text)</span>
+<span id="cb43-422"><a href="#cb43-422" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-425"><a href="#cb43-425" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb43-426"><a href="#cb43-426" aria-hidden="true" tabindex="-1"></a>summary_text <span class="sc">|&gt;</span> <span class="fu">tibble</span>() <span class="sc">|&gt;</span> <span class="fu">write_delim</span>(<span class="st">'summary.txt'</span>)</span>
 <span id="cb43-427"><a href="#cb43-427" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb43-428"><a href="#cb43-428" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb43-429"><a href="#cb43-429" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-430"><a href="#cb43-430" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-433"><a href="#cb43-433" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb43-434"><a href="#cb43-434" aria-hidden="true" tabindex="-1"></a>summary_text <span class="sc">|&gt;</span> <span class="fu">tibble</span>() <span class="sc">|&gt;</span> <span class="fu">write_delim</span>(<span class="st">'summary.txt'</span>)</span>
-<span id="cb43-435"><a href="#cb43-435" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-436"><a href="#cb43-436" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-437"><a href="#cb43-437" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-438"><a href="#cb43-438" aria-hidden="true" tabindex="-1"></a><span class="fu"># Step 4: correct summary</span></span>
-<span id="cb43-439"><a href="#cb43-439" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-440"><a href="#cb43-440" aria-hidden="true" tabindex="-1"></a><span class="fu">## define model</span></span>
-<span id="cb43-441"><a href="#cb43-441" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-444"><a href="#cb43-444" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb43-445"><a href="#cb43-445" aria-hidden="true" tabindex="-1"></a>chat_gemini_model<span class="ot">&lt;-</span> <span class="fu">chat_gemini</span>(</span>
-<span id="cb43-446"><a href="#cb43-446" aria-hidden="true" tabindex="-1"></a>  <span class="at">system_prompt =</span> <span class="st">"你是一个中文和英文的威士忌专家"</span>,</span>
-<span id="cb43-447"><a href="#cb43-447" aria-hidden="true" tabindex="-1"></a>  <span class="at">turns =</span> <span class="cn">NULL</span>,</span>
-<span id="cb43-448"><a href="#cb43-448" aria-hidden="true" tabindex="-1"></a>  <span class="co"># base_url = "https://generativelanguage.googleapis.com/v1beta",</span></span>
-<span id="cb43-449"><a href="#cb43-449" aria-hidden="true" tabindex="-1"></a>  <span class="at">api_key =</span> keyring<span class="sc">::</span><span class="fu">key_get</span>(<span class="st">"google_ai_api_key"</span>),</span>
-<span id="cb43-450"><a href="#cb43-450" aria-hidden="true" tabindex="-1"></a>  <span class="at">model =</span> <span class="st">"gemini-2.0-flash"</span>,</span>
-<span id="cb43-451"><a href="#cb43-451" aria-hidden="true" tabindex="-1"></a>  <span class="co">#api_args = list(),</span></span>
-<span id="cb43-452"><a href="#cb43-452" aria-hidden="true" tabindex="-1"></a>  <span class="co">#echo = NULL</span></span>
-<span id="cb43-453"><a href="#cb43-453" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb43-454"><a href="#cb43-454" aria-hidden="true" tabindex="-1"></a>chat_gemini_model</span>
-<span id="cb43-455"><a href="#cb43-455" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-456"><a href="#cb43-456" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-457"><a href="#cb43-457" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-458"><a href="#cb43-458" aria-hidden="true" tabindex="-1"></a><span class="fu">## Run model</span></span>
+<span id="cb43-430"><a href="#cb43-430" aria-hidden="true" tabindex="-1"></a><span class="fu"># Step 4: correct summary</span></span>
+<span id="cb43-431"><a href="#cb43-431" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-432"><a href="#cb43-432" aria-hidden="true" tabindex="-1"></a><span class="fu">## define model</span></span>
+<span id="cb43-433"><a href="#cb43-433" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-436"><a href="#cb43-436" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb43-437"><a href="#cb43-437" aria-hidden="true" tabindex="-1"></a>chat_gemini_model<span class="ot">&lt;-</span> <span class="fu">chat_gemini</span>(</span>
+<span id="cb43-438"><a href="#cb43-438" aria-hidden="true" tabindex="-1"></a>  <span class="at">system_prompt =</span> <span class="st">"你是一个中文和英文的威士忌专家"</span>,</span>
+<span id="cb43-439"><a href="#cb43-439" aria-hidden="true" tabindex="-1"></a>  <span class="at">turns =</span> <span class="cn">NULL</span>,</span>
+<span id="cb43-440"><a href="#cb43-440" aria-hidden="true" tabindex="-1"></a>  <span class="co"># base_url = "https://generativelanguage.googleapis.com/v1beta",</span></span>
+<span id="cb43-441"><a href="#cb43-441" aria-hidden="true" tabindex="-1"></a>  <span class="at">api_key =</span> keyring<span class="sc">::</span><span class="fu">key_get</span>(<span class="st">"google_ai_api_key"</span>),</span>
+<span id="cb43-442"><a href="#cb43-442" aria-hidden="true" tabindex="-1"></a>  <span class="at">model =</span> <span class="st">"gemini-2.0-flash"</span>,</span>
+<span id="cb43-443"><a href="#cb43-443" aria-hidden="true" tabindex="-1"></a>  <span class="co">#api_args = list(),</span></span>
+<span id="cb43-444"><a href="#cb43-444" aria-hidden="true" tabindex="-1"></a>  <span class="co">#echo = NULL</span></span>
+<span id="cb43-445"><a href="#cb43-445" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb43-446"><a href="#cb43-446" aria-hidden="true" tabindex="-1"></a>chat_gemini_model</span>
+<span id="cb43-447"><a href="#cb43-447" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb43-448"><a href="#cb43-448" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-449"><a href="#cb43-449" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-450"><a href="#cb43-450" aria-hidden="true" tabindex="-1"></a><span class="fu">## Run model</span></span>
+<span id="cb43-451"><a href="#cb43-451" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-452"><a href="#cb43-452" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-455"><a href="#cb43-455" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb43-456"><a href="#cb43-456" aria-hidden="true" tabindex="-1"></a>prompt_text<span class="ot">=</span><span class="fu">paste0</span>(<span class="st">'请更正以下文字的错别字，并且改正胡云为壶云，希游记为嬉游忌,Wish Jokey为WhisJockey,不要空白行'</span>,summary_text)</span>
+<span id="cb43-457"><a href="#cb43-457" aria-hidden="true" tabindex="-1"></a>correct_summary_text<span class="ot">=</span>chat_gemini_model<span class="sc">$</span><span class="fu">chat</span>(prompt_text)</span>
+<span id="cb43-458"><a href="#cb43-458" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb43-459"><a href="#cb43-459" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-460"><a href="#cb43-460" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-463"><a href="#cb43-463" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb43-464"><a href="#cb43-464" aria-hidden="true" tabindex="-1"></a>prompt_text<span class="ot">=</span><span class="fu">paste0</span>(<span class="st">'请更正以下文字的错别字，并且改正胡云为壶云，希游记为嬉游忌,Wish Jokey为WhisJockey,不要空白行'</span>,summary_text)</span>
-<span id="cb43-465"><a href="#cb43-465" aria-hidden="true" tabindex="-1"></a>correct_summary_text<span class="ot">=</span>chat_gemini_model<span class="sc">$</span><span class="fu">chat</span>(prompt_text)</span>
-<span id="cb43-466"><a href="#cb43-466" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-467"><a href="#cb43-467" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-470"><a href="#cb43-470" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb43-471"><a href="#cb43-471" aria-hidden="true" tabindex="-1"></a>correct_summary_text <span class="sc">|&gt;</span> <span class="fu">str_replace_all</span>(<span class="st">'</span><span class="sc">\n\n</span><span class="st">'</span>,<span class="st">'</span><span class="sc">\n</span><span class="st">'</span>)<span class="sc">|&gt;</span> <span class="fu">tibble</span>() <span class="sc">|&gt;</span> <span class="fu">write_delim</span>(<span class="st">'correct_summary2.txt'</span>)</span>
-<span id="cb43-472"><a href="#cb43-472" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-473"><a href="#cb43-473" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-474"><a href="#cb43-474" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-475"><a href="#cb43-475" aria-hidden="true" tabindex="-1"></a><span class="fu"># Step 5:  summary str text</span></span>
-<span id="cb43-476"><a href="#cb43-476" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-477"><a href="#cb43-477" aria-hidden="true" tabindex="-1"></a><span class="fu">## define model</span></span>
-<span id="cb43-478"><a href="#cb43-478" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-481"><a href="#cb43-481" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb43-482"><a href="#cb43-482" aria-hidden="true" tabindex="-1"></a>chat_gemini_model<span class="ot">&lt;-</span> <span class="fu">chat_gemini</span>(</span>
-<span id="cb43-483"><a href="#cb43-483" aria-hidden="true" tabindex="-1"></a>  <span class="at">system_prompt =</span> <span class="st">"你是一个中文和英文的威士忌专家"</span>,</span>
-<span id="cb43-484"><a href="#cb43-484" aria-hidden="true" tabindex="-1"></a>  <span class="at">turns =</span> <span class="cn">NULL</span>,</span>
-<span id="cb43-485"><a href="#cb43-485" aria-hidden="true" tabindex="-1"></a>  <span class="co"># base_url = "https://generativelanguage.googleapis.com/v1beta",</span></span>
-<span id="cb43-486"><a href="#cb43-486" aria-hidden="true" tabindex="-1"></a>  <span class="at">api_key =</span> keyring<span class="sc">::</span><span class="fu">key_get</span>(<span class="st">"google_ai_api_key"</span>),</span>
-<span id="cb43-487"><a href="#cb43-487" aria-hidden="true" tabindex="-1"></a>  <span class="at">model =</span> <span class="st">"gemini-2.0-flash"</span>,</span>
-<span id="cb43-488"><a href="#cb43-488" aria-hidden="true" tabindex="-1"></a>  <span class="co">#model = "gemini-2.5-pro-exp-03-25",</span></span>
-<span id="cb43-489"><a href="#cb43-489" aria-hidden="true" tabindex="-1"></a>  <span class="co">#api_args = list(),</span></span>
-<span id="cb43-490"><a href="#cb43-490" aria-hidden="true" tabindex="-1"></a>  <span class="co">#echo = NULL</span></span>
-<span id="cb43-491"><a href="#cb43-491" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb43-492"><a href="#cb43-492" aria-hidden="true" tabindex="-1"></a>chat_gemini_model</span>
-<span id="cb43-493"><a href="#cb43-493" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-494"><a href="#cb43-494" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-462"><a href="#cb43-462" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb43-463"><a href="#cb43-463" aria-hidden="true" tabindex="-1"></a>correct_summary_text <span class="sc">|&gt;</span> <span class="fu">str_replace_all</span>(<span class="st">'</span><span class="sc">\n\n</span><span class="st">'</span>,<span class="st">'</span><span class="sc">\n</span><span class="st">'</span>)<span class="sc">|&gt;</span> <span class="fu">tibble</span>() <span class="sc">|&gt;</span> <span class="fu">write_delim</span>(<span class="st">'correct_summary2.txt'</span>)</span>
+<span id="cb43-464"><a href="#cb43-464" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb43-465"><a href="#cb43-465" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-466"><a href="#cb43-466" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-467"><a href="#cb43-467" aria-hidden="true" tabindex="-1"></a><span class="fu"># Step 5:  summary str text</span></span>
+<span id="cb43-468"><a href="#cb43-468" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-469"><a href="#cb43-469" aria-hidden="true" tabindex="-1"></a><span class="fu">## define model</span></span>
+<span id="cb43-470"><a href="#cb43-470" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-473"><a href="#cb43-473" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb43-474"><a href="#cb43-474" aria-hidden="true" tabindex="-1"></a>chat_gemini_model<span class="ot">&lt;-</span> <span class="fu">chat_gemini</span>(</span>
+<span id="cb43-475"><a href="#cb43-475" aria-hidden="true" tabindex="-1"></a>  <span class="at">system_prompt =</span> <span class="st">"你是一个中文和英文的威士忌专家"</span>,</span>
+<span id="cb43-476"><a href="#cb43-476" aria-hidden="true" tabindex="-1"></a>  <span class="at">turns =</span> <span class="cn">NULL</span>,</span>
+<span id="cb43-477"><a href="#cb43-477" aria-hidden="true" tabindex="-1"></a>  <span class="co"># base_url = "https://generativelanguage.googleapis.com/v1beta",</span></span>
+<span id="cb43-478"><a href="#cb43-478" aria-hidden="true" tabindex="-1"></a>  <span class="at">api_key =</span> keyring<span class="sc">::</span><span class="fu">key_get</span>(<span class="st">"google_ai_api_key"</span>),</span>
+<span id="cb43-479"><a href="#cb43-479" aria-hidden="true" tabindex="-1"></a>  <span class="at">model =</span> <span class="st">"gemini-2.0-flash"</span>,</span>
+<span id="cb43-480"><a href="#cb43-480" aria-hidden="true" tabindex="-1"></a>  <span class="co">#model = "gemini-2.5-pro-exp-03-25",</span></span>
+<span id="cb43-481"><a href="#cb43-481" aria-hidden="true" tabindex="-1"></a>  <span class="co">#api_args = list(),</span></span>
+<span id="cb43-482"><a href="#cb43-482" aria-hidden="true" tabindex="-1"></a>  <span class="co">#echo = NULL</span></span>
+<span id="cb43-483"><a href="#cb43-483" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb43-484"><a href="#cb43-484" aria-hidden="true" tabindex="-1"></a>chat_gemini_model</span>
+<span id="cb43-485"><a href="#cb43-485" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb43-486"><a href="#cb43-486" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-487"><a href="#cb43-487" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-488"><a href="#cb43-488" aria-hidden="true" tabindex="-1"></a><span class="fu">## Run model</span></span>
+<span id="cb43-489"><a href="#cb43-489" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-492"><a href="#cb43-492" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb43-493"><a href="#cb43-493" aria-hidden="true" tabindex="-1"></a>srt_txt_format<span class="ot">=</span><span class="fu">read.delim</span>(<span class="st">'text.srt'</span>)</span>
+<span id="cb43-494"><a href="#cb43-494" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb43-495"><a href="#cb43-495" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-496"><a href="#cb43-496" aria-hidden="true" tabindex="-1"></a><span class="fu">## Run model</span></span>
+<span id="cb43-496"><a href="#cb43-496" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb43-497"><a href="#cb43-497" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb43-500"><a href="#cb43-500" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb43-501"><a href="#cb43-501" aria-hidden="true" tabindex="-1"></a>srt_txt_format<span class="ot">=</span><span class="fu">read.delim</span>(<span class="st">'text.srt'</span>)</span>
-<span id="cb43-502"><a href="#cb43-502" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-503"><a href="#cb43-503" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-501"><a href="#cb43-501" aria-hidden="true" tabindex="-1"></a>prompt_text<span class="ot">=</span><span class="fu">paste0</span>(<span class="st">'下面的内容是srt文档。请按每5分钟做一个摘要，再更正以下文字，胡云为壶云，希游记为嬉游忌,Wish Jokey为WhisJockey'</span>,srt_txt_format)</span>
+<span id="cb43-502"><a href="#cb43-502" aria-hidden="true" tabindex="-1"></a>correct_summary_text<span class="ot">=</span>chat_gemini_model<span class="sc">$</span><span class="fu">chat</span>(prompt_text)</span>
+<span id="cb43-503"><a href="#cb43-503" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb43-504"><a href="#cb43-504" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb43-505"><a href="#cb43-505" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb43-508"><a href="#cb43-508" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb43-509"><a href="#cb43-509" aria-hidden="true" tabindex="-1"></a>prompt_text<span class="ot">=</span><span class="fu">paste0</span>(<span class="st">'下面的内容是srt文档。请按每5分钟做一个摘要，再更正以下文字，胡云为壶云，希游记为嬉游忌,Wish Jokey为WhisJockey'</span>,srt_txt_format)</span>
-<span id="cb43-510"><a href="#cb43-510" aria-hidden="true" tabindex="-1"></a>correct_summary_text<span class="ot">=</span>chat_gemini_model<span class="sc">$</span><span class="fu">chat</span>(prompt_text)</span>
-<span id="cb43-511"><a href="#cb43-511" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb43-509"><a href="#cb43-509" aria-hidden="true" tabindex="-1"></a>correct_summary_text<span class="sc">|&gt;</span> <span class="fu">tibble</span>() <span class="sc">|&gt;</span> <span class="fu">write_delim</span>(<span class="st">'correct_srt_summary.txt'</span>)</span>
+<span id="cb43-510"><a href="#cb43-510" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb43-511"><a href="#cb43-511" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb43-512"><a href="#cb43-512" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-513"><a href="#cb43-513" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-516"><a href="#cb43-516" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb43-517"><a href="#cb43-517" aria-hidden="true" tabindex="-1"></a>correct_summary_text<span class="sc">|&gt;</span> <span class="fu">tibble</span>() <span class="sc">|&gt;</span> <span class="fu">write_delim</span>(<span class="st">'correct_srt_summary.txt'</span>)</span>
-<span id="cb43-518"><a href="#cb43-518" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb43-519"><a href="#cb43-519" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-520"><a href="#cb43-520" aria-hidden="true" tabindex="-1"></a></span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
