@@ -26,7 +26,9 @@
         "image: 'images/download.jpg'\n",
         "---\n",
         "\n",
-        "yt-dlp is a feature-rich command-line audio/video downloader with support for [thousands of sites](https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md). The project is a fork of [youtube-dl](https://github.com/ytdl-org/youtube-dl) based on the now inactive [youtube-dlc](https://github.com/blackjack4494/yt-dlc).\n",
+        "A guide to using yt-dlp, a command-line tool for downloading audio and video from YouTube and other sites.\n",
+        "\n",
+        "`yt-dlp` is a feature-rich command-line audio/video downloader with support for [thousands of sites](https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md). The project is a fork of [youtube-dl](https://github.com/ytdl-org/youtube-dl) based on the now inactive [youtube-dlc](https://github.com/blackjack4494/yt-dlc). This guide will walk you through the installation, update, and basic usage of `yt-dlp` for downloading YouTube videos.\n",
         "\n",
         "https://github.com/yt-dlp/yt-dlp\n",
         "\n",
@@ -120,7 +122,7 @@
         "\n",
         "=\n"
       ],
-      "id": "f550a5be"
+      "id": "fd4799a3"
     }
   ],
   "metadata": {

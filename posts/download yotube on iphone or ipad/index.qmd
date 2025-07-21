@@ -1,6 +1,5 @@
 ---
 title: "使用iphone或ipad下载youtube"
-
 author: "Tony D"
 date: "2025-03-12"
 categories: 
@@ -15,6 +14,10 @@ execute:
 image: "my screenshots.png"
 
 ---
+
+Instructions on how to download YouTube videos on iOS devices using the a-Shell mini app and the SW-DLT shortcut.
+
+This document provides a step-by-step guide on how to download YouTube videos on iOS devices. It outlines two primary methods: using the a-Shell mini app to install and run `youtube-dl`, and using the SW-DLT shortcut for a more automated experience. The guide includes instructions for installing the necessary tools and running the download commands.
 
 首先需要确认你的iphone或ipad是可以连接youtube的。
 

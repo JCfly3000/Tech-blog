@@ -18,6 +18,10 @@ execute:
 image: 'images/001.png'
 ---
 
+A demonstration of how to perform OCR using both online (Gemini 2.5) and offline (InternVL3 1B) AI models, with Python code examples for text extraction from images in both English and Chinese.
+
+This document demonstrates how to perform Optical Character Recognition (OCR) using both online and offline AI models. It provides Python code examples for extracting text from images in both English and Chinese using the Gemini 2.5 API. Additionally, it includes instructions and code for setting up and using the InternVL3 1B model locally, including functions for image preprocessing and model splitting. This guide is a valuable resource for anyone looking to implement OCR in their projects.
+
 with Gemini 2.5 online/InternVL3 offline
 
 
@@ -51,7 +55,7 @@ f.close()
 client = genai.Client(api_key=keyring.get_password("system", "google_ai_api_key"))
 ```
 
-list model
+List models
 
 ```{python}
 #| eval: false
@@ -83,7 +87,7 @@ response_gemini_en = client.models.generate_content(
 print(response_gemini_en.text)
 ```
 
-## chinese Extract
+## Chinese Extract
 
 ![](images/chinese.png)
 

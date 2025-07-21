@@ -21,6 +21,10 @@
         "jupyter: python3\n",
         "---\n",
         "\n",
+        "A guide to using `ruff` for Python code linting and formatting, including installation, usage, and integration with Positron.\n",
+        "\n",
+        "This document provides a comprehensive guide to using `ruff`, a fast and efficient Python linter and formatter. It covers the essential steps for getting started with `ruff`, including installation, checking your code for issues, and automatically fixing them. The guide also demonstrates how to format your code with `ruff` and how to integrate it as an extension in the Positron IDE. Additionally, it outlines a practical workflow for using `ruff` on `.qmd` files by first converting them to `.py` format.\n",
+        "\n",
         "-   ⚡️ 10-100x faster than existing linters (like Flake8) and formatters (like Black)\n",
         "\n",
         "-   🐍 Installable via `pip`\n",
@@ -61,7 +65,7 @@
         "\n",
         "```"
       ],
-      "id": "db5ec20e"
+      "id": "5e26e047"
     },
     {
       "cell_type": "code",
@@ -71,7 +75,7 @@
       "source": [
         "!ruff check playing.py"
       ],
-      "id": "9192c7a4",
+      "id": "bca33543",
       "execution_count": null,
       "outputs": []
     },
@@ -81,7 +85,7 @@
       "source": [
         "# fix code"
       ],
-      "id": "da78e658"
+      "id": "fa96704d"
     },
     {
       "cell_type": "code",
@@ -92,7 +96,7 @@
         "#| eval: false\n",
         "!ruff check playing.py --fix"
       ],
-      "id": "b132b6fe",
+      "id": "9ab524db",
       "execution_count": null,
       "outputs": []
     },
@@ -102,7 +106,7 @@
       "source": [
         "after fix"
       ],
-      "id": "acdd59f0"
+      "id": "711e8008"
     },
     {
       "cell_type": "code",
@@ -129,7 +133,7 @@
         "\n",
         "a\n"
       ],
-      "id": "c772c9b4",
+      "id": "02e00819",
       "execution_count": null,
       "outputs": []
     },
@@ -139,7 +143,7 @@
       "source": [
         "# format code"
       ],
-      "id": "c04fc110"
+      "id": "15a94f55"
     },
     {
       "cell_type": "code",
@@ -150,7 +154,7 @@
         "#| eval: false\n",
         "!ruff format playing.py"
       ],
-      "id": "9b1f5376",
+      "id": "275bdea8",
       "execution_count": null,
       "outputs": []
     },
@@ -160,7 +164,7 @@
       "source": [
         "after format"
       ],
-      "id": "f0d87090"
+      "id": "b6af06d5"
     },
     {
       "cell_type": "code",
@@ -187,7 +191,7 @@
         "\n",
         "a\n"
       ],
-      "id": "ffb6a792",
+      "id": "1518cd30",
       "execution_count": null,
       "outputs": []
     },
@@ -205,7 +209,7 @@
         "\n",
         "## convert .qmd to .py"
       ],
-      "id": "578db6a7"
+      "id": "ce3d25c4"
     },
     {
       "cell_type": "code",
@@ -216,7 +220,7 @@
         "#| eval: false\n",
         "quarto convert index.qmd    # → index.ipynb"
       ],
-      "id": "53e2a1dd",
+      "id": "8930d53a",
       "execution_count": null,
       "outputs": []
     },
@@ -229,7 +233,7 @@
         "#| eval: false\n",
         "!jupyter nbconvert --to python index.ipynb    # → index.py"
       ],
-      "id": "3ab9e302",
+      "id": "a5806773",
       "execution_count": null,
       "outputs": []
     },
@@ -239,7 +243,7 @@
       "source": [
         "## check .py with ruff"
       ],
-      "id": "8c8ee5c1"
+      "id": "4b2911da"
     },
     {
       "cell_type": "code",
@@ -250,7 +254,7 @@
         "#| eval: false\n",
         "!ruff check index.py"
       ],
-      "id": "1ed9e049",
+      "id": "981a920b",
       "execution_count": null,
       "outputs": []
     },
@@ -262,7 +266,7 @@
         "\n",
         "https://github.com/astral-sh/ruff"
       ],
-      "id": "3456a4c3"
+      "id": "71945a82"
     }
   ],
   "metadata": {

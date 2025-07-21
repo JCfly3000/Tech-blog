@@ -1,6 +1,5 @@
 ---
 title: "R pacakge download and managment tool"
-
 author: "Tony D"
 execute:
   warning: false
@@ -17,6 +16,9 @@ image: "my screenshots.png"
 
 ---
 
+A guide to R package management using the `pak` and `cranlogs` packages, covering installation, version checking, and analyzing download statistics.
+
+This document provides a comprehensive guide to R package management, focusing on the `pak` and `cranlogs` packages. It demonstrates how to use `pak` for installing, updating, and managing packages from various sources, including CRAN, GitHub, and local files. The guide also covers how to use `cranlogs` to analyze package download statistics and retrieve information about packages from GitHub. Additionally, it briefly mentions other useful tools for building R packages.
 
 pak installs R packages from CRAN, Bioconductor, GitHub, URLs, git repositories, local files and directories. It is an alternative to install.packages() and devtools::install_github(). pak is fast, safe and convenient.
 

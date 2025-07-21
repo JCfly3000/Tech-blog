@@ -1,6 +1,5 @@
 ---
 title: "Make QR code"
-
 author: "Tony D"
 date: "2025-03-16"
 categories: 
@@ -11,15 +10,25 @@ categories:
 image: "some_file.png"
 ---
 
-Making QR code with R and Python
+A guide to generating QR codes in R and Python.
+
+This document demonstrates how to generate QR codes using both R and Python. It provides code examples for creating QR codes from a given string, saving them as SVG or PNG files, and displaying them. The R section uses the `qrcode` package, while the Python section uses the `qrcode` and `scikit-image` libraries.
+
+
 
 
 # R
 
 ```{r}
+#| eval: false
 pak::pkg_install('qrcode')
 ```
 
+```{r}
+library(reticulate)
+use_python("/Library/Frameworks/Python.framework/Versions/3.13/bin/python3.13")
+py_require(c('qrcode','Pillow','numpy','scikit-image'))
+```
 
 
 ```{r}
@@ -48,6 +57,11 @@ plot(code)
 ```{python}
 #| eval: false
 !pip install qrcode scikit-image
+```
+
+```{python}
+import platform
+print(platform.python_version())
 ```
 
 

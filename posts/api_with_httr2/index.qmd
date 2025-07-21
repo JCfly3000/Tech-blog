@@ -19,7 +19,11 @@ image: 'logo.png'
   
 ---
 
-Package httr2 for pipeable API for working with web APIs
+A guide to using the `httr2` R package for interacting with web APIs, with examples for the US National Weather Service and OpenWeatherMap APIs.
+
+This document provides a practical guide to using the `httr2` package in R for interacting with web APIs. It includes two detailed examples: one that demonstrates how to call the US National Weather Service (NWS) API to retrieve hourly weather forecasts, and another that shows how to use the OpenWeatherMap API to get current weather data for a specific city. The guide covers the entire process, from constructing the API request to performing the request and extracting the relevant data from the JSON response.
+
+The `httr2` package provides a pipeable API for working with web APIs.
 
 
 # Example 1: call US weather API

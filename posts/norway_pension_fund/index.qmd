@@ -21,6 +21,9 @@ image: 'images/logo.svg'
 #draft: true
 ---
 
+An overview of Norway's Government Pension Fund Global, including its purpose and links to resources.
+
+This document provides an overview of the Government Pension Fund Global of Norway, one of the world's largest sovereign wealth funds. It explains the fund's purpose, which is to manage the financial reserves from Norway's oil and gas resources for the benefit of current and future generations. The document also includes links to the fund's official website, investment data, and a related podcast, offering a comprehensive resource for those interested in learning more about this significant financial institution.
 
 The Government Pension Fund Global was established after Norway discovered oil in the North Sea. 
 

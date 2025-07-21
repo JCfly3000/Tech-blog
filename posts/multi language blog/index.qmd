@@ -19,6 +19,10 @@ format:
     code-block-border-left: "#31BAE9"
 ---
 
+A guide to creating a multi-language Quarto blog using the `babelquarto` R package.
+
+This document provides a step-by-step guide to creating a multi-language blog using Quarto and the `babelquarto` R package. It covers the entire process, from installing and loading the necessary packages to setting up the main and additional languages. The guide also explains how to modify the `_quarto.yml` file for language-specific configurations, create new language versions of your `.qmd` files, and render the final website. It also suggests using LLMs for translation to streamline the content creation process.
+
 ![](images/clipboard-2709382732.png){width="600"}
 
 # install package
@@ -79,7 +83,7 @@ lang: en
 
 file name example:for example "index.cn.qmd"
 
-using LLM to create new lanuage qmd file
+using LLM to create new language qmd file
 
 "translate all qmd to chinese and write to new qmd file.file name example index.cn.qmd ellmer.cn.qmd and so on" in gemini
 

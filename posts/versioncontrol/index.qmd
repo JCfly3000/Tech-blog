@@ -1,6 +1,5 @@
 ---
 title: "Version control with renv"
-
 author: "Tony D"
 execute:
   warning: false
@@ -15,6 +14,12 @@ categories:
   
 image: "images.png"
 ---
+
+A guide to using the renv package in R for creating reproducible environments and managing package versions. This document covers initialization, package installation, lock file management, and Python integration.
+
+This document provides a comprehensive guide to using the `renv` package in R for creating reproducible environments and managing package versions. It covers the entire workflow, from initializing `renv` in a project to installing and updating packages, managing the lock file, and even integrating `renv` with Python. This guide is also part of the [R handbook](https://jcfly3000.github.io/Into-R/intro/1%20basic%20R.html#version-control), making it a valuable resource for anyone looking to improve the reproducibility of their R projects.
+
+Explains how to use the `renv` package in R for reproducible environments and package version management. Covers `renv` initialization, package installation/updates, lock file management, and Python integration.
 
 The renv package helps you create reproducible environments for your R projects
 

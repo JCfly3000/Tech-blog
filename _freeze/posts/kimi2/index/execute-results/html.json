@@ -1,0 +1,12 @@
+{
+  "hash": "9043421c9abfc5268406fe5b72ea7ed1",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: \"Kimi2 with openrouter\"\n\nauthor: \"Tony D\"\n\ndate: \"2025-07-18\"\n\ncategories: \n  - AI\n\n  \nexecute:\n  warning: false\n  error: false\n  eval: false\n  \nimage: 'images/logo.svg'\n---\n\nOpenRouter is a platform that provides a unified API for accessing a wide variety of large language models (LLMs) from different providers like Anthropic, Google, and Meta. It simplifies the process of integrating and using these models for developers, offering a single point of access instead of managing multiple APIs and accounts\n\n\n![](images/logo.svg){width=\"493\"}\n\n# get api key from https://openrouter.ai/\n\n\n# load package\n\n::: {#ca8ab6cc .cell execution_count=1}\n``` {.python .cell-code}\nfrom openai import OpenAI\nimport keyring\n```\n:::\n\n\n# define model\n\n::: {#17942166 .cell execution_count=2}\n``` {.python .cell-code}\nclient = OpenAI(\n  base_url=\"https://openrouter.ai/api/v1\",\n  api_key=keyring.get_password(\"system\", \"openrouter\"),\n)\n```\n:::\n\n\n# call model\n\n::: {#52053eb8 .cell execution_count=3}\n``` {.python .cell-code}\ncompletion = client.chat.completions.create(\n  extra_headers={\n    \"HTTP-Referer\": \"<YOUR_SITE_URL>\", # Optional. Site URL for rankings on openrouter.ai.\n    \"X-Title\": \"<YOUR_SITE_NAME>\", # Optional. Site title for rankings on openrouter.ai.\n  },\n  extra_body={},\n  model=\"moonshotai/kimi-k2:free\",\n  messages=[\n    {\n      \"role\": \"user\",\n      \"content\": \"What is the meaning of life?\"\n    }\n  ]\n)\n```\n:::\n\n\n# get result\n\n::: {#28e8e186 .cell execution_count=4}\n``` {.python .cell-code}\nprint(completion.choices[0].message.content)\n```\n:::\n\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

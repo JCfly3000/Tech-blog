@@ -18,6 +18,10 @@ execute:
 
 ---
 
+A guide to securely managing passwords in R and Python using various methods like local files, environment variables, and the `keyring` package.
+
+This document explores various methods for securely managing passwords and other sensitive credentials in R and Python. For R, it presents three main options: sourcing a local R file, using environment variables, and leveraging the `keyring` package for more secure storage. For Python, it suggests a similar approach of importing credentials from a separate Python file. These techniques help you avoid hardcoding sensitive information directly in your scripts, improving the security and portability of your code.
+
 Password management in R and Python
 
 # in R

@@ -16,6 +16,10 @@ execute:
   eval: false
 ---
 
+A quick reference guide for common Linux commands, covering basic file operations, system information, and process management.
+
+This document serves as a quick reference guide for a wide range of common Linux commands. It covers fundamental operations such as printing text, viewing manual pages, and navigating the file system. The guide also includes commands for file and folder management, such as listing, creating, and deleting files and folders, as well as downloading files from the internet and changing file permissions. Additionally, it provides commands for system information and process management, including checking folder sizes, installing software, editing files, viewing file content, and managing running processes.
+
 Top useful Linux command
 
 

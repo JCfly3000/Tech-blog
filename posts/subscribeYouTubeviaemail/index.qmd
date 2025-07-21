@@ -1,14 +1,18 @@
 ---
 title: "Subscribe to a YouTube channel via email"
-
 author: "Tony D"
 date: "2025-03-11"
 categories: [Tool]
 image: "image.png"
 ---
 
+A guide on how to subscribe to YouTube channels and receive updates via email using RSS feeds.
+
 If you want to Subscribe to a YouTube channel but do not want to follow them.The trick is figuring out how to subscribe to a YouTube channel via email
 
+# What is RSS?
+
+RSS (Really Simple Syndication) is a web feed that allows users and applications to access updates to online content in a standardized, computer-readable format. These feeds can, for example, allow a user to keep track of many different websites in a single news aggregator.
 
 # Step 1: open youtube page of the channel want to subscribe
 

@@ -1,8 +1,8 @@
 {
-  "hash": "e0e9a417c6149b4d988a7ec53fabba60",
+  "hash": "76bbfbeec2598c4ccd95f00cf992e235",
   "result": {
     "engine": "jupyter",
-    "markdown": "---\ntitle: \"Web scraping in Python\"\n\nauthor: \"Tony D\"\ndate: \"2025-03-12\"\ncategories: \n  - Tool\n  - Webscrap\n  - Python\n  \nexecute:\n  warning: false\n  error: false\n  eval: false\n  \nimage: \"preview.B-gzjIrP.png\"\n---\n\n# python web scraping with requests and BeautifulSoup\n\n::: {#544fec2d .cell execution_count=1}\n``` {.python .cell-code}\nimport requests\nfrom bs4 import BeautifulSoup\nfrom io import StringIO\nimport re\nimport pandas as pd\n```\n:::\n\n\n# Reference\n\n",
+    "markdown": "---\ntitle: \"Web scraping in Python\"\nauthor: \"Tony D\"\ndate: \"2025-03-12\"\ncategories: \n  - Tool\n  - Webscrap\n  - Python\n  \nexecute:\n  warning: false\n  error: false\n  eval: false\n  \nimage: \"preview.B-gzjIrP.png\"\n---\n\nA guide to web scraping in Python using the requests and BeautifulSoup libraries. This document outlines the basic steps and required libraries for extracting data from websites.\n\nThis document serves as a placeholder for a guide to web scraping in Python. It currently includes the necessary imports for the `requests`, `BeautifulSoup`, `StringIO`, `re`, and `pandas` libraries, indicating that the full guide will cover a comprehensive workflow for extracting and processing data from websites. The content is currently incomplete, but it sets the stage for a detailed tutorial on this topic.\n\nA placeholder document for demonstrating web scraping techniques using Python. It currently only includes imports for `requests`, `BeautifulSoup`, `StringIO`, `re`, and `pandas`, indicating an intention to use these libraries for web scraping tasks. The content is incomplete.\n\n# python web scraping with requests and BeautifulSoup\n\n::: {#15d6c8f5 .cell execution_count=1}\n``` {.python .cell-code}\nimport requests\nfrom bs4 import BeautifulSoup\nfrom io import StringIO\nimport re\nimport pandas as pd\n```\n:::\n\n\n# Reference\n\n",
     "supporting": [
       "index_files"
     ],

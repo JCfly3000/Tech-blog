@@ -21,6 +21,9 @@ image: 'images/download.jpg'
 
 ---
 
+This document demonstrates how to download and analyze global GDP data using R, utilizing the `wbstats` and `WDI` packages to retrieve and visualize various indicators from the World Bank.
+
+This document provides a guide to downloading and analyzing global GDP data using R. It demonstrates how to use the `wbstats` and `WDI` packages to retrieve a variety of economic indicators from the World Bank, including GDP, GDP per capita, and the sectoral contributions of agriculture, industry, and services to GDP. The document includes R code for data acquisition, cleaning, and creating visualizations to compare the economic performance of different countries over time. The Python section is a placeholder for future content.
 
 # R
 

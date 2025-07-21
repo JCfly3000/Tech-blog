@@ -1,6 +1,5 @@
 ---
 title: "Web scraping in Python"
-
 author: "Tony D"
 date: "2025-03-12"
 categories: 
@@ -15,6 +14,12 @@ execute:
   
 image: "preview.B-gzjIrP.png"
 ---
+
+A guide to web scraping in Python using the requests and BeautifulSoup libraries. This document outlines the basic steps and required libraries for extracting data from websites.
+
+This document serves as a placeholder for a guide to web scraping in Python. It currently includes the necessary imports for the `requests`, `BeautifulSoup`, `StringIO`, `re`, and `pandas` libraries, indicating that the full guide will cover a comprehensive workflow for extracting and processing data from websites. The content is currently incomplete, but it sets the stage for a detailed tutorial on this topic.
+
+A placeholder document for demonstrating web scraping techniques using Python. It currently only includes imports for `requests`, `BeautifulSoup`, `StringIO`, `re`, and `pandas`, indicating an intention to use these libraries for web scraping tasks. The content is incomplete.
 
 # python web scraping with requests and BeautifulSoup
 

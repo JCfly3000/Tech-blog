@@ -18,9 +18,13 @@ execute:
 image: 'images/my screenshots.png'
 ---
 
+A guide on transcribing podcast audio and generating summaries using AI, covering downloading MP3s, using `mlx_whisper` for transcription, and leveraging the Gemini 2.0 Flash model for summarization.
+
+This document provides a comprehensive guide to transcribing podcast audio and generating summaries using a combination of AI tools. It outlines a multi-step process that includes downloading MP3 files from various podcast platforms, using the `mlx_whisper` model for accurate audio-to-text transcription, and then leveraging the Gemini 2.0 Flash model for summarization and correction of the transcribed text. The guide includes R code snippets for each step, making it a practical resource for anyone looking to automate the process of podcast transcription and summarization.
 
 
-Article abstract for podcast like firstory/poddtoppen/小宇宙FM using mlx_whisper to Transcribe and gemini 2.0 flash to summarize 
+
+Article abstract for podcast like firstory/poddtoppen/小宇宙FM using mlx_whisper for transcription and Gemini 2.0 Flash for summarization 
 
 
 ```{r}

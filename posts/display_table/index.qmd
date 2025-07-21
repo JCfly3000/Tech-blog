@@ -1,6 +1,6 @@
 ---
 title: "表格展示"
-subtitle: "Disply table"
+subtitle: "Display table"
 author: "Tony D"
 date: "2025-04-07"
 
@@ -21,6 +21,10 @@ format:
     code-fold: true
 ---
 
+A guide to creating visually appealing tables in R and Python using the `gt` and `great_tables` packages, with examples of styling, image embedding, and nanoplots.
+
+This document provides a comprehensive guide to creating visually appealing and informative tables in both R and Python. It focuses on the `gt` package in R and the `great_tables` package in Python, demonstrating how to style tables, embed images, handle missing data, and even incorporate nanoplots (bar charts) directly into table cells. The guide also includes a practical example of translating `great_tables` code from Python to R, making it a valuable resource for users of both languages.
+
 With the gt package, anyone can make wonderful-looking tables using the R/Python programming language.
 
 # GT package
@@ -39,7 +43,8 @@ library(gtExtras) # For image embedding
 ```
 
 ```{r}
-#exibble
+library(reticulate)
+py_require(c("polars","great-tables","pandas","pyarrow"))
 ```
 
 ```{r}
@@ -66,7 +71,7 @@ GT(exibble).opt_stylize(style=3,color = "green")
 
 # Table 1
 
-origin table:
+Original table:
 
 ![](images/my%20screenshots-01.png)
 
@@ -464,11 +469,12 @@ gt_table # In Jupyter
 
 # Table 2
 
-origin table:
+Original table:
 
 ![](images/coffee-table.png)
 
 ::: panel-tabset
+
 ## R
 
 ```{r}
@@ -851,7 +857,7 @@ coffee_table|> fmt_image("icon", path="assets") |>
 
 # Table 3
 
-origin table:
+Original table:
 
 ![](images/table2.png)
 
@@ -860,7 +866,7 @@ origin table:
 
 ### Prompt
 
-write R code using GT pacakge to recreate this table
+write R code using GT package to recreate this table
 
 1.opt_align change to cols_align 2.cols_labels change to cols_label
 

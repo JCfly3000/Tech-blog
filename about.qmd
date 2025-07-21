@@ -10,4 +10,7 @@ about:
 
 ---
 
-About this blog
+This page provides a brief introduction to the author of the blog and includes a link to their GitHub profile.
+
+
+

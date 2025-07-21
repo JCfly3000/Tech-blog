@@ -6,7 +6,6 @@
       "source": [
         "---\n",
         "title: \"Classification Metrics\"\n",
-        "\n",
         "author: \"Tony D\"\n",
         "date: \"2025-03-12\"\n",
         "categories: \n",
@@ -17,12 +16,16 @@
         "image: \"image_14_4f4fc2cf7d.png\"\n",
         "---\n",
         "\n",
+        "A comprehensive guide to classification metrics in Python, covering concepts like sensitivity, precision, AUROC, and F1-score with practical code examples.\n",
+        "\n",
+        "This document provides a comprehensive guide to understanding and implementing various classification metrics in Python. It covers key concepts such as sensitivity, precision, AUROC, accuracy, F1-score, and specificity. The guide includes practical code examples that walk you through the entire process, from installing the necessary packages and loading data from Kaggle to training a logistic regression model and visualizing the results with a confusion matrix and ROC/PR curves. This is an essential resource for anyone looking to evaluate the performance of their classification models.\n",
+        "\n",
         "Classification Metrics Explained | Sensitivity, Precision, AUROC, & More\n",
         "\n",
         "\n",
-        "# install pacakge"
+        "# install package"
       ],
-      "id": "8f0466a8"
+      "id": "a86c74b2"
     },
     {
       "cell_type": "code",
@@ -33,7 +36,7 @@
         "pip install -U kaggle\n",
         "pip install -U kagglehub"
       ],
-      "id": "b4069084",
+      "id": "d76353e6",
       "execution_count": null,
       "outputs": []
     },
@@ -41,9 +44,9 @@
       "cell_type": "markdown",
       "metadata": {},
       "source": [
-        "# load pacakge"
+        "# load package"
       ],
-      "id": "28572b6e"
+      "id": "a92d5e56"
     },
     {
       "cell_type": "code",
@@ -65,7 +68,7 @@
         "    precision_recall_curve\n",
         ")"
       ],
-      "id": "6c873770",
+      "id": "640db28e",
       "execution_count": null,
       "outputs": []
     },
@@ -75,7 +78,7 @@
       "source": [
         "# download data from kaggle"
       ],
-      "id": "077a3f35"
+      "id": "2845a549"
     },
     {
       "cell_type": "code",
@@ -87,7 +90,7 @@
         "path = kagglehub.dataset_download(\"uciml/pima-indians-diabetes-database\")\n",
         "print(\"Path to dataset files:\", path)"
       ],
-      "id": "6875c195",
+      "id": "468b0167",
       "execution_count": null,
       "outputs": []
     },
@@ -97,7 +100,7 @@
       "source": [
         "show data file under download folder"
       ],
-      "id": "80b86e75"
+      "id": "870d673b"
     },
     {
       "cell_type": "code",
@@ -106,7 +109,7 @@
         "import os\n",
         "os.listdir(path)"
       ],
-      "id": "3efda8b0",
+      "id": "82d212e4",
       "execution_count": null,
       "outputs": []
     },
@@ -116,7 +119,7 @@
       "source": [
         "# read data\n"
       ],
-      "id": "081349e4"
+      "id": "c59df687"
     },
     {
       "cell_type": "code",
@@ -125,7 +128,7 @@
         "df = pd.read_csv(path+'/'+os.listdir(path)[0])\n",
         "df.head()"
       ],
-      "id": "741d0169",
+      "id": "7f926548",
       "execution_count": null,
       "outputs": []
     },
@@ -135,7 +138,7 @@
       "source": [
         "df.Outcome.value_counts()"
       ],
-      "id": "70527849",
+      "id": "4161f0ae",
       "execution_count": null,
       "outputs": []
     },
@@ -147,7 +150,7 @@
         "X = df.drop('Outcome', axis=1)\n",
         "y = df['Outcome']"
       ],
-      "id": "a975823b",
+      "id": "acff8f1d",
       "execution_count": null,
       "outputs": []
     },
@@ -158,7 +161,7 @@
         "# split data into test and training sets\n",
         "X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)"
       ],
-      "id": "efb4136a",
+      "id": "a923300c",
       "execution_count": null,
       "outputs": []
     },
@@ -170,7 +173,7 @@
         "model = LogisticRegression(max_iter=1000)\n",
         "model.fit(X_train, y_train)"
       ],
-      "id": "c035a67c",
+      "id": "28fad24f",
       "execution_count": null,
       "outputs": []
     },
@@ -182,7 +185,7 @@
         "y_pred = model.predict(X_test)\n",
         "y_pred_proba = model.predict_proba(X_test)[:, 1] "
       ],
-      "id": "92aee10d",
+      "id": "3edf4b10",
       "execution_count": null,
       "outputs": []
     },
@@ -194,7 +197,7 @@
         "percentiles = np.percentile(y_pred_proba, [5, 25, 50, 75, 95])\n",
         "percentiles"
       ],
-      "id": "072ef8ea",
+      "id": "6f2d364f",
       "execution_count": null,
       "outputs": []
     },
@@ -204,7 +207,7 @@
       "source": [
         "# confusion matrix"
       ],
-      "id": "0a743ce3"
+      "id": "cafb916b"
     },
     {
       "cell_type": "code",
@@ -222,7 +225,7 @@
         "plt.yticks([0.5, 1.5], ['No Diabetes', 'Diabetes'], va='center')\n",
         "plt.show()"
       ],
-      "id": "e247dce5",
+      "id": "870634e4",
       "execution_count": null,
       "outputs": []
     },
@@ -234,7 +237,7 @@
         "recall = recall_score(y_test, y_pred)\n",
         "recall"
       ],
-      "id": "e8614597",
+      "id": "74ac5cd0",
       "execution_count": null,
       "outputs": []
     },
@@ -246,7 +249,7 @@
         "precision = precision_score(y_test, y_pred)\n",
         "precision"
       ],
-      "id": "a82a4981",
+      "id": "4aa64cff",
       "execution_count": null,
       "outputs": []
     },
@@ -259,7 +262,7 @@
         "specificity = tn / (tn + fp)\n",
         "specificity"
       ],
-      "id": "86833b60",
+      "id": "7debaa79",
       "execution_count": null,
       "outputs": []
     },
@@ -271,7 +274,7 @@
         "accuracy = accuracy_score(y_test, y_pred)\n",
         "accuracy"
       ],
-      "id": "58d8e12b",
+      "id": "4d5ed84c",
       "execution_count": null,
       "outputs": []
     },
@@ -283,7 +286,7 @@
         "f1 = f1_score(y_test, y_pred)\n",
         "f1"
       ],
-      "id": "33527bda",
+      "id": "d75fd74d",
       "execution_count": null,
       "outputs": []
     },
@@ -301,7 +304,7 @@
         "auroc = roc_auc_score(y_test, y_pred_proba)\n",
         "pr_auc = average_precision_score(y_test, y_pred_proba)"
       ],
-      "id": "d0ec98f2",
+      "id": "89f61816",
       "execution_count": null,
       "outputs": []
     },
@@ -327,7 +330,7 @@
         "\n",
         "plt.show()"
       ],
-      "id": "25d547de",
+      "id": "2ba39366",
       "execution_count": null,
       "outputs": []
     },
@@ -337,7 +340,7 @@
       "source": [
         "y_test.value_counts()"
       ],
-      "id": "8449ed24",
+      "id": "18b3bd8a",
       "execution_count": null,
       "outputs": []
     },
@@ -351,7 +354,7 @@
         "\n",
         "https://github.com/RichardOnData/YouTube/blob/main/Python%20Notebooks/classification_metrics.ipynb\n"
       ],
-      "id": "5e9c7d01"
+      "id": "157234fc"
     }
   ],
   "metadata": {

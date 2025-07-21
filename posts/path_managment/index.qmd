@@ -18,6 +18,10 @@ execute:
 image: 'images/here.png'
 ---
 
+A guide to managing file paths in R and Python, with a focus on the `fs` and `here` packages in R.
+
+This document addresses the common challenge of managing file paths across different operating systems, such as Windows and Mac. It provides a guide to using dedicated packages in R and Python to handle file paths in a robust and reproducible way. The R section focuses on the `fs` package for a wide range of file system operations and the `here` package for creating project-relative paths that work seamlessly across different environments. The Python section is a placeholder for future content.
+
 Since windows and mac have different file path, we use package to manage the file path.
 
 ::: panel-tabset

@@ -19,6 +19,9 @@ execute:
 image: 'images/1_mtsk3fQ_BRemFidhkel3dA.png'
 ---
 
+A quick reference guide for essential Git commands, covering basic to advanced operations.
+
+This document serves as a quick reference guide for essential Git commands, providing a comprehensive overview of basic to advanced operations. It covers everything from initializing a repository and managing branches to committing changes and interacting with remote repositories. This guide is designed to be a helpful resource for both beginners and experienced users who need a quick reminder of Git's powerful features.
 
 # download github desktop
 

@@ -6,6 +6,12 @@ categories: [news, resource]
 image: "images.png"
 ---
 
+A curated list of valuable resources, focusing on YouTube channels dedicated to R programming and data science.
+
+This document provides a curated list of valuable resources for anyone interested in R programming and data science. It focuses on a selection of high-quality YouTube channels that offer tutorials, case studies, and expert insights into various aspects of the R ecosystem. This is a great starting point for both beginners and experienced users who are looking to expand their knowledge and skills.
+
+A curated list of helpful resources, specifically YouTube channels related to R programming and data science.
+
 Some useful resource
 
 # Youtube

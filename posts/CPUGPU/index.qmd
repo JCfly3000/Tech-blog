@@ -1,6 +1,5 @@
 ---
 title: "CPU and GPU"
-
 author: "Tony D"
 date: "2025-03-12"
 
@@ -11,6 +10,10 @@ categories:
   
 image: "images/images.png"
 ---
+
+Provides resources for checking CPU and GPU performance, including local and global benchmarks.
+
+This document serves as a resource hub for checking CPU and GPU performance. It provides information and tools for evaluating the performance of both your local machine and comparing it with global benchmarks. The document includes embedded HTML iframes to display local CPU, GPU OpenCL, and GPU Metal performance, as well as links to Geekbench benchmarks for worldwide comparisons. This is a valuable resource for anyone interested in understanding and comparing the performance of their hardware.
 
 CPU & GPU Performance
 
@@ -45,7 +48,7 @@ https://browser.geekbench.com/v6/cpu/multicore
 
 ![](images/clipboard-2087560548.png){width="600"}
 
-## GPU OpenCL Performance!
+## GPU OpenCL Performance
 
 https://browser.geekbench.com/opencl-benchmarks
 

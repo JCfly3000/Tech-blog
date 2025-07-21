@@ -18,6 +18,9 @@ execute:
 image: 'images/is-more-than-password-recovery.webp'
 ---
 
+A guide to sending emails programmatically using the `blastula` package in R, covering credential setup, email composition, and sending from Gmail and Outlook.
+
+This document provides a comprehensive guide to sending emails programmatically using R and Python. For R, it focuses on the `blastula` package, covering the entire workflow from creating SMTP credentials for Gmail and Outlook to composing and sending emails. It also demonstrates how to render Quarto content directly into an email body. The Python section is a placeholder for future content.
 
 Using R or Python to send email
 

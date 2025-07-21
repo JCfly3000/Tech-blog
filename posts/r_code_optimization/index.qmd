@@ -14,6 +14,10 @@ image: "images/my screenshots 2.png"
 
 ---
 
+An introduction to `lintr` and `styler` for R code optimization, with examples of how to use them for static code analysis and formatting.
+
+This document introduces two essential R packages for code optimization: `lintr` and `styler`. It explains how `lintr` performs static code analysis to help you identify and fix style inconsistencies, syntax errors, and other potential issues in your R code. The document also demonstrates how `styler` can automatically format your code to adhere to the tidyverse style guide, ensuring consistency and readability. You'll find practical examples of how to use both packages to improve the quality of your R code.
+
 pacakge for R code optimization
 
 # lintr

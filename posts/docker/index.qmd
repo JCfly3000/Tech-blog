@@ -16,7 +16,9 @@ execute:
   eval: false
 ---
 
-Docker intro
+A comprehensive introduction to Docker, covering essential commands, Dockerfiles, and an example of building and managing an RStudio Docker image.
+
+This document provides a comprehensive introduction to Docker, a platform for developing, shipping, and running applications in containers. It covers the essential Docker commands for managing images and containers, from pulling and running images to stopping and deleting containers. The guide also explains the role of Dockerfiles in building custom images and provides a practical example of creating an RStudio image with Tidyverse pre-installed. This document is designed to be a helpful resource for anyone getting started with Docker.
 
 ![](images/my screenshots 1.png)
 
@@ -40,13 +42,13 @@ docker --version
 docker info
 ```
 
-# dowload docker image from docker hub
+# download docker image from docker hub
 
 ```{bash}
 docker pull alpine
 ```
 
-# list all download docker image
+# list all downloaded docker images
 
 ```{bash}
 docker images
@@ -68,7 +70,7 @@ docker ps
 
 
 
-# list all docker containers which running or run before
+# list all docker containers, running or previously run
 
 ```{bash}
 docker ps -a --size

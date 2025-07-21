@@ -19,6 +19,10 @@ execute:
 image: 'images/6647806b77ae8db1c0477d40_How to set up a file management system-1.png'
 ---
 
+A draft guide to file management using R and Python, with a focus on the `fs` package in R.
+
+This document is a draft guide to file management using code, with a focus on the R programming language. It demonstrates how to use the `fs` package in R to perform common file system operations, such as listing files and directories, checking for their existence, and getting detailed information about them. The Python and bash sections are included as placeholders for future content.
+
 
 Using R or Python to manage file
 

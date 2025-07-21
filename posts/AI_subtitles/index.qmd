@@ -18,9 +18,13 @@ execute:
 image: 'images/unnamed.png'
 ---
 
-Use mlx_whisper for transcribe Audio to Text,and use gemini-2.0-flash for correction
+A workflow for generating and embedding bilingual subtitles for videos, covering video/audio downloading, transcription with `mlx_whisper`, translation with Gemini 2.0 Flash, and embedding with FFmpeg.
 
-load R package
+This document outlines a complete workflow for automatically generating and embedding bilingual (Chinese and English) subtitles for videos. It covers every step of the process, from downloading the video and audio from YouTube using `yt-dlp` to transcribing the audio to text with the `mlx_whisper` model. The guide also demonstrates how to use the Gemini 2.0 Flash model to correct and translate the transcribed text, and finally, how to embed the generated subtitles into the video using FFmpeg. This is a comprehensive resource for anyone looking to make their video content more accessible to a wider audience.
+
+Use mlx_whisper for transcribing audio to text, and use gemini-2.0-flash for correction
+
+Load R packages
 
 
 

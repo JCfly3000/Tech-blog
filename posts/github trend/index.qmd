@@ -1,0 +1,144 @@
+---
+title: "Github trend"
+author: "Tony D"
+date: "2025-07-10"
+categories: 
+  - Tool
+  - R
+  - Python
+---
+
+github tending project since 2024.
+
+![](images/clipboard-1613889752.png){width="493"}
+
+# load package
+
+```{r}
+library(httr)
+library(jsonlite)
+library(tidyverse)
+library(ggplot2)
+library(lubridate)
+library(plotly)
+library(scales)
+```
+
+# get data
+
+```{r}
+
+# Install if needed
+# install.packages(c("httr", "jsonlite"))
+
+# Calculate the date one week ago
+#since <- format(Sys.Date() - 30, "%Y-%m-%d")
+
+since <- "2024-01-01"
+
+# Query GitHub search API for repos created in the last week, ordered by stars
+res <- GET(
+  url = "https://api.github.com/search/repositories",
+  query = list(
+    q = paste0("created:>", since),
+    sort = "stars",
+    order = "desc",
+    per_page = 20
+  ),
+  add_headers(Accept = "application/vnd.github.v3+json")
+)
+
+stop_for_status(res)
+data <- content(res, as = "parsed", simplifyVector = TRUE)
+
+# Extract details
+top <- data$items
+df <- data.frame(
+  name        = top$full_name,
+  stars       = top$stargazers_count,
+  forks       = top$forks_count,
+  watchers    = top$watchers_count,
+  created_at  = top$created_at,
+  summary     = top$description,
+  url         = top$html_url,
+  stringsAsFactors = FALSE
+)
+
+glimpse(df)
+
+```
+
+# clean data
+
+```{r}
+df$name_label <- paste0(df$name, "
+", format(as.Date(df$created_at), "%Y-%m-%d"))
+
+# Reshape data to long format for plotting
+df_long <- df %>%
+  select(name,name_label, url, stars, forks, watchers) %>%
+  pivot_longer(cols = c("stars", "forks", "watchers"),
+               names_to = "metric", values_to = "count") |> mutate(text =paste0("<a href='",url,"' target='_blank'>",name_label)
+               ) |> mutate(text = factor(text, levels = rev(unique(text[order(-count)]))))
+     
+glimpse(df_long)
+```
+
+# ggplot
+
+```{r}
+#| column: page
+#| fig-width: 12
+#| fig-height: 8
+
+# Bar chart
+gg <- ggplot(df_long, aes(x = reorder(name_label, count), y = count, fill = metric, customdata = url)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  geom_text(aes(label = scales::label_number(accuracy = 0.1, scale_cut = scales::cut_short_scale())(count)), position = position_dodge(width = 0.9), hjust = -0.1, size = 3) +
+  labs(
+    title = "Top 20 Fastest Growing GitHub Projects (since 2024)",
+    x = "Repository",
+    y = "Count",
+    fill = "Metric"
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  coord_flip()
+
+gg
+```
+
+# plotly
+
+```{r,fig.height=13}
+
+fig <- plot_ly(
+  data = df_long,
+  x = ~count,
+  y = ~text,
+  color = ~metric,
+  type = 'bar',
+  orientation = 'h',
+  customdata = ~url,
+  texttemplate = '%{x:.2s}',
+  textposition = 'outside',
+  hovertemplate = paste(
+    "<b>Repository:</b> %{y}<br>",
+    "<b>Count:</b> %{x:.2s}<br>",
+    "<b>Metric:</b> %{fullData.name}<br>",
+    "<b>URL:</b> %{customdata}<extra></extra>"
+  )
+
+) %>%
+  layout(
+    title = "Top 20 Fastest Growing GitHub Projects (since 2024)",
+    xaxis = list(title = "Count", range = c(0, max(df_long$count) * 1.15)),
+    yaxis = list(title = "Repository", categoryorder = "array", categoryarray = levels(df_long$text)),
+    barmode = "group",
+    legend = list(title = list(text = "Metric")),
+    margin = list(b = 120)
+   ,height=900
+  )
+
+fig
+```

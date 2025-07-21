@@ -1,7 +1,6 @@
 ---
 title: "查看IP地址"
 subtitle: "Check IP address"
-
 author: "Tony D"
 date: "2025-04-01"
 
@@ -19,6 +18,10 @@ execute:
   error: false
   eval: false
 ---
+
+R code examples for checking IP addresses, managing proxy settings, and testing internet speed.
+
+This document provides a collection of R code examples for network-related tasks. It demonstrates how to check your public IP address using a JSON API, and how to manage proxy settings with the `r.proxy` package, including setting, stopping, and resetting proxies. Additionally, it includes code for testing your internet download and upload speeds using the `speedtest` package, and for making HTTP requests through a proxy with the `httr` package.
 
 
 查看当前IP地址

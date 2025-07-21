@@ -17,7 +17,11 @@ execute:
   
 ---
 
-Package Pins for Upload and download data/model to online drive.
+A guide to using the `pins` package in R for data transfer and version control between local and online storage.
+
+This document provides a comprehensive guide to using the `pins` package in R for efficient data transfer and version control. It demonstrates how to set up and use both local and online boards (with OneDrive as an example) to store and retrieve data and other files. The guide covers essential `pins` functions for uploading, downloading, listing, and managing different versions of your data, making it a valuable resource for creating reproducible and collaborative data science workflows.
+
+The `pins` package is used for uploading and downloading data/models to online drives.
 
 ![](images/Screenshot 2023-07-04 at 6.25.10 PM.png)
 

@@ -1,7 +1,6 @@
 ---
 title: "调用网络端AI模型"
 subtitle: "Run AI model online"
-
 author: "Tony D"
 date: "2025-03-18"
 
@@ -17,6 +16,10 @@ execute:
   error: false
   eval: false
 ---
+
+A guide to interacting with online Large Language Models (LLMs) using R and Python, with examples for Google Gemini, local Ollama, and ChatGPT.
+
+This document provides a comprehensive guide to interacting with online Large Language Models (LLMs) using both R and Python. It demonstrates how to use the `ellmer` and `chattr` packages in R, and the `chatlas` library in Python, to connect to various LLM services, including Google Gemini, locally hosted Ollama models, and ChatGPT. The guide covers setting up API keys, defining models, sending prompts, and processing responses for tasks like text generation and translation.
 
 run LLM model online with ellmer or chatter
 

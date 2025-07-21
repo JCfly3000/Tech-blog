@@ -17,7 +17,11 @@ execute:
   eval: false
 ---
 
-Top useful Linux command regular expression
+A guide to using regular expressions in R and Python for pattern matching and extraction.
+
+This document serves as a practical guide to using regular expressions (regex) in both R and Python. It provides a series of examples demonstrating how to perform common tasks such as extracting numbers, capturing text between specific delimiters, and matching complex patterns, including those with special characters. The R section utilizes the `stringr` package for its intuitive functions, while the Python section is a placeholder for future content.
+
+
 
 # R
 

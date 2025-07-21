@@ -1,6 +1,5 @@
 ---
 title: "Version control for Python with uv"
-
 author: "Tony D"
 execute:
   warning: false
@@ -16,6 +15,12 @@ image: "images.png"
 
 jupyter: python3
 ---
+
+A comprehensive guide to using uv for Python project and package management. This document covers installation, project initialization, Python version management, and various package operations.
+
+This document provides a comprehensive guide to using `uv`, a fast and efficient tool for Python project and package management. It covers the entire workflow, from installation and project initialization to managing Python versions and handling package operations. The guide also demonstrates how to use `uv` to synchronize dependencies and even run scripts with specific package requirements. This is a valuable resource for any Python developer looking to streamline their development process.
+
+Introduces `uv` as a fast and comprehensive tool for Python project and package management. It covers `uv`'s installation, project initialization, Python version management, package operations, and dependency synchronization.
 
 -   🚀 A single tool to replace `pip`, `pip-tools`, `pipx`, `poetry`, `pyenv`, `twine`, `virtualenv`, and more.
 

@@ -19,6 +19,9 @@ execute:
 image: '1734616066-llm-security.webp'
 ---
 
+An overview of Large Language Models (LLMs) and their performance across various benchmarks, including math, code, English, and science.
+
+This document provides a comprehensive overview of Large Language Models (LLMs) and their performance across a variety of benchmarks. It categorizes the performance of different models by subject area, including mathematics, coding, English language understanding, and science. The document also provides links to resources where you can compare the performance of different LLM models online.
 
 (LLM)Large language model
 

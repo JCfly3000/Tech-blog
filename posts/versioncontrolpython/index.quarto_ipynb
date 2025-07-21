@@ -6,7 +6,6 @@
       "source": [
         "---\n",
         "title: \"Version control for Python with uv\"\n",
-        "\n",
         "author: \"Tony D\"\n",
         "execute:\n",
         "  warning: false\n",
@@ -23,6 +22,12 @@
         "jupyter: python3\n",
         "---\n",
         "\n",
+        "A comprehensive guide to using uv for Python project and package management. This document covers installation, project initialization, Python version management, and various package operations.\n",
+        "\n",
+        "This document provides a comprehensive guide to using `uv`, a fast and efficient tool for Python project and package management. It covers the entire workflow, from installation and project initialization to managing Python versions and handling package operations. The guide also demonstrates how to use `uv` to synchronize dependencies and even run scripts with specific package requirements. This is a valuable resource for any Python developer looking to streamline their development process.\n",
+        "\n",
+        "Introduces `uv` as a fast and comprehensive tool for Python project and package management. It covers `uv`'s installation, project initialization, Python version management, package operations, and dependency synchronization.\n",
+        "\n",
         "-   🚀 A single tool to replace `pip`, `pip-tools`, `pipx`, `poetry`, `pyenv`, `twine`, `virtualenv`, and more.\n",
         "\n",
         "-   ⚡️ [10-100x faster](https://github.com/astral-sh/uv/blob/main/BENCHMARKS.md) than `pip`.\n",
@@ -33,7 +38,7 @@
         "\n",
         "# install"
       ],
-      "id": "e5719269"
+      "id": "a6a820a9"
     },
     {
       "cell_type": "code",
@@ -42,7 +47,7 @@
         "#| eval: false\n",
         "!pip install uv"
       ],
-      "id": "9c40b25c",
+      "id": "5a844501",
       "execution_count": null,
       "outputs": []
     },
@@ -52,7 +57,7 @@
       "source": [
         "# create project in current folder"
       ],
-      "id": "fa70721e"
+      "id": "b52ce05b"
     },
     {
       "cell_type": "code",
@@ -61,7 +66,7 @@
         "#| eval: false\n",
         "!uv init"
       ],
-      "id": "992bc919",
+      "id": "8a47524d",
       "execution_count": null,
       "outputs": []
     },
@@ -74,7 +79,7 @@
         "\n",
         "# chose python version"
       ],
-      "id": "817dd02e"
+      "id": "bbf9174b"
     },
     {
       "cell_type": "code",
@@ -83,7 +88,7 @@
         "#| eval: false\n",
         "!uv python pin 3.13"
       ],
-      "id": "92495416",
+      "id": "81274f27",
       "execution_count": null,
       "outputs": []
     },
@@ -93,7 +98,7 @@
       "source": [
         "# show all python include non download version "
       ],
-      "id": "a591766b"
+      "id": "75492365"
     },
     {
       "cell_type": "code",
@@ -101,7 +106,7 @@
       "source": [
         "!uv python list"
       ],
-      "id": "54f619bb",
+      "id": "d3d1cd32",
       "execution_count": null,
       "outputs": []
     },
@@ -111,7 +116,7 @@
       "source": [
         "# download python version if not download"
       ],
-      "id": "ec200c97"
+      "id": "514a0af9"
     },
     {
       "cell_type": "code",
@@ -120,7 +125,7 @@
         "#| eval: false\n",
         "!uv python install cpython-3.14.0"
       ],
-      "id": "9e7ce484",
+      "id": "7d61b123",
       "execution_count": null,
       "outputs": []
     },
@@ -130,7 +135,7 @@
       "source": [
         "# install pacakge"
       ],
-      "id": "7268c1b8"
+      "id": "52b0d267"
     },
     {
       "cell_type": "code",
@@ -139,7 +144,7 @@
         "#| eval: false\n",
         "!uv add siuba"
       ],
-      "id": "474d00c1",
+      "id": "ff11d4c5",
       "execution_count": null,
       "outputs": []
     },
@@ -149,7 +154,7 @@
       "source": [
         "# show pacakge"
       ],
-      "id": "ff731df5"
+      "id": "58f7c6b9"
     },
     {
       "cell_type": "code",
@@ -158,7 +163,7 @@
         "#| eval: false\n",
         "!uv tree"
       ],
-      "id": "f025b69b",
+      "id": "de91372d",
       "execution_count": null,
       "outputs": []
     },
@@ -168,7 +173,7 @@
       "source": [
         "# delete pacakge"
       ],
-      "id": "bf7c54b4"
+      "id": "cad1c11e"
     },
     {
       "cell_type": "code",
@@ -177,7 +182,7 @@
         "#| eval: false\n",
         "!uv remove rich"
       ],
-      "id": "a3ebfe1f",
+      "id": "79678944",
       "execution_count": null,
       "outputs": []
     },
@@ -187,7 +192,7 @@
       "source": [
         "# update lock file"
       ],
-      "id": "2a6e2fef"
+      "id": "37286496"
     },
     {
       "cell_type": "code",
@@ -196,7 +201,7 @@
         "#| eval: false\n",
         "!uv lock --upgrade"
       ],
-      "id": "cd1bacf9",
+      "id": "fa61f400",
       "execution_count": null,
       "outputs": []
     },
@@ -206,7 +211,7 @@
       "source": [
         "# Locking requirements"
       ],
-      "id": "27d847a0"
+      "id": "a386e956"
     },
     {
       "cell_type": "code",
@@ -215,7 +220,7 @@
         "#| eval: false\n",
         "uv pip compile pyproject.toml -o requirements.txt"
       ],
-      "id": "97956aae",
+      "id": "5770a820",
       "execution_count": null,
       "outputs": []
     },
@@ -225,7 +230,7 @@
       "source": [
         "# check lock file and current environment"
       ],
-      "id": "058434a8"
+      "id": "fe2710c8"
     },
     {
       "cell_type": "code",
@@ -234,7 +239,7 @@
         "#| eval: false\n",
         "!uv lock --check"
       ],
-      "id": "41d631be",
+      "id": "9d066077",
       "execution_count": null,
       "outputs": []
     },
@@ -244,7 +249,7 @@
       "source": [
         "# Sync the project's dependencies with the environment,it will add packages to the environment from toml file."
       ],
-      "id": "a4711f96"
+      "id": "93b260fb"
     },
     {
       "cell_type": "code",
@@ -253,7 +258,7 @@
         "#| eval: false\n",
         "!uv sync"
       ],
-      "id": "b8880db5",
+      "id": "78942d01",
       "execution_count": null,
       "outputs": []
     },
@@ -266,7 +271,7 @@
         "\n",
         "## there is no rich package in python"
       ],
-      "id": "3e8c0730"
+      "id": "311311e0"
     },
     {
       "cell_type": "code",
@@ -280,7 +285,7 @@
         "    print('pacakge not installed')\n",
         "    pass  # module doesn't exist, deal with it."
       ],
-      "id": "9d2434a6",
+      "id": "764058eb",
       "execution_count": null,
       "outputs": []
     },
@@ -318,7 +323,7 @@
         "\n",
         "## run .py with uv"
       ],
-      "id": "ff98b191"
+      "id": "0a963430"
     },
     {
       "cell_type": "code",
@@ -326,7 +331,7 @@
       "source": [
         "!uv run test.py"
       ],
-      "id": "d33508a6",
+      "id": "9257488d",
       "execution_count": null,
       "outputs": []
     },
@@ -338,7 +343,7 @@
         "\n",
         "https://github.com/astral-sh/uv"
       ],
-      "id": "6648b433"
+      "id": "ce18e515"
     }
   ],
   "metadata": {

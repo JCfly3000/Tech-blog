@@ -1,6 +1,5 @@
 ---
 title: "Classification Metrics"
-
 author: "Tony D"
 date: "2025-03-12"
 categories: 
@@ -11,10 +10,14 @@ categories:
 image: "image_14_4f4fc2cf7d.png"
 ---
 
+A comprehensive guide to classification metrics in Python, covering concepts like sensitivity, precision, AUROC, and F1-score with practical code examples.
+
+This document provides a comprehensive guide to understanding and implementing various classification metrics in Python. It covers key concepts such as sensitivity, precision, AUROC, accuracy, F1-score, and specificity. The guide includes practical code examples that walk you through the entire process, from installing the necessary packages and loading data from Kaggle to training a logistic regression model and visualizing the results with a confusion matrix and ROC/PR curves. This is an essential resource for anyone looking to evaluate the performance of their classification models.
+
 Classification Metrics Explained | Sensitivity, Precision, AUROC, & More
 
 
-# install pacakge
+# install package
 ```{python filename='Terminal'}
 #| eval: false
 pip install -U scikit-learn
@@ -23,7 +26,7 @@ pip install -U kagglehub
 ```
 
 
-# load pacakge
+# load package
 
 ```{python}
 import matplotlib.pyplot as plt

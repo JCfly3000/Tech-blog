@@ -16,8 +16,6 @@ website:
   page-footer:
     right: "This website is built with ❤️ and [Quarto](https://quarto.org/)."
 
-
-
 format:
   html:
     toc: true
@@ -28,6 +26,12 @@ format:
     code-block-bg: true
     #code-block-border-left: "#31BAE9"
     code-copy: true
+    #page-layout: full
+    grid:
+      sidebar-width: 150px
+      body-width: 1000px
+      margin-width: 150px
+      gutter-width: 1.2rem
     
     theme:
       - cosmo

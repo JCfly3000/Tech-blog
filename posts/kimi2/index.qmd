@@ -1,0 +1,64 @@
+---
+title: "Kimi2 with openrouter"
+
+author: "Tony D"
+
+date: "2025-07-18"
+
+categories: 
+  - AI
+
+  
+execute:
+  warning: false
+  error: false
+  eval: false
+  
+image: 'images/logo.svg'
+---
+
+OpenRouter is a platform that provides a unified API for accessing a wide variety of large language models (LLMs) from different providers like Anthropic, Google, and Meta. It simplifies the process of integrating and using these models for developers, offering a single point of access instead of managing multiple APIs and accounts
+
+
+![](images/logo.svg){width="493"}
+
+# get api key from https://openrouter.ai/
+
+
+# load package
+```{python}
+from openai import OpenAI
+import keyring
+```
+
+# define model
+```{python}
+client = OpenAI(
+  base_url="https://openrouter.ai/api/v1",
+  api_key=keyring.get_password("system", "openrouter"),
+)
+```
+
+
+# call model
+```{python}
+completion = client.chat.completions.create(
+  extra_headers={
+    "HTTP-Referer": "<YOUR_SITE_URL>", # Optional. Site URL for rankings on openrouter.ai.
+    "X-Title": "<YOUR_SITE_NAME>", # Optional. Site title for rankings on openrouter.ai.
+  },
+  extra_body={},
+  model="moonshotai/kimi-k2:free",
+  messages=[
+    {
+      "role": "user",
+      "content": "What is the meaning of life?"
+    }
+  ]
+)
+```
+
+# get result
+```{python}
+print(completion.choices[0].message.content)
+```

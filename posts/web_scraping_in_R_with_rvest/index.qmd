@@ -1,6 +1,5 @@
 ---
 title: "Web scraping in R with rvest"
-
 author: "Tony D"
 date: "2025-03-12"
 categories: 
@@ -15,9 +14,9 @@ execute:
 image: "logo.png"
 ---
 
-Basic Web scraping in R with rvest.
+A guide to web scraping in R using the `rvest` package, with examples of how to extract text, links, and tables from web pages.
 
-Also update to [R handbook](https://jcfly3000.github.io/Into-R/other/2%20web%20scrap/1%20web%20scrap%20with%20rvest.html)
+This document provides a comprehensive guide to web scraping in R using the `rvest` package. It covers the entire workflow, from reading HTML content from a URL to extracting specific elements like text, links, and tables. The guide also introduces advanced techniques with `read_html_live()` for dynamic web pages that require interaction, such as scrolling, to load content. This document is also part of the [R handbook](https://jcfly3000.github.io/Into-R/other/2%20web%20scrap/1%20web%20scrap%20with%20rvest.html).
 
 # loal pacakge
 

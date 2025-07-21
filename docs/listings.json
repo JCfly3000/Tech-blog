@@ -2,14 +2,16 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/gemini_cli/index.html",
+      "/posts/kimi2/index.html",
+      "/posts/github trend/index.html",
       "/posts/multi language blog/index.html",
-      "/posts/video/index.html",
+      "/posts/edit video/index.html",
       "/posts/GDP/index.html",
       "/posts/norway_pension_fund/index.html",
       "/posts/AI_OCR/index.html",
       "/posts/TidyTuesday/index.html",
       "/posts/display_table/index.html",
-      "/posts/AI_create_code/index.html",
       "/posts/send_email/index.html",
       "/posts/AI_podcast/index.html",
       "/posts/path_managment/index.html",
@@ -38,21 +40,22 @@
       "/posts/subscribeYouTubeviaemail/index.html",
       "/posts/versioncontrol/index.html",
       "/posts/youtube_yt-dlp/index.html",
-      "/posts/usefullresource/index.html",
-      "/posts/welcome/index.html"
+      "/posts/usefullresource/index.html"
     ]
   },
   {
     "listing": "/posts.html",
     "items": [
+      "/posts/gemini_cli/index.html",
+      "/posts/kimi2/index.html",
+      "/posts/github trend/index.html",
       "/posts/multi language blog/index.html",
-      "/posts/video/index.html",
+      "/posts/edit video/index.html",
       "/posts/GDP/index.html",
       "/posts/norway_pension_fund/index.html",
       "/posts/AI_OCR/index.html",
       "/posts/TidyTuesday/index.html",
       "/posts/display_table/index.html",
-      "/posts/AI_create_code/index.html",
       "/posts/send_email/index.html",
       "/posts/AI_podcast/index.html",
       "/posts/path_managment/index.html",
@@ -81,8 +84,7 @@
       "/posts/subscribeYouTubeviaemail/index.html",
       "/posts/versioncontrol/index.html",
       "/posts/youtube_yt-dlp/index.html",
-      "/posts/usefullresource/index.html",
-      "/posts/welcome/index.html"
+      "/posts/usefullresource/index.html"
     ]
   }
 ]

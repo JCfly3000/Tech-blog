@@ -13,12 +13,19 @@ categories:
 execute:
   warning: false
   error: false
+  eval: false
 
 image: 'images/tt_logo.png'
 
 filters:
   - shinylive
 ---
+
+A guide to the TidyTuesday data project, demonstrating how to access data and create interactive Shiny apps in both R and Python for data exploration and visualization.
+
+This document provides a comprehensive guide to the TidyTuesday data project, demonstrating how to access and work with the data in both R and Python. It also includes detailed instructions on how to create interactive Shiny apps for data exploration and visualization. The guide covers everything from downloading the data to building a complete Shiny app with various plots and user inputs. This is a valuable resource for anyone looking to participate in the TidyTuesday project and improve their data science skills.
+
+Explores the TidyTuesday data project, demonstrating data access and interactive Shiny app creation in R and Python.
 
 TidyTuesday data project
 

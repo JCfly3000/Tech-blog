@@ -17,7 +17,9 @@ execute:
   eval: false
 ---
 
-Running AI model on local machine with Ollama, huggingface and more
+A guide to running AI models locally using Ollama and Hugging Face, with examples in R, Python, and the terminal.
+
+This document provides a comprehensive guide to running AI models locally on your machine. It covers two popular platforms: Ollama and Hugging Face. For Ollama, it details the installation process and demonstrates how to manage and run LLM models using R (with the `ollamar` and `ellmer` packages), Python, and the terminal. For Hugging Face, it shows how to use models for tasks like text generation through both high-level pipelines and direct model loading in Python. The guide also includes examples of running other local models from the terminal.
 
 # 1.Ollama
 

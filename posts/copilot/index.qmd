@@ -1,6 +1,5 @@
 ---
 title: "AI Code assistant"
-
 author: "Tony D"
 execute:
   warning: false
@@ -16,17 +15,21 @@ categories:
 image: "What-is-GitHub-Copilot.jpg"
 ---
 
+An introduction to AI code assistants, focusing on setting up and using GitHub Copilot in RStudio.
+
+This document provides an introduction to AI-powered code assistants, with a specific focus on setting up and using GitHub Copilot within the RStudio IDE. It walks through the necessary steps to enable and configure Copilot, and also mentions other relevant tools like Codeium Copilot for Positron and the `chores` and `gander` R packages. This guide is a great starting point for anyone looking to leverage AI to enhance their coding workflow.
+
 AI tool for writing code
 
 # 1. Github copilot for Rstuido
 
-## Step 1 enble on Rstudio
+## Step 1 Enable on RStudio
 
 ![](images/clipboard-3378378405.png){width="500"}
 
 ## Step 2 configure on github
 
-free account is limit per month
+free account is limited per month
 
 ![](images/clipboard-961740813.png){width="500"}
 

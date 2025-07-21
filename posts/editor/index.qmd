@@ -1,7 +1,6 @@
 ---
 title: "查看IP地址"
 subtitle: "Check IP address"
-
 author: "Tony D"
 date: "2025-04-02"
 
@@ -19,6 +18,10 @@ execute:
   error: false
   eval: false
 ---
+
+A draft document about installing and checking the version of Neovim.
+
+This document is a draft that provides a brief guide to installing and checking the version of Neovim, a popular text editor. It includes the necessary `brew` command for installation on macOS.
 
 # neovim
 
