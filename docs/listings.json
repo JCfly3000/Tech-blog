@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/Streamlit/index.html",
       "/posts/gemini_cli/index.html",
       "/posts/kimi2/index.html",
       "/posts/github trend/index.html",
@@ -46,6 +47,7 @@
   {
     "listing": "/posts.html",
     "items": [
+      "/posts/Streamlit/index.html",
       "/posts/gemini_cli/index.html",
       "/posts/kimi2/index.html",
       "/posts/github trend/index.html",
