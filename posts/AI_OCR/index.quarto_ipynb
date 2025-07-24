@@ -1,0 +1,486 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"AI图片识别文字\"\n",
+        "subtitle: \"AI Optical character recognition\"\n",
+        "author: \"Tony D\"\n",
+        "date: \"2025-04-21\"\n",
+        "\n",
+        "categories: \n",
+        "  - AI\n",
+        "  - R\n",
+        "  - Python\n",
+        "\n",
+        "  \n",
+        "execute:\n",
+        "  warning: false\n",
+        "  error: false\n",
+        "  \n",
+        "  \n",
+        "image: 'images/001.png'\n",
+        "---\n",
+        "\n",
+        "A demonstration of how to perform OCR using both online (Gemini 2.5) and offline (InternVL3 1B) AI models, with Python code examples for text extraction from images in both English and Chinese.\n",
+        "\n",
+        "This document demonstrates how to perform Optical Character Recognition (OCR) using both online and offline AI models. It provides Python code examples for extracting text from images in both English and Chinese using the Gemini 2.5 API. Additionally, it includes instructions and code for setting up and using the InternVL3 1B model locally, including functions for image preprocessing and model splitting. This guide is a valuable resource for anyone looking to implement OCR in their projects.\n",
+        "\n",
+        "with Gemini 2.5 online/InternVL3 offline\n",
+        "\n",
+        "\n",
+        "\n",
+        "# Using Gemini 2.5 online"
+      ],
+      "id": "4f417ba2"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "from google import genai\n",
+        "import keyring\n",
+        "from PIL import Image\n",
+        "import torchvision.transforms as T\n",
+        "from torchvision.transforms.functional import InterpolationMode\n",
+        "import sys\n",
+        "import pickle\n",
+        "import math\n",
+        "import numpy as np\n",
+        "import torch"
+      ],
+      "id": "4e952b84",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: false\n",
+        "import pickle\n",
+        "f = open('store.pckl', 'rb')\n",
+        "response_gemini_en,response_gemini,response_en,response = pickle.load(f)\n",
+        "f.close()"
+      ],
+      "id": "d5c0b18f",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| eval: false\n",
+        "client = genai.Client(api_key=keyring.get_password(\"system\", \"google_ai_api_key\"))"
+      ],
+      "id": "636136f2",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "List models"
+      ],
+      "id": "f41d9640"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| eval: false\n",
+        "print(\"List of models:\\n\")\n",
+        "for m in client.models.list():\n",
+        "    for action in m.supported_actions:\n",
+        "       # if action == \"generateContent\":\n",
+        "            print(m.name+\" \"+ action)"
+      ],
+      "id": "6691f50c",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## English Extract\n",
+        "\n",
+        "\n",
+        "\n",
+        "![](images/english.jpg)\n"
+      ],
+      "id": "3da5a0ad"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| eval: false\n",
+        "image = Image.open(\"images/english.jpg\")\n",
+        "\n",
+        "response_gemini_en = client.models.generate_content(\n",
+        "    model=\"gemini-2.5-pro-exp-03-25\",\n",
+        "    contents=[image, \"Extract text from image\"])"
+      ],
+      "id": "cff63e7c",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "print(response_gemini_en.text)"
+      ],
+      "id": "47e10840",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Chinese Extract\n",
+        "\n",
+        "![](images/chinese.png)"
+      ],
+      "id": "1450e2e4"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| eval: false\n",
+        "image = Image.open(\"images/chinese.png\")\n",
+        "\n",
+        "response_gemini = client.models.generate_content(\n",
+        "    model=\"gemini-2.5-pro-exp-03-25\",\n",
+        "    contents=[image, \"提取图上的文字\"])"
+      ],
+      "id": "4d9aa8e8",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "print(response_gemini.text)"
+      ],
+      "id": "a85d1ce9",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# Using InternVL3 1B model offline\n",
+        "\n",
+        "https://huggingface.co/OpenGVLab/InternVL3-8B-hf\n",
+        "\n",
+        "If using better model will increase accuracy"
+      ],
+      "id": "2bbaff5b"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| eval: false\n",
+        "print(sys.version)"
+      ],
+      "id": "0382aa74",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| eval: false\n",
+        "pip install --upgrade transformers\n",
+        "pip install einops timm\n",
+        "pip install -U bitsandbytes"
+      ],
+      "id": "cf369782",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| eval: false\n",
+        "import os\n",
+        "os.system('pip show transformers')"
+      ],
+      "id": "79faf50b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| eval: false\n",
+        "import torch\n",
+        "from transformers import AutoTokenizer, AutoModel,pipeline\n",
+        "path = \"OpenGVLab/InternVL3-1B\"\n",
+        "\n",
+        "model = AutoModel.from_pretrained(path,torch_dtype=torch.bfloat16,trust_remote_code=True).eval()\n",
+        "\n",
+        "tokenizer = AutoTokenizer.from_pretrained(path, trust_remote_code=True)"
+      ],
+      "id": "22d3a0cc",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "generation_config = dict(max_new_tokens=1024, do_sample=True)"
+      ],
+      "id": "2eb4d483",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "testing"
+      ],
+      "id": "98fc9e06"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| eval: false\n",
+        "question = 'Hello, who are you?'\n",
+        "response, history = model.chat(tokenizer, None, question, generation_config, history=None, return_history=True)\n",
+        "print(f'User: {question}\\nAssistant: {response}')"
+      ],
+      "id": "b95621df",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## single-image single-round conversation (单图单轮对话)"
+      ],
+      "id": "5956929b"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| eval: false\n",
+        "\n",
+        "\n",
+        "IMAGENET_MEAN = (0.485, 0.456, 0.406)\n",
+        "IMAGENET_STD = (0.229, 0.224, 0.225)\n",
+        "\n",
+        "def build_transform(input_size):\n",
+        "    MEAN, STD = IMAGENET_MEAN, IMAGENET_STD\n",
+        "    transform = T.Compose([\n",
+        "        T.Lambda(lambda img: img.convert('RGB') if img.mode != 'RGB' else img),\n",
+        "        T.Resize((input_size, input_size), interpolation=InterpolationMode.BICUBIC),\n",
+        "        T.ToTensor(),\n",
+        "        T.Normalize(mean=MEAN, std=STD)\n",
+        "    ])\n",
+        "    return transform\n",
+        "\n",
+        "def find_closest_aspect_ratio(aspect_ratio, target_ratios, width, height, image_size):\n",
+        "    best_ratio_diff = float('inf')\n",
+        "    best_ratio = (1, 1)\n",
+        "    area = width * height\n",
+        "    for ratio in target_ratios:\n",
+        "        target_aspect_ratio = ratio[0] / ratio[1]\n",
+        "        ratio_diff = abs(aspect_ratio - target_aspect_ratio)\n",
+        "        if ratio_diff < best_ratio_diff:\n",
+        "            best_ratio_diff = ratio_diff\n",
+        "            best_ratio = ratio\n",
+        "        elif ratio_diff == best_ratio_diff:\n",
+        "            if area > 0.5 * image_size * image_size * ratio[0] * ratio[1]:\n",
+        "                best_ratio = ratio\n",
+        "    return best_ratio\n",
+        "\n",
+        "def dynamic_preprocess(image, min_num=1, max_num=12, image_size=448, use_thumbnail=False):\n",
+        "    orig_width, orig_height = image.size\n",
+        "    aspect_ratio = orig_width / orig_height\n",
+        "\n",
+        "    # calculate the existing image aspect ratio\n",
+        "    target_ratios = set(\n",
+        "        (i, j) for n in range(min_num, max_num + 1) for i in range(1, n + 1) for j in range(1, n + 1) if\n",
+        "        i * j <= max_num and i * j >= min_num)\n",
+        "    target_ratios = sorted(target_ratios, key=lambda x: x[0] * x[1])\n",
+        "\n",
+        "    # find the closest aspect ratio to the target\n",
+        "    target_aspect_ratio = find_closest_aspect_ratio(\n",
+        "        aspect_ratio, target_ratios, orig_width, orig_height, image_size)\n",
+        "\n",
+        "    # calculate the target width and height\n",
+        "    target_width = image_size * target_aspect_ratio[0]\n",
+        "    target_height = image_size * target_aspect_ratio[1]\n",
+        "    blocks = target_aspect_ratio[0] * target_aspect_ratio[1]\n",
+        "\n",
+        "    # resize the image\n",
+        "    resized_img = image.resize((target_width, target_height))\n",
+        "    processed_images = []\n",
+        "    for i in range(blocks):\n",
+        "        box = (\n",
+        "            (i % (target_width // image_size)) * image_size,\n",
+        "            (i // (target_width // image_size)) * image_size,\n",
+        "            ((i % (target_width // image_size)) + 1) * image_size,\n",
+        "            ((i // (target_width // image_size)) + 1) * image_size\n",
+        "        )\n",
+        "        # split the image\n",
+        "        split_img = resized_img.crop(box)\n",
+        "        processed_images.append(split_img)\n",
+        "    assert len(processed_images) == blocks\n",
+        "    if use_thumbnail and len(processed_images) != 1:\n",
+        "        thumbnail_img = image.resize((image_size, image_size))\n",
+        "        processed_images.append(thumbnail_img)\n",
+        "    return processed_images\n",
+        "\n",
+        "def load_image(image_file, input_size=448, max_num=12):\n",
+        "    image = Image.open(image_file).convert('RGB')\n",
+        "    transform = build_transform(input_size=input_size)\n",
+        "    images = dynamic_preprocess(image, image_size=input_size, use_thumbnail=True, max_num=max_num)\n",
+        "    pixel_values = [transform(image) for image in images]\n",
+        "    pixel_values = torch.stack(pixel_values)\n",
+        "    return pixel_values\n",
+        "\n",
+        "def split_model(model_name):\n",
+        "    device_map = {}\n",
+        "    world_size = torch.cuda.device_count()\n",
+        "    config = AutoConfig.from_pretrained(model_path, trust_remote_code=True)\n",
+        "    num_layers = config.llm_config.num_hidden_layers\n",
+        "    # Since the first GPU will be used for ViT, treat it as half a GPU.\n",
+        "    num_layers_per_gpu = math.ceil(num_layers / (world_size - 0.5))\n",
+        "    num_layers_per_gpu = [num_layers_per_gpu] * world_size\n",
+        "    num_layers_per_gpu[0] = math.ceil(num_layers_per_gpu[0] * 0.5)\n",
+        "    layer_cnt = 0\n",
+        "    for i, num_layer in enumerate(num_layers_per_gpu):\n",
+        "        for j in range(num_layer):\n",
+        "            device_map[f'language_model.model.layers.{layer_cnt}'] = i\n",
+        "            layer_cnt += 1\n",
+        "    device_map['vision_model'] = 0\n",
+        "    device_map['mlp1'] = 0\n",
+        "    device_map['language_model.model.tok_embeddings'] = 0\n",
+        "    device_map['language_model.model.embed_tokens'] = 0\n",
+        "    device_map['language_model.output'] = 0\n",
+        "    device_map['language_model.model.norm'] = 0\n",
+        "    device_map['language_model.model.rotary_emb'] = 0\n",
+        "    device_map['language_model.lm_head'] = 0\n",
+        "    device_map[f'language_model.model.layers.{num_layers - 1}'] = 0\n",
+        "\n",
+        "    return device_map\n"
+      ],
+      "id": "88899528",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### English Extract\n",
+        "\n",
+        "![](images/english.jpg)\n"
+      ],
+      "id": "d82684eb"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| eval: false\n",
+        "pixel_values = load_image('images/english.jpg').to(torch.bfloat16)\n",
+        "question = '<image>\\nPlease Extract text from image'\n",
+        "response_en = model.chat(tokenizer, pixel_values, question, generation_config)"
+      ],
+      "id": "119f8f64",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "print(response_en)"
+      ],
+      "id": "0b0cf55a",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Chinese Extract\n",
+        "\n",
+        "![](images/chinese.png)"
+      ],
+      "id": "1180d7e6"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| eval: false\n",
+        "pixel_values = load_image('images/chinese.png').to(torch.bfloat16)\n",
+        "\n",
+        "question = '<image>\\n提取图上的文字'\n",
+        "response = model.chat(tokenizer, pixel_values, question, generation_config)"
+      ],
+      "id": "893d387d",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "print(response)"
+      ],
+      "id": "740f8ade",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: false\n",
+        "# save result\n",
+        "f = open('store.pckl', 'wb')\n",
+        "pickle.dump([response_gemini_en,response_gemini,response_en,response]\n",
+        "            ,f)\n",
+        "f.close()"
+      ],
+      "id": "595cfe21",
+      "execution_count": null,
+      "outputs": []
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/Library/Frameworks/Python.framework/Versions/3.13/share/jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

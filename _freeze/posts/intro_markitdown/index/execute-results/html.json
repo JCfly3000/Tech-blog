@@ -1,0 +1,12 @@
+{
+  "hash": "f5d9f89d088802e7d8dc5c917c96dfb7",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: \"Convert file like pdf to markdown\"\n\nauthor: \"Tony D\"\n\ndate: \"2025-07-24\"\n\ncategories: \n  - Python\n\n  \nexecute:\n  warning: false\n  error: false\n  eval: false\n---\n\nMarkItDown is a lightweight Python utility for converting various files to Markdown for use with LLMs and related text analysis pipelines\n\n\n![](images/clipboard-1698379669.png){width=\"492\"}\n\n# install `markitdown`\n\n```{bash}\ngit clone git@github.com:microsoft/markitdown.git\ncd markitdown\npip install -e 'packages/markitdown[all]'\n```\n\n# convert xlsx to md\n\n::: {#40ca21d6 .cell execution_count=1}\n``` {.python .cell-code}\nfrom markitdown import MarkItDown\n\nmd = MarkItDown(enable_plugins=False) # Set to True to enable plugins\nresult = md.convert(\"weight.xlsx\")\nprint(result.text_content)\n```\n:::\n\n\n::: {#7a6d7366 .cell execution_count=2}\n``` {.python .cell-code}\nwith open(\"weight.md\", \"w\") as f:\n    f.write(result.text_content)\n```\n:::\n\n\n# convert pdf to md\n\n::: {#b969cc23 .cell execution_count=3}\n``` {.python .cell-code}\nfrom markitdown import MarkItDown\n\nmd = MarkItDown(enable_plugins=False) # Set to True to enable plugins\nresult = md.convert(\"Modern_intro_probability_statistics.pdf\")\n#print(result.text_content)\n```\n:::\n\n\n::: {#94dd4397 .cell execution_count=4}\n``` {.python .cell-code}\nwith open(\"Modern_intro_probability_statistics.md\", \"w\") as f:\n    f.write(result.text_content)\n```\n:::\n\n\n# convert image to md with LLM model(currently only support Open AI)\n\nhttps://github.com/microsoft/markitdown/issues/1129\n\n::: {#633a0b4a .cell execution_count=5}\n``` {.python .cell-code}\nfrom markitdown import MarkItDown\nfrom openai import OpenAI\n\nclient = OpenAI()\nmd = MarkItDown(llm_client=client, llm_model=\"gpt-4o\")\nresult = md.convert(\"example.jpg\")\nprint(result.text_content)\n```\n:::\n\n\n# reference:\n\nhttps://github.com/microsoft/markitdown\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

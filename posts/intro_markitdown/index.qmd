@@ -1,0 +1,77 @@
+---
+title: "Convert file like pdf to markdown"
+
+author: "Tony D"
+
+date: "2025-07-24"
+
+categories: 
+  - Python
+
+  
+execute:
+  warning: false
+  error: false
+  eval: false
+---
+
+MarkItDown is a lightweight Python utility for converting various files to Markdown for use with LLMs and related text analysis pipelines
+
+
+![](images/clipboard-1698379669.png){width="492"}
+
+# install `markitdown`
+
+```{bash}
+git clone git@github.com:microsoft/markitdown.git
+cd markitdown
+pip install -e 'packages/markitdown[all]'
+```
+
+# convert xlsx to md
+
+```{python}
+from markitdown import MarkItDown
+
+md = MarkItDown(enable_plugins=False) # Set to True to enable plugins
+result = md.convert("weight.xlsx")
+print(result.text_content)
+```
+
+```{python}
+with open("weight.md", "w") as f:
+    f.write(result.text_content)
+```
+
+# convert pdf to md
+
+```{python}
+from markitdown import MarkItDown
+
+md = MarkItDown(enable_plugins=False) # Set to True to enable plugins
+result = md.convert("Modern_intro_probability_statistics.pdf")
+#print(result.text_content)
+```
+
+```{python}
+with open("Modern_intro_probability_statistics.md", "w") as f:
+    f.write(result.text_content)
+```
+
+# convert image to md with LLM model(currently only support Open AI)
+
+https://github.com/microsoft/markitdown/issues/1129
+
+```{python}
+from markitdown import MarkItDown
+from openai import OpenAI
+
+client = OpenAI()
+md = MarkItDown(llm_client=client, llm_model="gpt-4o")
+result = md.convert("example.jpg")
+print(result.text_content)
+```
+
+# reference:
+
+https://github.com/microsoft/markitdown

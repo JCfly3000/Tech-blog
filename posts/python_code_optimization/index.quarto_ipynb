@@ -1,0 +1,282 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"Python code optimization with ruff\"\n",
+        "author: \"Tony D\"\n",
+        "execute:\n",
+        "  warning: false\n",
+        "  error: false\n",
+        "\n",
+        "  \n",
+        "date: \"2025-03-14\"\n",
+        "categories: \n",
+        "  - Tool\n",
+        "  - Python\n",
+        "  \n",
+        "image: \"images.png\"\n",
+        "jupyter: python3\n",
+        "---\n",
+        "\n",
+        "A guide to using `ruff` for Python code linting and formatting, including installation, usage, and integration with Positron.\n",
+        "\n",
+        "This document provides a comprehensive guide to using `ruff`, a fast and efficient Python linter and formatter. It covers the essential steps for getting started with `ruff`, including installation, checking your code for issues, and automatically fixing them. The guide also demonstrates how to format your code with `ruff` and how to integrate it as an extension in the Positron IDE. Additionally, it outlines a practical workflow for using `ruff` on `.qmd` files by first converting them to `.py` format.\n",
+        "\n",
+        "-   ⚡️ 10-100x faster than existing linters (like Flake8) and formatters (like Black)\n",
+        "\n",
+        "-   🐍 Installable via `pip`\n",
+        "\n",
+        "-   🛠️ `pyproject.toml` support\n",
+        "\n",
+        "![](images/clipboard-548506117.png)\n",
+        "\n",
+        "# install ruff\n",
+        "\n",
+        "``` {.python filename=\"playing.py\"}\n",
+        "#| eval: false\n",
+        "pip install ruff\n",
+        "```\n",
+        "\n",
+        "# check code\n",
+        "\n",
+        "before correct python file\n",
+        "\n",
+        "``` {.python filename=\"playing.py\"}\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "import pandas\n",
+        "\n",
+        "from importlib.metadata import version\n",
+        "\n",
+        "print('test.py is running')\n",
+        "print('version is :')\n",
+        "print(version('rich'))\n",
+        "\n",
+        "a=3+1\n",
+        "\n",
+        "\n",
+        "a\n",
+        "\n",
+        "```"
+      ],
+      "id": "b6c2db86"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "filename": "Terminal"
+      },
+      "source": [
+        "!ruff check playing.py"
+      ],
+      "id": "9526b7d1",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# fix code"
+      ],
+      "id": "031fc37b"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "filename": "Terminal"
+      },
+      "source": [
+        "#| eval: false\n",
+        "!ruff check playing.py --fix"
+      ],
+      "id": "cd2fb6ae",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "after fix"
+      ],
+      "id": "308e4714"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "filename": "Terminal"
+      },
+      "source": [
+        "#| eval: false\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "import pandas\n",
+        "\n",
+        "from importlib.metadata import version\n",
+        "\n",
+        "print('test.py is running')\n",
+        "print('version is :')\n",
+        "print(version('rich'))\n",
+        "\n",
+        "a=3+1\n",
+        "\n",
+        "\n",
+        "a\n"
+      ],
+      "id": "b61050e7",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# format code"
+      ],
+      "id": "c8a52412"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "filename": "Terminal"
+      },
+      "source": [
+        "#| eval: false\n",
+        "!ruff format playing.py"
+      ],
+      "id": "59f08d01",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "after format"
+      ],
+      "id": "9172aeef"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "filename": "Terminal"
+      },
+      "source": [
+        "#| eval: false\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "import pandas\n",
+        "\n",
+        "from importlib.metadata import version\n",
+        "\n",
+        "print('test.py is running')\n",
+        "print('version is :')\n",
+        "print(version('rich'))\n",
+        "\n",
+        "a=3+1\n",
+        "\n",
+        "\n",
+        "a\n"
+      ],
+      "id": "e06a5d23",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# add ruff as extension in positron\n",
+        "\n",
+        "![](images/my screenshots 1.png)\n",
+        "\n",
+        "# using ruff on .qmd file\n",
+        "\n",
+        "ruff only work on .py file, So if want to use ruff to check .qmd file then it need to convert to .py first.\n",
+        "\n",
+        "## convert .qmd to .py"
+      ],
+      "id": "53e482e5"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "filename": "Terminal"
+      },
+      "source": [
+        "#| eval: false\n",
+        "quarto convert index.qmd    # → index.ipynb"
+      ],
+      "id": "239b9b3e",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "filename": "Terminal"
+      },
+      "source": [
+        "#| eval: false\n",
+        "!jupyter nbconvert --to python index.ipynb    # → index.py"
+      ],
+      "id": "009c2d8c",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## check .py with ruff"
+      ],
+      "id": "beffb4f3"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "filename": "Terminal"
+      },
+      "source": [
+        "#| eval: false\n",
+        "!ruff check index.py"
+      ],
+      "id": "2004fe04",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# reference:\n",
+        "\n",
+        "https://github.com/astral-sh/ruff"
+      ],
+      "id": "d8b6b983"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/Library/Frameworks/Python.framework/Versions/3.13/share/jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

@@ -1,0 +1,370 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"Classification Metrics\"\n",
+        "author: \"Tony D\"\n",
+        "date: \"2025-03-12\"\n",
+        "categories: \n",
+        "  - Machine learning\n",
+        "  - R\n",
+        "  - Python\n",
+        "  \n",
+        "image: \"image_14_4f4fc2cf7d.png\"\n",
+        "---\n",
+        "\n",
+        "A comprehensive guide to classification metrics in Python, covering concepts like sensitivity, precision, AUROC, and F1-score with practical code examples.\n",
+        "\n",
+        "This document provides a comprehensive guide to understanding and implementing various classification metrics in Python. It covers key concepts such as sensitivity, precision, AUROC, accuracy, F1-score, and specificity. The guide includes practical code examples that walk you through the entire process, from installing the necessary packages and loading data from Kaggle to training a logistic regression model and visualizing the results with a confusion matrix and ROC/PR curves. This is an essential resource for anyone looking to evaluate the performance of their classification models.\n",
+        "\n",
+        "Classification Metrics Explained | Sensitivity, Precision, AUROC, & More\n",
+        "\n",
+        "\n",
+        "# install package"
+      ],
+      "id": "cbddc71c"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| eval: false\n",
+        "pip install -U scikit-learn\n",
+        "pip install -U kaggle\n",
+        "pip install -U kagglehub"
+      ],
+      "id": "d352359f",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# load package"
+      ],
+      "id": "67a4d9f8"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import matplotlib.pyplot as plt\n",
+        "import numpy as np\n",
+        "import os\n",
+        "import pandas as pd\n",
+        "import seaborn as sns\n",
+        "\n",
+        "#from kaggle.api.kaggle_api_extended import KaggleApi\n",
+        "from sklearn.model_selection import train_test_split\n",
+        "from sklearn.linear_model import LogisticRegression\n",
+        "from sklearn.metrics import (\n",
+        "    precision_score, recall_score, roc_curve,\n",
+        "    accuracy_score, f1_score, roc_auc_score,\n",
+        "    average_precision_score, confusion_matrix,\n",
+        "    precision_recall_curve\n",
+        ")"
+      ],
+      "id": "acf620d6",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# download data from kaggle"
+      ],
+      "id": "79f24900"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import kagglehub\n",
+        "# Download latest version\n",
+        "kagglehub.dataset_download(\"uciml/pima-indians-diabetes-database\")\n",
+        "path = kagglehub.dataset_download(\"uciml/pima-indians-diabetes-database\")\n",
+        "print(\"Path to dataset files:\", path)"
+      ],
+      "id": "58b024f0",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "show data file under download folder"
+      ],
+      "id": "dd31f11a"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import os\n",
+        "os.listdir(path)"
+      ],
+      "id": "8e801a74",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# read data\n"
+      ],
+      "id": "99d8c4b6"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "df = pd.read_csv(path+'/'+os.listdir(path)[0])\n",
+        "df.head()"
+      ],
+      "id": "8db5678c",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "df.Outcome.value_counts()"
+      ],
+      "id": "55832134",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# separate features from response\n",
+        "X = df.drop('Outcome', axis=1)\n",
+        "y = df['Outcome']"
+      ],
+      "id": "fcc247cc",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# split data into test and training sets\n",
+        "X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)"
+      ],
+      "id": "d4452067",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# initialize and train logistic regression model\n",
+        "model = LogisticRegression(max_iter=1000)\n",
+        "model.fit(X_train, y_train)"
+      ],
+      "id": "14430383",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# predict on the test set and get the probas\n",
+        "y_pred = model.predict(X_test)\n",
+        "y_pred_proba = model.predict_proba(X_test)[:, 1] "
+      ],
+      "id": "c5824b7a",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# quickly look at the distribution of the probas\n",
+        "percentiles = np.percentile(y_pred_proba, [5, 25, 50, 75, 95])\n",
+        "percentiles"
+      ],
+      "id": "8f5f87c2",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# confusion matrix"
+      ],
+      "id": "b4f61dbe"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# generate confusion matrix\n",
+        "cm = confusion_matrix(y_test, y_pred)\n",
+        "\n",
+        "plt.figure(figsize=(8, 6))\n",
+        "sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', cbar=False)\n",
+        "plt.title('Confusion Matrix')\n",
+        "plt.xlabel('Predicted Labels')\n",
+        "plt.ylabel('True Labels')\n",
+        "plt.xticks([0.5, 1.5], ['No Diabetes', 'Diabetes'])\n",
+        "plt.yticks([0.5, 1.5], ['No Diabetes', 'Diabetes'], va='center')\n",
+        "plt.show()"
+      ],
+      "id": "f9998fe7",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# recall / sensitivity\n",
+        "recall = recall_score(y_test, y_pred)\n",
+        "recall"
+      ],
+      "id": "77e2b7d8",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# precision / positive predictive value\n",
+        "precision = precision_score(y_test, y_pred)\n",
+        "precision"
+      ],
+      "id": "9f086c13",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# specificity\n",
+        "tn, fp, fn, tp = confusion_matrix(y_test, y_pred).ravel()\n",
+        "specificity = tn / (tn + fp)\n",
+        "specificity"
+      ],
+      "id": "f2804edd",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# accuracy\n",
+        "accuracy = accuracy_score(y_test, y_pred)\n",
+        "accuracy"
+      ],
+      "id": "f10f6683",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# f1\n",
+        "f1 = f1_score(y_test, y_pred)\n",
+        "f1"
+      ],
+      "id": "7b961825",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# get ROC curve values\n",
+        "fpr, tpr, thresholds_roc = roc_curve(y_test, y_pred_proba)\n",
+        "\n",
+        "# get PR curve values\n",
+        "precision, recall, thresholds_pr = precision_recall_curve(y_test, y_pred_proba)\n",
+        "\n",
+        "# get areas under the curves\n",
+        "auroc = roc_auc_score(y_test, y_pred_proba)\n",
+        "pr_auc = average_precision_score(y_test, y_pred_proba)"
+      ],
+      "id": "794c4857",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# plot both curves\n",
+        "fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(16, 6))\n",
+        "ax1.plot(fpr, tpr, color='darkorange', lw=2, label=f'AUC = {auroc:.2f}')\n",
+        "ax1.plot([0, 1], [0, 1], color='navy', lw=2, linestyle='--')\n",
+        "ax1.set_xlabel('False Positive Rate')\n",
+        "ax1.set_ylabel('True Positive Rate')\n",
+        "ax1.set_title('Receiver Operating Characteristic (ROC) Curve')\n",
+        "ax1.legend(loc=\"lower right\")\n",
+        "\n",
+        "# Plot Precision-Recall Curve\n",
+        "ax2.plot(recall, precision, color='purple', lw=2, label=f'PR-AUC = {pr_auc:.2f}')\n",
+        "ax2.set_xlabel('Recall')\n",
+        "ax2.set_ylabel('Precision')\n",
+        "ax2.set_title('Precision-Recall Curve')\n",
+        "ax2.legend(loc=\"lower left\")\n",
+        "\n",
+        "plt.show()"
+      ],
+      "id": "829b1284",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "y_test.value_counts()"
+      ],
+      "id": "8e0ffcd9",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# Reference\n",
+        "\n",
+        "https://www.youtube.com/watch?v=KdUrfY1yM0w\n",
+        "\n",
+        "https://github.com/RichardOnData/YouTube/blob/main/Python%20Notebooks/classification_metrics.ipynb\n"
+      ],
+      "id": "9c4e5cf2"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/Library/Frameworks/Python.framework/Versions/3.13/share/jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

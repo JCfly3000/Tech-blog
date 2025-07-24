@@ -1,0 +1,130 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"Kimi2 with openrouter\"\n",
+        "\n",
+        "author: \"Tony D\"\n",
+        "\n",
+        "date: \"2025-07-18\"\n",
+        "\n",
+        "categories: \n",
+        "  - AI\n",
+        "\n",
+        "  \n",
+        "execute:\n",
+        "  warning: false\n",
+        "  error: false\n",
+        "  eval: false\n",
+        "  \n",
+        "image: 'images/logo.svg'\n",
+        "---\n",
+        "\n",
+        "OpenRouter is a platform that provides a unified API for accessing a wide variety of large language models (LLMs) from different providers like Anthropic, Google, and Meta. It simplifies the process of integrating and using these models for developers, offering a single point of access instead of managing multiple APIs and accounts\n",
+        "\n",
+        "\n",
+        "![](images/logo.svg){width=\"493\"}\n",
+        "\n",
+        "# get api key from https://openrouter.ai/\n",
+        "\n",
+        "\n",
+        "# load package"
+      ],
+      "id": "50d00b6a"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "from openai import OpenAI\n",
+        "import keyring"
+      ],
+      "id": "f953cfb3",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# define model"
+      ],
+      "id": "73cfe8a5"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "client = OpenAI(\n",
+        "  base_url=\"https://openrouter.ai/api/v1\",\n",
+        "  api_key=keyring.get_password(\"system\", \"openrouter\"),\n",
+        ")"
+      ],
+      "id": "7de85850",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# call model"
+      ],
+      "id": "dd8b39e1"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "completion = client.chat.completions.create(\n",
+        "  extra_headers={\n",
+        "    \"HTTP-Referer\": \"<YOUR_SITE_URL>\", # Optional. Site URL for rankings on openrouter.ai.\n",
+        "    \"X-Title\": \"<YOUR_SITE_NAME>\", # Optional. Site title for rankings on openrouter.ai.\n",
+        "  },\n",
+        "  extra_body={},\n",
+        "  model=\"moonshotai/kimi-k2:free\",\n",
+        "  messages=[\n",
+        "    {\n",
+        "      \"role\": \"user\",\n",
+        "      \"content\": \"What is the meaning of life?\"\n",
+        "    }\n",
+        "  ]\n",
+        ")"
+      ],
+      "id": "59dcaf4b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# get result"
+      ],
+      "id": "4084af90"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "print(completion.choices[0].message.content)"
+      ],
+      "id": "4daaa5e8",
+      "execution_count": null,
+      "outputs": []
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/Library/Frameworks/Python.framework/Versions/3.13/share/jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

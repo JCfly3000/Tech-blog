@@ -1,0 +1,67 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"Web scraping in Python\"\n",
+        "author: \"Tony D\"\n",
+        "date: \"2025-03-12\"\n",
+        "categories: \n",
+        "  - Tool\n",
+        "  - Webscrap\n",
+        "  - Python\n",
+        "  \n",
+        "execute:\n",
+        "  warning: false\n",
+        "  error: false\n",
+        "  eval: false\n",
+        "  \n",
+        "image: \"preview.B-gzjIrP.png\"\n",
+        "---\n",
+        "\n",
+        "A guide to web scraping in Python using the requests and BeautifulSoup libraries. This document outlines the basic steps and required libraries for extracting data from websites.\n",
+        "\n",
+        "This document serves as a placeholder for a guide to web scraping in Python. It currently includes the necessary imports for the `requests`, `BeautifulSoup`, `StringIO`, `re`, and `pandas` libraries, indicating that the full guide will cover a comprehensive workflow for extracting and processing data from websites. The content is currently incomplete, but it sets the stage for a detailed tutorial on this topic.\n",
+        "\n",
+        "A placeholder document for demonstrating web scraping techniques using Python. It currently only includes imports for `requests`, `BeautifulSoup`, `StringIO`, `re`, and `pandas`, indicating an intention to use these libraries for web scraping tasks. The content is incomplete.\n",
+        "\n",
+        "# python web scraping with requests and BeautifulSoup"
+      ],
+      "id": "a10418d9"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import requests\n",
+        "from bs4 import BeautifulSoup\n",
+        "from io import StringIO\n",
+        "import re\n",
+        "import pandas as pd"
+      ],
+      "id": "50dc4158",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# Reference\n"
+      ],
+      "id": "f0e01e68"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/Library/Frameworks/Python.framework/Versions/3.13/share/jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

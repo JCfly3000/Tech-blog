@@ -1,0 +1,55 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"查看IP地址\"\n",
+        "subtitle: \"Check IP address\"\n",
+        "author: \"Tony D\"\n",
+        "date: \"2025-04-02\"\n",
+        "\n",
+        "categories: \n",
+        "  - Tool\n",
+        "  - R\n",
+        "  - Python\n",
+        "  \n",
+        "image: \"images/images.png\"\n",
+        "\n",
+        "draft: true\n",
+        "\n",
+        "execute:\n",
+        "  warning: false\n",
+        "  error: false\n",
+        "  eval: false\n",
+        "---\n",
+        "\n",
+        "A draft document about installing and checking the version of Neovim.\n",
+        "\n",
+        "This document is a draft that provides a brief guide to installing and checking the version of Neovim, a popular text editor. It includes the necessary `brew` command for installation on macOS.\n",
+        "\n",
+        "# neovim\n",
+        "\n",
+        "```{bash}\n",
+        "brew install neovim\n",
+        "```\n",
+        "\n",
+        "```{bash}\n",
+        "nvim --version\n",
+        "```\n"
+      ],
+      "id": "62f4415b"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/Library/Frameworks/Python.framework/Versions/3.13/share/jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

@@ -2,6 +2,9 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/intro_markitdown/Modern_intro_probability_statistics.html",
+      "/posts/intro_markitdown/weight.html",
+      "/posts/intro_markitdown/index.html",
       "/posts/Streamlit/index.html",
       "/posts/gemini_cli/index.html",
       "/posts/kimi2/index.html",
@@ -47,6 +50,9 @@
   {
     "listing": "/posts.html",
     "items": [
+      "/posts/intro_markitdown/Modern_intro_probability_statistics.html",
+      "/posts/intro_markitdown/weight.html",
+      "/posts/intro_markitdown/index.html",
       "/posts/Streamlit/index.html",
       "/posts/gemini_cli/index.html",
       "/posts/kimi2/index.html",
